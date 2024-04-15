@@ -1,1 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-color: #050505;
+}
+
+.cover {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 65px 0;
+    background-image: url("/Users/kate/Documents/dev/react/restaurant/src/assets/pexels-rachel-claire-4577397 1.jpg");
+    background-size: cover;
+}
+
+.logo {
+    width: 97px;
+    height: 29px;
+}
+
+.navbar {
+    width: 520px;
+    background-color: #fff;
+    border-radius: 35px;
+    padding: 10px;
+}
+
+.button {
+    border: none;
+    border-radius: 26px;
+    background-color: #fff;
+    padding: 16px;
+
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #f8f8f8;
+}

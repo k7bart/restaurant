@@ -1,7 +1,12 @@
 import "./App.css";
+import MenuPage from "./components/MenuPage";
 
 function App() {
-    return <></>;
+    return (
+        <>
+            <MenuPage />
+        </>
+    );
 }
 
 export default App;
