@@ -2,19 +2,32 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 16px;
+    color: #fff;
 }
 
 body {
     background-color: #050505;
 }
 
-.cover {
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.section {
     height: 100vh;
     width: 50vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+}
+
+.cover {
+    justify-content: space-between;
     padding: 65px 0;
     background-image: url("/Users/kate/Documents/dev/react/restaurant/src/assets/cruffins.JPG");
     background-size: cover;
@@ -26,9 +39,9 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 50%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.35); /* Adjust opacity as needed */
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity as needed */
     filter: contrast(120%);
     z-index: 1; /* Ensure the overlay is above the background */
 }
@@ -50,17 +63,12 @@ body {
 }
 
 .title {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
-    color: #fff;
     font-size: 48px;
 }
 .subtitle {
     font-family: "Kaushan Script", cursive;
     font-weight: 400;
-    font-style: normal;
     color: #face8d;
     font-size: 36px;
 }
@@ -76,15 +84,120 @@ body {
     border: none;
     border-radius: 26px;
     background-color: #fff;
+    color: #050505;
     padding: 16px;
-
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 300;
-    font-style: normal;
-    font-size: 16px;
 }
 
 .button:hover {
     background-color: #f8f8f8;
+}
+
+.categories {
+    display: flex;
+    padding: 24px 36px;
+}
+
+.categories > *:not(:last-child) {
+    padding-right: 48px;
+}
+
+.category {
+    list-style: none;
+    font-weight: 200;
+}
+
+.menu {
+    padding: 80px 96px;
+    width: 100%;
+}
+
+.menu-items-container {
+    padding-top: 32px;
+}
+
+.menu-items-container > *:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.category-name {
+    font-family: "Kaushan Script", cursive;
+    font-weight: 400;
+    color: #face8d;
+    font-size: 28px;
+}
+
+.dish-container {
+    position: relative;
+    padding: 16px 24px 16px 16px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 16px;
+}
+
+.dish-of-the-day {
+    border: 1px solid #face8d;
+}
+
+.badge-dish-of-the-day {
+    position: absolute;
+    top: -16px;
+    right: 24px;
+    padding: 8px 12px;
+    background-color: #face8d;
+    color: #050505;
+    border-radius: 6px;
+    font-weight: 200;
+}
+
+.dish-image {
+    height: 72px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+.dish-content {
+    width: 100%;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 450px;
+}
+
+.dish-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dish-title {
+    display: flex;
+    align-items: center;
+}
+
+.dish-name,
+.dish-price,
+.dish-sale {
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.dish-name {
+    padding-right: 16px;
+}
+
+.dish-price {
+    display: flex;
+}
+
+.dish-sale {
+    text-decoration: line-through;
+    opacity: 60%;
+    padding-right: 10px;
+}
+
+.dish-description {
+    font-weight: 200;
+    opacity: 60%;
 }

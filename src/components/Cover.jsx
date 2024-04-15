@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 
 function Cover({ subtitle, title }) {
     return (
-        <div className="cover">
+        <div className="section cover">
             <Logo />
             <div className="titles-container">
                 <h2 className="subtitle">{subtitle}</h2>
