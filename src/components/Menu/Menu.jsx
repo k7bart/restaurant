@@ -1,8 +1,8 @@
 import MenuCategory from "./MenuCategory";
 
-import tomatoToast from "../assets/starters/tomato-toast.jpg";
-import noodleSoup from "../assets/starters/noodle-soup.jpeg";
-import pumpkinSoup from "../assets/starters/pumpkin-soup.jpg";
+import tomatoToast from "../../assets/starters/tomato-toast.jpg";
+import noodleSoup from "../../assets/starters/noodle-soup.jpeg";
+import pumpkinSoup from "../../assets/starters/pumpkin-soup.jpg";
 
 function Menu() {
     const categories = ["Starters", "Lunch", "Dinner", "Wine", "Drinks"];

@@ -1,16 +1,10 @@
 import "./App.css";
-import MenuPage from "./components/MenuPage";
-import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
     return (
         <>
-            <MenuPage />
-            <Routes>
-                <Route path="/" />
-                <Route path="/menu" />
-                <Route path="/reservation" />
-            </Routes>
+            <NavBar />
         </>
     );
 }

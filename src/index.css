@@ -29,7 +29,6 @@ body {
 .cover {
     justify-content: space-between;
     padding: 65px 0;
-    background-image: url("/Users/kate/Documents/dev/react/restaurant/src/assets/cruffins.JPG");
     background-size: cover;
     background-position: center;
 }

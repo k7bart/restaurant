@@ -1,9 +1,12 @@
 import Logo from "./Logo";
 import NavBar from "./NavBar";
 
-function Cover({ subtitle, title }) {
+function Cover({ subtitle, title, backgroundImage }) {
     return (
-        <div className="section cover">
+        <div
+            className="section cover"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+        >
             <Logo />
             <div className="titles-container">
                 <h2 className="subtitle">{subtitle}</h2>
