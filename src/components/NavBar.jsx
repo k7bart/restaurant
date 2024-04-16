@@ -1,6 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
-import ReservationPage from "./Reservation/ReservationPage";
-import MenuPage from "./Menu/MenuPage";
+import { Link } from "react-router-dom";
 
 function Button({ text }) {
     return <button className="button">{text}</button>;
@@ -23,11 +21,6 @@ function NavBar() {
                     <Button text="Classes" />
                 </Link>
             </nav>
-            <Routes>
-                <Route path="/" />
-                <Route path="/menu" element={<MenuPage />} />
-                <Route path="/reservation" element={<ReservationPage />} />
-            </Routes>
         </>
     );
 }
