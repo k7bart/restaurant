@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import menu from "./menu";
+import Footer from "../Footer";
+import "./Menu.css";
 
 const Menu = () => {
     const [highlightedCategory, setHighlightedCategory] = useState(
         menu[0].name
     );
+    const categoriesInNavbar = document.querySelector(".menu-page__navigation");
 
     useEffect(() => {
         const handleScroll = () => {
-            const categories = document.querySelectorAll(".menu-category");
-            const navbar = document.querySelector(".menu-navigation");
+            const categories = document.querySelectorAll(
+                ".menu-page__menu-category"
+            );
 
             categories.forEach((category) => {
                 const rect = category.getBoundingClientRect();
-                if (rect.top <= navbar.offsetHeight) {
+                if (rect.top <= categoriesInNavbar.offsetHeight) {
                     setHighlightedCategory(category.id);
                 }
             });
@@ -27,13 +31,14 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="section">
-            <nav className="menu-navigation">
+        <div className="section menu-page">
+            <nav className="menu-page__navigation">
                 {menu.map((category) => (
                     <a
-                        className={`menu-navigation__link ${
-                            highlightedCategory === category.name &&
-                            "highlighted"
+                        className={`menu-page__navigation__link ${
+                            highlightedCategory === category.name
+                                ? "highlighted"
+                                : ""
                         }`}
                         key={category.name}
                         href={"#" + category.name}
@@ -48,14 +53,15 @@ const Menu = () => {
                     <MenuCategory key={category} category={category} />
                 ))}
             </main>
+            <Footer />
         </div>
     );
 };
 
 const MenuCategory = ({ index, category }) => {
     return (
-        <div className="menu-category" id={category.name}>
-            <h3 className="menu-category__name">{category.name}</h3>
+        <div className="menu-page__menu-category" id={category.name}>
+            <h3 className="menu-page__menu-category__name">{category.name}</h3>
             <div className="menu-category__items-container">
                 {category.dishes.map((dish) => (
                     <MenuItem key={dish} dish={dish} />
