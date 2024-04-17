@@ -1,4 +1,5 @@
 $text-color-opasity: #f8f8f8b8;
+$background-color: #050505;
 $wisteria: #c9a0dc;
 
 * {
@@ -13,7 +14,7 @@ $wisteria: #c9a0dc;
 }
 
 body {
-    background-color: #050505;
+    background-color: $background-color;
 }
 
 .section,
