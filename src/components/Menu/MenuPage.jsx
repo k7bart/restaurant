@@ -4,14 +4,14 @@ import image from "../../assets/cruffins.jpeg";
 
 function MenuPage() {
     return (
-        <div className="page">
+        <>
             <Cover
                 subtitle={"Check Out"}
                 title={"Our Menu"}
                 backgroundImage={image}
             />
             <Menu />
-        </div>
+        </>
     );
 }
 

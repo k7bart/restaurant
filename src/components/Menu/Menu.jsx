@@ -31,7 +31,7 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="section menu-page">
+        <div className="section page-content">
             <nav className="menu-page__navigation">
                 {menu.map((category) => (
                     <a
