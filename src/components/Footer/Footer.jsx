@@ -1,7 +1,8 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import "./Footer.scss";
 
 const linkStyle = {
     opasity: "0.5",
@@ -19,14 +20,20 @@ const Footer = () => {
                     className="link"
                 >
                     <FaInstagram />
-                    @nique.
+                    @b.art
                 </Link>
                 <Link to="" target="_blank" className="link">
                     <FaFacebook />
-                    nique.
+                    b.art
                 </Link>
 
-                <p>By Kateryna Bartienieva</p>
+                <Link
+                    to="https://www.linkedin.com/in/kateryna-bartienieva/"
+                    target="_blank"
+                    className="link"
+                >
+                    By Kateryna Bartienieva
+                </Link>
             </div>
             <div className="container">
                 <Link to="/menu" className="link" style={linkStyle}>

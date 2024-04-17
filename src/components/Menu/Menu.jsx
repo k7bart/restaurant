@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import menu from "./menu";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import "./Menu.css";
 import { FaLeaf } from "react-icons/fa";
 

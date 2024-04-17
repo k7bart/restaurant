@@ -257,41 +257,6 @@ body {
     color: #face8d;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 96px;
-
-    .container {
-        display: flex;
-        flex-direction: column;
-
-        .link,
-        p {
-            color: $text-color-opasity;
-            padding-top: 20px;
-
-            &:hover {
-                color: $wisteria;
-            }
-        }
-
-        .link {
-            display: flex;
-            align-items: flex-end;
-
-            :first-child {
-                margin-right: 5px;
-            }
-        }
-
-        p {
-            font-weight: 200;
-        }
-    }
-}
-
 .link {
     text-decoration: none;
     font-weight: 200;
