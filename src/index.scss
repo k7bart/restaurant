@@ -1,3 +1,6 @@
+$text-color-opasity: #f8f8f8b8;
+$wisteria: #c9a0dc;
+
 * {
     margin: 0;
     padding: 0;
@@ -107,7 +110,7 @@ body {
 
                 &:focus {
                     outline: none;
-                    border: 1px solid #face8d;
+                    border: 1px solid $wisteria;
                 }
             }
 
@@ -129,7 +132,7 @@ body {
             height: 60px;
             border: none;
             border-radius: 30px;
-            background-color: #face8d;
+            background-color: $wisteria;
             color: #050505;
 
             &:disabled {
@@ -157,7 +160,7 @@ body {
     .subtitle {
         font-family: "Kaushan Script", cursive;
         font-weight: 400;
-        color: #face8d;
+        color: $wisteria;
         font-size: 36px;
     }
 }
@@ -260,12 +263,31 @@ body {
     width: 100%;
     padding-top: 96px;
 
-    &__link-container {
+    .container {
         display: flex;
         flex-direction: column;
 
-        &__link {
-            opacity: 0.5;
+        .link,
+        p {
+            color: $text-color-opasity;
+            padding-top: 20px;
+
+            &:hover {
+                color: $wisteria;
+            }
+        }
+
+        .link {
+            display: flex;
+            align-items: flex-end;
+
+            :first-child {
+                margin-right: 5px;
+            }
+        }
+
+        p {
+            font-weight: 200;
         }
     }
 }
