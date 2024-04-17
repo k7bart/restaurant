@@ -1,0 +1,55 @@
+$wisteria: #c9a0dc;
+
+.home {
+    height: 100vh;
+    padding: 64px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../../assets/restaurant.jpeg");
+    background-size: cover;
+    background-position: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        filter: contrast(120%);
+        z-index: 1;
+    }
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-family: Kaushan Script, cursive;
+            font-weight: 400;
+            color: $wisteria;
+            font-size: 48px;
+        }
+
+        h1 {
+            font-weight: 400;
+            font-size: 160px;
+        }
+
+        p {
+            font-weight: 200;
+            font-size: 24px;
+            text-align: center;
+            max-width: 55%;
+        }
+    }
+}

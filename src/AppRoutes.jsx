@@ -1,4 +1,4 @@
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/HomePage";
 import MenuPage from "./components/Menu/MenuPage";
 import ReservationPage from "./components/Reservation/ReservationPage";
 
