@@ -28,18 +28,3 @@
 .menu > *:not(:first-child) {
     padding-top: 96px;
 }
-
-.menu-page__menu-category__name {
-    font-family: "Kaushan Script", cursive;
-    font-weight: 400;
-    color: #face8d;
-    font-size: 28px;
-}
-
-.menu-category__items-container {
-    padding-top: 32px;
-}
-
-.menu-category__items-container > *:not(:last-child) {
-    margin-bottom: 16px;
-}

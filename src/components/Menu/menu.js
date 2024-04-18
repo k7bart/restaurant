@@ -8,6 +8,7 @@ const menu = [
         dishes: [
             {
                 name: "Tomato Toast",
+                id: "tomato-toast",
                 description: "Description",
                 imageSrc: tomatoToast,
                 price: "29",
@@ -18,6 +19,7 @@ const menu = [
             },
             {
                 name: "Noodle Soup",
+                id: "noodle-soup",
                 description: "Description",
                 imageSrc: noodleSoup,
                 price: "5",
@@ -28,6 +30,7 @@ const menu = [
             },
             {
                 name: "Pumpkin Soup",
+                id: "pumpkin-soup",
                 description: "Description",
                 imageSrc: pumpkinSoup,
                 price: "5",
@@ -43,6 +46,7 @@ const menu = [
         dishes: [
             {
                 name: "Tomato Toast",
+                id: "tomato-toast",
                 description: "Description",
                 imageSrc: tomatoToast,
                 price: "29",
@@ -53,6 +57,7 @@ const menu = [
             },
             {
                 name: "Noodle Soup",
+                id: "noodle-soup",
                 description: "Description",
                 imageSrc: noodleSoup,
                 price: "5",
@@ -63,6 +68,7 @@ const menu = [
             },
             {
                 name: "Pumpkin Soup",
+                id: "pumpkin-soup",
                 description: "Description",
                 imageSrc: pumpkinSoup,
                 price: "5",
@@ -78,6 +84,7 @@ const menu = [
         dishes: [
             {
                 name: "Tomato Toast",
+                id: "tomato-toast",
                 description: "Description",
                 imageSrc: tomatoToast,
                 price: "29",
@@ -88,6 +95,7 @@ const menu = [
             },
             {
                 name: "Noodle Soup",
+                id: "noodle-soup",
                 description: "Description",
                 imageSrc: noodleSoup,
                 price: "5",
@@ -98,6 +106,7 @@ const menu = [
             },
             {
                 name: "Pumpkin Soup",
+                id: "pumpkin-soup",
                 description: "Description",
                 imageSrc: pumpkinSoup,
                 price: "5",
@@ -113,6 +122,7 @@ const menu = [
         dishes: [
             {
                 name: "Tomato Toast",
+                id: "tomato-toast",
                 description: "Description",
                 imageSrc: tomatoToast,
                 price: "29",
@@ -123,6 +133,7 @@ const menu = [
             },
             {
                 name: "Noodle Soup",
+                id: "noodle-soup",
                 description: "Description",
                 imageSrc: noodleSoup,
                 price: "5",
@@ -133,6 +144,7 @@ const menu = [
             },
             {
                 name: "Pumpkin Soup",
+                id: "pumpkin-soup",
                 description: "Description",
                 imageSrc: pumpkinSoup,
                 price: "5",
@@ -148,6 +160,7 @@ const menu = [
         dishes: [
             {
                 name: "Tomato Toast",
+                id: "tomato-toast",
                 description: "Description",
                 imageSrc: tomatoToast,
                 price: "29",
@@ -158,6 +171,7 @@ const menu = [
             },
             {
                 name: "Noodle Soup",
+                id: "noodle-soup",
                 description: "Description",
                 imageSrc: noodleSoup,
                 price: "5",
@@ -168,6 +182,7 @@ const menu = [
             },
             {
                 name: "Pumpkin Soup",
+                id: "pumpkin-soup",
                 description: "Description",
                 imageSrc: pumpkinSoup,
                 price: "5",
