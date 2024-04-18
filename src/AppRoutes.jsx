@@ -25,7 +25,7 @@ const routes = [
                 ),
             },
             {
-                path: ":productId", // Dynamic route parameter for product
+                path: ":category/:productId",
                 element: <Product />,
             },
         ],

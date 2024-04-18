@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaLeaf } from "react-icons/fa";
 import "./MenuCategoryItem.scss";
 
-const MenuItem = ({ dish }) => {
+const MenuItem = ({ dish, category }) => {
     if (!dish) return;
 
     const badge = dish.isDishOfTheDay && (
@@ -13,7 +13,7 @@ const MenuItem = ({ dish }) => {
 
     return (
         // Link to the product with its id as a parameter
-        <Link to={`/menu/${dish.id}`} className="dish-link">
+        <Link to={`/menu/${category.name}/${dish.id}`} className="dish-link">
             <div className={"container " + isDishOfTheDay}>
                 {badge}
                 <img src={dish.imageSrc} alt={dish.name} />
