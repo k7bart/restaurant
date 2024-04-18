@@ -1,0 +1,18 @@
+$wisteria: #c9a0dc;
+
+.menu-page__menu-category {
+    h3 {
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        color: $wisteria;
+        font-size: 28px;
+    }
+
+    > div {
+        padding-top: 32px;
+
+        > *:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+}

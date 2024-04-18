@@ -186,76 +186,8 @@ body {
     }
 }
 
-.dish-container {
-    position: relative;
-    padding: 16px 24px 16px 16px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 16px;
-
-    &.dish-of-the-day {
-        border: 1px solid #face8d;
-
-        .badge-dish-of-the-day {
-            position: absolute;
-            top: -16px;
-            right: 24px;
-            padding: 8px 12px;
-            background-color: #face8d;
-            color: #050505;
-            border-radius: 6px;
-            font-weight: 200;
-        }
-    }
-
-    .dish-image {
-        height: 72px;
-        width: 90px;
-        border-radius: 10px;
-        background-color: #f8f8f8;
-    }
-
-    .dish-content {
-        width: 100%;
-        padding: 0 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        max-width: 450px;
-
-        .dish-info {
-            display: flex;
-            justify-content: space-between;
-
-            .dish-title {
-                display: flex;
-                align-items: center;
-
-                .dish-name {
-                    padding-right: 16px;
-                }
-
-                .dish-price {
-                    display: flex;
-
-                    .dish-sale {
-                        text-decoration: line-through;
-                        opacity: 60%;
-                        padding-right: 10px;
-                    }
-                }
-            }
-
-            .dish-description {
-                font-weight: 200;
-                opacity: 60%;
-            }
-        }
-    }
-}
-
 .highlighted {
-    color: #face8d;
+    color: $wisteria;
 }
 
 .link {
