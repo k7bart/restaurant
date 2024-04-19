@@ -1,0 +1,38 @@
+.carrousel {
+    position: relative;
+    height: 100%;
+
+    .slide {
+        height: 100%;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .dots {
+        display: flex;
+        justify-content: center;
+
+        div {
+            margin: 0 3px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+
+    &.back {
+        left: 32px;
+    }
+
+    &.forward {
+        right: 32px;
+    }
+}
