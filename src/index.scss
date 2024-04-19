@@ -79,7 +79,7 @@ h3 {
         padding-top: 16px;
         font-size: 18px;
         font-weight: 100;
-        color: #f8f8f8b8;
+        color: $text-color-opasity;
     }
 
     .form {
@@ -101,13 +101,11 @@ h3 {
 
         label {
             padding-top: 48px;
-            display: flex;
-            flex-direction: column;
-            font-weight: 200;
-            color: #f8f8f8b8;
 
             p {
                 padding-bottom: 16px;
+                font-weight: 200;
+                color: $text-color-opasity;
             }
 
             input,
@@ -115,7 +113,7 @@ h3 {
                 padding: 16px 24px;
                 width: 100%;
                 background-color: transparent;
-                border: 1px solid #f8f8f820;
+                border: 1px solid $text-color-opasity;
                 border-radius: 10px;
 
                 &:focus {
@@ -128,7 +126,7 @@ h3 {
                 height: 60px;
 
                 &::placeholder {
-                    color: #f8f8f8b8;
+                    color: $text-color-opasity;
                 }
             }
 
@@ -176,7 +174,7 @@ h3 {
 }
 
 .navbar {
-    max-width: 60%;
+    width: max-content;
     background-color: #fff;
     border-radius: 35px;
     padding: 10px;

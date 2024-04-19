@@ -30,17 +30,15 @@ $wisteria: #c9a0dc;
             height: 72px;
             width: 90px;
             border-radius: 10px;
-            background-color: #f8f8f8;
             object-fit: cover;
         }
 
         .content {
-            width: 100%;
             padding: 0 24px;
             display: flex;
+            flex-grow: 1;
             flex-direction: column;
             justify-content: space-evenly;
-            max-width: 450px;
 
             div {
                 display: flex;
