@@ -16,7 +16,7 @@ const MenuItem = ({ dish, category }) => {
         <Link to={`/menu/${category.name}/${dish.id}`} className="dish-link">
             <div className={"container " + isDishOfTheDay}>
                 {badge}
-                <img src={dish.imageSrc} alt={dish.name} />
+                <img src={dish.photos[0]} alt={dish.name} />
                 <div className="content">
                     <div>
                         <div className="title">

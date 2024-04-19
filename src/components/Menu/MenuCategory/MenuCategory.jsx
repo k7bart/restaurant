@@ -7,7 +7,7 @@ const MenuCategory = ({ index, category }) => {
             <h3>{category.name}</h3>
             <div>
                 {category.dishes.map((dish) => (
-                    <MenuItem key={dish} dish={dish} category={category} />
+                    <MenuItem key={dish.id} dish={dish} category={category} />
                 ))}
             </div>
         </div>
