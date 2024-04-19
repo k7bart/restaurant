@@ -14,8 +14,8 @@ function NavBar() {
                 <Link to="/menu">
                     <Button text="Menu" />
                 </Link>
-                <Link>
-                    <Button text="Restaurant" />
+                <Link to="/events">
+                    <Button text="Events" />
                 </Link>
                 <Link>
                     <Button text="Classes" />
