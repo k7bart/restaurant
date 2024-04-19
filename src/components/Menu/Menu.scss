@@ -1,4 +1,4 @@
-.menu-page__navigation {
+.menu_navigation {
     width: 50vw;
     display: flex;
     justify-content: center;
@@ -6,15 +6,15 @@
     position: fixed;
     background-color: #050505;
     z-index: 2;
+
+    .link {
+        text-decoration: none;
+        font-weight: 200;
+    }
 }
 
-.menu-page__navigation > *:not(:last-child) {
+.menu_navigation > *:not(:last-child) {
     padding-right: 48px;
-}
-
-.menu-page__navigation__link {
-    text-decoration: none;
-    font-weight: 200;
 }
 
 .menu {

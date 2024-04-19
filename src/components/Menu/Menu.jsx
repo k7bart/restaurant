@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import menu from "./menu";
 import MenuCategory from "./MenuCategory/MenuCategory";
 import Footer from "../Footer/Footer";
-import "./Menu.css";
+import "./Menu.scss";
 
 const Menu = () => {
     const [highlightedCategory, setHighlightedCategory] = useState(
         menu[0].name
     );
-    const categoriesInNavbar = document.querySelector(".menu-page__navigation");
 
     useEffect(() => {
         const handleScroll = () => {
+            const categoriesInNavbar =
+                document.querySelector(".menu_navigation");
             const categories = document.querySelectorAll(
                 ".menu-page__menu-category"
             );
@@ -33,10 +34,10 @@ const Menu = () => {
 
     return (
         <div className="section page-content">
-            <nav className="menu-page__navigation">
+            <nav className="menu_navigation">
                 {menu.map((category) => (
                     <a
-                        className={`menu-page__navigation__link ${
+                        className={`link ${
                             highlightedCategory === category.name
                                 ? "highlighted"
                                 : ""
@@ -51,7 +52,7 @@ const Menu = () => {
 
             <main className="menu">
                 {menu.map((category) => (
-                    <MenuCategory key={category} category={category} />
+                    <MenuCategory key={category.name} category={category} />
                 ))}
             </main>
             <Footer />
