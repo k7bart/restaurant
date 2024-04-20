@@ -2,7 +2,11 @@
     width: max-content;
     background-color: #fff;
     border-radius: 35px;
-    padding: 10px;
+    padding: 8px;
+
+    :not(:first-child) {
+        padding-left: 8px;
+    }
 
     .button {
         border: none;
@@ -14,7 +18,8 @@
         font-weight: 300;
         transition: 0.3s;
 
-        &:hover {
+        &:hover,
+        &.active {
             color: white;
             background-color: #050505;
         }

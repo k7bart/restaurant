@@ -1,26 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./NavBar.scss";
 
-function Button({ text }) {
-    return <button className="button">{text}</button>;
-}
+const pages = [
+    { link: "/menu", text: "Menu" },
+    { link: "/reservation", text: "Book a table" },
+    { link: "/events", text: "Events" },
+];
 
-function NavBar() {
+const NavBar = () => {
+    const location = useLocation().pathname;
+
     return (
-        <>
-            <nav className="navbar">
-                <Link to="/menu">
-                    <Button text="Menu" />
+        <nav className="navbar">
+            {pages.map((page) => (
+                <Link key={page.link} to={page.link}>
+                    <button
+                        className={`button ${
+                            location === page.link ? "active" : ""
+                        }`}
+                    >
+                        {page.text}
+                    </button>
                 </Link>
-                <Link to="/reservation">
-                    <Button text="Book a table" />
-                </Link>
-                <Link to="/events">
-                    <Button text="Events" />
-                </Link>
-            </nav>
-        </>
+            ))}
+        </nav>
     );
-}
+};
 
 export default NavBar;
