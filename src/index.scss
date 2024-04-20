@@ -43,7 +43,7 @@ h3 {
         position: fixed;
         left: 0;
         justify-content: space-between;
-        padding: 65px 0;
+        padding: 80px 0;
         background-size: cover;
         background-position: center;
 
@@ -150,11 +150,6 @@ h3 {
     }
 }
 
-.logo {
-    width: 97px;
-    height: 29px;
-}
-
 .titles-container {
     display: flex;
     flex-direction: column;
@@ -170,26 +165,6 @@ h3 {
         font-weight: 400;
         color: $wisteria;
         font-size: 36px;
-    }
-}
-
-.navbar {
-    width: max-content;
-    background-color: #fff;
-    border-radius: 35px;
-    padding: 10px;
-}
-
-.button {
-    border: none;
-    border-radius: 26px;
-    background-color: #fff;
-    color: #050505;
-    padding: 16px;
-    font-weight: 300;
-
-    &:hover {
-        background-color: #f8f8f8;
     }
 }
 
