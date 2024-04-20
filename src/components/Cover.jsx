@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import NavBar from "./NavBar";
+import Logo from "./Logo/Logo";
+import NavBar from "./NavBar/NavBar";
 
 function Cover({ subtitle, title, backgroundImage }) {
     return (
