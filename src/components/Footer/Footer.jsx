@@ -1,4 +1,4 @@
-import Logo from "../Logo";
+import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -14,11 +14,7 @@ const Footer = () => {
             <div className="container">
                 <Logo />
 
-                <Link
-                    to="https://www.instagram.com/catherine_pastry/"
-                    target="_blank"
-                    className="link"
-                >
+                <Link to="" target="_blank" className="link">
                     <FaInstagram />
                     @b.art
                 </Link>
