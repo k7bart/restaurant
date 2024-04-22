@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./Product.scss";
 import menu from "../Menu/menu";
+import Logo from "../Logo/Logo";
 import Carrousel from "../Carrousel/Carrousel";
 
 const Product = () => {
@@ -13,6 +14,8 @@ const Product = () => {
 
     return (
         <div className="product">
+            <Logo />
+
             <h3>{product.name}</h3>
 
             <div className="carrousel-container">

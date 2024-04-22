@@ -9,6 +9,13 @@ $wisteria: #c9a0dc;
     border: 1px solid $wisteria;
     border-radius: 16px;
     padding: 80px 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+        margin-bottom: 36px;
+    }
 
     .carrousel-container {
         width: 400px;
