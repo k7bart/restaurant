@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavBar.scss";
 
 const pages = [
@@ -8,20 +8,12 @@ const pages = [
 ];
 
 const NavBar = () => {
-    const location = useLocation().pathname;
-
     return (
         <nav className="navbar">
             {pages.map((page) => (
-                <Link key={page.link} to={page.link}>
-                    <button
-                        className={`button ${
-                            location === page.link ? "active" : ""
-                        }`}
-                    >
-                        {page.text}
-                    </button>
-                </Link>
+                <NavLink key={page.link} to={page.link}>
+                    {page.text}
+                </NavLink>
             ))}
         </nav>
     );

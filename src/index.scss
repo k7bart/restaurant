@@ -16,6 +16,10 @@ $heading3-font-weight: 300;
     color: #fff;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     background-color: $background-color;
 }
@@ -168,11 +172,6 @@ h3 {
     }
 }
 
-.highlighted {
-    color: $wisteria;
-}
-
 .link {
-    text-decoration: none;
     font-weight: 200;
 }
