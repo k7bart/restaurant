@@ -4,7 +4,8 @@ import MenuPage from "./components/Menu/MenuPage";
 import Product from "./components/Product/Product";
 import Reservation from "./components/Reservation/Reservation";
 import image from "./assets/cruffins.jpeg";
-import EventsPage from "./components/EventsPage/EventsPage";
+import EventsPage from "./components/Events/EventsPage/EventsPage";
+import EventPage from "./components/Events/EventPage/EventPage";
 
 const routes = [
     {
@@ -35,6 +36,13 @@ const routes = [
         path: "/reservation",
         element: <Reservation />,
     },
-    { path: "/events", element: <EventsPage /> },
+    {
+        path: "/events",
+        element: <EventsPage />,
+    },
+    {
+        path: "/events/:eventId",
+        element: <EventPage />,
+    },
 ];
 export default routes;

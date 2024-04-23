@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./EventsPage.scss";
-import events from "./events";
-import Logo from "../Logo/Logo";
-import NavBar from "../NavBar/NavBar";
+import events from "../events";
+import Logo from "../../Logo/Logo";
+import NavBar from "../../NavBar/NavBar";
 
 const EventsPage = () => {
     return (
@@ -10,7 +11,11 @@ const EventsPage = () => {
             <Logo />
 
             {events.map((event) => (
-                <div key={event.id} className="container">
+                <Link
+                    to={`/events/${event.id}`}
+                    key={event.id}
+                    className="container"
+                >
                     <div
                         className="image"
                         style={{ backgroundImage: `url(${event.photo})` }}
@@ -23,7 +28,7 @@ const EventsPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             ))}
 
             <NavBar />

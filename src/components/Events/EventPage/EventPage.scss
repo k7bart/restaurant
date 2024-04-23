@@ -1,0 +1,73 @@
+$text-color-opasity: #f8f8f8b8;
+$border-color: #1e1e1e;
+$wisteria: #c9a0dc;
+
+.event-page {
+    h4 {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .reservation {
+        display: flex;
+        align-items: center;
+        padding-top: 32px;
+
+        .small-color-button {
+            height: 60px;
+            background-color: $wisteria;
+            border-radius: 30px;
+            padding: 16px;
+        }
+
+        h4 {
+            padding-left: 32px;
+        }
+    }
+
+    .subsection {
+        padding-top: 80px;
+
+        h3 {
+            font-family: "Kaushan Script", cursive;
+            font-weight: 400;
+            color: $wisteria;
+            font-size: 28px;
+            padding-bottom: 32px;
+        }
+    }
+
+    .details {
+        > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+
+            p {
+                font-size: 20px;
+                font-weight: 200;
+                color: $text-color-opasity;
+            }
+        }
+
+        .special-guest {
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 16px;
+            }
+        }
+
+        > :not(:first-child) {
+            padding-top: 16px;
+        }
+
+        > :not(:last-child) {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+}

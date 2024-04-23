@@ -9,6 +9,9 @@ const events = [
         subtitle: "The Art of",
         title: "Coffee Cupping",
         date: "June 16, 2024",
+        price: 49,
+        specialGuest: null,
+        language: "Italian",
     },
 
     {
@@ -17,6 +20,9 @@ const events = [
         subtitle: "Local",
         title: "Honey Degustation",
         date: "March 17, 2024",
+        price: 49,
+        specialGuest: "Bob Bobert",
+        language: "English",
     },
     {
         id: "cheese-degustation",
@@ -24,6 +30,9 @@ const events = [
         subtitle: "French",
         title: "Cheeses Tasting",
         date: "May 16, 2024",
+        price: 89,
+        specialGuest: "Remy Ratatouille",
+        language: "French",
     },
 ];
 
