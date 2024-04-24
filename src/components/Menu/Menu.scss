@@ -1,28 +1,5 @@
-.menu_navigation {
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    padding: 24px 36px;
-    position: fixed;
-    background-color: #050505;
-    z-index: 2;
-
-    .link {
-        text-decoration: none;
-        font-weight: 200;
-    }
-}
-
-.menu_navigation > *:not(:last-child) {
-    padding-right: 48px;
-}
-
 .menu {
     width: 100%;
-}
-
-.menu > :first-child {
-    padding-top: 80px;
 }
 
 .menu > *:not(:first-child) {

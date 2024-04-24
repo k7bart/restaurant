@@ -33,8 +33,8 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="section page-content">
-            <nav className="menu_navigation">
+        <div className="section content">
+            <nav className="navigation">
                 {menu.map((category) => (
                     <a
                         className={`link ${
