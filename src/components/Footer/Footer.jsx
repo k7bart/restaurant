@@ -1,12 +1,8 @@
 import Logo from "../Logo/Logo";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import "./Footer.scss";
-
-const linkStyle = {
-    opasity: "0.5",
-};
 
 const Footer = () => {
     return (
@@ -22,7 +18,6 @@ const Footer = () => {
                     <FaFacebook />
                     b.art
                 </Link>
-
                 <Link
                     to="https://www.linkedin.com/in/kateryna-bartienieva/"
                     target="_blank"
@@ -32,17 +27,20 @@ const Footer = () => {
                 </Link>
             </div>
             <div className="container">
-                <Link to="/menu" className="link" style={linkStyle}>
+                <NavLink to="/menu" className="link">
                     Menu
-                </Link>
-                <Link to="/reservation" style={linkStyle} className="link">
+                </NavLink>
+                <NavLink to="/reservation" className="link">
                     Reservation
-                </Link>
+                </NavLink>
+                <NavLink to="/events" className="link">
+                    Events
+                </NavLink>
             </div>
             <div>
-                <Link to="/error" className="link" style={linkStyle}>
+                <NavLink to="/error" className="link">
                     Error
-                </Link>
+                </NavLink>
             </div>
         </div>
     );
