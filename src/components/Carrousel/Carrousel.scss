@@ -1,38 +1,69 @@
-.carrousel {
-    position: relative;
-    height: 100%;
+$wisteria: #c9a0dc;
+$grey: #b8b8b8;
 
-    .slide {
+.carrousel-container {
+    position: relative;
+
+    .slides-container {
+        display: inline-flex;
+
+        //menu
         height: 100%;
-        border-radius: 10px;
-        background-size: cover;
-        background-position: center;
+        width: 100%;
+
+        .slide {
+            //menu
+            height: 100%;
+            width: 100%;
+
+            .image {
+                //menu
+                height: 100%;
+                width: 100%;
+
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        cursor: pointer;
+
+        &.back {
+            left: 32px;
+        }
+
+        &.forward {
+            right: 32px;
+        }
     }
 
     .dots {
         display: flex;
         justify-content: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
         div {
             margin: 0 3px;
             cursor: pointer;
             font-size: 20px;
+            color: $grey;
+
+            &:hover {
+                color: $wisteria;
+            }
         }
-    }
-}
 
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    cursor: pointer;
-
-    &.back {
-        left: 32px;
-    }
-
-    &.forward {
-        right: 32px;
+        .active {
+            color: white;
+        }
     }
 }

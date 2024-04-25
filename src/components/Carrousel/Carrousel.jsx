@@ -1,20 +1,31 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Carrousel.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Carrousel = ({ photos, dots }) => {
+const Carrousel = ({ content, dots, num, slideShow }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const goToSlide = (index) => setCurrentIndex(index);
-
     const changeSlide = (step) => {
-        const newIndex = (currentIndex + step + photos.length) % photos.length;
+        const newIndex =
+            (currentIndex + step + content.length) % content.length;
         setCurrentIndex(newIndex);
     };
 
-    const dotsDiv = (
+    useEffect(() => {
+        if (slideShow) {
+            const interval = setInterval(() => {
+                changeSlide(1);
+            }, 3000);
+
+            return () => clearInterval(interval);
+        }
+    }, [slideShow]);
+
+    const goToSlide = (index) => setCurrentIndex(index);
+
+    const dotsEl = dots && content.length > 1 && (
         <div className="dots">
-            {photos.map((_, index) => (
+            {content.map((_, index) => (
                 <div
                     key={index}
                     onClick={() => goToSlide(index)}
@@ -26,20 +37,38 @@ const Carrousel = ({ photos, dots }) => {
         </div>
     );
 
-    return (
-        <div className="carrousel">
+    const arrows = content.length > 1 && (
+        <>
             <div className="arrow back" onClick={() => changeSlide(-1)}>
                 <IoIosArrowBack />
             </div>
-            <div
-                className="slide"
-                style={{ backgroundImage: `url(${photos[currentIndex]})` }}
-            ></div>
             <div className="arrow forward" onClick={() => changeSlide(1)}>
                 <IoIosArrowForward />
             </div>
+        </>
+    );
 
-            {dots && dotsDiv}
+    const visibleGroup =
+        content.length - currentIndex < num
+            ? [
+                  ...content.slice(currentIndex),
+                  ...content.slice(0, num - (content.length - currentIndex)),
+              ]
+            : content.slice(currentIndex, currentIndex + num);
+
+    return (
+        <div className="carrousel-container">
+            <div className="slides-container">
+                {visibleGroup.map((s, index) => (
+                    <div key={index} className="slide">
+                        {s}
+                    </div>
+                ))}
+            </div>
+
+            {arrows}
+
+            {dotsEl}
         </div>
     );
 };

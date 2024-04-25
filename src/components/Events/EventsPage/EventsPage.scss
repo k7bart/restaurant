@@ -1,41 +1,45 @@
 $text-color-opacity: #f8f8f8b8;
 
 .events-page {
-    display: flex;
+    height: 100vh;
 
-    .container {
-        width: 33.33vw;
-        overflow: hidden;
+    .carrousel-container {
+        height: 100vh;
 
-        .image {
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+        .slide {
+            width: 33.33vw;
+            overflow: hidden;
 
-            .filter {
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .image {
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
 
-                .title {
-                    font-size: 38px;
-                }
-
-                .date {
-                    padding-top: 8px;
-                    font-weight: 200;
-                    color: $text-color-opacity;
-                }
-            }
-
-            transition: transform 0.5s, filter 0.5s;
-
-            &:hover {
-                transform: scale(1.05);
                 .filter {
-                    background-color: rgba(0, 0, 0, 0.6);
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .title {
+                        font-size: 38px;
+                    }
+
+                    .date {
+                        padding-top: 8px;
+                        font-weight: 200;
+                        color: $text-color-opacity;
+                    }
+                }
+
+                transition: transform 0.5s, filter 0.5s;
+
+                &:hover {
+                    transform: scale(1.05);
+                    .filter {
+                        background-color: rgba(0, 0, 0, 0.6);
+                    }
                 }
             }
         }
@@ -43,7 +47,7 @@ $text-color-opacity: #f8f8f8b8;
 
     .logo,
     .navbar {
-        position: absolute;
+        position: fixed;
         margin: 0 auto;
         left: 0;
         right: 0;
