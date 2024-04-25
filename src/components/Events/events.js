@@ -1,6 +1,7 @@
 import cupping from "../../assets/events/cupping.jpeg";
 import honey from "../../assets/events/honey.jpeg";
 import cheeseDegustation from "../../assets/events/cheese-degustation.jpeg";
+import casablanca from "../../assets/events/casablanca.jpeg";
 
 const events = [
     {
@@ -13,7 +14,6 @@ const events = [
         specialGuest: null,
         language: "Italian",
     },
-
     {
         id: "honey",
         photo: honey,
@@ -33,6 +33,16 @@ const events = [
         price: 89,
         specialGuest: "Remy Ratatouille",
         language: "French",
+    },
+    {
+        id: "movies-and-wine",
+        photo: casablanca,
+        subtitle: "Old",
+        title: "Movies and Wine",
+        date: "March 30, 2024",
+        price: 49,
+        specialGuest: null,
+        language: "English",
     },
 ];
 
