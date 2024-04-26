@@ -1,0 +1,39 @@
+.cover-container {
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    position: fixed;
+
+    > .cover {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+
+        > .filter {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        > .content {
+            padding: 80px 96px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
+        transition: transform 0.5s, filter 0.5s;
+
+        &:hover {
+            transform: scale(1.05);
+            .filter {
+                background-color: rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+}

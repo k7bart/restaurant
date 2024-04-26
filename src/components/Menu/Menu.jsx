@@ -33,29 +33,31 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="section content">
-            <nav className="navigation">
-                {menu.map((category) => (
-                    <a
-                        className={`link ${
-                            highlightedCategory === category.name
-                                ? "highlighted"
-                                : ""
-                        }`}
-                        key={category.name}
-                        href={"#" + category.name}
-                    >
-                        {category.name}
-                    </a>
-                ))}
-            </nav>
+        <div className="section">
+            <div className="content">
+                <nav className="navigation">
+                    {menu.map((category) => (
+                        <a
+                            className={`link ${
+                                highlightedCategory === category.name
+                                    ? "highlighted"
+                                    : ""
+                            }`}
+                            key={category.name}
+                            href={"#" + category.name}
+                        >
+                            {category.name}
+                        </a>
+                    ))}
+                </nav>
 
-            <main className="menu">
-                {menu.map((category) => (
-                    <MenuCategory key={category.name} category={category} />
-                ))}
-            </main>
-            <Footer />
+                <main className="menu">
+                    {menu.map((category) => (
+                        <MenuCategory key={category.name} category={category} />
+                    ))}
+                </main>
+                <Footer />
+            </div>
         </div>
     );
 };

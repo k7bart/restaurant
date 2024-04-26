@@ -1,4 +1,4 @@
-import Cover from "./components/Cover";
+import Cover from "./components/Cover/Cover";
 import HomePage from "./components/HomePage/HomePage";
 import MenuPage from "./components/Menu/MenuPage";
 import Product from "./components/Product/Product";
