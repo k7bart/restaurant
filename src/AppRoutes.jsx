@@ -1,6 +1,6 @@
 import Cover from "./components/Cover/Cover";
-import HomePage from "./components/HomePage/HomePage";
-import MenuPage from "./components/Menu/MenuPage";
+import FrontPage from "./components/Pages/FrontPage/FrontPage";
+import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import Product from "./components/Product/Product";
 import Reservation from "./components/Reservation/Reservation";
 import image from "./assets/cruffins.jpeg";
@@ -10,7 +10,7 @@ import EventPage from "./components/Events/EventPage/EventPage";
 const routes = [
     {
         path: "/",
-        element: <HomePage />,
+        element: <FrontPage />,
     },
     {
         path: "/menu",
