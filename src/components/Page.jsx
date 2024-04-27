@@ -6,7 +6,7 @@ const Page = ({ children }) => {
             <header>
                 <ResponsiveNavbar />
             </header>
-            <body>{children}</body>
+            <main>{children}</main>
         </div>
     );
 };

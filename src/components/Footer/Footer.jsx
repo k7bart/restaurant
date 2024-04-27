@@ -6,7 +6,7 @@ import "./Footer.scss";
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <footer>
             <div className="container">
                 <Logo />
 
@@ -42,7 +42,7 @@ const Footer = () => {
                     Error
                 </NavLink>
             </div>
-        </div>
+        </footer>
     );
 };
 
