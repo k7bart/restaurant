@@ -1,8 +1,8 @@
-import PageWithCover from "../PageWithCover/PageWithCover";
-import Cover from "../Cover/Cover";
+import Cover from "../../Cover/Cover";
+import Footer from "../../Footer/Footer";
+import PageWithCover from "../../PageWithCover/PageWithCover";
 import ReservationForm from "./ReservationForm";
-import Footer from "../Footer/Footer";
-import image from "../../assets/cake.jpeg";
+import image from "../../../assets/cake.jpeg";
 
 function Reservation() {
     const cover = (
@@ -26,13 +26,19 @@ function Reservation() {
                 </div>
 
                 <ReservationForm />
-
                 <Footer />
             </div>
         </div>
     );
 
-    return <PageWithCover cover={cover} section={section}></PageWithCover>;
+    return (
+        <PageWithCover
+            cover={cover}
+            section={section}
+            addLogo={true}
+            addNavBar={true}
+        />
+    );
 }
 
 export default Reservation;

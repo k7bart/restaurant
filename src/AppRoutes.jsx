@@ -1,11 +1,11 @@
 import Cover from "./components/Cover/Cover";
+import Product from "./components/Product/Product";
+import image from "./assets/cruffins.jpeg";
+import EventPage from "./components/Events/EventPage/EventPage";
+import EventsPage from "./components/Pages/EventsPage/EventsPage";
 import FrontPage from "./components/Pages/FrontPage/FrontPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
-import Product from "./components/Product/Product";
-import Reservation from "./components/Reservation/Reservation";
-import image from "./assets/cruffins.jpeg";
-import EventsPage from "./components/Events/EventsPage/EventsPage";
-import EventPage from "./components/Events/EventPage/EventPage";
+import ReservationPage from "./components/Pages/ReservationPage/ReservationPage";
 
 const routes = [
     {
@@ -34,7 +34,7 @@ const routes = [
     },
     {
         path: "/reservation",
-        element: <Reservation />,
+        element: <ReservationPage />,
     },
     {
         path: "/events",
