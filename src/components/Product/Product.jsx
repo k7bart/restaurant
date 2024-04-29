@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./Product.scss";
-import menu from "../Menu/menu";
+import { menu } from "../../state";
 import Logo from "../Logo/Logo";
 import Carrousel from "../Carrousel/Carrousel";
 
