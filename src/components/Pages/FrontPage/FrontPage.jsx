@@ -1,3 +1,5 @@
+import Logo from "../../Logo/Logo";
+import NavBar from "../../NavBar/NavBar";
 import Cover from "../../Cover/Cover";
 import image from "../../../assets/restaurant.jpeg";
 import "./FrontPage.scss";
@@ -12,7 +14,9 @@ function FrontPage() {
 
     return (
         <div className="front-page">
+            <Logo />
             <Cover {...props} />
+            <NavBar />
         </div>
     );
 }
