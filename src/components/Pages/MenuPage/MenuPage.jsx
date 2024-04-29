@@ -1,4 +1,4 @@
-import Page from "../Page.jsx";
+import Page from "../../Page.jsx";
 import Menu from "./Menu.jsx";
 import { Outlet } from "react-router-dom";
 

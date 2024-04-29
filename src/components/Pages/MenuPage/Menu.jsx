@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import menu from "./menu";
+import { menu } from "../../../state";
 import MenuCategory from "./MenuCategory/MenuCategory";
-import Footer from "../Footer/Footer";
+import Footer from "../../Footer/Footer";
 import "./Menu.scss";
 
 const Menu = () => {
@@ -33,7 +33,7 @@ const Menu = () => {
     }, []);
 
     return (
-        <div className="section">
+        <section className="section">
             <div className="content">
                 <nav className="navigation">
                     {menu.map((category) => (
@@ -51,14 +51,14 @@ const Menu = () => {
                     ))}
                 </nav>
 
-                <main className="menu">
+                <section className="menu">
                     {menu.map((category) => (
                         <MenuCategory key={category.name} category={category} />
                     ))}
-                </main>
+                </section>
                 <Footer />
             </div>
-        </div>
+        </section>
     );
 };
 
