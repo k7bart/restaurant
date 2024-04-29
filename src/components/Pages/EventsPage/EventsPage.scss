@@ -1,0 +1,43 @@
+$text-color-opacity: #f8f8f8b8;
+
+.events-page {
+    .carrousel-container {
+        height: 100vh;
+
+        .slide {
+            overflow: hidden;
+            position: relative;
+
+            .content {
+                justify-content: center;
+
+                .title {
+                    font-size: 38px;
+                }
+
+                p {
+                    padding-top: 8px;
+                    font-weight: 200;
+                    color: $text-color-opacity;
+                }
+            }
+        }
+    }
+
+    .logo,
+    .navbar {
+        position: fixed;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .logo {
+        top: 80px;
+    }
+
+    .navbar {
+        bottom: 80px;
+    }
+}
