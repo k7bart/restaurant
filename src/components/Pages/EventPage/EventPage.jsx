@@ -1,8 +1,8 @@
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, Link } from "react-router-dom";
 import PageWithCover from "../../PageWithCover/PageWithCover.jsx";
-import Cover from "../../Cover/Cover";
+import Cover from "../../Cover/Cover.jsx";
 import Footer from "../../Footer/Footer.jsx";
-import SpecialGuest from "./SpecialGuest/SpecialGuest";
+import SpecialGuest from "./SpecialGuest/SpecialGuest.jsx";
 import { events, staff } from "../../../state.js";
 import "./EventPage.scss";
 
@@ -23,11 +23,11 @@ const EventPage = () => {
     const section = (
         <section className="section event-page">
             <nav className="navigation">
-                {events.map((event) => (
+                {events.map((event, i) => (
                     <NavLink
                         to={`/events/${event.id}`}
                         className="link"
-                        key={event.id}
+                        key={i}
                     >
                         {event.title}
                     </NavLink>
@@ -46,9 +46,11 @@ const EventPage = () => {
                     </header>
 
                     <div className="reservation">
-                        <button className="small-color-button">
-                            BOOK A SPOT
-                        </button>
+                        <Link to={`/events/${event.id}/reservation`}>
+                            <button className="small-color-button">
+                                BOOK A SPOT
+                            </button>
+                        </Link>
                         <h4>${event.price}</h4>
                     </div>
 

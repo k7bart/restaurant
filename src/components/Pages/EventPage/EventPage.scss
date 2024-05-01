@@ -18,6 +18,16 @@ $wisteria: #c9a0dc;
             background-color: $wisteria;
             border-radius: 30px;
             padding: 16px;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &:active {
+                background-color: white;
+                color: $wisteria;
+            }
         }
 
         h4 {
