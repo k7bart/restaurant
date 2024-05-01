@@ -1,10 +1,10 @@
 import Cover from "../../Cover/Cover";
 import Footer from "../../Footer/Footer";
 import PageWithCover from "../../PageWithCover/PageWithCover";
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "./TableReservationForm";
 import image from "../../../assets/cake.jpeg";
 
-function Reservation() {
+function TableReservationPage() {
     const cover = (
         <Cover
             subtitle={"Book a table"}
@@ -41,4 +41,4 @@ function Reservation() {
     );
 }
 
-export default Reservation;
+export default TableReservationPage;

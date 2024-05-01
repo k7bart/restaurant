@@ -1,11 +1,12 @@
-import Cover from "./components/Cover/Cover";
-import Product from "./components/Product/Product";
-import image from "./assets/cruffins.jpeg";
-import EventPage from "./components/Events/EventPage/EventPage";
+import EventDetails from "./components/Pages/EventPage/EventDetails";
+import EventPage from "./components/Pages/EventPage/EventPage";
+import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
 import EventsPage from "./components/Pages/EventsPage/EventsPage";
 import FrontPage from "./components/Pages/FrontPage/FrontPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
-import ReservationPage from "./components/Pages/ReservationPage/ReservationPage";
+import MenuCover from "./components/Pages/MenuPage/MenuCover";
+import Product from "./components/Product/Product";
+import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
 
 const routes = [
     {
@@ -18,13 +19,7 @@ const routes = [
         children: [
             {
                 index: true,
-                element: (
-                    <Cover
-                        subtitle={"Check Out"}
-                        title={"Our Menu"}
-                        backgroundImage={image}
-                    />
-                ),
+                element: <MenuCover />,
             },
             {
                 path: ":category/:productId",
@@ -33,8 +28,8 @@ const routes = [
         ],
     },
     {
-        path: "/reservation",
-        element: <ReservationPage />,
+        path: "/table-reservation",
+        element: <TableReservationPage />,
     },
     {
         path: "/events",
@@ -43,6 +38,16 @@ const routes = [
     {
         path: "/events/:eventId",
         element: <EventPage />,
+        children: [
+            {
+                index: true,
+                element: <EventDetails />,
+            },
+            {
+                path: "reservation",
+                element: <EventReservation />,
+            },
+        ],
     },
 ];
 export default routes;

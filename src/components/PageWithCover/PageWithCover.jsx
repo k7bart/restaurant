@@ -1,11 +1,13 @@
+import useWindowWidth from "../../hooks/useWindowWidth";
 import ResponsiveNavbar from "../ResponsiveNavBar/ResponsiveNavBar";
 import Logo from "../Logo/Logo";
 import NavBar from "../NavBar/NavBar";
 
 const PageWithCover = ({ cover, section, addLogo, addNavBar }) => {
-    // const windowWidth = useWindowWidth();
-    // const logo = windowWidth > 820 && <Logo />;
-    // const navbar = windowWidth > 820 && <NavBar />;
+    // todo: unite responsive logic
+    const windowWidth = useWindowWidth();
+    const logo = addLogo && windowWidth > 820 && <Logo />;
+    const navbar = addNavBar && windowWidth > 820 && <NavBar />;
 
     return (
         <div className="pageWithCover">
@@ -15,9 +17,9 @@ const PageWithCover = ({ cover, section, addLogo, addNavBar }) => {
             <main>
                 <section className="section">
                     <div className="cover-container">
-                        {addLogo && <Logo />}
+                        {logo}
                         {cover}
-                        {addNavBar && <NavBar />}
+                        {navbar}
                     </div>
                 </section>
                 {section}
