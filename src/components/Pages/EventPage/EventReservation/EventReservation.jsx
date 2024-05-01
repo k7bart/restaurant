@@ -8,7 +8,7 @@ const EventReservation = () => {
     const { eventId } = useParams();
     const event = events.find((e) => e.id === eventId);
     return (
-        <div className="section">
+        <section className="section">
             <div className="content">
                 <header>
                     <h3>Signing up for the {event.title}</h3>
@@ -22,7 +22,7 @@ const EventReservation = () => {
                 <EventReservationForm />
                 <Footer />
             </div>
-        </div>
+        </section>
     );
 };
 

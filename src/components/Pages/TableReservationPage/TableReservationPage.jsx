@@ -14,21 +14,21 @@ function TableReservationPage() {
     );
 
     const section = (
-        <div className="section">
+        <section className="section">
             <div className="content">
-                <div>
+                <header>
                     <h3>Book a table</h3>
                     <p className="text">
                         In order to align with the relaxed and comfortable
                         ambiance of our dining setting, we encourage a casual
                         attire.
                     </p>
-                </div>
+                </header>
 
                 <ReservationForm />
                 <Footer />
             </div>
-        </div>
+        </section>
     );
 
     return (
