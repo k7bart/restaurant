@@ -20,6 +20,7 @@ $border-color: #1e1e1e;
 a {
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 200;
 }
 
 button {
@@ -55,12 +56,7 @@ h3 {
     }
 }
 
-.link {
-    font-weight: 200;
-}
-
-.page,
-.pageWithCover {
+.page-with-cover {
     > main {
         display: flex;
 
@@ -178,8 +174,6 @@ h3 {
             }
 
             .link {
-                text-decoration: none;
-                font-weight: 200;
                 color: $text-color-opasity;
                 transition: 0.2s;
 

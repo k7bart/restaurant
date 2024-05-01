@@ -10,7 +10,7 @@ const PageWithCover = ({ cover, section, addLogo, addNavBar }) => {
     const navbar = addNavBar && windowWidth > 820 && <NavBar />;
 
     return (
-        <div className="pageWithCover">
+        <div className="page-with-cover">
             <header>
                 <ResponsiveNavbar />
             </header>
