@@ -131,3 +131,9 @@ export const menu = [
         ],
     },
 ];
+
+export const links = [
+    { to: "/menu", text: "Menu" },
+    { to: "/table-reservation", text: "Book a table" },
+    { to: "/events", text: "Events" },
+];

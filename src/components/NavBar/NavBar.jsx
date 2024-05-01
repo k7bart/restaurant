@@ -1,22 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { links } from "../../state";
 import "./NavBar.scss";
 
-const pages = [
-    { link: "/menu", text: "Menu" },
-    { link: "/reservation", text: "Book a table" },
-    { link: "/events", text: "Events" },
-];
-
 const NavBar = () => {
-    return (
-        <nav className="navbar">
-            {pages.map((page) => (
-                <NavLink key={page.link} to={page.link}>
-                    {page.text}
-                </NavLink>
-            ))}
-        </nav>
-    );
+    const navLinks = links.map((link, i) => (
+        <NavLink key={i} to={link.to}>
+            {link.text}
+        </NavLink>
+    ));
+
+    return <nav className="navbar">{navLinks}</nav>;
 };
 
 export default NavBar;
