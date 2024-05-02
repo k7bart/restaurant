@@ -1,11 +1,11 @@
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import "./NumInput.scss";
 
 const NumInput = ({ amount, onChange }) => {
     const handleIncrement = () => {
         onChange(amount + 1);
     };
-
     const handleDecrement = () => {
         if (amount === 1) return;
         onChange(amount - 1);
