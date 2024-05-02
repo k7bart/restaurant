@@ -27,13 +27,77 @@ button {
     border: none;
 }
 
+input {
+    border: 1px solid $border-color;
+}
+
 body {
     background-color: $background-color;
 }
 
 h3 {
-    font-size: $heading3-font-size;
-    font-weight: $heading3-font-weight;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+// h3.cursive {
+//     font-family: "Kaushan Script", cursive;
+//     font-weight: 400;
+//     color: $wisteria;
+//     font-size: 28px;
+// }
+
+h4 {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+// buttons
+
+.close-button {
+    display: flex;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background-color: $wisteria;
+    border-radius: 50%;
+    padding: 4px;
+    transition: 0.3s;
+
+    > svg {
+        height: 24px;
+        width: 24px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        background-color: white;
+        color: $wisteria;
+
+        > svg {
+            fill: $wisteria;
+        }
+    }
+}
+
+.small-color-button {
+    height: 60px;
+    background-color: $wisteria;
+    border-radius: 30px;
+    padding: 16px;
+    transition: 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        background-color: white;
+        color: $wisteria;
+    }
 }
 
 .titles-container {
