@@ -1,6 +1,6 @@
 $background-color: #050505;
 
-.responsiveNavBar {
+.header-navigation {
     padding: 24px 36px;
     display: flex;
     justify-content: space-between;
@@ -11,5 +11,9 @@ $background-color: #050505;
 
     svg {
         font-size: 38px;
+    }
+
+    @media (min-width: 820px) {
+        display: none;
     }
 }
