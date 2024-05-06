@@ -1,3 +1,4 @@
+import CartPage from "./components/Pages/CartPage/CartPage";
 import EventDetails from "./components/Pages/EventPage/EventDetails";
 import EventPage from "./components/Pages/EventPage/EventPage";
 import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
@@ -12,6 +13,10 @@ const routes = [
     {
         path: "/",
         element: <FrontPage />,
+    },
+    {
+        path: "/cart",
+        element: <CartPage />,
     },
     {
         path: "/menu",
