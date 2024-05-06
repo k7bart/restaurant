@@ -1,4 +1,5 @@
 $background-color: #050505;
+$border-color: #1e1e1e;
 $wisteria: #c9a0dc;
 
 .product {
@@ -7,8 +8,7 @@ $wisteria: #c9a0dc;
     position: sticky;
     top: 0;
     background-color: $background-color;
-    border: 1px solid $wisteria;
-    border-radius: 16px;
+    border-right: 1px solid $border-color;
     padding: 80px 96px;
     display: flex;
     flex-direction: column;
@@ -19,8 +19,64 @@ $wisteria: #c9a0dc;
     }
 
     .carrousel-container {
-        width: 400px;
+        width: 100%;
         height: 400px;
         margin: 0 auto;
+    }
+
+    .description {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > h3,
+        > h4,
+        > div {
+            padding-top: 32px;
+        }
+
+        > button {
+            margin-top: 32px;
+        }
+
+        .nutrients {
+            display: flex;
+
+            > :not(:first-child) {
+                border-left: 1px solid $border-color;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 16px;
+
+                .text {
+                    font-weight: 200;
+                    color: lightgray;
+                }
+            }
+        }
+
+        .prices-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .container {
+                display: flex;
+                align-items: center;
+
+                > .numInput {
+                    padding-left: 8px;
+                }
+
+                .price {
+                    color: $wisteria;
+                }
+            }
+        }
     }
 }
