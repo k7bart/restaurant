@@ -56,7 +56,7 @@ const Menu = () => {
     ));
 
     return (
-        <section className="section">
+        <section>
             <nav className="navigation">{links}</nav>
             <div className="content">
                 <section className="menu">

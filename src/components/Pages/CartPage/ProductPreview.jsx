@@ -10,8 +10,7 @@ const ProductPreview = ({ product }) => {
     const price = (
         <div className="price">
             {product.onSale && (
-                <span>
-                    className="sale"
+                <span className="sale">
                     <h4>${product.oldPrice}</h4>
                 </span>
             )}
