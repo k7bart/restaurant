@@ -8,6 +8,13 @@ const Cart = () => {
         (total, product) => total + product.price * product.amount,
         0
     );
+    const totalDiscount = cart
+        .filter((product) => product.onSale)
+        .reduce(
+            (total, product) =>
+                total + (product.oldPrice - product.price) * product.amount,
+            0
+        );
 
     return (
         <div className="cart">
@@ -19,6 +26,10 @@ const Cart = () => {
             <div className="prices-container">
                 <div className="container">
                     <h4>Shipping: $0</h4>
+                </div>
+                <div className="container">
+                    <h4>Discount: $</h4>
+                    <h4>{totalDiscount}</h4>
                 </div>
                 <div className="container">
                     <h4>Total: $</h4>
