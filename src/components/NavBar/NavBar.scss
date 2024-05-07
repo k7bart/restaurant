@@ -5,21 +5,42 @@
     border-radius: 35px;
     padding: 8px;
 
-    :not(:first-child) {
+    > :not(:first-child) {
         margin-left: 8px;
     }
 
     a {
+        display: flex;
+        align-items: center;
         border-radius: 26px;
         color: #050505;
         padding: 16px;
         font-weight: 300;
         transition: 0.3s;
 
+        .total {
+            color: #050505;
+            padding-left: 8px;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: #050505;
+        }
+
         &:hover,
         &.active {
             color: white;
             background-color: #050505;
+
+            .total {
+                color: white;
+            }
+
+            svg {
+                fill: white;
+            }
         }
     }
 }

@@ -59,9 +59,8 @@ h4 {
     position: absolute;
     top: 32px;
     right: 32px;
-    background-color: $wisteria;
+    background-color: transparent;
     border-radius: 50%;
-    padding: 4px;
     transition: 0.3s;
 
     > svg {
@@ -70,6 +69,7 @@ h4 {
     }
 
     &:hover {
+        background-color: $wisteria;
         transform: scale(1.05);
     }
 
@@ -128,8 +128,9 @@ h4 {
             flex-direction: column;
         }
 
-        .section {
+        > section {
             width: 50%;
+            min-height: 100vh;
 
             @media (max-width: 768px) {
                 width: 100%;

@@ -9,8 +9,8 @@
         position: static;
     }
 
-    .logo,
-    .navbar {
+    & > .logo,
+    & > .navbar {
         position: absolute;
         margin: 0 auto;
         left: 0;
@@ -18,11 +18,11 @@
         z-index: 1;
     }
 
-    .logo {
+    & > .logo {
         top: 80px;
     }
 
-    .navbar {
+    & > .navbar {
         bottom: 80px;
     }
 }

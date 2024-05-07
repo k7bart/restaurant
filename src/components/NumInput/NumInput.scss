@@ -20,11 +20,15 @@ $wisteria: #c9a0dc;
             width: 10px;
         }
 
-        &:hover {
+        &:disabled {
+            opacity: 0.7;
+        }
+
+        &:not([disabled]):hover {
             transform: scale(1.05);
         }
 
-        &:active {
+        &:not([disabled]):active {
             background-color: white;
             color: $wisteria;
 
