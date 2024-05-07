@@ -22,7 +22,7 @@ const CartPage = () => {
 
     const section = (
         <Section header={emptyCart ? emptyCartHeader : header}>
-            {!emptyCart && <Cart cart1={cart} />}
+            {!emptyCart && <Cart />}
         </Section>
     );
 

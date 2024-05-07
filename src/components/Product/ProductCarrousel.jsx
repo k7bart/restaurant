@@ -14,7 +14,7 @@ const ProductCarrousel = ({ product }) => {
         slideShow: false,
     };
 
-    <Carrousel {...props} />;
+    return <Carrousel {...props} />;
 };
 
 export default ProductCarrousel;

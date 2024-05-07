@@ -16,6 +16,7 @@ const NumInput = ({ amount, onChange }) => {
             <button
                 className="product-count less-product"
                 onClick={handleDecrement}
+                disabled={amount <= 1}
             >
                 <FaMinus />
             </button>
@@ -24,7 +25,7 @@ const NumInput = ({ amount, onChange }) => {
                 maxLength="3"
                 type="text"
                 inputMode="numeric"
-                readOnly // to prevent manual editing
+                readOnly // todo: add manual editing
             />
             <button
                 className="product-count more-product"
