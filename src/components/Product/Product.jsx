@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, updateProductAmount } from "../../store";
+import { addProduct, updateProductAmount } from "../../store/index";
 
 import { menu } from "../../state";
 import { IoClose } from "react-icons/io5";
@@ -41,9 +41,10 @@ const Product = () => {
         const productInCart = cart.find((product) => product.id === productId);
 
         if (productInCart) {
-            const productId = productInCart.id;
             const newAmount = productInCart.amount + amount;
-            dispatch(updateProductAmount({ productId, newAmount }));
+            dispatch(
+                updateProductAmount({ productId: productInCart.id, newAmount })
+            );
             return;
         }
 
