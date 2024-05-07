@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateProductAmount } from "../../../store";
+import { updateProductAmount, removeProduct } from "../../../store/index";
+import { IoClose } from "react-icons/io5";
 import NumInput from "../../NumInput/NumInput";
 
 const ProductPreview = ({ product }) => {
@@ -22,8 +23,10 @@ const ProductPreview = ({ product }) => {
     const dispatch = useDispatch();
     const handleAmountChange = (newAmount) => {
         setAmount(newAmount);
-        const productId = product.id;
-        dispatch(updateProductAmount({ productId, newAmount }));
+        dispatch(updateProductAmount({ productId: product.id, newAmount }));
+    };
+    const handleProductRemove = () => {
+        dispatch(removeProduct(product.id));
     };
 
     return (
@@ -44,6 +47,9 @@ const ProductPreview = ({ product }) => {
 
                     <p>{product.description}</p>
                 </div>
+                <button className="close-button" onClick={handleProductRemove}>
+                    <IoClose />
+                </button>
             </div>
         </div>
     );
