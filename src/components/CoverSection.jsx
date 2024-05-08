@@ -1,11 +1,11 @@
 import Logo from "./Logo/Logo";
 import NavBar from "./NavBar/NavBar";
 
-const CoverSection = ({ cover, addLogo, addNavBar }) => {
+const CoverSection = ({ children, addLogo = true, addNavBar = true }) => {
     return (
         <section className="cover">
             {addLogo && <Logo />}
-            {cover}
+            {children}
             {addNavBar && <NavBar />}
         </section>
     );
