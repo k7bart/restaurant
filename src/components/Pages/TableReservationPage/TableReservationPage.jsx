@@ -1,7 +1,8 @@
+import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
-import PageWithCover from "../../PageWithCover/PageWithCover";
+import CoverSection from "../../CoverSection";
 import ReservationForm from "./TableReservationForm";
-import Section from "../../Section/Section";
+import TwoSectionsPage from "../../TwoSectionsPage";
 import image from "../../../assets/cake.jpeg";
 
 function TableReservationPage() {
@@ -10,27 +11,19 @@ function TableReservationPage() {
         text: "In order to align with the relaxed and comfortable ambiance of our dining setting, we encourage a casual attire.",
     };
 
-    const section = (
-        <Section header={header}>
-            <ReservationForm />
-        </Section>
-    );
-
-    const cover = (
-        <Cover
-            subtitle={"Book a table"}
-            title={"Reservation"}
-            backgroundImage={image}
-        />
-    );
-
     return (
-        <PageWithCover
-            cover={cover}
-            section={section}
-            addLogo={true}
-            addNavBar={true}
-        />
+        <TwoSectionsPage>
+            <CoverSection>
+                <Cover
+                    subtitle={"Book a table"}
+                    title={"Reservation"}
+                    backgroundImage={image}
+                />
+            </CoverSection>
+            <ContentSection header={header}>
+                <ReservationForm />
+            </ContentSection>
+        </TwoSectionsPage>
     );
 }
 
