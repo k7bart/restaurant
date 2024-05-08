@@ -120,10 +120,10 @@ h4 {
     }
 }
 
-.page-with-cover {
-    > main {
-        display: flex;
+main {
+    display: flex;
 
+    &.two-sections {
         @media (max-width: 768px) {
             flex-direction: column;
         }
@@ -136,11 +136,54 @@ h4 {
                 width: 100%;
             }
 
-            > .content {
+            &.cover {
+                height: 100%;
+                width: 50%;
+                overflow: hidden;
+                position: sticky;
+                top: 0;
+                display: flex;
+                justify-content: center;
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                    position: static;
+
+                    & > .logo,
+                    & > nav {
+                        display: none;
+                    }
+                }
+
+                & > .logo,
+                & > nav {
+                    position: absolute;
+                    margin: 0 auto;
+                    left: 0;
+                    right: 0;
+                    z-index: 1;
+                }
+
+                & > .logo {
+                    top: 80px;
+                }
+
+                & > nav {
+                    bottom: 80px;
+                }
+            }
+
+            &.content {
                 padding: 80px 96px;
+                display: flex;
+                flex-direction: column;
 
                 @media (max-width: 576px) {
                     padding: 40px 48px;
+                }
+
+                main {
+                    flex: 1;
                 }
 
                 .text {
@@ -221,33 +264,38 @@ h4 {
                         }
                     }
                 }
-            }
 
-            .navigation {
-                z-index: 1;
-                width: 50vw;
-                display: flex;
-                justify-content: center;
-                padding: 24px 36px;
-                position: fixed;
-                top: 0;
-                background-color: #050505;
+                .navigation {
+                    z-index: 1;
+                    width: 50vw;
+                    display: flex;
+                    justify-content: center;
+                    padding: 24px 36px;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    background-color: #050505;
 
-                & > *:not(:last-child) {
-                    padding-right: 48px;
-                }
-            }
-
-            .link {
-                color: $text-color-opasity;
-                transition: 0.2s;
-
-                &:hover {
-                    color: white;
+                    & > *:not(:last-child) {
+                        padding-right: 48px;
+                    }
                 }
 
-                &.active {
-                    color: $wisteria;
+                .link {
+                    color: $text-color-opasity;
+                    transition: 0.2s;
+
+                    &:hover {
+                        color: white;
+                    }
+
+                    &.active {
+                        color: $wisteria;
+                    }
+                }
+
+                .menu > *:not(:first-child) {
+                    padding-top: 96px;
                 }
             }
         }

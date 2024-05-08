@@ -1,6 +1,10 @@
 .front-page {
     height: 100vh;
 
+    > .image {
+        position: fixed;
+    }
+
     .subtitle {
         font-size: 32px;
 
