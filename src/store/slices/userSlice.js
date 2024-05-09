@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        name: "Kateryna",
-        surname: "Bartienieva",
-        phone: "+38(063)53-09-153",
-        date: "16.05.1998",
+        name: "Bob",
+        surname: "Bobert",
+        phone: "+38(064)54-09-154",
+        date: "30.02.1995",
         orders: [
             {
                 id: 49068,
