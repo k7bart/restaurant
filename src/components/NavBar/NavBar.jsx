@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { links } from "../../state";
 import CartLink from "./CartLink";
+import ProfileLink from "./ProfileLink";
 import "./NavBar.scss";
 
 const NavBar = () => {
@@ -12,6 +13,7 @@ const NavBar = () => {
 
     return (
         <nav className="navbar">
+            <ProfileLink />
             {navLinks}
             <CartLink />
         </nav>
