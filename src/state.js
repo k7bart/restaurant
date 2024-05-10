@@ -64,6 +64,8 @@ export const staff = [
 ];
 
 import croqueMadame from "./assets/breakfast/croque-madame.jpeg";
+import crepesSuzette from "./assets/breakfast/crepes-suzette.jpeg";
+import bananaPancakes from "./assets/breakfast/banana-pancakes.jpeg";
 import tart1 from "./assets/desserts/tart-raspberry-coconut-1.jpeg";
 import tart2 from "./assets/desserts/tart-raspberry-coconut-2.jpeg";
 import tart3 from "./assets/desserts/tart-raspberry-coconut-3.jpeg";
@@ -77,12 +79,62 @@ export const menu = [
                 name: "Croque Madame",
                 id: "croque-madame",
                 description: "Description",
+                ingredients: [
+                    "bread",
+                    "ham",
+                    "gruyère cheese",
+                    "eggs",
+                    "dijon mustard",
+                    "butter",
+                ],
+                nutrients: [
+                    { name: "calories", amount: 721 },
+                    { name: "proteins", amount: 37 },
+                    { name: "fats", amount: 37 },
+                    { name: "carbohydrates", amount: 57 },
+                ],
                 photos: [croqueMadame],
                 price: "29",
                 isVegan: false,
                 isDishOfTheDay: true,
                 onSale: false,
                 oldPrice: "none",
+            },
+            {
+                name: "Crêpes Suzette",
+                id: "crepes-suzette",
+                description: "Description",
+                ingredients: ["crêpes", "beurre suzette", "whipped cream"],
+                nutrients: [
+                    { name: "calories", amount: 241 },
+                    { name: "proteins", amount: 4 },
+                    { name: "fats", amount: 15 },
+                    { name: "carbohydrates", amount: 35 },
+                ],
+                photos: [crepesSuzette],
+                price: 18,
+                isVegan: false,
+                isDishOfTheDay: false,
+                onSale: true,
+                oldPrice: 24,
+            },
+            {
+                name: "Banana Pancakes",
+                id: "banana-pancakes",
+                description: "Description",
+                ingredients: ["pancakes", "banana", "maple syrop"],
+                nutrients: [
+                    { name: "calories", amount: 166 },
+                    { name: "proteins", amount: 5 },
+                    { name: "fats", amount: 6 },
+                    { name: "carbohydrates", amount: 26 },
+                ],
+                photos: [bananaPancakes],
+                price: 12,
+                isVegan: true,
+                isDishOfTheDay: false,
+                onSale: false,
+                oldPrice: null,
             },
         ],
     },
@@ -92,14 +144,28 @@ export const menu = [
         dishes: [
             {
                 name: "Raspberry-Coconut Tart",
+                nutrients: [
+                    { name: "calories", amount: 721 },
+                    { name: "proteins", amount: 37 },
+                    { name: "fats", amount: 37 },
+                    { name: "carbohydrates", amount: 57 },
+                ],
+                ingredients: [
+                    "bread",
+                    "ham",
+                    "gruyère cheese",
+                    "eggs",
+                    "dijon mustard",
+                    "butter",
+                ],
                 id: "raspberry-coconut-tart",
                 description: "Description",
                 photos: [tart1, tart2, tart3],
-                price: "29",
+                price: 29,
                 isVegan: true,
                 isDishOfTheDay: false,
                 onSale: false,
-                oldPrice: "none",
+                oldPrice: null,
             },
         ],
     },
@@ -111,11 +177,11 @@ export const menu = [
                 id: "cappuccino",
                 description: "Description",
                 photos: [cappuccino],
-                price: "3",
+                price: 3,
                 isVegan: false,
                 isDishOfTheDay: false,
                 onSale: false,
-                oldPrice: "none",
+                oldPrice: null,
             },
             {
                 name: "Lavender Latte",
