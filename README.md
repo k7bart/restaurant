@@ -17,7 +17,7 @@ Before you begin, ensure you have met the following requirements:
    `git clone https://github.com/k7bart/restaurant.git`
 
 2. Navigate to the project directory:
-   `cd my-react-application`
+   `cd restaurant`
 
 3. Install dependencies using npm or yarn:
    `npm install`
