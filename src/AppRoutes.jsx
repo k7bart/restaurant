@@ -8,6 +8,7 @@ import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import MenuCover from "./components/Pages/MenuPage/MenuCover";
 import Product from "./components/Product/Product";
 import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
+import UserProfilePage from "./components/Pages/UserProfilePage/UserProfilePage";
 
 const routes = [
     {
@@ -53,6 +54,10 @@ const routes = [
                 element: <EventReservation />,
             },
         ],
+    },
+    {
+        path: "/profile",
+        element: <UserProfilePage />,
     },
 ];
 export default routes;
