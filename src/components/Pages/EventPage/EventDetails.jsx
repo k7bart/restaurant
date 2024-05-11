@@ -1,6 +1,5 @@
 import { useParams, NavLink, Link } from "react-router-dom";
 import { events, staff } from "../../../state.js";
-
 import Footer from "../../Footer/Footer.jsx";
 import SpecialGuest from "./SpecialGuest/SpecialGuest.jsx";
 
@@ -10,7 +9,7 @@ const EventDetails = () => {
     const guest = staff.find((person) => person.name === event.specialGuest);
 
     return (
-        <section className="section event-page">
+        <section className="content event-page">
             <nav className="navigation">
                 {events.map((event, i) => (
                     <NavLink

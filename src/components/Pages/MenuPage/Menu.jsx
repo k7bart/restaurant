@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { menu } from "../../../state";
 import MenuCategory from "./MenuCategory/MenuCategory";
 import Footer from "../../Footer/Footer";
-import "./Menu.scss";
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState(menu[0].name);
@@ -56,7 +55,7 @@ const Menu = () => {
     ));
 
     return (
-        <section>
+        <section className="content">
             <nav className="navigation">{links}</nav>
             <div className="content">
                 <section className="menu">
