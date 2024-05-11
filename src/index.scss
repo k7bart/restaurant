@@ -1,4 +1,4 @@
-$text-color-opasity: #f8f8f8b8;
+$text-color-grey: #bfbfbf;
 $background-color: #050505;
 $wisteria: #c9a0dc;
 
@@ -54,14 +54,14 @@ h4 {
 
 // buttons
 
-.close-button {
+.close-button,
+.repeat-button {
     display: flex;
-    position: absolute;
-    top: 32px;
-    right: 32px;
     background-color: transparent;
     border-radius: 50%;
     transition: 0.3s;
+    height: 24px;
+    width: 24px;
 
     > svg {
         height: 24px;
@@ -81,6 +81,12 @@ h4 {
             fill: $wisteria;
         }
     }
+}
+
+.close-button {
+    position: absolute;
+    top: 32px;
+    right: 32px;
 }
 
 .small-color-button {
@@ -184,13 +190,14 @@ main {
 
                 main {
                     flex: 1;
+                    padding-top: 48px;
                 }
 
                 .text {
                     padding-top: 16px;
                     font-size: 18px;
                     font-weight: 100;
-                    color: $text-color-opasity;
+                    color: $text-color-grey;
                 }
 
                 .form {
@@ -221,7 +228,7 @@ main {
                         p {
                             padding-bottom: 16px;
                             font-weight: 200;
-                            color: $text-color-opasity;
+                            color: $text-color-grey;
                         }
 
                         input,
@@ -242,7 +249,7 @@ main {
                             height: 60px;
 
                             &::placeholder {
-                                color: $text-color-opasity;
+                                color: $text-color-grey;
                             }
                         }
 
@@ -282,7 +289,7 @@ main {
                 }
 
                 .link {
-                    color: $text-color-opasity;
+                    color: $text-color-grey;
                     transition: 0.2s;
 
                     &:hover {
