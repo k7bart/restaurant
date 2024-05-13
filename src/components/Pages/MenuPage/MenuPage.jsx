@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function MenuPage() {
     return (
-        <TwoSectionsPage>
+        <TwoSectionsPage title="Menu">
             <Outlet />
             <Menu />
         </TwoSectionsPage>

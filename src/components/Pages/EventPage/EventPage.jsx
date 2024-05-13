@@ -10,7 +10,7 @@ const EventPage = () => {
     const event = events.find((e) => e.id === eventId);
 
     return (
-        <TwoSectionsPage>
+        <TwoSectionsPage title={event.title}>
             <CoverSection>
                 <Cover
                     subtitle={event.subtitle}

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Logo from "../../Logo/Logo";
 import NavBar from "../../NavBar/NavBar";
 import Cover from "../../Cover/Cover";
@@ -14,6 +15,9 @@ function FrontPage() {
 
     return (
         <div className="front-page">
+            <Helmet>
+                <title>b.art</title>
+            </Helmet>
             <Logo />
             <Cover {...props} />
             <NavBar />

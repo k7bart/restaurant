@@ -31,7 +31,7 @@ const UserProfilePage = () => {
     };
 
     return (
-        <TwoSectionsPage>
+        <TwoSectionsPage title="Profile">
             <CoverSection>
                 <Cover
                     subtitle="Your presence brightens our day"

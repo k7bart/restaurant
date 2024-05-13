@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { events } from "../../../state";
 import Logo from "../../Logo/Logo";
@@ -27,6 +28,9 @@ const EventsPage = () => {
 
     return (
         <div className="events-page">
+            <Helmet>
+                <title>Events</title>
+            </Helmet>
             <Logo />
             <Carrousel {...props} />
             <NavBar />

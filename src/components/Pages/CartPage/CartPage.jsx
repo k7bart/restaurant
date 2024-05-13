@@ -20,7 +20,7 @@ const CartPage = () => {
     };
 
     return (
-        <TwoSectionsPage>
+        <TwoSectionsPage title="Cart">
             <CoverSection>
                 <Cover
                     subtitle="Experience"
