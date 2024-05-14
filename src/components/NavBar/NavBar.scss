@@ -11,7 +11,7 @@ $wisteria: #c9a0dc;
         margin-left: 8px;
     }
 
-    a {
+    > a {
         display: flex;
         align-items: center;
         border-radius: 26px;
@@ -22,14 +22,17 @@ $wisteria: #c9a0dc;
 
         &.profile {
             color: $wisteria;
+            width: 110px;
+            display: flex;
+            justify-content: center;
         }
 
-        .total {
+        > .total {
             color: #050505;
             padding-left: 8px;
         }
 
-        svg {
+        > svg {
             width: 20px;
             height: 20px;
             fill: #050505;
@@ -40,11 +43,11 @@ $wisteria: #c9a0dc;
             color: white;
             background-color: #050505;
 
-            .total {
+            > .total {
                 color: white;
             }
 
-            svg {
+            > svg {
                 fill: white;
             }
         }
