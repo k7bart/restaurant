@@ -30,20 +30,20 @@ const LoginForm = () => {
 
             <label>
                 <p>Password</p>
-                <input {...register("password")} type="text" />
+                <input {...register("password")} type="password" />
                 {errors.password && (
                     <p className="error">Please provide your password</p>
                 )}
             </label>
 
-            <div>
+            <div className="container">
                 <label className="checkbox">
                     {/* todo: make controlled */}
                     <input type="checkbox" />
-                    <p>Remember me</p>
+                    <p className="large">Remember me</p>
                 </label>
 
-                <a href="#" className="link">
+                <a href="#" className="large wisteria">
                     Forgot password?
                 </a>
             </div>

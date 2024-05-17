@@ -24,9 +24,9 @@ const LoginPage = () => {
             >
                 <LoginForm />
 
-                <p className="text notice">
+                <p className="large">
                     Don't have an account yet?&nbsp;
-                    <NavLink className="link" to="/register">
+                    <NavLink className="large wisteria" to="/register">
                         Register
                     </NavLink>
                 </p>
