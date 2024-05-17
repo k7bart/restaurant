@@ -36,7 +36,12 @@ const Footer = () => {
                     By Kateryna Bartienieva
                 </Link>
             </div>
-            <div className="container">{navLinks}</div>
+            <div className="container">
+                <NavLink to="/login" className="link">
+                    Login
+                </NavLink>
+                {navLinks}
+            </div>
             <div>
                 <Link
                     to="https://www.instagram.com"
