@@ -8,6 +8,7 @@ import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import MenuCover from "./components/Pages/MenuPage/MenuCover";
 import Product from "./components/Product/Product";
+import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
 import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
 import UserProfilePage from "./components/Pages/UserProfilePage/UserProfilePage";
 
@@ -59,6 +60,10 @@ const routes = [
                 element: <EventReservation />,
             },
         ],
+    },
+    {
+        path: "/registration",
+        element: <RegistrationPage />,
     },
     {
         path: "/profile",
