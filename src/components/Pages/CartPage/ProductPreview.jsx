@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateProductAmount, removeProduct } from "../../../store/index";
 import { IoClose } from "react-icons/io5";
-import NumInput from "../../NumInput/NumInput";
+import NumInput from "../../Inputs/NumInput/NumInput";
 
 const ProductPreview = ({ product }) => {
     const productLink = `/menu/${product.category}/${product.id}`;

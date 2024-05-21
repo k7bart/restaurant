@@ -5,7 +5,7 @@ import { addProduct, updateProductAmount } from "../../store/index";
 
 import { menu } from "../../state";
 import { IoClose } from "react-icons/io5";
-import NumInput from "../NumInput/NumInput";
+import NumInput from "../Inputs/NumInput/NumInput";
 import Nutrients from "./Nutrients";
 import ProductCarrousel from "./ProductCarrousel";
 import "./Product.scss";

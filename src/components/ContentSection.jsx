@@ -5,7 +5,7 @@ const ContentSection = ({ header, children }) => {
         <section className="content">
             <header>
                 <h3>{header.title}</h3>
-                <p className="text">{header.text}</p>
+                <p className="large">{header.text}</p>
             </header>
             <main>{children}</main>
             <Footer />
