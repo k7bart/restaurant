@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const ProfileLink = () => {
-    const userName = useSelector((state) => state.user.name);
-    const defaultText = `Hello, ${userName}!`;
+const ProfileLink = ({ name }) => {
+    const defaultText = `Hello, ${name}!`;
     const hoverText = "Profile";
 
     const [isHovered, setIsHovered] = useState(false);

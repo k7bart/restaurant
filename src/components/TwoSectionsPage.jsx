@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet";
 import HeaderNavigation from "./HeaderNavigation/HeaderNavigation";
 
-const TwoSectionsPage = ({ children, title }) => {
+const TwoSectionsPage = ({ children, title, className = "" }) => {
     return (
         <>
             <Helmet>
                 <title>{title}</title>
             </Helmet>
             <HeaderNavigation />
-            <main className="two-sections">{children}</main>
+            <main className={"two-sections " + className}>{children}</main>
         </>
     );
 };

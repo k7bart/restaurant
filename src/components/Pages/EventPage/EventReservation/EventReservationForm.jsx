@@ -101,7 +101,9 @@ const EventReservationForm = () => {
                 <textarea {...register("additionalRequirements")} />
             </label> */}
 
-            <input type="submit" className="submit" />
+            <button type="submit" className="submit">
+                Submit
+            </button>
         </form>
     );
 };

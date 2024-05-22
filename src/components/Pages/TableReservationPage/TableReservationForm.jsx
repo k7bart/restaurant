@@ -28,7 +28,7 @@ const reservationSchema = yup.object({
 });
 
 const ReservationForm = () => {
-    const user = useSelector((state) => state.user) || false;
+    const user = useSelector((state) => state.user) || null;
 
     const {
         register,
@@ -43,10 +43,12 @@ const ReservationForm = () => {
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
             {!user && (
-                <p className="text notice">
-                    We kindly invite you to{" "}
-                    <NavLink to="/login">log in</NavLink> for a smoother and
-                    quicker experience.
+                <p className="large">
+                    We kindly invite you to
+                    <NavLink to="/login" className="large wisteria">
+                        &nbsp;log in&nbsp;
+                    </NavLink>
+                    for a smoother and quicker experience.
                 </p>
             )}
 
@@ -60,8 +62,8 @@ const ReservationForm = () => {
             <ContactInput
                 register={register}
                 errors={errors}
-                phone={user.phone}
-                email={user.email}
+                defaultPhone={user.phone}
+                defaultEmail={user.email}
             />
             <DateTimeInput register={register} errors={errors} />
 
