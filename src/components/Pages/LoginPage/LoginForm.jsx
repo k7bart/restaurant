@@ -2,8 +2,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import EmailInput from "../../Inputs/EmailInput";
+
 const reservationSchema = yup.object({
-    email: yup.string().email().required(),
+    email: yup
+        .string()
+        .email("Please provide a valid email address")
+        .required("Please provide your email"),
     password: yup.string().required(),
 });
 
@@ -20,13 +25,7 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-                <p>E-mail</p>
-                <input {...register("email")} type="text" />
-                {errors.email && (
-                    <p className="error">Please provide the valid e-mail</p>
-                )}
-            </label>
+            <EmailInput register={register} error={errors.email} />
 
             <label>
                 <p>Password</p>

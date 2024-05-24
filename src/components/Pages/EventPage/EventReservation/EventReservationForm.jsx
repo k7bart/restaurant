@@ -1,14 +1,24 @@
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import EmailInput from "../../../Inputs/EmailInput";
+import PhoneInput from "../../../Inputs/PhoneInput";
+
 const reservationSchema = yup.object({
     name: yup.string().required(),
     numberOfAdults: yup.number().required().positive().integer(),
-    email: yup.string().email(),
-    phone: yup.string().required(), // add better phone validation
-    // date: yup.date().min(new Date(), "Date must be later than today"),
-    // time: yup.string().required(), // push time value to date?
+    email: yup
+        .string()
+        .email("Please provide a valid email address")
+        .optional(),
+    phone: yup
+        .string()
+        .required(
+            "Please share your phone number. We'll only reach out if we have questions."
+        ), // add better phone validation
     numberOfChildren: yup
         .number()
         .transform((value, originalValue) => {
@@ -16,10 +26,11 @@ const reservationSchema = yup.object({
         })
         .min(0)
         .integer(),
-    // additionalRequirements: yup.string(),
 });
 
 const EventReservationForm = () => {
+    const user = useSelector((state) => state.user) || null;
+
     const {
         register,
         handleSubmit,
@@ -38,13 +49,6 @@ const EventReservationForm = () => {
         numberOfChildren: errors.numberOfChildren && (
             <p className="error">{errors.numberOfChildren.message}</p>
         ),
-        email: errors.email && <p className="error">{errors.email.message}</p>,
-        phone: errors.phone && (
-            <p className="error">
-                Please share your phone number. We'll only reach out if we have
-                questions.
-            </p>
-        ),
         date: errors.date && (
             <p className="error">
                 Please provide the date of your visit. {errors.date.message}
@@ -55,11 +59,22 @@ const EventReservationForm = () => {
 
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            {!user && (
+                <p className="large">
+                    We kindly invite you to
+                    <NavLink to="/login" className="large wisteria">
+                        &nbsp;log in&nbsp;
+                    </NavLink>
+                    for a smoother and quicker experience.
+                </p>
+            )}
+
             <label>
                 <p>Name</p>
                 <input {...register("name")} />
                 {errorMap.name}
             </label>
+
             <div>
                 <label>
                     <p>Number of adults</p>
@@ -72,34 +87,19 @@ const EventReservationForm = () => {
                     {errorMap.numberOfChildren}
                 </label>
             </div>
+
             <div>
-                <label>
-                    <p>Email</p>
-                    <input {...register("email")} />
-                    {errorMap.email}
-                </label>
-                <label>
-                    <p>Phone</p>
-                    <input type="tel" {...register("phone")} />
-                    {errorMap.phone}
-                </label>
+                <PhoneInput
+                    register={register}
+                    error={errors.phone}
+                    defaultPhone={user && user.phone}
+                />
+                <EmailInput
+                    register={register}
+                    error={errors.email}
+                    defaultEmail={user && user.email}
+                />
             </div>
-            {/* <div>
-                <label>
-                    <p>Date</p>
-                    <input {...register("date")} placeholder="MM.DD.YY" />
-                    {errorMap.date}
-                </label>
-                <label>
-                    <p>Time</p>
-                    <input {...register("time")} />
-                    {errorMap.time}
-                </label>
-            </div> */}
-            {/* <label>
-                <p>Additional requirements</p>
-                <textarea {...register("additionalRequirements")} />
-            </label> */}
 
             <button type="submit" className="submit">
                 Submit

@@ -3,7 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalizeFirstLetter } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
-import ContactInput from "../../Inputs/ContactInput";
+import EmailInput from "../../Inputs/EmailInput";
+import PhoneInput from "../../Inputs/PhoneInput";
 
 const registrationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -11,7 +12,7 @@ const registrationSchema = yup.object({
     email: yup
         .string()
         .email("Please provide a valid email address")
-        .optional(),
+        .required("Please provide your email"),
     // todo: add phone validation
     phone: yup.string().required("Please provide your phone number"),
     password: yup
@@ -64,7 +65,11 @@ const RegistrationForm = () => {
                     )}
                 </label>
             </div>
-            <ContactInput register={register} errors={errors} />
+
+            <div>
+                <PhoneInput register={register} error={errors.phone} />
+                <EmailInput register={register} error={errors.email} />
+            </div>
 
             <div>
                 <label>
@@ -95,7 +100,7 @@ const RegistrationForm = () => {
             </div>
 
             <button className="submit" type="submit">
-                Login
+                Register
             </button>
         </form>
     );

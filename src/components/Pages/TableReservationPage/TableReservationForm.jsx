@@ -4,16 +4,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import DateTimeInput from "../../Inputs/DateTimeInput";
-import ContactInput from "../../Inputs/ContactInput";
+import EmailInput from "../../Inputs/EmailInput";
 import NameInput from "../../Inputs/NameInput";
 import NumberOfGuestsInput from "../../Inputs/NumberOfGuestsInput";
+import PhoneInput from "../../Inputs/PhoneInput";
 import { NavLink } from "react-router-dom";
 
 const reservationSchema = yup.object({
     name: yup.string().required(),
     numberOfAdults: yup.number().required().positive().integer(),
-    email: yup.string().email(),
-    phone: yup.string().required(), // add better phone validation
+    email: yup
+        .string()
+        .email("Please provide a valid email address")
+        .optional(),
+    phone: yup
+        .string()
+        .required(
+            "Please share your phone number. We'll only reach out if we have questions."
+        ), // add better phone validation
     date: yup.date().min(new Date(), "Date must be later than today"),
     time: yup.string().required(), // push time value to date?
 
@@ -59,12 +67,20 @@ const ReservationForm = () => {
                 surname={user.surname}
             />
             <NumberOfGuestsInput register={register} errors={errors} />
-            <ContactInput
-                register={register}
-                errors={errors}
-                defaultPhone={user.phone}
-                defaultEmail={user.email}
-            />
+
+            <div>
+                <PhoneInput
+                    register={register}
+                    error={errors.phone}
+                    defaultPhone={user && user.phone}
+                />
+                <EmailInput
+                    register={register}
+                    error={errors.email}
+                    defaultEmail={user && user.email}
+                />
+            </div>
+
             <DateTimeInput register={register} errors={errors} />
 
             <label>
