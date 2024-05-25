@@ -1,9 +1,8 @@
 import { Helmet } from "react-helmet";
-import Logo from "../../Logo/Logo";
-import NavBar from "../../NavBar/NavBar";
-import Cover from "../../Cover/Cover";
-import image from "../../../assets/restaurant.jpeg";
-import "./FrontPage.scss";
+import Logo from "../Logo/Logo";
+import NavBar from "../NavBar/NavBar";
+import Cover from "../Cover/Cover";
+import image from "../../assets/restaurant.jpeg";
 
 function FrontPage() {
     const props = {

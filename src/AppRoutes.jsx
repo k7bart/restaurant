@@ -3,7 +3,7 @@ import EventDetails from "./components/Pages/EventPage/EventDetails";
 import EventPage from "./components/Pages/EventPage/EventPage";
 import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
 import EventsPage from "./components/Pages/EventsPage/EventsPage";
-import FrontPage from "./components/Pages/FrontPage/FrontPage";
+import FrontPage from "./components/Pages/FrontPage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import MenuCover from "./components/Pages/MenuPage/MenuCover";
