@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { capitalizeFirstLetter } from "../../../utils/stringUtils";
+import { capitalizeFirstLetters } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
 import EmailInput from "../../Inputs/EmailInput";
+import NameInput from "../../Inputs/NameInput";
 import PhoneInput from "../../Inputs/PhoneInput";
 
 const registrationSchema = yup.object({
@@ -34,29 +35,34 @@ const RegistrationForm = () => {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm({
         resolver: yupResolver(registrationSchema),
+        defaultValues: {
+            name: "",
+            surname: "",
+            email: "",
+            phone: "",
+            password: "",
+            confirmPassword: "",
+            rememberMe: false,
+        },
     });
 
     const onSubmit = (data) => {
         const formattedData = {
             ...data,
-            name: capitalizeFirstLetter(data.name),
-            surname: capitalizeFirstLetter(data.surname),
+            name: capitalizeFirstLetters(data.name),
+            surname: capitalizeFirstLetters(data.surname),
         };
         console.log(formattedData);
+        reset();
     };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <label>
-                    <p>Name</p>
-                    <input {...register("name")} type="text" />
-                    {errors.name && (
-                        <p className="error">{errors.name.message}</p>
-                    )}
-                </label>
+                <NameInput register={register} error={errors.name} />
                 <label>
                     <p>Surname</p>
                     <input {...register("surname")} type="text" />
@@ -93,8 +99,7 @@ const RegistrationForm = () => {
 
             <div className="container">
                 <label className="checkbox">
-                    {/* todo: make controlled */}
-                    <input type="checkbox" />
+                    <input type="checkbox" {...register("rememberMe")} />
                     <p className="large">Remember me</p>
                 </label>
             </div>

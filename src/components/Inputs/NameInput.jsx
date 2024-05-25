@@ -1,11 +1,9 @@
-const NameInput = ({ register, errors, name = "", surname = "" }) => {
-    const fullname = surname ? name + " " + surname : name;
-
+const NameInput = ({ register, error }) => {
     return (
         <label>
             <p>Name</p>
-            <input {...register("name")} type="text" value={fullname} />
-            {errors.name && <p className="error">Please provide your name</p>}
+            <input {...register("name")} />
+            {error && <p className="error">{error.message}</p>}
         </label>
     );
 };

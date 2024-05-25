@@ -2,13 +2,15 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { capitalizeFirstLetters } from "../../../../utils/stringUtils";
 import * as yup from "yup";
 
 import EmailInput from "../../../Inputs/EmailInput";
+import NameInput from "../../../Inputs/NameInput";
 import PhoneInput from "../../../Inputs/PhoneInput";
 
 const reservationSchema = yup.object({
-    name: yup.string().required(),
+    name: yup.string().required("Please provide your name"),
     numberOfAdults: yup.number().required().positive().integer(),
     email: yup
         .string()
@@ -18,7 +20,7 @@ const reservationSchema = yup.object({
         .string()
         .required(
             "Please share your phone number. We'll only reach out if we have questions."
-        ), // add better phone validation
+        ),
     numberOfChildren: yup
         .number()
         .transform((value, originalValue) => {
@@ -34,27 +36,35 @@ const EventReservationForm = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(reservationSchema),
+        defaultValues: {
+            name: user ? `${user.name} ${user.surname}` : "",
+            numberOfAdults: "",
+            email: user ? user.email : "",
+            phone: user ? user.phone : "",
+            numberOfChildren: "",
+        },
     });
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const formattedData = {
+            ...data,
+            name: capitalizeFirstLetters(data.name),
+        };
+        console.log(formattedData);
+        reset();
+    };
 
     const errorMap = {
-        name: errors.name && <p className="error">Please provide your name</p>,
         numberOfAdults: errors.numberOfAdults && (
             <p className="error">Please provide the number of adult guests.</p>
         ),
         numberOfChildren: errors.numberOfChildren && (
             <p className="error">{errors.numberOfChildren.message}</p>
         ),
-        date: errors.date && (
-            <p className="error">
-                Please provide the date of your visit. {errors.date.message}
-            </p>
-        ),
-        time: errors.time && <p className="error">{errors.time.message}</p>,
     };
 
     return (
@@ -69,11 +79,7 @@ const EventReservationForm = () => {
                 </p>
             )}
 
-            <label>
-                <p>Name</p>
-                <input {...register("name")} />
-                {errorMap.name}
-            </label>
+            <NameInput register={register} error={errors.name} />
 
             <div>
                 <label>
@@ -89,16 +95,8 @@ const EventReservationForm = () => {
             </div>
 
             <div>
-                <PhoneInput
-                    register={register}
-                    error={errors.phone}
-                    defaultPhone={user && user.phone}
-                />
-                <EmailInput
-                    register={register}
-                    error={errors.email}
-                    defaultEmail={user && user.email}
-                />
+                <PhoneInput register={register} error={errors.phone} />
+                <EmailInput register={register} error={errors.email} />
             </div>
 
             <button type="submit" className="submit">

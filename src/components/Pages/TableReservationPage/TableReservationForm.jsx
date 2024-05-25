@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { capitalizeFirstLetters } from "../../../utils/stringUtils";
+
 import * as yup from "yup";
 
 import DateTimeInput from "../../Inputs/DateTimeInput";
@@ -11,19 +13,21 @@ import PhoneInput from "../../Inputs/PhoneInput";
 import { NavLink } from "react-router-dom";
 
 const reservationSchema = yup.object({
-    name: yup.string().required(),
+    name: yup.string().required("Please provide your name"),
     numberOfAdults: yup.number().required().positive().integer(),
     email: yup
         .string()
         .email("Please provide a valid email address")
         .optional(),
+    // add better phone validation
     phone: yup
         .string()
         .required(
             "Please share your phone number. We'll only reach out if we have questions."
-        ), // add better phone validation
+        ),
     date: yup.date().min(new Date(), "Date must be later than today"),
-    time: yup.string().required(), // push time value to date?
+    // push time value to date?
+    time: yup.string().required(),
 
     numberOfChildren: yup
         .number()
@@ -41,12 +45,30 @@ const ReservationForm = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(reservationSchema),
+        defaultValues: {
+            name: user ? `${user.name} ${user.surname}` : "",
+            numberOfAdults: "",
+            email: user ? user.email : "",
+            phone: user ? user.phone : "",
+            date: "",
+            time: "",
+            numberOfChildren: "",
+            additionalRequirements: "",
+        },
     });
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const formattedData = {
+            ...data,
+            name: capitalizeFirstLetters(data.name),
+        };
+        console.log(formattedData);
+        reset();
+    };
 
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -60,25 +82,13 @@ const ReservationForm = () => {
                 </p>
             )}
 
-            <NameInput
-                register={register}
-                errors={errors}
-                name={user.name}
-                surname={user.surname}
-            />
+            <NameInput register={register} error={errors.name} />
+
             <NumberOfGuestsInput register={register} errors={errors} />
 
             <div>
-                <PhoneInput
-                    register={register}
-                    error={errors.phone}
-                    defaultPhone={user && user.phone}
-                />
-                <EmailInput
-                    register={register}
-                    error={errors.email}
-                    defaultEmail={user && user.email}
-                />
+                <PhoneInput register={register} error={errors.phone} />
+                <EmailInput register={register} error={errors.email} />
             </div>
 
             <DateTimeInput register={register} errors={errors} />
