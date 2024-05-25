@@ -19,8 +19,15 @@ $border-color: #1e1e1e;
 
 a {
     text-decoration: none;
-    transition: 0.3s;
     font-weight: 200;
+
+    &.wisteria {
+        color: $wisteria;
+    }
+
+    &:hover {
+        color: white;
+    }
 }
 
 button {
@@ -52,8 +59,21 @@ h4 {
     font-weight: 200;
 }
 
-// buttons
+p {
+    color: $text-color-grey;
+    font-weight: 100;
+}
 
+a,
+p {
+    transition: 0.3s;
+
+    &.large {
+        font-size: 18px;
+    }
+}
+
+// buttons
 .close-button,
 .repeat-button {
     display: flex;
@@ -103,6 +123,98 @@ h4 {
     &:active {
         background-color: white;
         color: $wisteria;
+    }
+}
+
+// pages
+.front-page {
+    height: 100vh;
+    overflow: hidden;
+
+    > .cover {
+        height: 100vh;
+        position: relative;
+
+        > .content {
+            .subtitle {
+                font-size: 32px;
+
+                @media (min-width: 577px) {
+                    font-size: 38px;
+                }
+
+                @media (min-width: 769px) {
+                    font-size: 48px;
+                }
+            }
+
+            .title {
+                font-size: 65px;
+
+                @media (min-width: 577px) {
+                    font-size: 90px;
+                }
+
+                @media (min-width: 769px) {
+                    font-size: 135px;
+                }
+
+                @media (min-width: 992px) {
+                    font-size: 150px;
+                }
+            }
+
+            p {
+                font-weight: 200;
+                font-size: 16px;
+                text-align: center;
+                max-width: 100%;
+
+                @media (min-width: 577px) {
+                    font-size: 24px;
+                }
+
+                @media (min-width: 769px) {
+                    max-width: 80%;
+                }
+
+                @media (min-width: 992px) {
+                    max-width: 60%;
+                }
+            }
+        }
+    }
+
+    > .logo,
+    > .navbar {
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    > .logo {
+        top: 80px;
+    }
+
+    > .navbar {
+        bottom: 80px;
+    }
+}
+
+.login-page {
+    form {
+        > div.container {
+            justify-content: space-between;
+        }
+    }
+}
+
+.login-page,
+.registration-page {
+    form {
+        padding-bottom: 48px;
     }
 }
 
@@ -188,28 +300,44 @@ main {
                     padding: 40px 48px;
                 }
 
-                main {
+                > header > p {
+                    padding-top: 18px;
+                }
+
+                > main {
+                    flex-direction: column;
                     flex: 1;
                     padding-top: 48px;
                 }
 
-                .text {
-                    padding-top: 16px;
-                    font-size: 18px;
-                    font-weight: 100;
-                    color: $text-color-grey;
-                }
-
-                .form {
-                    width: 100%;
+                form {
                     display: flex;
                     flex-direction: column;
 
-                    div {
+                    > :not(:first-child):not(button) {
+                        padding-top: 48px;
+                    }
+
+                    > div {
                         display: flex;
 
-                        label {
+                        > label {
                             width: 50%;
+
+                            &.checkbox {
+                                display: flex;
+                                align-items: center;
+
+                                > input[type="checkbox"] + p {
+                                    padding-top: 0;
+                                    padding-bottom: 0;
+                                    padding-left: 8px;
+
+                                    &:hover {
+                                        color: white;
+                                    }
+                                }
+                            }
                         }
 
                         > :not(:first-child) {
@@ -218,8 +346,6 @@ main {
                     }
 
                     label {
-                        padding-top: 48px;
-
                         .error {
                             color: $wisteria;
                             font-size: 14px;
@@ -228,15 +354,17 @@ main {
                         p {
                             padding-bottom: 16px;
                             font-weight: 200;
-                            color: $text-color-grey;
                         }
 
-                        input,
+                        input:not([type="checkbox"]) {
+                            height: 60px;
+                        }
+
+                        input:not([type="checkbox"]),
                         textarea {
                             padding: 16px 24px;
                             width: 100%;
                             background-color: transparent;
-                            border: 1px solid $border-color;
                             border-radius: 10px;
 
                             &:focus {
@@ -245,12 +373,15 @@ main {
                             }
                         }
 
-                        input {
-                            height: 60px;
-
+                        input[type="text"] {
                             &::placeholder {
                                 color: $text-color-grey;
                             }
+                        }
+
+                        input[type="password"] {
+                            letter-spacing: 0.125em;
+                            font-family: Verdana;
                         }
 
                         textarea {
@@ -258,7 +389,7 @@ main {
                         }
                     }
 
-                    .submit {
+                    > .submit {
                         margin-top: 48px;
                         height: 60px;
                         border: none;
@@ -290,7 +421,6 @@ main {
 
                 .link {
                     color: $text-color-grey;
-                    transition: 0.2s;
 
                     &:hover {
                         color: white;

@@ -11,14 +11,17 @@ $wisteria: #c9a0dc;
         margin-left: 8px;
     }
 
+    a,
+    p {
+        font-weight: 300;
+    }
+
     > a {
         display: flex;
         align-items: center;
         border-radius: 26px;
         color: #050505;
         padding: 16px;
-        font-weight: 300;
-        transition: 0.3s;
 
         &.profile {
             color: $wisteria;
