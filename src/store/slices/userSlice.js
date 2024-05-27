@@ -5,8 +5,9 @@ const userSlice = createSlice({
     initialState: {
         name: "Bob",
         surname: "Bobert",
+        email: "b0bert@gmail.com",
         phone: "+38(064)54-09-154",
-        date: "30.02.1995",
+        birthday: null,
         orders: [
             {
                 id: 49068,
@@ -28,8 +29,17 @@ const userSlice = createSlice({
             },
         ],
     },
-    reducers: {},
+    reducers: {
+        updateUserData(state, action) {
+            const { name, surname, email, phone, birthday } = action.payload;
+            state.name = name;
+            state.surname = surname;
+            state.email = email;
+            state.phone = phone;
+            state.birthday = birthday;
+        },
+    },
 });
 
-// export const {} = userSlice.actions;
+export const { updateUserData } = userSlice.actions;
 export const userReducer = userSlice.reducer;
