@@ -3,6 +3,7 @@ import AccordionItem from "./AccordionItem";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import OrderHistory from "./OrderHistory";
+import PersonalData from "./PersonalData";
 import TwoSectionsPage from "../../TwoSectionsPage";
 import ContentSection from "../../ContentSection";
 import image from "../../../assets/covers/table-in-cafe.jpeg";
@@ -15,9 +16,6 @@ const UserProfilePage = () => {
     };
     const userName = useSelector((state) => state.user.name);
 
-    // Order history
-    // Personal data
-    // Delivery addresses
     // Referral link and promo code
     // Message
 
@@ -25,7 +23,8 @@ const UserProfilePage = () => {
         return (
             <div className="accordion">
                 <OrderHistory />
-                <AccordionItem title="Personal data" />
+                <PersonalData />
+                <AccordionItem title="Delivery addresses" />
             </div>
         );
     };
