@@ -73,43 +73,54 @@ p {
     }
 }
 
-// buttons
-.close-button,
-.repeat-button {
+.with-svg {
     display: flex;
     background-color: transparent;
     border-radius: 50%;
-    transition: 0.3s;
+    transition: transform 0.3s;
     height: 24px;
     width: 24px;
+    align-items: center;
+    justify-content: center;
 
-    > svg {
+    svg {
         height: 24px;
         width: 24px;
+        fill: $text-color-grey;
+        stroke: $text-color-grey;
+        transition: fill 0.3s, stroke 0.3s;
     }
+}
 
+// buttons
+button.with-svg {
     &:hover {
-        background-color: $wisteria;
         transform: scale(1.05);
+
+        svg {
+            fill: $wisteria;
+            stroke: $wisteria;
+        }
     }
 
     &:active {
-        background-color: white;
-        color: $wisteria;
+        transform: scale(1.05);
 
-        > svg {
-            fill: $wisteria;
+        svg {
+            fill: white;
+            stroke: white;
         }
     }
 }
 
-.close-button {
+button.with-svg.close {
     position: absolute;
     top: 32px;
     right: 32px;
 }
 
-.small-color-button {
+.small-color-button,
+button.small.color {
     height: 60px;
     background-color: $wisteria;
     border-radius: 30px;
@@ -295,6 +306,7 @@ main {
                 padding: 80px 96px;
                 display: flex;
                 flex-direction: column;
+                position: relative;
 
                 @media (max-width: 576px) {
                     padding: 40px 48px;
@@ -320,6 +332,7 @@ main {
 
                     > div {
                         display: flex;
+                        align-items: flex-end;
 
                         > label {
                             width: 50%;
@@ -337,6 +350,19 @@ main {
                                         color: white;
                                     }
                                 }
+                            }
+                        }
+
+                        > .submit {
+                            width: 50%;
+                            height: 60px;
+                            border: none;
+                            border-radius: 30px;
+                            background-color: $wisteria;
+                            color: #050505;
+
+                            &:disabled {
+                                opacity: 0.5;
                             }
                         }
 
@@ -436,5 +462,43 @@ main {
                 }
             }
         }
+    }
+}
+
+.date-picker {
+    > .react-datepicker-wrapper {
+        display: flex;
+    }
+
+    .react-datepicker__day--selected,
+    .react-datepicker__day--selected:hover {
+        background-color: #c9a0dc;
+    }
+
+    .react-datepicker__navigation-icon::before,
+    .react-datepicker__navigation-icon:hover {
+        border-color: #c9a0dc;
+    }
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 50vw;
+    top: 0;
+    z-index: 9999;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    > div {
+        display: flex;
+        justify-content: center;
+        height: 300px;
+        width: 80%;
+        padding: 80px 96px;
+        position: relative;
+        border: 1px solid $border-color;
+        background-color: $background-color;
     }
 }

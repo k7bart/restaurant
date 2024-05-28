@@ -48,11 +48,13 @@ $wisteria: #c9a0dc;
             }
 
             &.open {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 padding: 16px;
-                border-right: 1px solid $border-color;
-                border-bottom: 1px solid $border-color;
-                border-left: 1px solid $border-color;
+                border-right: 1px solid #1e1e1e;
+                border-bottom: 1px solid #1e1e1e;
+                border-left: 1px solid #1e1e1e;
 
                 > *:not(:first-child) {
                     border-top: 1px solid $border-color;
@@ -63,15 +65,10 @@ $wisteria: #c9a0dc;
                     padding-bottom: 16px;
                 }
 
-                .order {
+                > .row {
+                    width: 100%;
                     display: flex;
                     justify-content: space-between;
-
-                    > p {
-                        font-size: 18px;
-                        font-weight: 100;
-                        color: $text-color-grey;
-                    }
                 }
             }
         }
