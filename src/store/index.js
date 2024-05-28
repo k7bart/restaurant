@@ -6,7 +6,7 @@ import {
     removeProduct,
     reset,
 } from "./slices/cartSlice";
-import { userReducer, updateUserData } from "./slices/userSlice";
+import { userReducer, updateUserData, removeAddress } from "./slices/userSlice";
 
 const store = configureStore({
     reducer: {
@@ -22,4 +22,5 @@ export {
     removeProduct,
     reset,
     updateUserData,
+    removeAddress,
 };
