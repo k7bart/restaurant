@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -24,8 +24,7 @@ const schema = yup.object({
     birthday: yup.date().nullable().optional(),
 });
 
-const PersonalData = () => {
-    const user = useSelector((state) => state.user);
+const PersonalData = ({ user }) => {
     const dispatch = useDispatch();
 
     const {
@@ -81,7 +80,7 @@ const PersonalData = () => {
 
                 <div>
                     <BirthdayInput control={control} error={errors.birthday} />
-                    <button type="submit" className="submit">
+                    <button type="submit" className="submit small color">
                         Save changes
                     </button>
                 </div>

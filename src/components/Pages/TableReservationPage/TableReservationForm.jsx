@@ -71,7 +71,7 @@ const ReservationForm = () => {
     };
 
     return (
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             {!user && (
                 <p className="large">
                     We kindly invite you to

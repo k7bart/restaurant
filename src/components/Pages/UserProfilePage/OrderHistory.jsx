@@ -1,20 +1,17 @@
-import { useSelector } from "react-redux";
 import { IoRepeat } from "react-icons/io5";
 import AccordionItem from "./AccordionItem";
 
-const OrderHistory = () => {
-    const orders = useSelector((state) => state.user.orders);
-
+const OrderHistory = ({ user }) => {
     return (
         <AccordionItem title="Order history">
-            {orders.map((order) => {
+            {user.orders.map((order) => {
                 return (
-                    <div className="order" key={order.id}>
+                    <div key={order.id} className="row">
                         <p>{order.id}</p>
                         <p>{order.date}</p>
                         <p>${order.price}</p>
                         <p>{order.address}</p>
-                        <button className="repeat-button">
+                        <button className="with-svg">
                             <IoRepeat />
                         </button>
                     </div>
