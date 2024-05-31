@@ -49,8 +49,12 @@ const userSlice = createSlice({
                 (address) => address !== action.payload
             );
         },
+        setCurrentAddress(state, action) {
+            state.currentAddress = action.payload;
+        },
     },
 });
 
-export const { updateUserData, removeAddress } = userSlice.actions;
+export const { updateUserData, removeAddress, setCurrentAddress } =
+    userSlice.actions;
 export const userReducer = userSlice.reducer;
