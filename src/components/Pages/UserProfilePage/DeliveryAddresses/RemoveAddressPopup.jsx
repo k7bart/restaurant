@@ -1,7 +1,7 @@
-import Popup from "../../Popup";
+import Popup from "../../../Popup";
 
 import { useDispatch } from "react-redux";
-import { removeAddress } from "../../../store";
+import { removeAddress } from "../../../../store";
 
 const RemoveAddressPopup = ({ closePopup, address }) => {
     const dispatch = useDispatch();
