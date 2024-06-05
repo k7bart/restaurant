@@ -73,7 +73,7 @@ import cappuccino from "./assets/coffee/cappuccino.jpeg";
 import lavenderLatte from "./assets/coffee/lavender-latte.jpeg";
 export const menu = [
     {
-        name: "Breakfast",
+        name: "breakfast",
         dishes: [
             {
                 name: "Croque Madame",
@@ -140,7 +140,7 @@ export const menu = [
     },
 
     {
-        name: "Desserts",
+        name: "desserts",
         dishes: [
             {
                 name: "Raspberry-Coconut Tart",
@@ -170,7 +170,7 @@ export const menu = [
         ],
     },
     {
-        name: "Coffee",
+        name: "coffee",
         dishes: [
             {
                 name: "Cappuccino",
