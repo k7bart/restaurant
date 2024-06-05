@@ -1,8 +1,9 @@
 import Footer from "./Footer/Footer";
 
-const ContentSection = ({ header, children }) => {
+const ContentSection = ({ header = false, nav = false, children }) => {
     return (
         <section className="content">
+            <nav>{nav}</nav>
             <header>
                 <h3>{header.title}</h3>
                 <p className="large">{header.text}</p>

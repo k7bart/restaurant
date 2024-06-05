@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Carrousel.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Carrousel = ({ content, dots, num, slideShow }) => {
+const Carrousel = ({ content, dots, num = 1, slideShow = false }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const changeSlide = (step) => {
