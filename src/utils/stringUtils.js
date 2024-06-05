@@ -1,4 +1,4 @@
-export const capitalizeFirstLetters = (str) => {
+export const capitalize = (str) => {
     return str
         .split(" ")
         .map(

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { updateUserData } from "../../../store/index";
-import { capitalizeFirstLetters } from "../../../utils/stringUtils";
+import { capitalize } from "../../../utils/stringUtils";
 
 import AccordionItem from "./AccordionItem";
 import BirthdayInput from "../../Inputs/BirthdayInput";
@@ -57,8 +57,8 @@ const PersonalData = ({ user }) => {
     const onSubmit = (data) => {
         const formattedData = {
             ...data,
-            name: capitalizeFirstLetters(data.name),
-            surname: capitalizeFirstLetters(data.surname),
+            name: capitalize(data.name),
+            surname: capitalize(data.surname),
             birthday: data.birthday ? data.birthday.toISOString() : null,
         };
         console.log(formattedData);

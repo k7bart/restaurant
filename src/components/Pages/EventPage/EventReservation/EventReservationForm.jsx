@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { capitalizeFirstLetters } from "../../../../utils/stringUtils";
+import { capitalize } from "../../../../utils/stringUtils";
 import * as yup from "yup";
 
 import EmailInput from "../../../Inputs/EmailInput";
@@ -52,7 +52,7 @@ const EventReservationForm = () => {
     const onSubmit = (data) => {
         const formattedData = {
             ...data,
-            name: capitalizeFirstLetters(data.name),
+            name: capitalize(data.name),
         };
         console.log(formattedData);
         reset();
