@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, updateProductAmount } from "../../store/index";
+import { IoIosArrowBack } from "react-icons/io";
 
-import { menu } from "../../state";
-import { IoClose } from "react-icons/io5";
-import NumInput from "../Inputs/NumInput/NumInput";
+import { addProduct, updateProductAmount } from "../../../store/index";
+import { menu } from "../../../state";
+
+import ContentSection from "../../ContentSection";
+import CoverSection from "../../CoverSection";
+import NumInput from "../../Inputs/NumInput/NumInput";
 import Nutrients from "./Nutrients";
 import ProductCarrousel from "./ProductCarrousel";
-import "./Product.scss";
+import TwoSectionsPage from "../../TwoSectionsPage";
 
-// is it even legal?
-const CloseButton = ({ to }) => {
-    return (
-        <Link to={to}>
-            <button className="close-button">
-                <IoClose />
-            </button>
-        </Link>
-    );
-};
-
-const Product = () => {
+const ProductPage = () => {
     const { category } = useParams();
     const { productId } = useParams();
     const product = menu
@@ -58,13 +50,27 @@ const Product = () => {
     }, [product.price, amount]);
 
     return (
-        <div className="product">
-            <CloseButton to="/menu" />
-            <ProductCarrousel product={product} />
-            <div className="description">
-                <h3>{product.name}</h3>
+        <TwoSectionsPage title={product.name} className="product-page">
+            <CoverSection addLogo={false} addNavBar={false}>
+                <ProductCarrousel photos={product.photos} />
+            </CoverSection>
+
+            <ContentSection
+                header={{
+                    title: product.name,
+                    text: product.description,
+                }}
+                nav={
+                    <Link to="/menu" className="link">
+                        <IoIosArrowBack />
+                        Menu
+                    </Link>
+                }
+            >
                 <h4>{product.ingredients.join(", ")}</h4>
+
                 <Nutrients nutrients={product.nutrients} />
+
                 <div className="prices-container">
                     <div className="container">
                         <h4>Amount:</h4>
@@ -79,15 +85,12 @@ const Product = () => {
                     </div>
                 </div>
 
-                <button
-                    className="small-color-button"
-                    onClick={handleAddProduct}
-                >
+                <button className="small color" onClick={handleAddProduct}>
                     Add to cart
                 </button>
-            </div>
-        </div>
+            </ContentSection>
+        </TwoSectionsPage>
     );
 };
 
-export default Product;
+export default ProductPage;

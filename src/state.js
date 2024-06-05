@@ -78,7 +78,8 @@ export const menu = [
             {
                 name: "Croque Madame",
                 id: "croque-madame",
-                description: "Description",
+                description:
+                    "A Croque Madame is a French sandwich made with ham, cheese, and béchamel sauce, topped with a fried or poached egg. It is similar to a Croque Monsieur but distinguished by the addition of the egg.",
                 ingredients: [
                     "bread",
                     "ham",
