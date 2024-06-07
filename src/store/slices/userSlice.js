@@ -28,7 +28,7 @@ const userSlice = createSlice({
                 address: "Lviv, Chornovola st, 87/1",
             },
         ],
-        currentAddress: "Lviv, Chornovola st, 87/1",
+        currentAddressId: "chornovola87/16",
         addresses: [
             {
                 apartment: 7,
@@ -75,12 +75,16 @@ const userSlice = createSlice({
             state.addresses.push(action.payload);
         },
         removeAddress(state, action) {
-            state.addresses = state.addresses.filter(
-                (address) => address !== action.payload
+            state.addresses.splice(
+                state.addresses.findIndex(
+                    (address) => address.id === action.payload
+                ),
+                1
             );
         },
+
         setCurrentAddress(state, action) {
-            state.currentAddress = action.payload;
+            state.currentAddressId = action.payload;
         },
     },
 });
