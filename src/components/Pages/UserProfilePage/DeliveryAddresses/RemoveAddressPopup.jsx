@@ -5,19 +5,22 @@ import { removeAddress } from "../../../../store";
 
 const RemoveAddressPopup = ({ closePopup, address }) => {
     const dispatch = useDispatch();
-    const handleAddressRemove = (address) => {
-        dispatch(removeAddress(address));
+    const handleAddressRemove = (id) => {
+        dispatch(removeAddress(id));
     };
+    const addressStr = `${address.city}, ${address.street} ${address.house}${
+        address.apartment ? "/" + address.apartment : ""
+    }`;
 
     return (
         <Popup closePopup={closePopup}>
             <h4>Do you want to delete the address?</h4>
-            <p className="large">{address}</p>
+            <p className="large">{addressStr}</p>
             <div className="container">
                 <button
                     className="small transparent"
                     onClick={() => {
-                        handleAddressRemove(address);
+                        handleAddressRemove(address.id);
                         closePopup();
                     }}
                 >
