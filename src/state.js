@@ -73,12 +73,13 @@ import cappuccino from "./assets/coffee/cappuccino.jpeg";
 import lavenderLatte from "./assets/coffee/lavender-latte.jpeg";
 export const menu = [
     {
-        name: "Breakfast",
+        name: "breakfast",
         dishes: [
             {
                 name: "Croque Madame",
                 id: "croque-madame",
-                description: "Description",
+                description:
+                    "A Croque Madame is a French sandwich made with ham, cheese, and béchamel sauce, topped with a fried or poached egg. It is similar to a Croque Monsieur but distinguished by the addition of the egg.",
                 ingredients: [
                     "bread",
                     "ham",
@@ -140,7 +141,7 @@ export const menu = [
     },
 
     {
-        name: "Desserts",
+        name: "desserts",
         dishes: [
             {
                 name: "Raspberry-Coconut Tart",
@@ -170,7 +171,7 @@ export const menu = [
         ],
     },
     {
-        name: "Coffee",
+        name: "coffee",
         dishes: [
             {
                 name: "Cappuccino",

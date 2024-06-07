@@ -6,8 +6,7 @@ import EventsPage from "./components/Pages/EventsPage/EventsPage";
 import FrontPage from "./components/Pages/FrontPage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
-import MenuCover from "./components/Pages/MenuPage/MenuCover";
-import Product from "./components/Product/Product";
+import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
 import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
 import UserProfilePage from "./components/Pages/UserProfilePage/UserProfilePage";
@@ -28,16 +27,10 @@ const routes = [
     {
         path: "/menu",
         element: <MenuPage />,
-        children: [
-            {
-                index: true,
-                element: <MenuCover />,
-            },
-            {
-                path: ":category/:productId",
-                element: <Product />,
-            },
-        ],
+    },
+    {
+        path: "/menu/:category/:productId",
+        element: <ProductPage />,
     },
     {
         path: "/table-reservation",

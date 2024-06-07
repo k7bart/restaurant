@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { menu } from "../../../state";
-import MenuCategory from "./MenuCategory/MenuCategory";
+import { capitalize } from "../../../utils/stringUtils";
+import debounce from "../../../utils/debounce";
+import Category from "./Category";
 import Footer from "../../Footer/Footer";
 
 const Menu = () => {
@@ -18,9 +20,7 @@ const Menu = () => {
 
     const handleScroll = () => {
         const navbar = document.querySelector(".navigation");
-        const categories = document.querySelectorAll(
-            ".menu-page__menu-category"
-        );
+        const categories = document.querySelectorAll(".category");
 
         categories.forEach((category) => {
             const rect = category.getBoundingClientRect();
@@ -50,7 +50,7 @@ const Menu = () => {
             key={category.name}
             onClick={handleClick(category.name)}
         >
-            {category.name}
+            {capitalize(category.name)}
         </a>
     ));
 
@@ -60,7 +60,7 @@ const Menu = () => {
             <div className="content">
                 <section className="menu">
                     {menu.map((category) => (
-                        <MenuCategory key={category.name} category={category} />
+                        <Category key={category.name} category={category} />
                     ))}
                 </section>
                 <Footer />
@@ -70,14 +70,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
-// Debounce function
-function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
-    };
-}
