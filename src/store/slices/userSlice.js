@@ -30,9 +30,36 @@ const userSlice = createSlice({
         ],
         currentAddress: "Lviv, Chornovola st, 87/1",
         addresses: [
-            "Lviv, Chornovola st, 85/7",
-            "Khmelnytskyi, Chornovola st, 87/1",
-            "Lviv, Chornovola st, 87/1",
+            {
+                apartment: 7,
+                city: "Lviv",
+                entrance: 1,
+                floor: 4,
+                house: 85,
+                id: "dzherelna85/7",
+                intercom: null,
+                street: "Dzherelna",
+            },
+            {
+                apartment: null,
+                city: "Khmelnytskyi",
+                entrance: null,
+                floor: null,
+                house: 87,
+                id: "chornovola87",
+                intercom: null,
+                street: "Chornovola",
+            },
+            {
+                apartment: 16,
+                city: "Lviv",
+                entrance: 1,
+                floor: 3,
+                house: 87,
+                id: "chornovola87/16",
+                intercom: 87,
+                street: "Chornovola",
+            },
         ],
     },
     reducers: {
@@ -43,6 +70,9 @@ const userSlice = createSlice({
             state.email = email;
             state.phone = phone;
             state.birthday = birthday;
+        },
+        addAddress(state, action) {
+            state.addresses.push(action.payload);
         },
         removeAddress(state, action) {
             state.addresses = state.addresses.filter(
@@ -55,6 +85,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { updateUserData, removeAddress, setCurrentAddress } =
+export const { updateUserData, addAddress, removeAddress, setCurrentAddress } =
     userSlice.actions;
 export const userReducer = userSlice.reducer;
