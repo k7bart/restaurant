@@ -28,11 +28,38 @@ const userSlice = createSlice({
                 address: "Lviv, Chornovola st, 87/1",
             },
         ],
-        currentAddress: "Lviv, Chornovola st, 87/1",
+        currentAddressId: "chornovola87/16",
         addresses: [
-            "Lviv, Chornovola st, 85/7",
-            "Khmelnytskyi, Chornovola st, 87/1",
-            "Lviv, Chornovola st, 87/1",
+            {
+                apartment: 7,
+                city: "Lviv",
+                entrance: 1,
+                floor: 4,
+                house: 85,
+                id: "dzherelna85/7",
+                intercom: null,
+                street: "Dzherelna",
+            },
+            {
+                apartment: null,
+                city: "Khmelnytskyi",
+                entrance: null,
+                floor: null,
+                house: 87,
+                id: "chornovola87",
+                intercom: null,
+                street: "Chornovola",
+            },
+            {
+                apartment: 16,
+                city: "Lviv",
+                entrance: 1,
+                floor: 3,
+                house: 87,
+                id: "chornovola87/16",
+                intercom: 87,
+                street: "Chornovola",
+            },
         ],
     },
     reducers: {
@@ -44,17 +71,24 @@ const userSlice = createSlice({
             state.phone = phone;
             state.birthday = birthday;
         },
+        addAddress(state, action) {
+            state.addresses.push(action.payload);
+        },
         removeAddress(state, action) {
-            state.addresses = state.addresses.filter(
-                (address) => address !== action.payload
+            state.addresses.splice(
+                state.addresses.findIndex(
+                    (address) => address.id === action.payload
+                ),
+                1
             );
         },
+
         setCurrentAddress(state, action) {
-            state.currentAddress = action.payload;
+            state.currentAddressId = action.payload;
         },
     },
 });
 
-export const { updateUserData, removeAddress, setCurrentAddress } =
+export const { updateUserData, addAddress, removeAddress, setCurrentAddress } =
     userSlice.actions;
 export const userReducer = userSlice.reducer;
