@@ -9,6 +9,7 @@ import {
 import {
     userReducer,
     updateUserData,
+    addAddress,
     removeAddress,
     setCurrentAddress,
 } from "./slices/userSlice";
@@ -27,6 +28,7 @@ export {
     removeProduct,
     reset,
     updateUserData,
+    addAddress,
     removeAddress,
     setCurrentAddress,
 };

@@ -12,11 +12,11 @@ const DeliveryAddresses = ({ user }) => {
 
     return (
         <AccordionItem title="Delivery addresses">
-            {user.addresses.map((address, i) => (
+            {user.addresses.map((address) => (
                 <Address
-                    key={i}
+                    key={address.id}
                     address={address}
-                    currentAddress={user.currentAddress}
+                    currentAddressId={user.currentAddressId}
                 />
             ))}
 
