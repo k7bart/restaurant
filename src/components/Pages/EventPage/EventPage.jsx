@@ -3,14 +3,13 @@ import { events } from "../../../state.js";
 import Cover from "../../Cover/Cover.jsx";
 import CoverSection from "../../CoverSection";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import "./EventPage.scss";
 
 const EventPage = () => {
     const { eventId } = useParams();
     const event = events.find((e) => e.id === eventId);
 
     return (
-        <TwoSectionsPage title={event.title}>
+        <TwoSectionsPage title={event.title} className="event-page">
             <CoverSection>
                 <Cover
                     subtitle={event.subtitle}

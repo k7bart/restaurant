@@ -23,7 +23,7 @@ const Cart = () => {
     };
     return (
         <div className="cart">
-            <button className="small-color-button" onClick={handleCartReset}>
+            <button className="small color" onClick={handleCartReset}>
                 Empty cart
             </button>
             <ul className="products">
@@ -44,7 +44,7 @@ const Cart = () => {
                     <h4 className="price">{total}</h4>
                 </div>
             </div>
-            <button className="small-color-button">Сomplete the order</button>
+            <button className="small color">Сomplete the order</button>
         </div>
     );
 };

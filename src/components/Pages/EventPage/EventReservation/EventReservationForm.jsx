@@ -99,7 +99,7 @@ const EventReservationForm = () => {
                 <EmailInput register={register} error={errors.email} />
             </div>
 
-            <button type="submit" className="submit">
+            <button type="submit" className="small color">
                 Submit
             </button>
         </form>

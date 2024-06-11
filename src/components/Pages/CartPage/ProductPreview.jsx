@@ -39,15 +39,13 @@ const ProductPreview = ({ product }) => {
                             {product.name}
                         </Link>
                         <NumInput
-                            amount={amount} // Pass product amount directly
+                            amount={amount}
                             onChange={handleAmountChange}
                         />
                         {price}
                     </div>
-
-                    <p>{product.description}</p>
                 </div>
-                <button className="close-button" onClick={handleProductRemove}>
+                <button className="with-svg" onClick={handleProductRemove}>
                     <IoClose />
                 </button>
             </div>

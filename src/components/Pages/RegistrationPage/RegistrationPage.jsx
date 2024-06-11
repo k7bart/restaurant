@@ -24,7 +24,7 @@ const RegistrationPage = () => {
             >
                 <RegistrationForm />
 
-                <p className="large">
+                <p className="large center">
                     Already registered?&nbsp;
                     <NavLink className="large wisteria" to="/login">
                         Sign in

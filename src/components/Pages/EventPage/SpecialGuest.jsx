@@ -2,13 +2,12 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import "./SpecialGuest.scss";
 
 const SpecialGuest = ({ guest }) => {
     return (
-        <section className="subsection special-guest">
+        <div>
             <h3>Special guest</h3>
-            <div>
+            <div className="special-guest">
                 <img src={guest.photo} alt="" />
                 <div>
                     <h4>{guest.name}</h4>
@@ -26,7 +25,7 @@ const SpecialGuest = ({ guest }) => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

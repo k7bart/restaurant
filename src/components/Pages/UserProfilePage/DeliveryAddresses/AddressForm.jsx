@@ -1,4 +1,4 @@
-import { capitalizeFirstLetters } from "../../../../utils/stringUtils";
+import { capitalize } from "../../../../utils/stringUtils";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -34,8 +34,8 @@ const AddressForm = () => {
             id: `${data.street}${data.house}/${
                 data.apartment && data.apartment
             }`,
-            city: capitalizeFirstLetters(data.city),
-            street: capitalizeFirstLetters(data.street),
+            city: capitalize(data.city),
+            street: capitalize(data.street),
         };
         dispatch(addAddress(formattedData));
         reset();

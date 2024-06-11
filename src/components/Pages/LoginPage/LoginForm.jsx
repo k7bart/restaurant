@@ -47,7 +47,7 @@ const LoginForm = () => {
                 </a>
             </div>
 
-            <button className="submit" type="sumbit">
+            <button className="submit small color" type="submit">
                 Login
             </button>
         </form>

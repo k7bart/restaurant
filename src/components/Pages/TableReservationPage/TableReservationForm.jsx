@@ -98,7 +98,7 @@ const ReservationForm = () => {
                 <textarea {...register("additionalRequirements")} />
             </label>
 
-            <button type="submit" className="submit">
+            <button type="submit" className="small color">
                 Submit
             </button>
         </form>
