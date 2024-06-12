@@ -4,7 +4,6 @@ import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import RegistrationForm from "./RegistrationForm";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import image from "../../../assets/covers/mango-passion-fruit-tart.jpeg";
 
 const RegistrationPage = () => {
     return (
@@ -13,7 +12,7 @@ const RegistrationPage = () => {
                 <Cover
                     subtitle="For a smoother experience"
                     title="Register"
-                    backgroundImage={image}
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/mango-passion-fruit-tart.jpeg?updatedAt=1718193744646"
                 />
             </CoverSection>
             <ContentSection
