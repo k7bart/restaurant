@@ -4,7 +4,6 @@ import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import LoginForm from "./LoginForm";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import image from "../../../assets/covers/rosemary-lemon-cake.jpeg";
 
 const LoginPage = () => {
     return (
@@ -13,7 +12,7 @@ const LoginPage = () => {
                 <Cover
                     subtitle="Unlock with Your Credentials"
                     title="Log in"
-                    backgroundImage={image}
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1718193744910"
                 />
             </CoverSection>
             <ContentSection
