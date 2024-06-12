@@ -4,7 +4,6 @@ import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import image from "../../../assets/covers/moped.jpeg";
 import "./CartPage.scss";
 
 const CartPage = () => {
@@ -25,7 +24,7 @@ const CartPage = () => {
                 <Cover
                     subtitle="Experience"
                     title="Complimentary Shipping"
-                    backgroundImage={image}
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/moped.jpeg?updatedAt=1718193743246"
                 />
             </CoverSection>
             <ContentSection header={emptyCart ? emptyCartHeader : header}>

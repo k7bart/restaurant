@@ -7,7 +7,6 @@ import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
 import TwoSectionsPage from "../../TwoSectionsPage";
 import ContentSection from "../../ContentSection";
-import image from "../../../assets/covers/table-in-cafe.jpeg";
 
 const UserProfilePage = () => {
     const header = {
@@ -34,7 +33,7 @@ const UserProfilePage = () => {
                 <Cover
                     subtitle="Your presence brightens our day"
                     title={"Hello, " + user.name}
-                    backgroundImage={image}
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.jpeg?updatedAt=1718193744098"
                 />
             </CoverSection>
             <ContentSection header={header}>
