@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const AccordionItem = ({ title, children }) => {
+const AccordionItem = ({ title, children, className = "" }) => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
@@ -15,7 +15,7 @@ const AccordionItem = ({ title, children }) => {
                 {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </header>
 
-            <div className={"content " + (open ? "open" : "hidden")}>
+            <div className={`content ${open ? "open" : "hidden"} ${className}`}>
                 {children}
             </div>
         </div>

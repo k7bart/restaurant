@@ -5,6 +5,7 @@ import CoverSection from "../../CoverSection";
 import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
 import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
+import Referral from "./Referral";
 import TwoSectionsPage from "../../TwoSectionsPage";
 import ContentSection from "../../ContentSection";
 
@@ -21,8 +22,8 @@ const UserProfilePage = () => {
                 <OrderHistory user={user} />
                 <PersonalData user={user} />
                 <DeliveryAddresses user={user} />
-                {/* <AccordionItem title="Referral link and promo code" />
-                <AccordionItem title="Message" /> */}
+                <Referral id={user.id} />
+                {/* // <AccordionItem title="Message" /> */}
             </div>
         );
     };
