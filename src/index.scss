@@ -70,6 +70,10 @@ p {
     }
 }
 
+svg {
+    transition: 0.3s;
+}
+
 .with-svg {
     display: flex;
     background-color: transparent;
@@ -86,6 +90,32 @@ p {
         fill: $text-color-grey;
         stroke: $text-color-grey;
         transition: fill 0.3s, stroke 0.3s;
+    }
+}
+
+a.link {
+    color: $text-color-grey;
+    display: flex;
+    align-items: flex-end;
+
+    svg {
+        fill: $text-color-grey;
+        stroke: $text-color-grey;
+    }
+
+    &:hover {
+        color: white;
+        svg {
+            fill: white;
+            stroke: white;
+        }
+    }
+
+    &.active {
+        color: $wisteria;
+        svg {
+            fill: $wisteria;
+        }
     }
 }
 
@@ -394,6 +424,18 @@ button.transparent {
     }
 }
 
+.profile-page {
+    nav {
+        justify-content: flex-end;
+
+        a.link {
+            > svg {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
 .event-page {
     .reservation {
         display: flex;
@@ -686,7 +728,7 @@ main {
 
                 nav {
                     z-index: 1;
-                    width: 50vw;
+                    width: 50%;
                     display: flex;
                     padding: 24px 36px;
                     position: fixed;
@@ -696,30 +738,6 @@ main {
 
                     & > *:not(:last-child) {
                         padding-right: 48px;
-                    }
-                }
-
-                .link {
-                    color: $text-color-grey;
-                    display: flex;
-                    align-items: flex-end;
-
-                    svg {
-                        fill: $text-color-grey;
-                    }
-
-                    &:hover {
-                        color: white;
-                        svg {
-                            fill: white;
-                        }
-                    }
-
-                    &.active {
-                        color: $wisteria;
-                        svg {
-                            fill: $wisteria;
-                        }
                     }
                 }
 
@@ -867,14 +885,12 @@ main {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        transition: 0.5s ease;
 
                         svg {
                             height: 24px;
                             width: 24px;
                             margin-left: 16px;
                             stroke: $text-color-grey;
-                            transition: fill 0.3s, stroke 0.3s;
                         }
 
                         &.referral-link {
