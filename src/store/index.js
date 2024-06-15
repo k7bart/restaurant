@@ -8,10 +8,11 @@ import {
 } from "./slices/cartSlice";
 import {
     userReducer,
-    updateUserData,
     addAddress,
+    logOut,
     removeAddress,
     setCurrentAddress,
+    updateUserData,
 } from "./slices/userSlice";
 
 const store = configureStore({
@@ -29,6 +30,7 @@ export {
     reset,
     updateUserData,
     addAddress,
+    logOut,
     removeAddress,
     setCurrentAddress,
 };
