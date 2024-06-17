@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import dayjs from "dayjs";
 import User from "../../models/User";
 
 const defaultUser = new User(
@@ -59,6 +60,38 @@ defaultUser.addresses = [
         id: "chornovola87/16",
         intercom: 87,
         street: "Chornovola",
+    },
+];
+defaultUser.reservations = [
+    {
+        date: "2024-10-15T21:00:00.000Z",
+        time: "18:00",
+        reservedBy: 300837,
+        guests: {
+            adults: 4,
+            children: 2,
+        },
+        additionalRequirements: "Please sing Happy Birthday 🎂",
+    },
+    {
+        date: "2022-03-14T21:00:00.000Z",
+        time: "15:00",
+        reservedBy: 300837,
+        guests: {
+            adults: 2,
+            children: 0,
+        },
+        additionalRequirements: "I'm going to propose 💍",
+    },
+    {
+        date: dayjs(),
+        time: "12:00",
+        reservedBy: 300837,
+        guests: {
+            adults: 2,
+            children: 1,
+        },
+        additionalRequirements: "Baby highchair 🧒",
     },
 ];
 
