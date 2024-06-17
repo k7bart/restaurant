@@ -1,4 +1,3 @@
-import { getDateStatus } from "../../../utils/helpers";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import AccordionItem from "./AccordionItem";
@@ -13,11 +12,17 @@ const formatGuestCount = (guests) => {
     return `${adults} guests`;
 };
 
+const getDateStatus = (date) => {
+    if (today.isSame(date, "day")) return "today";
+    if (today.isBefore(date, "day")) return "upcoming";
+    return "past";
+};
+
 const Reservation = ({ reservation }) => {
     const { additionalRequirements, date, time, guests } = reservation;
 
     return (
-        <div className={getDateStatus(today, date) + " reservation row"}>
+        <div className={getDateStatus(date) + " reservation row"}>
             <div>
                 <p>
                     {dayjs(date).format("DD/MM/YYYY")} {time}
