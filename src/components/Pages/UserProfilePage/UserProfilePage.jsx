@@ -5,14 +5,15 @@ import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 import AccordionItem from "./AccordionItem";
+import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
 import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./Referral";
+import TableReservations from "./TableReservations";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import ContentSection from "../../ContentSection";
 
 const UserProfilePage = () => {
     const header = {
@@ -27,6 +28,7 @@ const UserProfilePage = () => {
         return (
             <div className="accordion">
                 <OrderHistory user={user} />
+                <TableReservations reservations={user.reservations} />
                 <PersonalData user={user} />
                 <DeliveryAddresses user={user} />
                 <Referral id={user.id} />
