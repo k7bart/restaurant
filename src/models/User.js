@@ -1,6 +1,6 @@
 class User {
     constructor(name, surname, email, phone) {
-        this.id = 300837; // find out how id is assigning
+        this.id = 300837;
         this.name = name;
         this.surname = surname || null;
         this.email = email;
@@ -9,6 +9,11 @@ class User {
         this.orders = null;
         this.currentAddressId = null;
         this.addresses = null;
+        this.reservations = [];
+    }
+
+    addReservation(reservation) {
+        this.reservations.push(reservation);
     }
 }
 
