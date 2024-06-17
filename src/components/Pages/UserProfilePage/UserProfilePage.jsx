@@ -7,7 +7,7 @@ import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
 import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./Referral";
-import Reservations from "./Reservations";
+import TableReservations from "./TableReservations";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
 const UserProfilePage = () => {
@@ -21,7 +21,7 @@ const UserProfilePage = () => {
         return (
             <div className="accordion">
                 <OrderHistory user={user} />
-                <Reservations reservations={user.reservations} />
+                <TableReservations reservations={user.reservations} />
                 <PersonalData user={user} />
                 <DeliveryAddresses user={user} />
                 <Referral id={user.id} />
