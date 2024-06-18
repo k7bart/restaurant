@@ -1,11 +1,7 @@
-const SurnameInput = ({ register, error }) => {
-    return (
-        <label>
-            <p>Surname</p>
-            <input {...register("surname")} />
-            {error && <p className="error">{error.message}</p>}
-        </label>
-    );
+import Input from "./Input";
+
+const SurnameInput = (props) => {
+    return <Input fieldName="surname" {...props} />;
 };
 
 export default SurnameInput;
