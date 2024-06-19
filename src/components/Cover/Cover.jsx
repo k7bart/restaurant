@@ -1,5 +1,3 @@
-import "./Cover.scss";
-
 function Cover({ subtitle, title, backgroundImage, text }) {
     return (
         <div className="cover">
