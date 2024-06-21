@@ -1,4 +1,5 @@
-import Logo from "../Logo/Logo";
+import Logo from "./Logo/Logo";
+import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -8,7 +9,9 @@ function HeaderNavigation() {
             <nav>
                 <IoMenu />
                 <Logo />
-                <FaUserCircle />
+                <Link to="/profile">
+                    <FaUserCircle />
+                </Link>
             </nav>
         </header>
     );
