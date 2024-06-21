@@ -1,4 +1,4 @@
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
 const ContentSection = ({ header = false, nav = false, children }) => {
     return (

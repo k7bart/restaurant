@@ -1,6 +1,6 @@
 import { useParams, NavLink, Link } from "react-router-dom";
 import { events, staff } from "../../../state.js";
-import Footer from "../../Footer/Footer.jsx";
+import Footer from "../../Footer.jsx";
 import SpecialGuest from "./SpecialGuest.jsx";
 
 const EventDetails = () => {

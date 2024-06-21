@@ -1,19 +1,28 @@
-import Logo from "../Logo/Logo";
-import { links } from "../../state";
+import Logo from "./Logo/Logo";
 import { Link, NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import "./Footer.scss";
+
+const links = [
+    { to: "/login", text: "Login" },
+    { to: "/registration", text: "Register" },
+    { to: "/profile", text: "Profile" },
+    { to: "/menu", text: "Menu" },
+    { to: "/table-reservation", text: "Book a table" },
+    { to: "/events", text: "Events" },
+    { to: "/cart", text: "Cart" },
+    { to: "/error", text: "Error" },
+];
+
+const navLinks = links.map(({ to, text }) => (
+    <NavLink to={to} className="link" key={to}>
+        {text}
+    </NavLink>
+));
 
 const Footer = () => {
-    const navLinks = links.map((link, i) => (
-        <NavLink to={link.to} className="link" key={i}>
-            {link.text}
-        </NavLink>
-    ));
-
     return (
         <footer>
             <div className="container">
@@ -36,21 +45,9 @@ const Footer = () => {
                     By Kateryna Bartienieva
                 </Link>
             </div>
-            <div className="container">
-                <NavLink to="/login" className="link">
-                    Login
-                </NavLink>
-                <NavLink to="/registration" className="link">
-                    Register
-                </NavLink>
-                <NavLink to="/profile" className="link">
-                    Profile
-                </NavLink>
-                <NavLink to="/cart" className="link">
-                    Cart
-                </NavLink>
-                {navLinks}
-            </div>
+
+            <div className="container">{navLinks}</div>
+
             <div>
                 <Link
                     to="https://www.instagram.com"
@@ -68,9 +65,6 @@ const Footer = () => {
                     <FaFacebook />
                     b.art
                 </Link>
-                {/* <NavLink to="/error" className="link">
-                    Error
-                </NavLink> */}
             </div>
         </footer>
     );
