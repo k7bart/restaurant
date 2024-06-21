@@ -99,14 +99,11 @@ const userSlice = createSlice({
     name: "user",
     initialState: defaultUser,
     reducers: {
-        updateUserData(state, action) {
-            return {
-                ...state,
-                ...action.payload,
-            };
-        },
         addAddress(state, action) {
             state.addresses.push(action.payload);
+        },
+        logOut() {
+            return null;
         },
         removeAddress(state, action) {
             state.addresses.splice(
@@ -116,13 +113,23 @@ const userSlice = createSlice({
                 1
             );
         },
-
         setCurrentAddress(state, action) {
             state.currentAddressId = action.payload;
+        },
+        updateUserData(state, action) {
+            return {
+                ...state,
+                ...action.payload,
+            };
         },
     },
 });
 
-export const { updateUserData, addAddress, removeAddress, setCurrentAddress } =
-    userSlice.actions;
+export const {
+    addAddress,
+    logOut,
+    removeAddress,
+    setCurrentAddress,
+    updateUserData,
+} = userSlice.actions;
 export const userReducer = userSlice.reducer;

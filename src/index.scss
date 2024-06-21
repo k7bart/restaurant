@@ -73,6 +73,10 @@ p {
     }
 }
 
+svg {
+    transition: 0.3s;
+}
+
 .with-svg {
     display: flex;
     background-color: transparent;
@@ -89,6 +93,32 @@ p {
         fill: $text-color-grey;
         stroke: $text-color-grey;
         transition: fill 0.3s, stroke 0.3s;
+    }
+}
+
+a.link {
+    color: $text-color-grey;
+    display: flex;
+    align-items: flex-end;
+
+    svg {
+        fill: $text-color-grey;
+        stroke: $text-color-grey;
+    }
+
+    &:hover {
+        color: white;
+        svg {
+            fill: white;
+            stroke: white;
+        }
+    }
+
+    &.active {
+        color: $wisteria;
+        svg {
+            fill: $wisteria;
+        }
     }
 }
 
@@ -409,6 +439,18 @@ button.transparent {
 
     .cover > img {
         position: relative;
+    }
+}
+
+.profile-page {
+    nav {
+        justify-content: flex-end;
+
+        a.link {
+            > svg {
+                margin-left: 5px;
+            }
+        }
     }
 }
 
@@ -777,6 +819,7 @@ main {
                     }
                 }
 
+
                 .link {
                     color: $text-color-grey;
                     display: flex;
@@ -820,6 +863,24 @@ main {
                             margin-right: 5px;
                         }
                     }
+
+                nav {
+                    z-index: 1;
+                    width: 50%;
+                    display: flex;
+                    padding: 24px 36px;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    background-color: #050505;
+
+                    & > *:not(:last-child) {
+                        padding-right: 48px;
+                    }
+                }
+
+                .menu > *:not(:first-child) {
+                    padding-top: 96px;
                 }
             }
         }
@@ -1080,14 +1141,12 @@ div.react-datepicker {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        transition: 0.5s ease;
 
                         svg {
                             height: 24px;
                             width: 24px;
                             margin-left: 16px;
                             stroke: $text-color-grey;
-                            transition: fill 0.3s, stroke 0.3s;
                         }
 
                         &.referral-link {
