@@ -536,17 +536,23 @@ button.transparent {
 }
 
 .profile-page {
-    .reservation {
-        flex-direction: column;
+    section.content {
+        main.two-sections > section.content > nav {
+            justify-content: flex-end;
+        }
 
-        &.today p {
-            color: $wisteria;
-        }
-        &.upcoming p {
-            color: white;
-        }
-        &.past p {
-            color: $text-color-grey;
+        .reservation {
+            flex-direction: column;
+
+            &.today p {
+                color: $wisteria;
+            }
+            &.upcoming p {
+                color: white;
+            }
+            &.past p {
+                color: $text-color-grey;
+            }
         }
     }
 }
@@ -697,7 +703,7 @@ main {
                     z-index: 9998;
 
                     @media (min-width: 820px) {
-                        width: 50vw;
+                        width: 50%;
                         position: fixed;
                         top: 0;
                         right: 0;
@@ -819,7 +825,6 @@ main {
                     }
                 }
 
-
                 .link {
                     color: $text-color-grey;
                     display: flex;
@@ -864,371 +869,374 @@ main {
                         }
                     }
 
-                nav {
-                    z-index: 1;
-                    width: 50%;
-                    display: flex;
-                    padding: 24px 36px;
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    background-color: #050505;
+                    nav {
+                        z-index: 1;
+                        width: 50%;
+                        display: flex;
+                        padding: 24px 36px;
+                        position: fixed;
+                        top: 0;
+                        right: 0;
+                        background-color: #050505;
 
-                    & > *:not(:last-child) {
-                        padding-right: 48px;
+                        & > *:not(:last-child) {
+                            padding-right: 48px;
+                        }
                     }
-                }
 
-                .menu > *:not(:first-child) {
-                    padding-top: 96px;
+                    .menu > *:not(:first-child) {
+                        padding-top: 96px;
+                    }
                 }
             }
         }
     }
-}
 
-.date-picker,
-.time-picker {
-    .react-datepicker-wrapper {
-        width: 100%;
-    }
-}
-
-div.react-datepicker {
-    background-color: $background-color;
-    color: white;
-    border: 1px solid $border-color;
-    border-radius: 10px;
-
-    .react-datepicker__time-container {
-        width: 100px;
+    .date-picker,
+    .time-picker {
+        .react-datepicker-wrapper {
+            width: 100%;
+        }
     }
 
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box {
-        width: 100px;
-    }
-
-    .react-datepicker__time-box {
-        border-bottom-left-radius: 10px;
-    }
-
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item--selected {
-        background-color: $wisteria;
-        color: white;
-        font-weight: bold;
-    }
-
-    li.react-datepicker__time-list-item:hover {
-        background-color: white;
-        color: $wisteria;
-    }
-
-    .react-datepicker__header {
-        text-align: center;
+    div.react-datepicker {
         background-color: $background-color;
-        border-bottom: 1px solid $border-color;
-        border-top-left-radius: 10px;
-        padding: 8px 0;
-        position: relative;
+        color: white;
+        border: 1px solid $border-color;
+        border-radius: 10px;
 
-        .react-datepicker__current-month,
-        .react-datepicker-time__header,
-        .react-datepicker-year-header {
-            margin-top: 0;
-            color: #c9a0dc;
+        .react-datepicker__time-container {
+            width: 100px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box {
+            width: 100px;
+        }
+
+        .react-datepicker__time-box {
+            border-bottom-left-radius: 10px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box
+            ul.react-datepicker__time-list
+            li.react-datepicker__time-list-item--selected {
+            background-color: $wisteria;
+            color: white;
             font-weight: bold;
-            font-size: 0.944rem;
+        }
+
+        li.react-datepicker__time-list-item:hover {
+            background-color: white;
+            color: $wisteria;
+        }
+
+        .react-datepicker__header {
+            text-align: center;
+            background-color: $background-color;
+            border-bottom: 1px solid $border-color;
+            border-top-left-radius: 10px;
+            padding: 8px 0;
+            position: relative;
+
+            .react-datepicker__current-month,
+            .react-datepicker-time__header,
+            .react-datepicker-year-header {
+                margin-top: 0;
+                color: #c9a0dc;
+                font-weight: bold;
+                font-size: 0.944rem;
+            }
+
+            .react-datepicker__day-name,
+            .react-datepicker__day,
+            .react-datepicker__time-name {
+                color: #fff;
+                display: inline-block;
+                width: 1.7rem;
+                line-height: 1.7rem;
+                text-align: center;
+                margin: 0.166rem;
+            }
+        }
+        .react-datepicker__header:not(
+                .react-datepicker__header--has-time-select
+            ) {
+            border-top-right-radius: 10px;
         }
 
         .react-datepicker__day-name,
         .react-datepicker__day,
         .react-datepicker__time-name {
-            color: #fff;
-            display: inline-block;
-            width: 1.7rem;
-            line-height: 1.7rem;
-            text-align: center;
-            margin: 0.166rem;
+            color: white;
+        }
+
+        .react-datepicker__day:hover {
+            border-radius: 50%;
+            background-color: white;
+            color: $wisteria;
+        }
+
+        .react-datepicker__day--selected,
+        .react-datepicker__day--selected:hover {
+            border-radius: 50%;
+            background-color: #c9a0dc;
+            color: white;
+        }
+
+        .react-datepicker__day--disabled,
+        .react-datepicker__month-text--disabled,
+        .react-datepicker__quarter-text--disabled,
+        .react-datepicker__year-text--disabled {
+            cursor: default;
+            color: $border-color;
+        }
+
+        .react-datepicker__day--keyboard-selected,
+        .react-datepicker__month-text--keyboard-selected,
+        .react-datepicker__quarter-text--keyboard-selected,
+        .react-datepicker__year-text--keyboard-selected {
+            border-radius: 50%;
+            background-color: #c9a0dc;
+            color: white;
+        }
+
+        .react-datepicker__navigation-icon::before,
+        .react-datepicker__navigation-icon:hover {
+            border-color: #c9a0dc;
+        }
+
+        .react-datepicker__time-container .react-datepicker__time {
+            background: $background-color;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box
+            ul.react-datepicker__time-list
+            li.react-datepicker__time-list-item--disabled {
+            color: $border-color;
         }
     }
-    .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
-        border-top-right-radius: 10px;
-    }
-
-    .react-datepicker__day-name,
-    .react-datepicker__day,
-    .react-datepicker__time-name {
-        color: white;
-    }
-
-    .react-datepicker__day:hover {
-        border-radius: 50%;
-        background-color: white;
-        color: $wisteria;
-    }
-
-    .react-datepicker__day--selected,
-    .react-datepicker__day--selected:hover {
-        border-radius: 50%;
-        background-color: #c9a0dc;
-        color: white;
-    }
-
-    .react-datepicker__day--disabled,
-    .react-datepicker__month-text--disabled,
-    .react-datepicker__quarter-text--disabled,
-    .react-datepicker__year-text--disabled {
-        cursor: default;
-        color: $border-color;
-    }
-
-    .react-datepicker__day--keyboard-selected,
-    .react-datepicker__month-text--keyboard-selected,
-    .react-datepicker__quarter-text--keyboard-selected,
-    .react-datepicker__year-text--keyboard-selected {
-        border-radius: 50%;
-        background-color: #c9a0dc;
-        color: white;
-    }
-
-    .react-datepicker__navigation-icon::before,
-    .react-datepicker__navigation-icon:hover {
-        border-color: #c9a0dc;
-    }
-
-    .react-datepicker__time-container .react-datepicker__time {
-        background: $background-color;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item--disabled {
-        color: $border-color;
-    }
-}
-.react-datepicker-wrapper {
-    display: flex;
-}
-
-.popup {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 50vw;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    > div {
-        height: max-content;
-        width: 80%;
+    .react-datepicker-wrapper {
         display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 80px 96px;
-        position: relative;
-        border: 1px solid $border-color;
-        background-color: $background-color;
-
-        > h4,
-        > p {
-            padding-bottom: 18px;
-        }
-
-        > .container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-
-            :not(:first-child) {
-                margin-left: 50px;
-            }
-
-            button {
-                width: 100px;
-            }
-        }
     }
-}
 
-.accordion {
-    width: 100%;
+    .popup {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 50vw;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
 
-    .item {
-        > header {
-            padding: 16px;
+        > div {
+            height: max-content;
+            width: 80%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid $border-color;
-            cursor: pointer;
+            flex-direction: column;
+            padding: 80px 96px;
+            position: relative;
+            border: 1px solid $border-color;
+            background-color: $background-color;
 
             > h4,
-            > svg {
-                transition: 0.3s;
+            > p {
+                padding-bottom: 18px;
             }
 
-            > svg {
-                height: 24px;
-                width: 24px;
-            }
+            > .container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
 
-            &.open,
-            &:hover {
-                > h4,
-                > svg {
-                    transform: scale(1.05);
+                :not(:first-child) {
+                    margin-left: 50px;
                 }
-                > h4 {
-                    color: $wisteria;
-                }
-                > svg {
-                    fill: $wisteria;
+
+                button {
+                    width: 100px;
                 }
             }
         }
+    }
 
-        .content {
-            &.hidden {
-                display: none;
-            }
+    .accordion {
+        width: 100%;
 
-            &.open {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        .item {
+            > header {
                 padding: 16px;
-                border-right: 1px solid #1e1e1e;
-                border-bottom: 1px solid #1e1e1e;
-                border-left: 1px solid #1e1e1e;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid $border-color;
+                cursor: pointer;
 
-                > .row:not(:first-child) {
-                    border-top: 1px solid $border-color;
-                    padding-top: 16px;
+                > h4,
+                > svg {
+                    transition: 0.3s;
                 }
 
-                > .row:not(:last-child) {
-                    padding-bottom: 16px;
+                > svg {
+                    height: 24px;
+                    width: 24px;
                 }
 
-                > .row {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
+                &.open,
+                &:hover {
+                    > h4,
+                    > svg {
+                        transform: scale(1.05);
+                    }
+                    > h4 {
+                        color: $wisteria;
+                    }
+                    > svg {
+                        fill: $wisteria;
+                    }
                 }
             }
 
-            &.referral {
-                > div {
-                    width: 100%;
+            .content {
+                &.hidden {
+                    display: none;
+                }
+
+                &.open {
                     display: flex;
-                    justify-content: space-evenly;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 16px;
+                    border-right: 1px solid #1e1e1e;
+                    border-bottom: 1px solid #1e1e1e;
+                    border-left: 1px solid #1e1e1e;
 
-                    button {
-                        color: $text-color-grey;
+                    > .row:not(:first-child) {
+                        border-top: 1px solid $border-color;
+                        padding-top: 16px;
+                    }
+
+                    > .row:not(:last-child) {
+                        padding-bottom: 16px;
+                    }
+
+                    > .row {
+                        width: 100%;
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        svg {
-                            height: 24px;
-                            width: 24px;
-                            margin-left: 16px;
-                            stroke: $text-color-grey;
-                        }
-
-                        &.referral-link {
-                            width: 60%;
-                        }
-
-                        &:hover {
-                            color: white;
-
-                            svg {
-                                stroke: white;
-                            }
-                        }
-
-                        &:active {
-                            color: $wisteria;
-
-                            svg {
-                                stroke: $wisteria;
-                            }
-                        }
+                        justify-content: space-between;
                     }
                 }
 
-                > p {
-                    padding-top: 16px;
+                &.referral {
+                    > div {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
+
+                        button {
+                            color: $text-color-grey;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            svg {
+                                height: 24px;
+                                width: 24px;
+                                margin-left: 16px;
+                                stroke: $text-color-grey;
+                            }
+
+                            &.referral-link {
+                                width: 60%;
+                            }
+
+                            &:hover {
+                                color: white;
+
+                                svg {
+                                    stroke: white;
+                                }
+                            }
+
+                            &:active {
+                                color: $wisteria;
+
+                                svg {
+                                    stroke: $wisteria;
+                                }
+                            }
+                        }
+                    }
+
+                    > p {
+                        padding-top: 16px;
+                    }
                 }
             }
         }
     }
-}
 
-.notice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    > :not(:first-child) {
-        padding-top: 16px;
-    }
-}
-
-div.cover {
-    width: 100%;
-
-    > .image {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-        position: absolute;
-        transition: transform 0.5s, filter 0.5s;
-    }
-
-    > .filter {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    > .content {
-        padding: 80px 96px;
+    .notice {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        height: 100%;
-        position: relative;
 
-        @media (max-width: 576px) {
-            padding: 40px 48px;
+        > :not(:first-child) {
+            padding-top: 16px;
         }
     }
 
-    &:hover {
-        .image {
-            transform: scale(1.05);
+    div.cover {
+        width: 100%;
+
+        > .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            transition: transform 0.5s, filter 0.5s;
         }
 
-        .filter {
-            background-color: rgba(0, 0, 0, 0.6);
+        > .filter {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        > .content {
+            padding: 80px 96px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+
+            @media (max-width: 576px) {
+                padding: 40px 48px;
+            }
+        }
+
+        &:hover {
+            .image {
+                transform: scale(1.05);
+            }
+
+            .filter {
+                background-color: rgba(0, 0, 0, 0.6);
+            }
         }
     }
 }
