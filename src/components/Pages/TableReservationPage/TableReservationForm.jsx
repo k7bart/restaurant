@@ -1,20 +1,44 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
+import { subDays, addMonths } from "date-fns";
 
 import * as yup from "yup";
 
-import DateTimeInput from "../../Inputs/DateTimeInput";
+import dayjs from "dayjs";
+import DateInput from "../../Inputs/DateInput";
 import EmailInput from "../../Inputs/EmailInput";
 import NameInput from "../../Inputs/NameInput";
-import NumberOfGuestsInput from "../../Inputs/NumberOfGuestsInput";
+import NumberOfAdultsInput from "../../Inputs/NumberOfAdultsInput";
+import NumberOfChildrenInput from "../../Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../Inputs/PhoneInput";
-import { NavLink } from "react-router-dom";
+import ReservedTable from "../../../models/ReservedTable";
+import TimeInput from "../../Inputs/TimeInput";
+
+const today = new Date();
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
-    numberOfAdults: yup.number().required().positive().integer(),
+    numberOfAdults: yup
+        .number()
+        .transform((value, originalValue) => {
+            return originalValue === "" ? 0 : value;
+        })
+        .required("Please provide the number of adult guests")
+        .positive("At least one adult needed")
+        .integer("Oh my! 😨")
+        .typeError("Please enter a number"),
+    numberOfChildren: yup
+        .number()
+        .transform((value, originalValue) => {
+            return originalValue === "" ? 0 : value;
+        })
+        .min(0, "Children are the joy of life")
+        .integer("Oh my! 😨")
+        .typeError("Please enter a number"),
     email: yup
         .string()
         .email("Please provide a valid email address")
@@ -25,73 +49,158 @@ const reservationSchema = yup.object({
         .required(
             "Please share your phone number. We'll only reach out if we have questions."
         ),
-    date: yup.date().min(new Date(), "Date must be later than today"),
-    // push time value to date?
-    time: yup.string().required(),
-
-    numberOfChildren: yup
-        .number()
-        .transform((value, originalValue) => {
-            return originalValue === "" ? 0 : value;
-        })
-        .min(0)
-        .integer(),
+    date: yup
+        .date()
+        .required("Please pick a date")
+        .min(subDays(today, 1), "Date cannot be earlier than today")
+        .max(
+            addMonths(today, 2),
+            "Date cannot be later than 2 month from today"
+        ),
+    time: yup
+        .date()
+        .required("Please select a time")
+        .typeError("Please select a time"),
     additionalRequirements: yup.string(),
 });
 
-const ReservationForm = () => {
+const TableReservationForm = () => {
     const user = useSelector((state) => state.user) || null;
+    const [reservedTable, setReservedTable] = useState(null);
 
     const {
         register,
         handleSubmit,
+        control,
         reset,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(reservationSchema),
+        mode: "onChange",
         defaultValues: {
             name: user ? `${user.name} ${user.surname}` : "",
             numberOfAdults: "",
-            email: user ? user.email : "",
-            phone: user ? user.phone : "",
-            date: "",
-            time: "",
             numberOfChildren: "",
+            phone: user ? user.phone : "",
+            email: user ? user.email : "",
+            date: today,
+            time: "",
             additionalRequirements: "",
         },
     });
 
     const onSubmit = (data) => {
-        const formattedData = {
-            ...data,
-            name: capitalize(data.name),
-        };
-        console.log(formattedData);
+        const {
+            name,
+            numberOfAdults: adults,
+            numberOfChildren: children,
+            phone,
+            email,
+            date,
+            time,
+            additionalRequirements,
+        } = data;
+
+        const reservedBy = user
+            ? user.id
+            : {
+                  name: capitalize(name),
+                  registered: false,
+                  phone: phone,
+                  email: email || null,
+              };
+
+        const dateTime = dayjs(date)
+            .set("hour", time.getHours())
+            .set("minute", time.getMinutes())
+            .toDate();
+
+        const reservation = new ReservedTable(
+            dateTime,
+            reservedBy,
+            { adults, children },
+            additionalRequirements
+        );
+
+        if (user) user.addReservation(reservation);
+
+        setReservedTable(reservation);
         reset();
     };
 
-    return (
+    return reservedTable ? (
+        <div className="notice">
+            <h4>Table successfully reserved!</h4>
+            <p className="large">
+                We are waiting for you&nbsp;
+                {dayjs(reservedTable.date).format("DD/MM/YYYY")}
+                &nbsp;at&nbsp;
+                {`${dayjs(reservedTable.date).get("hours")}:${dayjs(
+                    reservedTable.date
+                ).get("minutes")}`}
+            </p>
+            <div className="buttons-container">
+                <button
+                    className="small transparent"
+                    onClick={() => setReservedTable(null)}
+                >
+                    Make another one
+                </button>
+
+                <Link to="/profile#table-reservations">
+                    <button className="small color">
+                        Check my reservations
+                    </button>
+                </Link>
+            </div>
+        </div>
+    ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
             {!user && (
                 <p className="large">
                     We kindly invite you to
-                    <NavLink to="/login" className="large wisteria">
+                    <Link to="/login" className="large wisteria">
                         &nbsp;log in&nbsp;
-                    </NavLink>
+                    </Link>
                     for a smoother and quicker experience.
                 </p>
             )}
 
-            <NameInput register={register} error={errors.name} />
-
-            <NumberOfGuestsInput register={register} errors={errors} />
+            <NameInput
+                register={register}
+                error={errors.name}
+                required={true}
+            />
 
             <div>
-                <PhoneInput register={register} error={errors.phone} />
+                <PhoneInput
+                    register={register}
+                    error={errors.phone}
+                    required={true}
+                />
                 <EmailInput register={register} error={errors.email} />
             </div>
 
-            <DateTimeInput register={register} errors={errors} />
+            <div>
+                <NumberOfAdultsInput
+                    register={register}
+                    error={errors.numberOfAdults}
+                    required={true}
+                />
+                <NumberOfChildrenInput
+                    register={register}
+                    error={errors.numberOfChildren}
+                />
+            </div>
+
+            <div>
+                <DateInput
+                    control={control}
+                    error={errors.date}
+                    required={true}
+                />
+                <TimeInput control={control} error={errors.time} />
+            </div>
 
             <label>
                 <p>Additional requirements</p>
@@ -105,4 +214,4 @@ const ReservationForm = () => {
     );
 };
 
-export default ReservationForm;
+export default TableReservationForm;

@@ -1,7 +1,7 @@
 import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
-import ReservationForm from "./TableReservationForm";
+import TableReservationForm from "./TableReservationForm";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
 function TableReservationPage() {
@@ -21,7 +21,7 @@ function TableReservationPage() {
                 />
             </CoverSection>
             <ContentSection header={header}>
-                <ReservationForm />
+                <TableReservationForm />
             </ContentSection>
         </TwoSectionsPage>
     );

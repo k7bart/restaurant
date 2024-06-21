@@ -1,11 +1,7 @@
-const NameInput = ({ register, error }) => {
-    return (
-        <label>
-            <p>Name</p>
-            <input {...register("name")} />
-            {error && <p className="error">{error.message}</p>}
-        </label>
-    );
+import Input from "./Input";
+
+const NameInput = (props) => {
+    return <Input fieldName="name" {...props} />;
 };
 
 export default NameInput;
