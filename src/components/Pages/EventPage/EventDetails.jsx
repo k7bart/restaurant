@@ -1,13 +1,18 @@
 import { useParams, NavLink, Link } from "react-router-dom";
 import { events, staff } from "../../../state.js";
+import dayjs from "dayjs";
 import ContentSection from "../../ContentSection.jsx";
 import SpecialGuest from "./SpecialGuest.jsx";
 
-const nav = events.map((event) => (
-    <NavLink to={`/events/${event.id}`} className="link" key={event.id}>
-        {event.title}
-    </NavLink>
-));
+const nav = (
+    <nav className="content-evenly">
+        {events.map((event) => (
+            <NavLink to={`/events/${event.id}`} className="link" key={event.id}>
+                {event.title}
+            </NavLink>
+        ))}
+    </nav>
+);
 
 const header = {
     title: "Reserve Your Spot",
@@ -34,7 +39,9 @@ const EventDetails = () => {
                 <h3>Details</h3>
                 <div className="row">
                     <p className="large">Date</p>
-                    <p className="large white">{date}</p>
+                    <p className="large white">
+                        {dayjs(date).format("DD/MM/YYYY")}
+                    </p>
                 </div>
 
                 {guest && (
@@ -62,13 +69,19 @@ const EventDetails = () => {
                     <h3>Menu</h3>
                     {menu.map((item) => (
                         <div className="row" key={item}>
-                            <p className="large">{item}</p>
+                            <p className="large white">{item}</p>
                         </div>
                     ))}
                 </div>
             )}
 
             {guest && <SpecialGuest guest={guest} />}
+
+            <div className="with-button">
+                <Link to={`/events/${id}/reservation`}>
+                    <button className="large color">Book a spot</button>
+                </Link>
+            </div>
         </ContentSection>
     );
 };

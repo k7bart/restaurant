@@ -1,17 +1,40 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../../utils/stringUtils";
+
 import * as yup from "yup";
 
+import dayjs from "dayjs";
 import EmailInput from "../../../Inputs/EmailInput";
 import NameInput from "../../../Inputs/NameInput";
+import NumberOfAdultsInput from "../../../Inputs/NumberOfAdultsInput";
+import NumberOfChildrenInput from "../../../Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../Inputs/PhoneInput";
+import { addTicket } from "../../../../store";
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
-    numberOfAdults: yup.number().required().positive().integer(),
+    numberOfAdults: yup
+        .number()
+        .transform((value, originalValue) => {
+            return originalValue === "" ? 0 : value;
+        })
+        .required("Please provide the number of adult guests")
+        .positive("At least one adult needed")
+        .integer("Oh my! 😨")
+        .typeError("Please enter a number"),
+    numberOfChildren: yup
+        .number()
+        .transform((value, originalValue) => {
+            return originalValue === "" ? 0 : value;
+        })
+        .min(0, "Children are the joy of life")
+        .integer("Oh my! 😨")
+        .typeError("Please enter a number"),
     email: yup
         .string()
         .email("Please provide a valid email address")
@@ -21,17 +44,12 @@ const reservationSchema = yup.object({
         .required(
             "Please share your phone number. We'll only reach out if we have questions."
         ),
-    numberOfChildren: yup
-        .number()
-        .transform((value, originalValue) => {
-            return originalValue === "" ? 0 : value;
-        })
-        .min(0)
-        .integer(),
 });
 
-const EventReservationForm = () => {
+const EventReservationForm = ({ event }) => {
     const user = useSelector((state) => state.user) || null;
+    const dispatch = useDispatch();
+    const [ticket, setTicket] = useState(null);
 
     const {
         register,
@@ -41,7 +59,7 @@ const EventReservationForm = () => {
     } = useForm({
         resolver: yupResolver(reservationSchema),
         defaultValues: {
-            name: user ? `${user.name} ${user.surname}` : "",
+            name: user ? user.fullName : "",
             numberOfAdults: "",
             email: user ? user.email : "",
             phone: user ? user.phone : "",
@@ -49,25 +67,50 @@ const EventReservationForm = () => {
         },
     });
 
-    const onSubmit = (data) => {
-        const formattedData = {
-            ...data,
-            name: capitalize(data.name),
+    const onSubmit = ({
+        name,
+        email,
+        numberOfAdults: adults,
+        numberOfChildren: children,
+        phone,
+    }) => {
+        const ticket = {
+            id: 123456,
+            event: event.id,
+            guests: { adults, children },
+            owner: { name: capitalize(name), email, phone },
         };
-        console.log(formattedData);
+
+        user && dispatch(addTicket(ticket));
+
+        setTicket(ticket);
+
         reset();
     };
 
-    const errorMap = {
-        numberOfAdults: errors.numberOfAdults && (
-            <p className="error">Please provide the number of adult guests.</p>
-        ),
-        numberOfChildren: errors.numberOfChildren && (
-            <p className="error">{errors.numberOfChildren.message}</p>
-        ),
-    };
+    return ticket ? (
+        <div className="notice">
+            <h4>Success!</h4>
+            <p className="large">
+                We are waiting for you&nbsp;
+                {dayjs(event.date).format("DD/MM/YYYY")}
+                &nbsp;at&nbsp;
+                {dayjs(event.date).format("HH:mm")}
+            </p>
+            <div className="buttons-container">
+                <button
+                    className="small transparent"
+                    onClick={() => setTicket(null)}
+                >
+                    Buy one more
+                </button>
 
-    return (
+                <Link to="/profile#tickets">
+                    <button className="small color">Check your tickets</button>
+                </Link>
+            </div>
+        </div>
+    ) : (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
             {!user && (
                 <p className="large">
@@ -79,29 +122,54 @@ const EventReservationForm = () => {
                 </p>
             )}
 
-            <NameInput register={register} error={errors.name} />
+            <NameInput
+                register={register}
+                error={errors.name}
+                required={true}
+            />
 
             <div>
-                <label>
-                    <p>Number of adults</p>
-                    <input {...register("numberOfAdults", { min: 1 })} />
-                    {errorMap.numberOfAdults}
-                </label>
-                <label>
-                    <p>Number of children</p>
-                    <input {...register("numberOfChildren")} />
-                    {errorMap.numberOfChildren}
-                </label>
-            </div>
-
-            <div>
-                <PhoneInput register={register} error={errors.phone} />
+                <PhoneInput
+                    register={register}
+                    error={errors.phone}
+                    required={true}
+                />
                 <EmailInput register={register} error={errors.email} />
             </div>
 
-            <button type="submit" className="small color">
-                Submit
-            </button>
+            {event.ageLimit === 18 && (
+                <div>
+                    <NumberOfAdultsInput
+                        register={register}
+                        error={errors.numberOfAdults}
+                        required={true}
+                    />
+
+                    <button type="submit" className="small color submit">
+                        Submit
+                    </button>
+                </div>
+            )}
+
+            {event.ageLimit !== 18 && (
+                <>
+                    <div>
+                        <NumberOfAdultsInput
+                            register={register}
+                            error={errors.numberOfAdults}
+                            required={true}
+                        />
+                        <NumberOfChildrenInput
+                            register={register}
+                            error={errors.numberOfChildren}
+                        />
+                    </div>
+
+                    <button type="submit" className="small color submit">
+                        Submit
+                    </button>
+                </>
+            )}
         </form>
     );
 };
