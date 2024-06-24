@@ -71,6 +71,10 @@ p {
     &.large {
         font-size: 18px;
     }
+
+    &.white {
+        color: white;
+    }
 }
 
 svg {
@@ -149,12 +153,12 @@ button.with-svg.close {
     right: 32px;
 }
 
-button.small {
+button.small,
+button.large {
     height: 60px;
-    width: 150px;
     min-width: max-content;
-    border-radius: 30px;
     padding: 16px;
+    border-radius: 30px;
     transition: 0.3s;
 
     &:not(:disabled):hover {
@@ -165,6 +169,14 @@ button.small {
         background-color: white;
         color: $wisteria;
     }
+}
+
+button.small {
+    width: 150px;
+}
+
+button.large {
+    width: 300px;
 }
 
 button.color {
@@ -202,60 +214,60 @@ button.transparent {
                 @media (min-width: 820px) {
                     font-size: 48px;
                 }
+            }
 
-                .title {
-                    font-size: 65px;
+            .title {
+                font-size: 65px;
 
-                    @media (min-width: 577px) {
-                        font-size: 90px;
-                    }
-
-                    @media (min-width: 820px) {
-                        font-size: 135px;
-                    }
-
-                    @media (min-width: 992px) {
-                        font-size: 150px;
-                    }
+                @media (min-width: 577px) {
+                    font-size: 90px;
                 }
 
-                p {
-                    font-weight: 200;
-                    font-size: 16px;
-                    text-align: center;
-                    max-width: 100%;
+                @media (min-width: 820px) {
+                    font-size: 135px;
+                }
 
-                    @media (min-width: 577px) {
-                        font-size: 24px;
-                    }
+                @media (min-width: 992px) {
+                    font-size: 150px;
+                }
+            }
 
-                    @media (min-width: 820px) {
-                        max-width: 80%;
-                    }
+            p {
+                font-weight: 200;
+                font-size: 16px;
+                text-align: center;
+                max-width: 100%;
 
-                    @media (min-width: 992px) {
-                        max-width: 60%;
-                    }
+                @media (min-width: 577px) {
+                    font-size: 24px;
+                }
+
+                @media (min-width: 820px) {
+                    max-width: 80%;
+                }
+
+                @media (min-width: 992px) {
+                    max-width: 60%;
                 }
             }
         }
+    }
 
-        > .logo,
-        > .navbar {
-            position: absolute;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            z-index: 1;
-        }
+    > .logo,
+    > .navbar {
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
 
-        > .logo {
-            top: 80px;
-        }
+    > .logo {
+        top: 80px;
+    }
 
-        > .navbar {
-            bottom: 80px;
-        }
+    > .navbar {
+        bottom: 80px;
     }
 }
 .login-page {
@@ -442,92 +454,132 @@ button.transparent {
     }
 }
 
-.profile-page {
-    nav {
-        justify-content: flex-end;
+.events-page {
+    .carrousel-container {
+        height: 100vh;
 
-        a.link {
-            > svg {
-                margin-left: 5px;
+        .slide {
+            overflow: hidden;
+            position: relative;
+
+            .content {
+                .title {
+                    font-size: 38px;
+                }
+
+                p {
+                    padding-top: 8px;
+                    font-weight: 200;
+                    color: $text-color-grey;
+                }
             }
         }
+    }
+
+    .logo,
+    .navbar {
+        position: fixed;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .logo {
+        top: 80px;
+    }
+
+    .navbar {
+        bottom: 80px;
     }
 }
 
 .event-page {
+    nav > p.current-location {
+        font-weight: 200;
+        color: $wisteria;
+        cursor: default;
+    }
+
     .reservation {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        padding-top: 32px;
 
         h4 {
             padding-left: 32px;
         }
     }
 
-    .content > div {
-        padding-top: 80px;
+    main {
+        > div {
+            padding-top: 48px;
 
-        h3 {
-            font-family: "Kaushan Script", cursive;
-            font-weight: 400;
-            color: $wisteria;
-            font-size: 28px;
-            padding-bottom: 32px;
-        }
-
-        > div.details {
-            > div {
+            &.with-button {
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding-bottom: 16px;
+                justify-content: center;
             }
 
-            .special-guest {
-                display: flex;
-                align-items: center;
+            h3 {
+                font-family: "Kaushan Script", cursive;
+                color: $wisteria;
+                padding-bottom: 24px;
+            }
 
-                img {
-                    height: 40px;
-                    border-radius: 50%;
-                    margin-right: 16px;
+            .row {
+                padding: 16px 0;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $border-color;
                 }
             }
 
-            > :not(:first-child) {
-                padding-top: 16px;
-            }
-
-            > :not(:last-child) {
-                border-bottom: 1px solid $border-color;
-            }
-        }
-
-        > div.special-guest {
-            display: flex;
-
-            img {
-                height: 90px;
-                border-radius: 50%;
-            }
-
-            > div {
+            div.row {
                 display: flex;
-                flex-direction: column;
-                padding-left: 24px;
+                justify-content: space-between;
+                align-items: center;
 
-                .links {
-                    display: flex;
-                    padding-top: 24px;
+                .special-guest {
+                    display: inline-flex;
+                    align-items: center;
 
-                    svg {
-                        height: 24px;
-                        width: 24px;
+                    img {
+                        height: 40px;
+                        border-radius: 50%;
                     }
 
-                    > :not(:first-child) {
-                        padding-left: 16px;
+                    p {
+                        padding-left: 8px;
+                        text-align: right;
+                        min-width: min-content;
+                    }
+                }
+            }
+
+            > div.special-guest {
+                display: flex;
+
+                img {
+                    height: 90px;
+                    border-radius: 50%;
+                }
+
+                > div {
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 24px;
+
+                    .links {
+                        display: flex;
+                        padding-top: 24px;
+
+                        svg {
+                            height: 24px;
+                            width: 24px;
+                        }
+
+                        > :not(:first-child) {
+                            padding-left: 16px;
+                        }
                     }
                 }
             }
@@ -618,7 +670,7 @@ header > nav {
     }
 }
 
-main {
+main.two-sections {
     display: flex;
 
     &.two-sections {
@@ -677,9 +729,6 @@ main {
 
             &.content {
                 padding: 16px;
-                display: flex;
-                flex-direction: column;
-                position: relative;
 
                 @media (min-width: 578px) {
                     padding: 80px 96px;
@@ -688,19 +737,38 @@ main {
                 > nav {
                     height: 60px;
                     width: 100%;
+                    padding: 0 24px;
                     background-color: $background-color;
                     display: flex;
-                    justify-content: space-evenly;
                     align-items: center;
                     position: sticky;
                     top: 60px;
                     z-index: 9998;
 
                     @media (min-width: 820px) {
-                        width: 50vw;
+                        width: 50%;
                         position: fixed;
                         top: 0;
                         right: 0;
+                    }
+
+                    > .link {
+                        text-align: center;
+                        padding: 0 4px;
+                    }
+
+                    svg {
+                        margin: 0 4px;
+                        fill: $text-color-grey;
+                        stroke: $text-color-grey;
+                    }
+
+                    &.content-evenly {
+                        justify-content: space-evenly;
+                    }
+
+                    &.content-left {
+                        justify-content: flex-end;
                     }
                 }
 
@@ -709,8 +777,6 @@ main {
                 }
 
                 > main {
-                    flex-direction: column;
-                    flex: 1;
                     padding-top: 48px;
                 }
 
@@ -724,7 +790,6 @@ main {
 
                     > div {
                         display: flex;
-                        align-items: flex-start;
 
                         > label {
                             width: 50%;
@@ -747,6 +812,7 @@ main {
 
                         > .submit {
                             width: 50%;
+                            margin-top: 32px;
 
                             &:disabled {
                                 opacity: 0.5;
@@ -759,14 +825,18 @@ main {
                     }
 
                     label {
-                        .error {
+                        p {
+                            padding-bottom: 16px;
+                            font-weight: 200;
+                        }
+
+                        p.error {
                             color: $wisteria;
                             font-size: 14px;
                         }
 
-                        p {
-                            padding-bottom: 16px;
-                            font-weight: 200;
+                        input.error {
+                            border: 1px solid $wisteria;
                         }
 
                         input:not([type="checkbox"]) {
@@ -800,10 +870,6 @@ main {
                             font-family: Verdana;
                         }
 
-                        input.error {
-                            border: 1px solid $wisteria;
-                        }
-
                         textarea {
                             resize: none;
                         }
@@ -815,31 +881,6 @@ main {
 
                         &:disabled {
                             opacity: 0.5;
-                        }
-                    }
-                }
-
-
-                .link {
-                    color: $text-color-grey;
-                    display: flex;
-                    align-items: flex-end;
-
-                    svg {
-                        fill: $text-color-grey;
-                    }
-
-                    &:hover {
-                        color: white;
-                        svg {
-                            fill: white;
-                        }
-                    }
-
-                    &.active {
-                        color: $wisteria;
-                        svg {
-                            fill: $wisteria;
                         }
                     }
                 }
@@ -864,335 +905,338 @@ main {
                         }
                     }
 
-                nav {
-                    z-index: 1;
-                    width: 50%;
-                    display: flex;
-                    padding: 24px 36px;
-                    position: fixed;
-                    top: 0;
-                    right: 0;
-                    background-color: #050505;
+                    nav {
+                        z-index: 1;
+                        width: 50%;
+                        display: flex;
+                        padding: 24px 36px;
+                        position: fixed;
+                        top: 0;
+                        right: 0;
+                        background-color: #050505;
 
-                    & > *:not(:last-child) {
-                        padding-right: 48px;
+                        & > *:not(:last-child) {
+                            padding-right: 48px;
+                        }
                     }
-                }
 
-                .menu > *:not(:first-child) {
-                    padding-top: 96px;
+                    .menu > *:not(:first-child) {
+                        padding-top: 96px;
+                    }
                 }
             }
         }
     }
-}
 
-.date-picker,
-.time-picker {
-    .react-datepicker-wrapper {
-        width: 100%;
-    }
-}
-
-div.react-datepicker {
-    background-color: $background-color;
-    color: white;
-    border: 1px solid $border-color;
-    border-radius: 10px;
-
-    .react-datepicker__time-container {
-        width: 100px;
+    .date-picker,
+    .time-picker {
+        .react-datepicker-wrapper {
+            width: 100%;
+        }
     }
 
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box {
-        width: 100px;
-    }
-
-    .react-datepicker__time-box {
-        border-bottom-left-radius: 10px;
-    }
-
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item--selected {
-        background-color: $wisteria;
-        color: white;
-        font-weight: bold;
-    }
-
-    li.react-datepicker__time-list-item:hover {
-        background-color: white;
-        color: $wisteria;
-    }
-
-    .react-datepicker__header {
-        text-align: center;
+    div.react-datepicker {
         background-color: $background-color;
-        border-bottom: 1px solid $border-color;
-        border-top-left-radius: 10px;
-        padding: 8px 0;
-        position: relative;
+        color: white;
+        border: 1px solid $border-color;
+        border-radius: 10px;
 
-        .react-datepicker__current-month,
-        .react-datepicker-time__header,
-        .react-datepicker-year-header {
-            margin-top: 0;
-            color: #c9a0dc;
+        .react-datepicker__time-container {
+            width: 100px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box {
+            width: 100px;
+        }
+
+        .react-datepicker__time-box {
+            border-bottom-left-radius: 10px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box
+            ul.react-datepicker__time-list
+            li.react-datepicker__time-list-item--selected {
+            background-color: $wisteria;
+            color: white;
             font-weight: bold;
-            font-size: 0.944rem;
+        }
+
+        li.react-datepicker__time-list-item:hover {
+            background-color: white;
+            color: $wisteria;
+        }
+
+        .react-datepicker__header {
+            text-align: center;
+            background-color: $background-color;
+            border-bottom: 1px solid $border-color;
+            border-top-left-radius: 10px;
+            padding: 8px 0;
+            position: relative;
+
+            .react-datepicker__current-month,
+            .react-datepicker-time__header,
+            .react-datepicker-year-header {
+                margin-top: 0;
+                color: #c9a0dc;
+                font-weight: bold;
+                font-size: 0.944rem;
+            }
+
+            .react-datepicker__day-name,
+            .react-datepicker__day,
+            .react-datepicker__time-name {
+                color: #fff;
+                display: inline-block;
+                width: 1.7rem;
+                line-height: 1.7rem;
+                text-align: center;
+                margin: 0.166rem;
+            }
+        }
+        .react-datepicker__header:not(
+                .react-datepicker__header--has-time-select
+            ) {
+            border-top-right-radius: 10px;
         }
 
         .react-datepicker__day-name,
         .react-datepicker__day,
         .react-datepicker__time-name {
-            color: #fff;
-            display: inline-block;
-            width: 1.7rem;
-            line-height: 1.7rem;
-            text-align: center;
-            margin: 0.166rem;
+            color: white;
+        }
+
+        .react-datepicker__day:hover {
+            border-radius: 50%;
+            background-color: white;
+            color: $wisteria;
+        }
+
+        .react-datepicker__day--selected,
+        .react-datepicker__day--selected:hover {
+            border-radius: 50%;
+            background-color: #c9a0dc;
+            color: white;
+        }
+
+        .react-datepicker__day--disabled,
+        .react-datepicker__month-text--disabled,
+        .react-datepicker__quarter-text--disabled,
+        .react-datepicker__year-text--disabled {
+            cursor: default;
+            color: $border-color;
+        }
+
+        .react-datepicker__day--keyboard-selected,
+        .react-datepicker__month-text--keyboard-selected,
+        .react-datepicker__quarter-text--keyboard-selected,
+        .react-datepicker__year-text--keyboard-selected {
+            border-radius: 50%;
+            background-color: #c9a0dc;
+            color: white;
+        }
+
+        .react-datepicker__navigation-icon::before,
+        .react-datepicker__navigation-icon:hover {
+            border-color: #c9a0dc;
+        }
+
+        .react-datepicker__time-container .react-datepicker__time {
+            background: $background-color;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .react-datepicker__time-container
+            .react-datepicker__time
+            .react-datepicker__time-box
+            ul.react-datepicker__time-list
+            li.react-datepicker__time-list-item--disabled {
+            color: $border-color;
         }
     }
-    .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
-        border-top-right-radius: 10px;
-    }
-
-    .react-datepicker__day-name,
-    .react-datepicker__day,
-    .react-datepicker__time-name {
-        color: white;
-    }
-
-    .react-datepicker__day:hover {
-        border-radius: 50%;
-        background-color: white;
-        color: $wisteria;
-    }
-
-    .react-datepicker__day--selected,
-    .react-datepicker__day--selected:hover {
-        border-radius: 50%;
-        background-color: #c9a0dc;
-        color: white;
-    }
-
-    .react-datepicker__day--disabled,
-    .react-datepicker__month-text--disabled,
-    .react-datepicker__quarter-text--disabled,
-    .react-datepicker__year-text--disabled {
-        cursor: default;
-        color: $border-color;
-    }
-
-    .react-datepicker__day--keyboard-selected,
-    .react-datepicker__month-text--keyboard-selected,
-    .react-datepicker__quarter-text--keyboard-selected,
-    .react-datepicker__year-text--keyboard-selected {
-        border-radius: 50%;
-        background-color: #c9a0dc;
-        color: white;
-    }
-
-    .react-datepicker__navigation-icon::before,
-    .react-datepicker__navigation-icon:hover {
-        border-color: #c9a0dc;
-    }
-
-    .react-datepicker__time-container .react-datepicker__time {
-        background: $background-color;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-
-    .react-datepicker__time-container
-        .react-datepicker__time
-        .react-datepicker__time-box
-        ul.react-datepicker__time-list
-        li.react-datepicker__time-list-item--disabled {
-        color: $border-color;
-    }
-}
-.react-datepicker-wrapper {
-    display: flex;
-}
-
-.popup {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    width: 50vw;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    > div {
-        height: max-content;
-        width: 80%;
+    .react-datepicker-wrapper {
         display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 80px 96px;
-        position: relative;
-        border: 1px solid $border-color;
-        background-color: $background-color;
-
-        > h4,
-        > p {
-            padding-bottom: 18px;
-        }
-
-        > .container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-
-            :not(:first-child) {
-                margin-left: 50px;
-            }
-
-            button {
-                width: 100px;
-            }
-        }
     }
-}
 
-.accordion {
-    width: 100%;
+    .popup {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 50vw;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
 
-    .item {
-        > header {
-            padding: 16px;
+        > div {
+            height: max-content;
+            width: 80%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid $border-color;
-            cursor: pointer;
+            flex-direction: column;
+            padding: 80px 96px;
+            position: relative;
+            border: 1px solid $border-color;
+            background-color: $background-color;
 
             > h4,
-            > svg {
-                transition: 0.3s;
+            > p {
+                padding-bottom: 18px;
             }
 
-            > svg {
-                height: 24px;
-                width: 24px;
-            }
+            > .container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
 
-            &.open,
-            &:hover {
-                > h4,
-                > svg {
-                    transform: scale(1.05);
+                :not(:first-child) {
+                    margin-left: 50px;
                 }
-                > h4 {
-                    color: $wisteria;
-                }
-                > svg {
-                    fill: $wisteria;
+
+                button {
+                    width: 100px;
                 }
             }
         }
+    }
 
-        .content {
-            &.hidden {
-                display: none;
-            }
+    .accordion {
+        width: 100%;
 
-            &.open {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        .item {
+            > header {
                 padding: 16px;
-                border-right: 1px solid #1e1e1e;
-                border-bottom: 1px solid #1e1e1e;
-                border-left: 1px solid #1e1e1e;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid $border-color;
+                cursor: pointer;
 
-                > .row:not(:first-child) {
-                    border-top: 1px solid $border-color;
-                    padding-top: 16px;
+                > h4,
+                > svg {
+                    transition: 0.3s;
                 }
 
-                > .row:not(:last-child) {
-                    padding-bottom: 16px;
+                > svg {
+                    height: 24px;
+                    width: 24px;
                 }
 
-                > .row {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
+                &.open,
+                &:hover {
+                    > h4,
+                    > svg {
+                        transform: scale(1.05);
+                    }
+                    > h4 {
+                        color: $wisteria;
+                    }
+                    > svg {
+                        fill: $wisteria;
+                    }
                 }
             }
 
-            &.referral {
-                > div {
-                    width: 100%;
+            .content {
+                &.hidden {
+                    display: none;
+                }
+
+                &.open {
                     display: flex;
-                    justify-content: space-evenly;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 16px;
+                    border-right: 1px solid #1e1e1e;
+                    border-bottom: 1px solid #1e1e1e;
+                    border-left: 1px solid #1e1e1e;
 
-                    button {
-                        color: $text-color-grey;
+                    > .row:not(:first-child) {
+                        border-top: 1px solid $border-color;
+                        padding-top: 16px;
+                    }
+
+                    > .row:not(:last-child) {
+                        padding-bottom: 16px;
+                    }
+
+                    > .row {
+                        width: 100%;
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        svg {
-                            height: 24px;
-                            width: 24px;
-                            margin-left: 16px;
-                            stroke: $text-color-grey;
-                        }
-
-                        &.referral-link {
-                            width: 60%;
-                        }
-
-                        &:hover {
-                            color: white;
-
-                            svg {
-                                stroke: white;
-                            }
-                        }
-
-                        &:active {
-                            color: $wisteria;
-
-                            svg {
-                                stroke: $wisteria;
-                            }
-                        }
+                        justify-content: space-between;
                     }
                 }
 
-                > p {
-                    padding-top: 16px;
+                &.referral {
+                    > div {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
+
+                        button {
+                            color: $text-color-grey;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            svg {
+                                height: 24px;
+                                width: 24px;
+                                margin-left: 16px;
+                                stroke: $text-color-grey;
+                            }
+
+                            &.referral-link {
+                                width: 60%;
+                            }
+
+                            &:hover {
+                                color: white;
+
+                                svg {
+                                    stroke: white;
+                                }
+                            }
+
+                            &:active {
+                                color: $wisteria;
+
+                                svg {
+                                    stroke: $wisteria;
+                                }
+                            }
+                        }
+                    }
+
+                    > p {
+                        padding-top: 16px;
+                    }
                 }
             }
         }
     }
-}
 
-.notice {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    .notice {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    > :not(:first-child) {
-        padding-top: 16px;
+        > :not(:first-child) {
+            padding-top: 16px;
+        }
     }
 }
 
 div.cover {
     width: 100%;
 
-    > .image {
+    .image {
         height: 100%;
         width: 100%;
         object-fit: cover;

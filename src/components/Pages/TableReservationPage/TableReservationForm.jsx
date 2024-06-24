@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,6 +17,7 @@ import NumberOfChildrenInput from "../../Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../Inputs/PhoneInput";
 import ReservedTable from "../../../models/ReservedTable";
 import TimeInput from "../../Inputs/TimeInput";
+import { addReservation } from "../../../store";
 
 const today = new Date();
 
@@ -66,6 +67,7 @@ const reservationSchema = yup.object({
 
 const TableReservationForm = () => {
     const user = useSelector((state) => state.user) || null;
+    const dispatch = useDispatch();
     const [reservedTable, setReservedTable] = useState(null);
 
     const {
@@ -122,7 +124,7 @@ const TableReservationForm = () => {
             additionalRequirements
         );
 
-        if (user) user.addReservation(reservation);
+        if (user) dispatch(addReservation);
 
         setReservedTable(reservation);
         reset();

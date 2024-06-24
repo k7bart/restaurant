@@ -15,7 +15,7 @@ import Referral from "./Referral";
 import TableReservations from "./TableReservations";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
-const UserProfilePage = () => {
+const ProfilePage = () => {
     const header = {
         title: "Personal profile",
         text: "Manage your personal information and preferences here.",
@@ -27,7 +27,7 @@ const UserProfilePage = () => {
     const Accordion = () => {
         return (
             <div className="accordion">
-                <OrderHistory user={user} />
+                <OrderHistory orders={user.orders} />
                 <TableReservations reservations={user.reservations} />
                 <PersonalData user={user} />
                 <DeliveryAddresses user={user} />
@@ -47,29 +47,35 @@ const UserProfilePage = () => {
         }
     }, [user, navigate]);
 
-    return user ? (
-        <TwoSectionsPage title="Profile" className="profile-page">
-            <CoverSection>
-                <Cover
-                    subtitle="Your presence brightens our day"
-                    title={"Hello, " + user.name}
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.jpeg?updatedAt=1718193744098"
-                />
-            </CoverSection>
-            <ContentSection
-                header={header}
-                nav={
-                    <Link className="link" to="/" onClick={handleLogOut}>
-                        Log out <IoLogOutOutline />
-                    </Link>
-                }
-            >
-                <Accordion />
-            </ContentSection>
-        </TwoSectionsPage>
-    ) : (
-        navigate()
+    return (
+        user && (
+            <TwoSectionsPage title="Profile" className="profile-page">
+                <CoverSection>
+                    <Cover
+                        subtitle="Your presence brightens our day"
+                        title={"Hello, " + user.name}
+                        backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.jpeg?updatedAt=1718193744098"
+                    />
+                </CoverSection>
+                <ContentSection
+                    header={header}
+                    nav={
+                        <nav className="content-left">
+                            <Link
+                                className="link"
+                                to="/"
+                                onClick={handleLogOut}
+                            >
+                                Log out <IoLogOutOutline />
+                            </Link>
+                        </nav>
+                    }
+                >
+                    <Accordion />
+                </ContentSection>
+            </TwoSectionsPage>
+        )
     );
 };
 
-export default UserProfilePage;
+export default ProfilePage;

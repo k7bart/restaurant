@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import HeaderNavigation from "./HeaderNavigation/HeaderNavigation";
+import HeaderNavigation from "./HeaderNavigation";
 
 const TwoSectionsPage = ({ children, title, className = "" }) => {
     return (
