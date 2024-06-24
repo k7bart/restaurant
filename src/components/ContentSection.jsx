@@ -3,7 +3,7 @@ import Footer from "./Footer";
 const ContentSection = ({ header = undefined, nav = undefined, children }) => {
     return (
         <section className="content">
-            {nav && <nav>{nav}</nav>}
+            {nav}
             {header && (
                 <header>
                     <h3>{header.title}</h3>
