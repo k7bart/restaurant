@@ -9,7 +9,7 @@ import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
 import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
-import UserProfilePage from "./components/Pages/UserProfilePage/UserProfilePage";
+import UserProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 
 const routes = [
     {
