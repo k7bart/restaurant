@@ -3,7 +3,7 @@ import { menu } from "../../../state";
 import { capitalize } from "../../../utils/stringUtils";
 import debounce from "../../../utils/debounce";
 import Category from "./Category";
-import Footer from "../../Footer/Footer";
+import Footer from "../../Footer";
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState(menu[0].name);

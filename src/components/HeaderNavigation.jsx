@@ -1,15 +1,17 @@
+import Logo from "./Logo/Logo";
+import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
-import Logo from "../Logo/Logo";
 import { FaUserCircle } from "react-icons/fa";
-import "./HeaderNavigation.scss";
 
 function HeaderNavigation() {
     return (
         <header>
-            <nav className="header-navigation">
+            <nav>
                 <IoMenu />
                 <Logo />
-                <FaUserCircle />
+                <Link to="/profile">
+                    <FaUserCircle />
+                </Link>
             </nav>
         </header>
     );

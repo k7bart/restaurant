@@ -2,14 +2,14 @@ import CartPage from "./components/Pages/CartPage/CartPage";
 import EventDetails from "./components/Pages/EventPage/EventDetails";
 import EventPage from "./components/Pages/EventPage/EventPage";
 import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
-import EventsPage from "./components/Pages/EventsPage/EventsPage";
+import EventsPage from "./components/Pages/EventsPage";
 import FrontPage from "./components/Pages/FrontPage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
 import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
-import UserProfilePage from "./components/Pages/UserProfilePage/UserProfilePage";
+import UserProfilePage from "./components/Pages/ProfilePage/ProfilePage";
 
 const routes = [
     {

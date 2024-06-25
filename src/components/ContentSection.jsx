@@ -1,13 +1,15 @@
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
-const ContentSection = ({ header = false, nav = false, children }) => {
+const ContentSection = ({ header = undefined, nav = undefined, children }) => {
     return (
         <section className="content">
-            <nav>{nav}</nav>
-            <header>
-                <h3>{header.title}</h3>
-                <p className="large">{header.text}</p>
-            </header>
+            {nav}
+            {header && (
+                <header>
+                    <h3>{header.title}</h3>
+                    <p className="large">{header.text}</p>
+                </header>
+            )}
             <main>{children}</main>
             <Footer />
         </section>

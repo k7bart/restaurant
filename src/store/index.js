@@ -9,6 +9,8 @@ import {
 import {
     userReducer,
     addAddress,
+    addReservation,
+    addTicket,
     logOut,
     removeAddress,
     setCurrentAddress,
@@ -30,6 +32,8 @@ export {
     reset,
     updateUserData,
     addAddress,
+    addReservation,
+    addTicket,
     logOut,
     removeAddress,
     setCurrentAddress,

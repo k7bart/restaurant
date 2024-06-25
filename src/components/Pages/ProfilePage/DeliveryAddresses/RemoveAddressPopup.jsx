@@ -8,8 +8,9 @@ const RemoveAddressPopup = ({ closePopup, address }) => {
     const handleAddressRemove = (id) => {
         dispatch(removeAddress(id));
     };
-    const addressStr = `${address.city}, ${address.street} ${address.house}${
-        address.apartment ? "/" + address.apartment : ""
+    const { id, city, street, house, apartment } = address;
+    const addressStr = `${city}, ${street} ${house}${
+        apartment ? "/" + apartment : ""
     }`;
 
     return (
@@ -20,7 +21,7 @@ const RemoveAddressPopup = ({ closePopup, address }) => {
                 <button
                     className="small transparent"
                     onClick={() => {
-                        handleAddressRemove(address.id);
+                        handleAddressRemove(id);
                         closePopup();
                     }}
                 >

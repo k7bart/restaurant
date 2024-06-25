@@ -1,5 +1,3 @@
-import "./Cover.scss";
-
 function Cover({ subtitle, title, backgroundImage, text }) {
     return (
         <div className="cover">
@@ -12,7 +10,7 @@ function Cover({ subtitle, title, backgroundImage, text }) {
                 <div className="titles-container">
                     <h2 className="subtitle">{subtitle}</h2>
                     <h1 className="title">{title}</h1>
-                    {text && <p>{text}</p>}
+                    {text && <p className="large">{text}</p>}
                 </div>
             </div>
         </div>

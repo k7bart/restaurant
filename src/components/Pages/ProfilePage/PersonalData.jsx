@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { updateUserData } from "../../../store/index";
 import { capitalize } from "../../../utils/stringUtils";
+
+import * as yup from "yup";
 
 import AccordionItem from "./AccordionItem";
 import BirthdayInput from "../../Inputs/BirthdayInput";
@@ -26,6 +26,7 @@ const schema = yup.object({
 
 const PersonalData = ({ user }) => {
     const dispatch = useDispatch();
+    const { name, surname, email, phone, birthday } = user;
 
     const {
         register,
@@ -36,33 +37,24 @@ const PersonalData = ({ user }) => {
     } = useForm({
         resolver: yupResolver(schema),
         defaultValues: {
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            phone: user.phone,
-            birthday: user.birthday || null,
+            name: name,
+            surname: surname,
+            email: email,
+            phone: phone,
+            birthday: birthday,
         },
     });
 
-    useEffect(() => {
-        reset({
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            phone: user.phone,
-            birthday: user.birthday || null,
-        });
-    }, [user, reset]);
-
     const onSubmit = (data) => {
+        const { name, surname, birthday } = data;
         const formattedData = {
             ...data,
-            name: capitalize(data.name),
-            surname: capitalize(data.surname),
-            birthday: data.birthday ? data.birthday.toISOString() : null,
+            name: capitalize(name),
+            surname: capitalize(surname),
+            birthday: birthday ? birthday.toISOString() : null,
         };
-        console.log(formattedData);
         dispatch(updateUserData(formattedData));
+        reset();
     };
 
     return (
@@ -80,6 +72,7 @@ const PersonalData = ({ user }) => {
 
                 <div>
                     <BirthdayInput control={control} error={errors.birthday} />
+
                     <button type="submit" className="submit small color">
                         Save changes
                     </button>

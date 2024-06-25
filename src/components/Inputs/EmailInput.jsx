@@ -1,11 +1,7 @@
-const EmailInput = ({ register, error }) => {
-    return (
-        <label>
-            <p>Email</p>
-            <input {...register("email")} type="text" />
-            {error && <p className="error">{error.message}</p>}
-        </label>
-    );
+import Input from "./Input";
+
+const EmailInput = (props) => {
+    return <Input fieldName="email" label="E-mail" {...props} />;
 };
 
 export default EmailInput;

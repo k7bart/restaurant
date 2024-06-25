@@ -41,7 +41,7 @@ const Reservation = ({ reservation }) => {
 };
 
 const TableReservations = ({ reservations }) => {
-    const sortedReservations = reservations.sort((a, b) =>
+    const sortedReservations = [...reservations].sort((a, b) =>
         dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1
     );
 

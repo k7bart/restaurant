@@ -1,80 +1,88 @@
 import { useParams, NavLink, Link } from "react-router-dom";
 import { events, staff } from "../../../state.js";
-import Footer from "../../Footer/Footer.jsx";
+import dayjs from "dayjs";
+import ContentSection from "../../ContentSection.jsx";
 import SpecialGuest from "./SpecialGuest.jsx";
+
+const nav = (
+    <nav className="content-evenly">
+        {events.map((event) => (
+            <NavLink to={`/events/${event.id}`} className="link" key={event.id}>
+                {event.title}
+            </NavLink>
+        ))}
+    </nav>
+);
+
+const header = {
+    title: "Reserve Your Spot",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam.",
+};
 
 const EventDetails = () => {
     const { eventId } = useParams();
     const event = events.find((e) => e.id === eventId);
-    const guest = staff.find((person) => person.name === event.specialGuest);
+    const { id, ageLimit, date, language, menu, price, specialGuest } = event;
+    const guest = staff.find((person) => person.name === specialGuest);
 
     return (
-        <section className="content">
-            <nav>
-                {events.map((event, i) => (
-                    <NavLink
-                        to={`/events/${event.id}`}
-                        className="link"
-                        key={i}
-                    >
-                        {event.title}
-                    </NavLink>
-                ))}
-            </nav>
-
-            <header>
-                <h3>Reserve Your Spot</h3>
-                <p className="large">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Porttitor massa id neque aliquam.
-                </p>
-
-                <div className="reservation">
-                    <Link to={`/events/${event.id}/reservation`}>
-                        <button className="small color">BOOK A SPOT</button>
-                    </Link>
-                    <h4>${event.price}</h4>
-                </div>
-            </header>
+        <ContentSection nav={nav} header={header}>
+            <span className="reservation">
+                <Link to={`/events/${id}/reservation`}>
+                    <button className="small color">Book a spot</button>
+                </Link>
+                {ageLimit && <h4>{ageLimit}+</h4>}
+                <h4>${price}</h4>
+            </span>
 
             <div>
                 <h3>Details</h3>
-                <div className="details">
-                    <div>
-                        <h4>Date</h4>
-                        <p className="large">{event.date}</p>
-                    </div>
+                <div className="row">
+                    <p className="large">Date</p>
+                    <p className="large white">
+                        {dayjs(date).format("DD/MM/YYYY")}
+                    </p>
+                </div>
 
-                    {guest && (
-                        <div>
-                            <h4>Special guest</h4>
-                            <div className="special-guest">
-                                <img src={guest.photo} alt="" />
-                                <p className="large">{guest.name}</p>
-                            </div>
-                        </div>
-                    )}
+                {guest && (
+                    <div className="row">
+                        <p className="large">Special guest</p>
+                        <span className="special-guest">
+                            <img src={guest.photo} alt={guest.name} />
+                            <p className="large white">{guest.name}</p>
+                        </span>
+                    </div>
+                )}
 
-                    <div>
-                        <h4>Location</h4>
-                        <p className="large">Lviv</p>
-                    </div>
-                    <div>
-                        <h4>Language</h4>
-                        <p className="large">{event.language}</p>
-                    </div>
+                <div className="row">
+                    <p className="large">Location</p>
+                    <p className="large white">Lviv</p>
+                </div>
+                <div className="row">
+                    <p className="large">Language</p>
+                    <p className="large white">{language}</p>
                 </div>
             </div>
 
-            <div>
-                <h3>Menu</h3>
-            </div>
+            {menu && (
+                <div>
+                    <h3>Menu</h3>
+                    {menu.map((item) => (
+                        <div className="row" key={item}>
+                            <p className="large white">{item}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {guest && <SpecialGuest guest={guest} />}
 
-            <Footer />
-        </section>
+            <div className="with-button">
+                <Link to={`/events/${id}/reservation`}>
+                    <button className="large color">Book a spot</button>
+                </Link>
+            </div>
+        </ContentSection>
     );
 };
 
