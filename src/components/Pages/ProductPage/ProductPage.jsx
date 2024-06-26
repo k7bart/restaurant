@@ -18,7 +18,7 @@ const ProductPage = () => {
     const { productId } = useParams();
     const product = menu
         .find((c) => c.name === category)
-        .dishes.find((p) => p.id === productId);
+        .products.find((p) => p.id === productId);
 
     // amount
     const [amount, setAmount] = useState(1);
