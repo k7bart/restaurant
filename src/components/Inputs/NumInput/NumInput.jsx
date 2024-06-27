@@ -7,7 +7,7 @@ const NumInput = ({ amount, onChange }) => {
         onChange(amount + 1);
     };
     const handleDecrement = () => {
-        if (amount === 1) return;
+        if (amount === 0) return;
         onChange(amount - 1);
     };
 
@@ -16,7 +16,7 @@ const NumInput = ({ amount, onChange }) => {
             <button
                 className="product-count less-product"
                 onClick={handleDecrement}
-                disabled={amount <= 1}
+                disabled={amount === 0}
             >
                 <FaMinus />
             </button>
