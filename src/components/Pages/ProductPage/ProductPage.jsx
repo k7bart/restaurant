@@ -82,6 +82,7 @@ const ProductPage = () => {
                         <div className="amount">
                             <NumInput
                                 amount={amount}
+                                min={0}
                                 onChange={handleAmountChange}
                             />
                         </div>

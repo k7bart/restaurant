@@ -2,7 +2,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import "./NumInput.scss";
 
-const NumInput = ({ amount, onChange }) => {
+const NumInput = ({ amount, min = 1, onChange }) => {
     const handleIncrement = () => {
         onChange(amount + 1);
     };
@@ -16,7 +16,7 @@ const NumInput = ({ amount, onChange }) => {
             <button
                 className="product-count less-product"
                 onClick={handleDecrement}
-                disabled={amount === 0}
+                disabled={amount === min}
             >
                 <FaMinus />
             </button>
