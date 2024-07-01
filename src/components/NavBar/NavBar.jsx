@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartLink from "./CartLink";
 import ProfileLink from "./ProfileLink";
-import "./NavBar.scss";
 
 const links = [
     { to: "/menu", text: "Menu" },

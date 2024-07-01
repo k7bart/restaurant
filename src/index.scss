@@ -103,7 +103,7 @@ svg {
 a.link {
     color: $text-color-grey;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 
     svg {
         fill: $text-color-grey;
@@ -770,8 +770,6 @@ main.two-sections {
 
                     svg {
                         margin: 0 4px;
-                        fill: $text-color-grey;
-                        stroke: $text-color-grey;
                     }
 
                     &.content-evenly {
@@ -907,8 +905,6 @@ main.two-sections {
                     }
 
                     .link {
-                        display: flex;
-                        align-items: flex-end;
                         padding-top: 20px;
 
                         :first-child {
@@ -1072,6 +1068,63 @@ main.two-sections {
     }
     .react-datepicker-wrapper {
         display: flex;
+    }
+
+    .navbar {
+        display: flex;
+        width: max-content;
+        background-color: white;
+        border-radius: 35px;
+        padding: 8px;
+
+        > :not(:first-child) {
+            margin-left: 8px;
+        }
+
+        a,
+        p {
+            width: fit-content;
+            font-weight: 300;
+        }
+
+        > a {
+            display: flex;
+            align-items: center;
+            border-radius: 26px;
+            color: $background-color;
+            padding: 16px;
+
+            &.profile {
+                color: $wisteria;
+                display: flex;
+                justify-content: center;
+            }
+
+            > svg {
+                width: 20px;
+                height: 20px;
+                fill: $background-color;
+            }
+
+            &.cart {
+                > svg {
+                    margin-right: 8px;
+                }
+            }
+
+            &:hover,
+            &.active {
+                color: white;
+                background-color: $background-color;
+                > .total {
+                    color: white;
+                }
+
+                > svg {
+                    fill: white;
+                }
+            }
+        }
     }
 
     .popup {
