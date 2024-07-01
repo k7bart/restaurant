@@ -1069,64 +1069,7 @@ main.two-sections {
     .react-datepicker-wrapper {
         display: flex;
     }
-
-    .navbar {
-        display: flex;
-        width: max-content;
-        background-color: white;
-        border-radius: 35px;
-        padding: 8px;
-
-        > :not(:first-child) {
-            margin-left: 8px;
-        }
-
-        a,
-        p {
-            width: fit-content;
-            font-weight: 300;
-        }
-
-        > a {
-            display: flex;
-            align-items: center;
-            border-radius: 26px;
-            color: $background-color;
-            padding: 16px;
-
-            &.profile {
-                color: $wisteria;
-                display: flex;
-                justify-content: center;
-            }
-
-            > svg {
-                width: 20px;
-                height: 20px;
-                fill: $background-color;
-            }
-
-            &.cart {
-                > svg {
-                    margin-right: 8px;
-                }
-            }
-
-            &:hover,
-            &.active {
-                color: white;
-                background-color: $background-color;
-                > .total {
-                    color: white;
-                }
-
-                > svg {
-                    fill: white;
-                }
-            }
-        }
-    }
-
+    
     .popup {
         display: flex;
         justify-content: center;
@@ -1293,6 +1236,63 @@ main.two-sections {
 
         > :not(:first-child) {
             padding-top: 16px;
+        }
+    }
+}
+
+.navbar {
+    display: flex;
+    width: max-content;
+    background-color: white;
+    border-radius: 35px;
+    padding: 8px;
+
+    > :not(:first-child) {
+        margin-left: 8px;
+    }
+
+    a,
+    p {
+        width: fit-content;
+        font-weight: 300;
+    }
+
+    > a {
+        display: flex;
+        align-items: center;
+        border-radius: 26px;
+        color: $background-color;
+        padding: 16px;
+
+        &.profile {
+            color: $wisteria;
+            display: flex;
+            justify-content: center;
+        }
+
+        > svg {
+            width: 20px;
+            height: 20px;
+            fill: $background-color;
+        }
+
+        &.cart {
+            > svg {
+                margin-right: 8px;
+            }
+        }
+
+        &:hover,
+        &.active {
+            color: white;
+            background-color: $background-color;
+            > .total {
+                color: white;
+            }
+
+            > svg {
+                fill: white;
+            }
         }
     }
 }
