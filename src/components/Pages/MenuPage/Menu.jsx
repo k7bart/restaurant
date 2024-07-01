@@ -3,23 +3,23 @@ import { menu } from "../../../state";
 import { capitalize } from "../../../utils/stringUtils";
 import debounce from "../../../utils/debounce";
 import Category from "./Category";
-import Footer from "../../Footer";
+import ContentSection from "../../ContentSection";
+
+const handleClick = (id) => () => {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    }
+};
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState(menu[0].name);
 
-    const handleClick = (id) => () => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
-        }
-    };
-
     const handleScroll = () => {
-        const navbar = document.querySelector(".navigation");
+        const navbar = document.querySelector("nav");
         const categories = document.querySelectorAll(".category");
 
         categories.forEach((category) => {
@@ -42,30 +42,30 @@ const Menu = () => {
         };
     });
 
-    const links = menu.map((category) => (
-        <a
-            className={`link ${
-                activeCategory === category.name ? "active" : ""
-            }`}
-            key={category.name}
-            onClick={handleClick(category.name)}
-        >
-            {capitalize(category.name)}
-        </a>
-    ));
+    const nav = (
+        <nav className="content-evenly">
+            {menu.map((category) => (
+                <a
+                    className={`link ${
+                        activeCategory === category.name ? "active" : ""
+                    }`}
+                    key={category.name}
+                    onClick={handleClick(category.name)}
+                >
+                    {capitalize(category.name)}
+                </a>
+            ))}
+        </nav>
+    );
 
     return (
-        <section className="content">
-            <nav className="navigation">{links}</nav>
-            <div className="content">
-                <section className="menu">
-                    {menu.map((category) => (
-                        <Category key={category.name} category={category} />
-                    ))}
-                </section>
-                <Footer />
-            </div>
-        </section>
+        <ContentSection nav={nav}>
+            <section className="menu">
+                {menu.map((category) => (
+                    <Category key={category.name} category={category} />
+                ))}
+            </section>
+        </ContentSection>
     );
 };
 

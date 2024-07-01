@@ -11,9 +11,8 @@ const CartLink = () => {
         0
     );
     return (
-        <NavLink to="/cart">
-            <FaShoppingCart />
-            <p className="total">${total}</p>
+        <NavLink to="/cart" className="cart link">
+            <FaShoppingCart />${total}
         </NavLink>
     );
 };

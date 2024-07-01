@@ -7,10 +7,10 @@ const Category = ({ category }) => {
             <h3>{capitalize(category.name)}</h3>
 
             <div>
-                {category.dishes.map((dish) => (
+                {category.products.map((product) => (
                     <ProductLink
-                        key={dish.id}
-                        dish={dish}
+                        key={product.id}
+                        product={product}
                         category={category.name}
                     />
                 ))}

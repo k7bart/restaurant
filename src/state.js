@@ -100,7 +100,7 @@ import lavenderLatte from "./assets/coffee/lavender-latte.jpeg";
 export const menu = [
     {
         name: "breakfast",
-        dishes: [
+        products: [
             {
                 name: "Croque Madame",
                 id: "croque-madame",
@@ -170,7 +170,7 @@ export const menu = [
 
     {
         name: "desserts",
-        dishes: [
+        products: [
             {
                 name: "Raspberry-Coconut Tart",
                 nutrients: [
@@ -200,7 +200,7 @@ export const menu = [
     },
     {
         name: "coffee",
-        dishes: [
+        products: [
             {
                 name: "Cappuccino",
                 id: "cappuccino",
