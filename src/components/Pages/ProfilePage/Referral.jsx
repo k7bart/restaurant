@@ -1,6 +1,6 @@
 import { IoCopyOutline } from "react-icons/io5";
 import { useState } from "react";
-import AccordionItem from "./AccordionItem";
+import AccordionItem from "../../Accordion/AccordionItem";
 
 const Referral = ({ id }) => {
     const REFERRAL_LINK = "https://bart.ua/?referral=" + id; // make it work

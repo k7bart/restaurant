@@ -6,7 +6,7 @@ import { capitalize } from "../../../utils/stringUtils";
 
 import * as yup from "yup";
 
-import AccordionItem from "./AccordionItem";
+import AccordionItem from "../../Accordion/AccordionItem";
 import BirthdayInput from "../../Inputs/BirthdayInput";
 import EmailInput from "../../Inputs/EmailInput";
 import NameInput from "../../Inputs/NameInput";

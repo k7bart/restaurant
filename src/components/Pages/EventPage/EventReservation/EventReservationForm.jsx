@@ -75,8 +75,8 @@ const EventReservationForm = ({ event }) => {
         phone,
     }) => {
         const ticket = {
-            id: 123456,
-            event: event.id,
+            id: 123456, // fix id number
+            eventId: event.id,
             guests: { adults, children },
             owner: { name: capitalize(name), email, phone },
         };
