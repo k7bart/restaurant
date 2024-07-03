@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import AccordionItem from "./AccordionItem";
+import { useMemo } from "react";
+import AccordionItem from "../../Accordion/AccordionItem";
 
 const today = dayjs();
 
-const formatGuestCount = (guests) => {
-    const { adults, children } = guests;
-
+const formatGuestCount = ({ adults, children }) => {
     if (adults === 1) return "1 guest";
     if (children) return `Adults: ${adults}, children: ${children}`;
     return `${adults} guests`;
@@ -22,15 +21,13 @@ const Reservation = ({ reservation }) => {
     const { additionalRequirements, date, time, guests } = reservation;
 
     return (
-        <div className={getDateStatus(date) + " reservation row"}>
+        <div className={`${getDateStatus(date)} reservation row`}>
             <div>
                 <p>
                     {dayjs(date).format("DD/MM/YYYY")} {time}
                 </p>
-
                 <p>{formatGuestCount(guests)}</p>
             </div>
-
             {additionalRequirements && (
                 <div>
                     <p>Additional requirements: {additionalRequirements}</p>
@@ -41,9 +38,11 @@ const Reservation = ({ reservation }) => {
 };
 
 const TableReservations = ({ reservations }) => {
-    const sortedReservations = [...reservations].sort((a, b) =>
-        dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1
-    );
+    const sortedReservations = useMemo(() => {
+        return [...reservations].sort((a, b) =>
+            dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1
+        );
+    }, [reservations]);
 
     return (
         <AccordionItem title="Table reservations" className="reservations">
@@ -57,7 +56,10 @@ const TableReservations = ({ reservations }) => {
                 </p>
             ) : (
                 sortedReservations.map((reservation, i) => (
-                    <Reservation key={i} reservation={reservation} />
+                    <Reservation
+                        key={i} // reservation id
+                        reservation={reservation}
+                    />
                 ))
             )}
         </AccordionItem>
