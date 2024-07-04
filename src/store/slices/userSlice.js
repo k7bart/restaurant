@@ -17,18 +17,54 @@ const defaultUser = {
             date: "19:45 08/03/2024", // change to Date
             price: 48,
             address: "Lviv, Chornovola st, 85/7",
+            orderedProducts: [
+                {
+                    id: "croque-madame",
+                    category: "breakfast",
+                    amount: 1,
+                },
+                {
+                    id: "crepes-suzette",
+                    category: "breakfast",
+                    amount: 1,
+                },
+            ],
         },
         {
             id: 84740,
             date: "19:55 03/01/2024", // change to Date
             price: 64,
             address: "Khmelnytskyi, Chornovola st, 87/1",
+            orderedProducts: [
+                {
+                    id: "croque-madame",
+                    category: "breakfast",
+                    amount: 2,
+                },
+                {
+                    id: "crepes-suzette",
+                    category: "breakfast",
+                    amount: 2,
+                },
+            ],
         },
         {
             id: 72897,
             date: "19:45 08/11/2023", // change to Date
             price: 28,
             address: "Lviv, Chornovola st, 87/1",
+            orderedProducts: [
+                {
+                    id: "croque-madame",
+                    category: "breakfast",
+                    amount: 3,
+                },
+                {
+                    id: "crepes-suzette",
+                    category: "breakfast",
+                    amount: 3,
+                },
+            ],
         },
     ],
     currentAddressId: "chornovola87/16",
