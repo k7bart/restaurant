@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
-import AccordionItem from "./AccordionItem";
+import Accordion from "../../Accordion/Accordion";
 import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
@@ -13,6 +13,7 @@ import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./Referral";
 import TableReservations from "./TableReservations";
+import Tickets from "./Tickets";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
 const ProfilePage = () => {
@@ -23,19 +24,6 @@ const ProfilePage = () => {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const Accordion = () => {
-        return (
-            <div className="accordion">
-                <OrderHistory orders={user.orders} />
-                <TableReservations reservations={user.reservations} />
-                <PersonalData user={user} />
-                <DeliveryAddresses user={user} />
-                <Referral id={user.id} />
-                {/* // <AccordionItem title="Message" /> */}
-            </div>
-        );
-    };
 
     const handleLogOut = () => {
         dispatch(logOut());
@@ -71,7 +59,14 @@ const ProfilePage = () => {
                         </nav>
                     }
                 >
-                    <Accordion />
+                    <Accordion>
+                        <OrderHistory orders={user.orders} />
+                        <TableReservations reservations={user.reservations} />
+                        <Tickets tickets={user.tickets} />
+                        <PersonalData user={user} />
+                        <DeliveryAddresses user={user} />
+                        <Referral id={user.id} />
+                    </Accordion>
                 </ContentSection>
             </TwoSectionsPage>
         )
