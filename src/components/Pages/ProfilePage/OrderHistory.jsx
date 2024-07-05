@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/slices/cartSlice";
 import { menu } from "../../../state";
-import { IoRepeat } from "react-icons/io5";
+import { FaCartArrowDown } from "react-icons/fa6";
 
 import AccordionItem from "../../Accordion/AccordionItem";
+import { useNavigate } from "react-router-dom";
 
 const OrderHistory = ({ orders }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const addOrderToCart = (orderedProducts) => {
         orderedProducts.forEach(({ id, category, amount }) => {
@@ -18,20 +20,25 @@ const OrderHistory = ({ orders }) => {
         });
     };
 
+    const handleClick = (orderedProducts) => {
+        addOrderToCart(orderedProducts);
+        navigate("/cart");
+    };
+
     return (
         <AccordionItem title="Order history">
             {orders.map(({ id, date, amount, address, orderedProducts }) => {
                 return (
-                    <div key={id} className="row">
-                        <p>{id}</p>
-                        <p>{date}</p>
-                        <p>${amount}</p>
-                        <p>{address}</p>
+                    <div key={id} className="row order">
+                        <p className="id">{id}</p>
+                        <p className="date">{date}</p>
+                        <p className="amount">${amount}</p>
+                        <p className="address">{address}</p>
                         <button
                             className="with-svg"
-                            onClick={() => addOrderToCart(orderedProducts)}
+                            onClick={() => handleClick(orderedProducts)}
                         >
-                            <IoRepeat />
+                            <FaCartArrowDown />
                         </button>
                     </div>
                 );
