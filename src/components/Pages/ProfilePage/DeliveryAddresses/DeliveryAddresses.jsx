@@ -1,4 +1,4 @@
-import AccordionItem from "../AccordionItem";
+import AccordionItem from "../../../Accordion/AccordionItem";
 import AddAddressPopup from "./AddAddressPopup";
 import Address from "./Address";
 import { useState } from "react";
