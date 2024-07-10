@@ -1,11 +1,7 @@
-import cupping from "./assets/events/cupping.jpeg";
-import honey from "./assets/events/honey.jpeg";
-import cheeseDegustation from "./assets/events/cheese-degustation.jpeg";
-import casablanca from "./assets/events/casablanca.jpeg";
 export const events = [
     {
         id: "cupping",
-        photo: cupping,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/cupping.jpeg?updatedAt=1720593702132",
         subtitle: "The Art of",
         title: "Coffee Cupping",
         date: "June 16, 2024",
@@ -15,7 +11,7 @@ export const events = [
     },
     {
         id: "honey",
-        photo: honey,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/honey.webp?updatedAt=1720593702338",
         subtitle: "Local",
         title: "Honey Degustation",
         date: "March 17, 2024",
@@ -25,7 +21,7 @@ export const events = [
     },
     {
         id: "cheese-degustation",
-        photo: cheeseDegustation,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/cheese-degustation.webp?updatedAt=1720593702234",
         subtitle: "French",
         title: "Cheeses Tasting",
         date: "May 16, 2024",
@@ -35,7 +31,7 @@ export const events = [
     },
     {
         id: "movies-and-wine",
-        photo: casablanca,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/casablanca.webp?updatedAt=1720593725421",
         subtitle: "Old",
         title: "Movies and Wine",
         date: "March 30, 2024",
@@ -45,32 +41,23 @@ export const events = [
     },
 ];
 
-import bob from "./assets/staff/beekeeper.jpeg";
-import remy from "./assets/staff/remy-ratatouille.jpeg";
 export const staff = [
     {
         name: "Bob Bobert",
-        photo: bob,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/staff/beekeeper.jpeg?updatedAt=1720604830992",
         introduction:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
     },
 
     {
         name: "Remy Ratatouille",
-        photo: remy,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/staff/remy-ratatouille.jpeg?updatedAt=1720604831078",
         introduction:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
     },
 ];
 
-import croqueMadame from "./assets/breakfast/croque-madame.jpeg";
-import crepesSuzette from "./assets/breakfast/crepes-suzette.jpeg";
-import bananaPancakes from "./assets/breakfast/banana-pancakes.jpeg";
-import tart1 from "./assets/desserts/tart-raspberry-coconut-1.jpeg";
-import tart2 from "./assets/desserts/tart-raspberry-coconut-2.jpeg";
 import tart3 from "./assets/desserts/tart-raspberry-coconut-3.jpeg";
-import cappuccino from "./assets/coffee/cappuccino.jpeg";
-import lavenderLatte from "./assets/coffee/lavender-latte.jpeg";
 export const menu = [
     {
         name: "breakfast",
@@ -94,7 +81,9 @@ export const menu = [
                     { name: "fats", amount: 37 },
                     { name: "carbohydrates", amount: 57 },
                 ],
-                photos: [croqueMadame],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/croque-madame.webp?updatedAt=1720593159472",
+                ],
                 price: "29",
                 isVegan: false,
                 isDishOfTheDay: true,
@@ -112,7 +101,9 @@ export const menu = [
                     { name: "fats", amount: 15 },
                     { name: "carbohydrates", amount: 35 },
                 ],
-                photos: [crepesSuzette],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/crepes-suzette.webp?updatedAt=1720593159493",
+                ],
                 price: 18,
                 isVegan: false,
                 isDishOfTheDay: false,
@@ -130,7 +121,9 @@ export const menu = [
                     { name: "fats", amount: 6 },
                     { name: "carbohydrates", amount: 26 },
                 ],
-                photos: [bananaPancakes],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/banana-pancakes.webp?updatedAt=1720593369684",
+                ],
                 price: 12,
                 isVegan: true,
                 isDishOfTheDay: false,
@@ -161,7 +154,11 @@ export const menu = [
                 ],
                 id: "raspberry-coconut-tart",
                 description: "Description",
-                photos: [tart1, tart2, tart3],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-1.webp?updatedAt=1720604511516",
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-2.webp?updatedAt=1720604511490",
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-3.jpeg?updatedAt=1720605286287",
+                ],
                 price: 29,
                 isVegan: true,
                 isDishOfTheDay: false,
@@ -177,7 +174,9 @@ export const menu = [
                 name: "Cappuccino",
                 id: "cappuccino",
                 description: "Description",
-                photos: [cappuccino],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/cappuccino.webp?updatedAt=1720604130807",
+                ],
                 price: 3,
                 isVegan: false,
                 isDishOfTheDay: false,
@@ -188,7 +187,9 @@ export const menu = [
                 name: "Lavender Latte",
                 id: "lavenderLatte",
                 description: "Description",
-                photos: [lavenderLatte],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/lavender-latte.webp?updatedAt=1720604184471",
+                ],
                 price: "4",
                 isVegan: false,
                 isDishOfTheDay: false,

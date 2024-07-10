@@ -12,7 +12,7 @@ const LoginPage = () => {
                 <Cover
                     subtitle="Unlock with Your Credentials"
                     title="Log in"
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1718193744910"
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1720592065786"
                 />
             </CoverSection>
             <ContentSection

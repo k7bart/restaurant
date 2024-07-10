@@ -33,7 +33,7 @@ const UserProfilePage = () => {
                 <Cover
                     subtitle="Your presence brightens our day"
                     title={"Hello, " + user.name}
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.jpeg?updatedAt=1718193744098"
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.webp?updatedAt=1720592232729"
                 />
             </CoverSection>
             <ContentSection header={header}>

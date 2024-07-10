@@ -12,7 +12,7 @@ const RegistrationPage = () => {
                 <Cover
                     subtitle="For a smoother experience"
                     title="Register"
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/mango-passion-fruit-tart.jpeg?updatedAt=1718193744646"
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/mango-passion-fruit-tart.webp?updatedAt=1720592608890"
                 />
             </CoverSection>
             <ContentSection
