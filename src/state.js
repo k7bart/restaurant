@@ -83,7 +83,6 @@ export const staff = [
     },
 ];
 
-import tart3 from "./assets/desserts/tart-raspberry-coconut-3.jpeg";
 export const menu = [
     {
         name: "breakfast",
