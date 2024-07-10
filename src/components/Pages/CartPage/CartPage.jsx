@@ -24,7 +24,7 @@ const CartPage = () => {
                 <Cover
                     subtitle="Experience"
                     title="Complimentary Shipping"
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/moped.jpeg?updatedAt=1718193743246"
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/moped.webp?updatedAt=1720592730650"
                 />
             </CoverSection>
             <ContentSection header={emptyCart ? emptyCartHeader : header}>

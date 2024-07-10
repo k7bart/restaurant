@@ -1,7 +1,3 @@
-import cupping from "./assets/events/cupping.jpeg";
-import honey from "./assets/events/honey.jpeg";
-import cheeseDegustation from "./assets/events/cheese-degustation.jpeg";
-import casablanca from "./assets/events/casablanca.jpeg";
 export const events = [
     {
         id: "cupping",
@@ -15,7 +11,7 @@ export const events = [
             "Sumatra Mandheling",
             "Mocha Java",
         ],
-        photo: cupping,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/cupping.jpeg?updatedAt=1720593702132",
         price: 49,
         specialGuest: null,
         subtitle: "The Art of",
@@ -34,7 +30,7 @@ export const events = [
             "Heather Honey",
             "Clover Honey",
         ],
-        photo: honey,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/honey.webp?updatedAt=1720593702338",
         price: 49,
         specialGuest: "Bob Bobert",
         subtitle: "Local",
@@ -52,7 +48,7 @@ export const events = [
             "Manchego",
             "Havarti",
         ],
-        photo: cheeseDegustation,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/cheese-degustation.webp?updatedAt=1720593702234",
         price: 89,
         specialGuest: "Remy Ratatouille",
         subtitle: "French",
@@ -63,7 +59,7 @@ export const events = [
         ageLimit: 18,
         date: "2024-10-15T17:00:00.000Z",
         language: "English",
-        photo: casablanca,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/events/casablanca.webp?updatedAt=1720593725421",
         price: 49,
         specialGuest: null,
         subtitle: "Old",
@@ -71,32 +67,23 @@ export const events = [
     },
 ];
 
-import bob from "./assets/staff/beekeeper.jpeg";
-import remy from "./assets/staff/remy-ratatouille.jpeg";
 export const staff = [
     {
         name: "Bob Bobert",
-        photo: bob,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/staff/beekeeper.jpeg?updatedAt=1720604830992",
         introduction:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
     },
 
     {
         name: "Remy Ratatouille",
-        photo: remy,
+        photo: "https://ik.imagekit.io/k7bart/restaurant/staff/remy-ratatouille.jpeg?updatedAt=1720604831078",
         introduction:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
     },
 ];
 
-import croqueMadame from "./assets/breakfast/croque-madame.jpeg";
-import crepesSuzette from "./assets/breakfast/crepes-suzette.jpeg";
-import bananaPancakes from "./assets/breakfast/banana-pancakes.jpeg";
-import tart1 from "./assets/desserts/tart-raspberry-coconut-1.jpeg";
-import tart2 from "./assets/desserts/tart-raspberry-coconut-2.jpeg";
 import tart3 from "./assets/desserts/tart-raspberry-coconut-3.jpeg";
-import cappuccino from "./assets/coffee/cappuccino.jpeg";
-import lavenderLatte from "./assets/coffee/lavender-latte.jpeg";
 export const menu = [
     {
         name: "breakfast",
@@ -120,7 +107,9 @@ export const menu = [
                     { name: "fats", amount: 37 },
                     { name: "carbohydrates", amount: 57 },
                 ],
-                photos: [croqueMadame],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/croque-madame.webp?updatedAt=1720593159472",
+                ],
                 price: "29",
                 isVegan: false,
                 isDishOfTheDay: true,
@@ -139,7 +128,9 @@ export const menu = [
                     { name: "fats", amount: 15 },
                     { name: "carbohydrates", amount: 35 },
                 ],
-                photos: [crepesSuzette],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/crepes-suzette.webp?updatedAt=1720593159493",
+                ],
                 price: 18,
                 isVegan: false,
                 isDishOfTheDay: false,
@@ -158,7 +149,9 @@ export const menu = [
                     { name: "fats", amount: 6 },
                     { name: "carbohydrates", amount: 26 },
                 ],
-                photos: [bananaPancakes],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/banana-pancakes.webp?updatedAt=1720593369684",
+                ],
                 price: 12,
                 isVegan: true,
                 isDishOfTheDay: false,
@@ -189,7 +182,11 @@ export const menu = [
                 ],
                 id: "raspberry-coconut-tart",
                 description: "Description",
-                photos: [tart1, tart2, tart3],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-1.webp?updatedAt=1720604511516",
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-2.webp?updatedAt=1720604511490",
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-3.jpeg?updatedAt=1720605286287",
+                ],
                 price: 29,
                 isVegan: true,
                 isDishOfTheDay: false,
@@ -207,7 +204,9 @@ export const menu = [
                 ingredients: ["espresso", "milk"],
                 description:
                     "An espresso-based coffee drink that is traditionally prepared with steamed milk including a layer of milk foam.",
-                photos: [cappuccino],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/cappuccino.webp?updatedAt=1720604130807",
+                ],
                 price: 3,
                 isVegan: false,
                 isDishOfTheDay: false,
@@ -226,7 +225,9 @@ export const menu = [
                 ingredients: ["espresso", "milk infused with lavender"],
                 description:
                     "A soothing latte crafted with milk delicately infused with aromatic lavender, offering a serene and floral twist to your coffee experience.",
-                photos: [lavenderLatte],
+                photos: [
+                    "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/lavender-latte.webp?updatedAt=1720604184471",
+                ],
                 price: 4,
                 isVegan: false,
                 isDishOfTheDay: false,

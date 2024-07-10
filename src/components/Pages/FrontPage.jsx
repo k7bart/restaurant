@@ -8,7 +8,7 @@ function FrontPage() {
         subtitle: "The pure taste of",
         title: "Sweet life",
         backgroundImage:
-            "https://ik.imagekit.io/k7bart/restaurant/covers/restaurant.jpeg?updatedAt=1718192445123",
+            "https://ik.imagekit.io/k7bart/restaurant/covers/restaurant.webp?updatedAt=1720591678414",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
     };
 

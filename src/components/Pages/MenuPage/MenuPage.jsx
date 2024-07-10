@@ -10,7 +10,7 @@ function MenuPage() {
                 <Cover
                     subtitle={"Check Out"}
                     title={"Our Menu"}
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/cruffins.jpeg?updatedAt=1718193489659"
+                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/cruffins.webp?updatedAt=1720592352070"
                 />
             </CoverSection>
 
