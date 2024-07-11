@@ -1,6 +1,8 @@
 $text-color-grey: #bfbfbf;
 $background-color: #050505;
 $wisteria: #c9a0dc;
+$green: #b3dca0;
+$red: #dca0b3;
 
 $heading3-font-size: 28px;
 $heading3-font-weight: 300;
@@ -122,6 +124,56 @@ a.link {
         color: $wisteria;
         svg {
             fill: $wisteria;
+        }
+    }
+}
+
+table {
+    border-collapse: collapse;
+
+    tr {
+        th {
+            padding: 0 16px 8px;
+            font-size: 20px;
+            font-weight: 200;
+        }
+
+        td {
+            padding: 8px;
+            border-top: 1px solid #1e1e1e;
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+
+            > .status {
+                width: max-content;
+                padding: 4px 8px;
+                margin: auto;
+                border-radius: 30px;
+                font-size: 20px;
+
+                &.new {
+                    background-color: $wisteria;
+                }
+
+                &.confirmed {
+                    color: $green;
+                }
+
+                &.cancelled {
+                    color: $red;
+                }
+
+                &.done {
+                    color: $text-color-grey;
+                }
+            }
+        }
+
+        &.done {
+            > td {
+                color: $text-color-grey;
+            }
         }
     }
 }
@@ -1215,7 +1267,7 @@ main.two-sections {
     .react-datepicker-wrapper {
         display: flex;
     }
-    
+
     .popup {
         display: flex;
         justify-content: center;
