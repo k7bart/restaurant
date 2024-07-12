@@ -9,18 +9,23 @@ import {
 import {
     userReducer,
     addAddress,
-    addReservation,
+    addReservationId,
     addTicket,
     logOut,
     removeAddress,
     setCurrentAddress,
     updateUserData,
 } from "./slices/userSlice";
+import {
+    reservationsReducer,
+    addReservation,
+} from "./slices/tableReservationsSlice";
 
 const store = configureStore({
     reducer: {
         cart: cartReducer,
         user: userReducer,
+        reservations: reservationsReducer,
     },
 });
 
@@ -32,9 +37,10 @@ export {
     reset,
     updateUserData,
     addAddress,
-    addReservation,
+    addReservationId,
     addTicket,
     logOut,
     removeAddress,
     setCurrentAddress,
+    addReservation,
 };
