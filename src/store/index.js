@@ -19,7 +19,7 @@ import {
 import {
     reservationsReducer,
     addReservation,
-} from "./slices/tableReservationsSlice";
+} from "./slices/reservationsSlice";
 
 const store = configureStore({
     reducer: {

@@ -1,12 +1,15 @@
 import { capitalize } from "../../../../utils/stringUtils";
 import dayjs from "dayjs";
-import reservations from "../../../../store/slices/tableReservationsSlice";
+import { useSelector } from "react-redux";
+
+const today = "2023-10-17T17:00:00+03:00";
+const isOutdated = (date) => dayjs(date).isBefore(today, "day");
+// const isOutdated = (date) => dayjs(date).isBefore(dayjs(), "day");
 
 const Row = ({ reservation }) => {
     const {
         id,
-        date,
-        time,
+        dateTime,
         code,
         status,
         guests,
@@ -15,11 +18,14 @@ const Row = ({ reservation }) => {
     } = reservation;
 
     return (
-        // and if outdated
-        <tr className={status === "done" ? "done" : undefined}>
+        <tr
+            className={
+                status === "done" || isOutdated(dateTime) ? "done" : undefined
+            }
+        >
             <td>{id}</td>
-            <td>{dayjs(date).format("DD/MM/YYYY")}</td>
-            <td>{time}</td>
+            <td>{dayjs(dateTime).format("DD/MM/YYYY")}</td>
+            <td>{dayjs(dateTime).format("HH:mm")}</td>
             <td>{code}</td>
             <td>
                 <div className={`status ${status}`}>{capitalize(status)}</div>
@@ -35,6 +41,7 @@ const Row = ({ reservation }) => {
 };
 
 const Table = () => {
+    const reservations = useSelector((state) => state.reservations);
     return (
         <table>
             <thead>
