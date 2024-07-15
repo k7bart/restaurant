@@ -2,7 +2,7 @@ import { capitalize } from "../../../../utils/stringUtils";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 
-const today = "2023-10-17T17:00:00+03:00";
+const today = dayjs("2023-10-17T17:00:00+03:00");
 const isOutdated = (date) => dayjs(date).isBefore(today, "day");
 // const isOutdated = (date) => dayjs(date).isBefore(dayjs(), "day");
 

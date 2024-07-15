@@ -37,7 +37,7 @@ const Reservation = ({ reservation }) => {
     );
 };
 
-const TableReservations = ({ reservations }) => {
+const Reservations = ({ reservations }) => {
     const sortedReservations = useMemo(() => {
         return [...reservations].sort((a, b) =>
             dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1
@@ -66,4 +66,4 @@ const TableReservations = ({ reservations }) => {
     );
 };
 
-export default TableReservations;
+export default Reservations;
