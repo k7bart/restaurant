@@ -1,13 +1,18 @@
+import { capitalize } from "../../../utils/stringUtils";
 import { Link } from "react-router-dom";
-import dayjs from "dayjs";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
+
+import dayjs from "dayjs";
 import AccordionItem from "../../Accordion/AccordionItem";
 
-const today = dayjs();
+const today = dayjs("2023-10-17T17:00:00+03:00");
+// const today = dayjs();
 
 const formatGuestCount = ({ adults, children }) => {
     if (adults === 1) return "1 guest";
-    if (children) return `Adults: ${adults}, children: ${children}`;
+    if (children === 1) return `${adults} adults and 1 child`;
+    if (children) return `${adults} adults and ${children} children`;
     return `${adults} guests`;
 };
 
@@ -17,15 +22,20 @@ const getDateStatus = (date) => {
     return "past";
 };
 
+const sortReservations = (reservations) => {
+    return [...reservations].sort((a, b) =>
+        dayjs(a.dateTime).isAfter(dayjs(b.dateTime)) ? -1 : 1
+    );
+};
+
 const Reservation = ({ reservation }) => {
-    const { additionalRequirements, date, time, guests } = reservation;
+    const { dateTime, status, guests, additionalRequirements } = reservation;
 
     return (
-        <div className={`${getDateStatus(date)} reservation row`}>
+        <div className={`${getDateStatus(dateTime)} reservation row`}>
             <div>
-                <p>
-                    {dayjs(date).format("DD/MM/YYYY")} {time}
-                </p>
+                <div className={`status ${status}`}>{capitalize(status)}</div>
+                <p>{dayjs(dateTime).format("DD/MM/YYYY HH:mm")}</p>
                 <p>{formatGuestCount(guests)}</p>
             </div>
             {additionalRequirements && (
@@ -37,16 +47,18 @@ const Reservation = ({ reservation }) => {
     );
 };
 
-const Reservations = ({ reservations }) => {
-    const sortedReservations = useMemo(() => {
-        return [...reservations].sort((a, b) =>
-            dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1
-        );
-    }, [reservations]);
+const Reservations = ({ reservationIds }) => {
+    const reservations = useSelector((state) => state.reservations);
+    const userReservations = reservationIds.map((id) =>
+        reservations.find((reservation) => reservation.id === id)
+    );
+    const sortedUserReservations = useMemo(() => {
+        return sortReservations(userReservations);
+    }, [userReservations]);
 
     return (
         <AccordionItem title="Table reservations" className="reservations">
-            {reservations.length === 0 ? (
+            {userReservations.length === 0 ? (
                 <p className="large">
                     You don&apos;t have any reservations, but we are eagerly
                     awaiting your visit! You can reserve a table&nbsp;
@@ -55,9 +67,9 @@ const Reservations = ({ reservations }) => {
                     </Link>
                 </p>
             ) : (
-                sortedReservations.map((reservation, i) => (
+                sortedUserReservations.map((reservation) => (
                     <Reservation
-                        key={i} // reservation id
+                        key={reservation.id}
                         reservation={reservation}
                     />
                 ))
