@@ -134,14 +134,14 @@ table {
     tr {
         th {
             padding: 0 16px 8px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 200;
         }
 
         td {
             padding: 8px;
             border-top: 1px solid #1e1e1e;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 100;
             text-align: center;
 
@@ -150,7 +150,7 @@ table {
                 padding: 4px 8px;
                 margin: auto;
                 border-radius: 30px;
-                font-size: 20px;
+                font-size: 18px;
 
                 &.new {
                     background-color: $wisteria;
@@ -173,6 +173,10 @@ table {
         &.done {
             > td {
                 color: $text-color-grey;
+
+                .status {
+                    color: $text-color-grey;
+                }
             }
         }
     }
@@ -669,6 +673,7 @@ button.transparent {
     }
     .reservation {
         flex-direction: column;
+        position: relative;
 
         &.today p {
             color: $wisteria;
@@ -676,8 +681,34 @@ button.transparent {
         &.upcoming p {
             color: white;
         }
-        &.past p {
-            color: $text-color-grey;
+        &.past {
+            p,
+            .status {
+                color: $text-color-grey;
+            }
+        }
+
+        .status {
+            width: fit-content;
+            position: absolute;
+            right: 0;
+            font-size: 16px;
+            font-weight: 100;
+
+            &.cancelled {
+                color: $red;
+            }
+
+            &.confirmed {
+                color: $green;
+            }
+
+            &.new {
+                padding: 2px 6px;
+                border-radius: 30px;
+                background-color: $wisteria;
+                color: white;
+            }
         }
     }
 
