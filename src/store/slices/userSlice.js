@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import dayjs from "dayjs";
-
-const today = dayjs().toISOString();
 
 const defaultUser = {
     id: 300837,
@@ -100,38 +97,7 @@ const defaultUser = {
             street: "Chornovola",
         },
     ],
-    reservations: [
-        {
-            date: "2024-10-15T21:00:00.000Z",
-            time: "18:00",
-            reservedBy: 300837,
-            guests: {
-                adults: 4,
-                children: 2,
-            },
-            additionalRequirements: "Please sing Happy Birthday 🎂",
-        },
-        {
-            date: "2022-03-14T21:00:00.000Z",
-            time: "15:00",
-            reservedBy: 300837,
-            guests: {
-                adults: 2,
-                children: 0,
-            },
-            additionalRequirements: "I'm going to propose 💍",
-        },
-        {
-            date: today,
-            time: "12:00",
-            reservedBy: 300837,
-            guests: {
-                adults: 2,
-                children: 1,
-            },
-            additionalRequirements: "Baby highchair 🧒",
-        },
-    ],
+    reservationIds: [1, 4],
     tickets: [],
 };
 
@@ -142,8 +108,8 @@ const userSlice = createSlice({
         addAddress(state, action) {
             state.addresses.push(action.payload);
         },
-        addReservation(state, action) {
-            state.reservations.push(action.payload);
+        addReservationId(state, action) {
+            state.reservationIds.push(action.payload);
         },
         addTicket(state, action) {
             state.tickets.push(action.payload);
@@ -173,7 +139,7 @@ const userSlice = createSlice({
 
 export const {
     addAddress,
-    addReservation,
+    addReservationId,
     addTicket,
     logOut,
     removeAddress,
