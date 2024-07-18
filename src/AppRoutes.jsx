@@ -1,16 +1,20 @@
-import AdminPage from "./components/Pages/AdminPage/AdminPage";
+import AdminPage from "./components/Pages/admin/pages/AdminPage";
 import CartPage from "./components/Pages/CartPage/CartPage";
+import Dashboard from "./components/Pages/admin/pages/Dashboard";
 import EventDetails from "./components/Pages/EventPage/EventDetails";
 import EventPage from "./components/Pages/EventPage/EventPage";
 import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
 import EventsPage from "./components/Pages/EventsPage";
 import FrontPage from "./components/Pages/FrontPage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
+import Menu from "./components/Pages/admin/pages/Menu";
 import MenuPage from "./components/Pages/MenuPage/MenuPage";
+import Orders from "./components/Pages/admin/pages/Orders";
 import ProductPage from "./components/Pages/ProductPage/ProductPage";
 import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
-import TableReservationPage from "./components/Pages/TableReservationPage/TableReservationPage";
+import ReservationPage from "./components/Pages/ReservationPage/ReservationPage";
 import UserProfilePage from "./components/Pages/ProfilePage/ProfilePage";
+import Table from "./components/Pages/admin/Reservations/ReservationsTable";
 
 const routes = [
     {
@@ -20,6 +24,24 @@ const routes = [
     {
         path: "/admin",
         element: <AdminPage />,
+        children: [
+            {
+                path: "dashboard",
+                element: <Dashboard />,
+            },
+            {
+                path: "reservations",
+                element: <Table />,
+            },
+            {
+                path: "orders",
+                element: <Orders />,
+            },
+            {
+                path: "menu",
+                element: <Menu />,
+            },
+        ],
     },
     {
         path: "/cart",
@@ -39,7 +61,7 @@ const routes = [
     },
     {
         path: "/table-reservation",
-        element: <TableReservationPage />,
+        element: <ReservationPage />,
     },
     {
         path: "/events",
