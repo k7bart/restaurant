@@ -251,6 +251,104 @@ button.transparent {
 }
 
 // pages
+.admin-page {
+    height: 100vh;
+    display: flex;
+
+    aside {
+        height: 100vh;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        a {
+            max-height: 72px;
+            padding: 8px;
+            display: flex;
+            background-color: white;
+
+            > div {
+                width: 100%;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 30px;
+
+                > span {
+                    color: $background-color;
+                }
+
+                > :not(:first-child) {
+                    margin-left: 8px;
+                }
+
+                > .avatar {
+                    height: 40px;
+                    width: 40px;
+                    padding: 0px;
+                    font-size: 24px;
+                    background-color: $wisteria;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                > svg {
+                    height: 24px;
+                    width: 24px;
+                    fill: $background-color;
+                    stroke: $background-color;
+                }
+
+                &:hover {
+                    background-color: $background-color;
+
+                    > span {
+                        color: white;
+                    }
+
+                    > svg {
+                        fill: white;
+                        stroke: white;
+                    }
+                }
+            }
+
+            &.active {
+                border-radius: 0;
+                background-color: $background-color;
+
+                > div {
+                    > span {
+                        color: $wisteria;
+                    }
+
+                    > svg {
+                        fill: $wisteria;
+                        stroke: $wisteria;
+                    }
+                }
+
+                & + a,
+                + .filler {
+                    border-radius: 0 30px 0 0;
+                }
+            }
+
+            &:not(.active):has(+ .active) {
+                border-radius: 0 0 30px 0;
+            }
+        }
+
+        .filler {
+            flex-grow: 1;
+            background-color: white;
+        }
+    }
+}
+
 .front-page {
     height: 100vh;
     overflow: hidden;
