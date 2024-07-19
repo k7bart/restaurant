@@ -12,7 +12,7 @@ import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
 import OrderHistory from "./OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./Referral";
-import TableReservations from "./TableReservations";
+import Reservations from "./Reservations";
 import Tickets from "./Tickets";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
@@ -61,7 +61,7 @@ const ProfilePage = () => {
                 >
                     <Accordion>
                         <OrderHistory orders={user.orders} />
-                        <TableReservations reservations={user.reservations} />
+                        <Reservations reservationIds={user.reservationIds} />
                         <Tickets tickets={user.tickets} />
                         <PersonalData user={user} />
                         <DeliveryAddresses user={user} />

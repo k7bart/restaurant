@@ -15,9 +15,8 @@ import NameInput from "../../Inputs/NameInput";
 import NumberOfAdultsInput from "../../Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../Inputs/PhoneInput";
-import ReservedTable from "../../../models/ReservedTable";
 import TimeInput from "../../Inputs/TimeInput";
-import { addReservation } from "../../../store";
+import { addReservation, addReservationId } from "../../../store";
 
 const today = new Date();
 
@@ -65,7 +64,7 @@ const reservationSchema = yup.object({
     additionalRequirements: yup.string(),
 });
 
-const TableReservationForm = () => {
+const ReservationForm = () => {
     const user = useSelector((state) => state.user) || null;
     const dispatch = useDispatch();
     const [reservedTable, setReservedTable] = useState(null);
@@ -103,28 +102,30 @@ const TableReservationForm = () => {
             additionalRequirements,
         } = data;
 
-        const reservedBy = user
-            ? user.id
-            : {
-                  name: capitalize(name),
-                  registered: false,
-                  phone: phone,
-                  email: email || null,
-              };
+        const reservedBy = {
+            id: user ? user.id : null,
+            name: capitalize(name),
+            phone: phone,
+            email: email || null,
+        };
 
         const dateTime = dayjs(date)
             .set("hour", time.getHours())
             .set("minute", time.getMinutes())
             .toDate();
 
-        const reservation = new ReservedTable(
+        const reservation = {
+            id: 6, // add proper id
             dateTime,
+            code: undefined,
+            status: "new",
+            guests: { adults, children },
             reservedBy,
-            { adults, children },
-            additionalRequirements
-        );
+            additionalRequirements,
+        };
 
-        if (user) dispatch(addReservation);
+        dispatch(addReservation(reservation));
+        user && dispatch(addReservationId(reservation.id));
 
         setReservedTable(reservation);
         reset();
@@ -216,4 +217,4 @@ const TableReservationForm = () => {
     );
 };
 
-export default TableReservationForm;
+export default ReservationForm;

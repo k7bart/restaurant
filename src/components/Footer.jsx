@@ -13,6 +13,7 @@ const links = [
     { to: "/table-reservation", text: "Book a table" },
     { to: "/events", text: "Events" },
     { to: "/cart", text: "Cart" },
+    { to: "/admin", text: "Admin" },
     { to: "/error", text: "Error" },
 ];
 

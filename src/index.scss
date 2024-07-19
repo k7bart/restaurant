@@ -1,6 +1,8 @@
 $text-color-grey: #bfbfbf;
 $background-color: #050505;
 $wisteria: #c9a0dc;
+$green: #b3dca0;
+$red: #dca0b3;
 
 $heading3-font-size: 28px;
 $heading3-font-weight: 300;
@@ -126,6 +128,60 @@ a.link {
     }
 }
 
+table {
+    border-collapse: collapse;
+
+    tr {
+        th {
+            padding: 0 16px 8px;
+            font-size: 18px;
+            font-weight: 200;
+        }
+
+        td {
+            padding: 8px;
+            border-top: 1px solid #1e1e1e;
+            font-size: 18px;
+            font-weight: 100;
+            text-align: center;
+
+            > .status {
+                width: max-content;
+                padding: 4px 8px;
+                margin: auto;
+                border-radius: 30px;
+                font-size: 18px;
+
+                &.new {
+                    background-color: $wisteria;
+                }
+
+                &.confirmed {
+                    color: $green;
+                }
+
+                &.cancelled {
+                    color: $red;
+                }
+
+                &.done {
+                    color: $text-color-grey;
+                }
+            }
+        }
+
+        &.done {
+            > td {
+                color: $text-color-grey;
+
+                .status {
+                    color: $text-color-grey;
+                }
+            }
+        }
+    }
+}
+
 // buttons
 button.with-svg {
     &:hover {
@@ -195,6 +251,104 @@ button.transparent {
 }
 
 // pages
+.admin-page {
+    height: 100vh;
+    display: flex;
+
+    aside {
+        height: 100vh;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        a {
+            max-height: 72px;
+            padding: 8px;
+            display: flex;
+            background-color: white;
+
+            > div {
+                width: 100%;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 30px;
+
+                > span {
+                    color: $background-color;
+                }
+
+                > :not(:first-child) {
+                    margin-left: 8px;
+                }
+
+                > .avatar {
+                    height: 40px;
+                    width: 40px;
+                    padding: 0px;
+                    font-size: 24px;
+                    background-color: $wisteria;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                > svg {
+                    height: 24px;
+                    width: 24px;
+                    fill: $background-color;
+                    stroke: $background-color;
+                }
+
+                &:hover {
+                    background-color: $background-color;
+
+                    > span {
+                        color: white;
+                    }
+
+                    > svg {
+                        fill: white;
+                        stroke: white;
+                    }
+                }
+            }
+
+            &.active {
+                border-radius: 0;
+                background-color: $background-color;
+
+                > div {
+                    > span {
+                        color: $wisteria;
+                    }
+
+                    > svg {
+                        fill: $wisteria;
+                        stroke: $wisteria;
+                    }
+                }
+
+                & + a,
+                + .filler {
+                    border-radius: 0 30px 0 0;
+                }
+            }
+
+            &:not(.active):has(+ .active) {
+                border-radius: 0 0 30px 0;
+            }
+        }
+
+        .filler {
+            flex-grow: 1;
+            background-color: white;
+        }
+    }
+}
+
 .front-page {
     height: 100vh;
     overflow: hidden;
@@ -617,6 +771,7 @@ button.transparent {
     }
     .reservation {
         flex-direction: column;
+        position: relative;
 
         &.today p {
             color: $wisteria;
@@ -624,8 +779,34 @@ button.transparent {
         &.upcoming p {
             color: white;
         }
-        &.past p {
-            color: $text-color-grey;
+        &.past {
+            p,
+            .status {
+                color: $text-color-grey;
+            }
+        }
+
+        .status {
+            width: fit-content;
+            position: absolute;
+            right: 0;
+            font-size: 16px;
+            font-weight: 100;
+
+            &.cancelled {
+                color: $red;
+            }
+
+            &.confirmed {
+                color: $green;
+            }
+
+            &.new {
+                padding: 2px 6px;
+                border-radius: 30px;
+                background-color: $wisteria;
+                color: white;
+            }
         }
     }
 
@@ -1215,7 +1396,7 @@ main.two-sections {
     .react-datepicker-wrapper {
         display: flex;
     }
-    
+
     .popup {
         display: flex;
         justify-content: center;
