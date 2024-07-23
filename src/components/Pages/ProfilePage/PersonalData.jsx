@@ -5,6 +5,7 @@ import { updateUserData } from "../../../store/index";
 import { capitalize } from "../../../utils/stringUtils";
 
 import * as yup from "yup";
+import dayjs from "dayjs";
 
 import AccordionItem from "../../Accordion/AccordionItem";
 import BirthdayInput from "../../Inputs/BirthdayInput";
@@ -32,29 +33,26 @@ const PersonalData = ({ user }) => {
         register,
         handleSubmit,
         control,
-        reset,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
         defaultValues: {
-            name: name,
-            surname: surname,
-            email: email,
-            phone: phone,
-            birthday: birthday,
+            name,
+            surname,
+            email,
+            phone,
+            birthday: birthday ? dayjs(birthday).toDate() : null,
         },
     });
 
     const onSubmit = (data) => {
-        const { name, surname, birthday } = data;
         const formattedData = {
             ...data,
-            name: capitalize(name),
-            surname: capitalize(surname),
-            birthday: birthday ? birthday.toISOString() : null,
+            name: capitalize(data.name),
+            surname: capitalize(data.surname),
+            birthday: data.birthday ? dayjs(data.birthday).toISOString() : null,
         };
         dispatch(updateUserData(formattedData));
-        reset();
     };
 
     return (
@@ -64,15 +62,12 @@ const PersonalData = ({ user }) => {
                     <NameInput register={register} error={errors.name} />
                     <SurnameInput register={register} error={errors.surname} />
                 </div>
-
                 <div>
                     <PhoneInput register={register} error={errors.phone} />
                     <EmailInput register={register} error={errors.email} />
                 </div>
-
                 <div>
                     <BirthdayInput control={control} error={errors.birthday} />
-
                     <button type="submit" className="submit small color">
                         Save changes
                     </button>
