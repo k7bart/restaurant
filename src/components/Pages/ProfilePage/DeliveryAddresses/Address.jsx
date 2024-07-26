@@ -10,37 +10,38 @@ const Address = ({ address, currentAddressId }) => {
     const { id, city, street, house, apartment } = address;
 
     return (
-        <div
-            key={id}
-            className="row"
-            onClick={() => dispatch(setCurrentAddress(id))}
-        >
-            <div className="with-svg">
-                {currentAddressId === id && <IoCheckmark />}
-            </div>
-            <p>
-                {`${city}, ${street} ${house}${
-                    apartment ? "/" + apartment : ""
-                }`}
-            </p>
-
-            <button
-                className="with-svg"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    setAddressToRemove(address);
-                }}
+        <>
+            <div
+                key={id}
+                className="row"
+                onClick={() => dispatch(setCurrentAddress(id))}
             >
-                <IoClose />
-            </button>
+                <div className="with-svg">
+                    {currentAddressId === id && <IoCheckmark />}
+                </div>
+                <p>
+                    {`${city}, ${street} ${house}${
+                        apartment ? "/" + apartment : ""
+                    }`}
+                </p>
 
+                <button
+                    className="with-svg"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setAddressToRemove(address);
+                    }}
+                >
+                    <IoClose />
+                </button>
+            </div>
             {addressToRemove && addressToRemove.id === id && (
                 <RemoveAddressPopup
                     address={address}
                     closePopup={() => setAddressToRemove(null)}
                 />
             )}
-        </div>
+        </>
     );
 };
 
