@@ -1010,6 +1010,8 @@ header > nav {
 
 main.two-sections {
     display: flex;
+    height: 100vh;
+    overflow: hidden;
 
     &.two-sections {
         @media (max-width: 820px) {
@@ -1066,7 +1068,9 @@ main.two-sections {
             }
 
             &.content {
+                position: relative;
                 padding: 16px;
+                overflow: scroll;
 
                 @media (min-width: 578px) {
                     padding: 80px 96px;
@@ -1400,12 +1404,13 @@ main.two-sections {
     .popup {
         display: flex;
         justify-content: center;
-        height: 100%;
+        align-items: center;
+        height: 100vh;
         width: 50vw;
         top: 0;
-        left: 0;
+        right: 0;
         z-index: 9999;
-        position: absolute;
+        position: fixed;
         background-color: rgba(0, 0, 0, 0.7);
 
         > div {
