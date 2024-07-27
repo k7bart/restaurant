@@ -5,6 +5,7 @@ import EventDetails from "./components/Pages/EventPage/EventDetails";
 import EventPage from "./components/Pages/EventPage/EventPage";
 import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
 import EventsPage from "./components/Pages/EventsPage";
+import ErrorPage from "./components/Pages/ErrorPage";
 import FrontPage from "./components/Pages/FrontPage";
 import LoginPage from "./components/Pages/LoginPage/LoginPage";
 import Menu from "./components/Pages/admin/pages/Menu";
@@ -20,6 +21,10 @@ const routes = [
     {
         path: "/",
         element: <FrontPage />,
+    },
+    {
+        path: "*",
+        element: <ErrorPage />,
     },
     {
         path: "/admin",
