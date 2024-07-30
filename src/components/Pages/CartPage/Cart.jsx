@@ -6,24 +6,25 @@ const Cart = () => {
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
-    const total = cart.reduce(
-        (total, product) => total + product.price * product.amount,
-        0
-    );
     const totalDiscount = cart
-        .filter((product) => product.onSale)
+        .filter((product) => product.discountPercent != null)
         .reduce(
-            (total, product) =>
-                total + (product.oldPrice - product.price) * product.amount,
+            (total, { price, discountPercent, amount }) =>
+                total + price * (discountPercent / 100) * amount,
             0
-        );
+        )
+        .toFixed(2); // returns string
 
-    const handleCartReset = () => {
-        dispatch(reset());
-    };
+    const total = (
+        cart.reduce(
+            (total, product) => total + product.price * product.amount,
+            0
+        ) - totalDiscount
+    ).toFixed(2); // returns string
+
     return (
         <div className="cart">
-            <button className="small color" onClick={handleCartReset}>
+            <button className="small color" onClick={() => dispatch(reset())}>
                 Empty cart
             </button>
             <ul className="products">
@@ -44,7 +45,7 @@ const Cart = () => {
                     <h4 className="price">{total}</h4>
                 </div>
             </div>
-            <button className="small color">Сomplete the order</button>
+            <button className="small color">Complete the order</button>
         </div>
     );
 };
