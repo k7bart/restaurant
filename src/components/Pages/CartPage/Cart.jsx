@@ -34,7 +34,7 @@ const Cart = () => {
             </ul>
             <div className="prices-container">
                 <div className="container">
-                    <h4>Shipping: $0</h4>
+                    <h4>Shipping: $0.00</h4>
                 </div>
                 <div className="container">
                     <h4>Discount: $</h4>
