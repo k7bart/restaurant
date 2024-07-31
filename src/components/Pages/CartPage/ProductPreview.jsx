@@ -34,7 +34,7 @@ const ProductPreview = ({ product }) => {
                 <h4>{name}</h4>
             </Link>
             <NumInput amount={amount} onChange={handleAmountChange} />
-            <h4>${price * amount}</h4>
+            <h4 className="price">${(price * amount).toFixed(2)}</h4>
             <button className="with-svg" onClick={handleProductRemove}>
                 <IoClose />
             </button>
