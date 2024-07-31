@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
 import TwoSectionsPage from "../../TwoSectionsPage";
-import "./CartPage.scss";
 
 const CartPage = () => {
     const cart = useSelector((state) => state.cart);
@@ -19,7 +19,7 @@ const CartPage = () => {
     };
 
     return (
-        <TwoSectionsPage title="Cart">
+        <TwoSectionsPage title="Cart" className="cart-page">
             <CoverSection>
                 <Cover
                     subtitle="Experience"
@@ -28,7 +28,17 @@ const CartPage = () => {
                 />
             </CoverSection>
             <ContentSection header={emptyCart ? emptyCartHeader : header}>
-                {!emptyCart && <Cart />}
+                {emptyCart ? (
+                    <p className="large">
+                        Your cart is empty, but we are eagerly awaiting your
+                        order! You can checkout our menu&nbsp;
+                        <Link className="large wisteria" to="/menu">
+                            here
+                        </Link>
+                    </p>
+                ) : (
+                    <Cart />
+                )}
             </ContentSection>
         </TwoSectionsPage>
     );
