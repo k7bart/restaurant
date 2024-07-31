@@ -349,6 +349,82 @@ button.transparent {
     }
 }
 
+.cart-page {
+    div.cart {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > .products {
+            width: 100%;
+
+            & > *:not(:first-child) {
+                border-top: 1px solid $border-color;
+            }
+
+            .product-preview {
+                width: 100%;
+                position: relative;
+                padding: 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                > :not(:last-child) {
+                    margin-right: 16px;
+                }
+
+                > img {
+                    height: 72px;
+                    min-width: 90px;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+
+                .title {
+                    max-width: 225px;
+                    flex-grow: 1;
+
+                    h4 {
+                        transition: 0.3s;
+                    }
+
+                    h4:hover {
+                        color: $wisteria;
+                    }
+                }
+
+                .price {
+                    min-width: 50px;
+                    text-align: right;
+                }
+            }
+        }
+
+        > .prices-container {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .container {
+                display: flex;
+                align-items: center;
+
+                > .numInput {
+                    padding-left: 8px;
+                }
+
+                .price {
+                    color: $wisteria;
+                }
+            }
+        }
+    }
+}
+
 .front-page {
     height: 100vh;
     overflow: hidden;
@@ -424,6 +500,7 @@ button.transparent {
         bottom: 80px;
     }
 }
+
 .login-page {
     form {
         > div.container {
@@ -1067,9 +1144,11 @@ main.two-sections {
 
             &.content {
                 padding: 16px;
+                display: flex;
+                flex-direction: column;
 
                 @media (min-width: 578px) {
-                    padding: 80px 96px;
+                    padding: 80px 96px 0;
                 }
 
                 > nav {
@@ -1114,6 +1193,9 @@ main.two-sections {
 
                 > main {
                     padding-top: 48px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
                 }
 
                 form {
