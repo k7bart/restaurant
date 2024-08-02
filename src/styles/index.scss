@@ -1,13 +1,5 @@
-$text-color-grey: #bfbfbf;
-$background-color: #050505;
-$wisteria: #c9a0dc;
-$green: #b3dca0;
-$red: #dca0b3;
+@import "./variables";
 
-$heading3-font-size: 28px;
-$heading3-font-weight: 300;
-
-$border-color: #1e1e1e;
 * {
     margin: 0;
     padding: 0;
@@ -349,82 +341,6 @@ button.transparent {
     }
 }
 
-.cart-page {
-    div.cart {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        > .products {
-            width: 100%;
-
-            & > *:not(:first-child) {
-                border-top: 1px solid $border-color;
-            }
-
-            .product-preview {
-                width: 100%;
-                position: relative;
-                padding: 16px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                > :not(:last-child) {
-                    margin-right: 16px;
-                }
-
-                > img {
-                    height: 72px;
-                    min-width: 90px;
-                    border-radius: 10px;
-                    object-fit: cover;
-                }
-
-                .title {
-                    max-width: 225px;
-                    flex-grow: 1;
-
-                    h4 {
-                        transition: 0.3s;
-                    }
-
-                    h4:hover {
-                        color: $wisteria;
-                    }
-                }
-
-                .price {
-                    min-width: 50px;
-                    text-align: right;
-                }
-            }
-        }
-
-        > .prices-container {
-            width: 100%;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-
-            .container {
-                display: flex;
-                align-items: center;
-
-                > .numInput {
-                    padding-left: 8px;
-                }
-
-                .price {
-                    color: $wisteria;
-                }
-            }
-        }
-    }
-}
-
 .front-page {
     height: 100vh;
     overflow: hidden;
@@ -687,6 +603,13 @@ button.transparent {
             .container {
                 display: flex;
                 align-items: center;
+
+                .discount {
+                    padding: 4px 8px;
+                    margin-right: 4px;
+                    border-radius: 30px;
+                    background-color: $wisteria;
+                }
 
                 .price {
                     color: $wisteria;
