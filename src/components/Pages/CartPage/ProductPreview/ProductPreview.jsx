@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateProductAmount, removeProduct } from "../../../../store/index";
-import { getActualPrice, getTotalPrice } from "../../../../utils";
+import { getTotalPrice } from "../../../../utils/priceUtils";
 import { IoClose } from "react-icons/io5";
 import NumInput from "../../../Inputs/NumInput/NumInput";
 import styles from "./ProductPreview.module.scss";
@@ -40,12 +40,12 @@ const ProductPreview = ({ product }) => {
             <div className={styles.price}>
                 {discountPercent && (
                     <span className={styles.fullPrice}>
-                        {"$" + getTotalPrice(price, amount).toFixed(2)}
+                        {"$" + getTotalPrice(price, null, amount).toFixed(2)}
                     </span>
                 )}
                 <h4 className={styles.actualPrice}>
                     {"$" +
-                        getActualPrice(price, discountPercent, amount).toFixed(
+                        getTotalPrice(price, discountPercent, amount).toFixed(
                             2
                         )}
                 </h4>
