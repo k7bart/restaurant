@@ -1,0 +1,33 @@
+@import "../../../../styles/variables.scss";
+
+.cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .products {
+        width: 100%;
+
+        & > *:not(:first-child) {
+            border-top: 1px solid $border-color;
+        }
+    }
+
+    .pricesContainer {
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        > div {
+            display: flex;
+            align-items: center;
+
+            .price {
+                color: $wisteria;
+            }
+        }
+    }
+}
