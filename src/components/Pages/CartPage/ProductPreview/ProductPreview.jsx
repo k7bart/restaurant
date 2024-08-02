@@ -33,19 +33,21 @@ const ProductPreview = ({ product }) => {
     return (
         <div className={styles.productPreview}>
             <img src={photos[0]} alt={name} />
-            <Link to={`/menu/${category}/${id}`} className="title">
+            <Link to={`/menu/${category}/${id}`} className={styles.title}>
                 <h4>{name}</h4>
             </Link>
             <NumInput amount={amount} onChange={handleAmountChange} />
-            <div className="price">
+            <div className={styles.price}>
                 {discountPercent && (
-                    <span className="old-price">{`$${getTotalPrice(
-                        price,
-                        amount
-                    ).toFixed(2)}`}</span>
+                    <span className={styles.fullPrice}>
+                        {"$" + getTotalPrice(price, amount).toFixed(2)}
+                    </span>
                 )}
-                <h4 className="price">
-                    ${getActualPrice(product, amount).toFixed(2)}
+                <h4 className={styles.actualPrice}>
+                    {"$" +
+                        getActualPrice(price, discountPercent, amount).toFixed(
+                            2
+                        )}
                 </h4>
             </div>
             <button className="with-svg" onClick={handleProductRemove}>
