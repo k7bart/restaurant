@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../../../store/index";
-import ProductPreview from "./ProductPreview";
+import ProductPreview from "./ProductPreview/ProductPreview";
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart);

@@ -1,0 +1,53 @@
+@import "../../../../styles/variables.scss";
+
+.productPreview {
+    width: 100%;
+    position: relative;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > :not(:last-child) {
+        margin-right: 16px;
+    }
+
+    > img {
+        height: 72px;
+        min-width: 90px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .title {
+        max-width: 225px;
+        flex-grow: 1;
+
+        h4 {
+            transition: 0.3s;
+        }
+
+        h4:hover {
+            color: $wisteria;
+        }
+    }
+
+    div.price {
+        position: relative;
+
+        span.old-price {
+            position: absolute;
+            top: -16px;
+            right: 0;
+            font-size: 14px;
+            font-weight: 100;
+            text-decoration: line-through;
+            color: $text-color-grey;
+        }
+
+        h4.price {
+            min-width: 50px;
+            text-align: right;
+        }
+    }
+}
