@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateProductAmount, removeProduct } from "../../../store/index";
+import { updateProductAmount, removeProduct } from "../../../../store/index";
+import { getActualPrice, getTotalPrice } from "../../../../utils";
 import { IoClose } from "react-icons/io5";
-import NumInput from "../../Inputs/NumInput/NumInput";
+import NumInput from "../../../Inputs/NumInput/NumInput";
+import styles from "./ProductPreview.module.scss";
 
 const ProductPreview = ({ product }) => {
     const {
         amount: initialAmount,
         category,
+        discountPercent,
         id,
         name,
         photos,
@@ -28,13 +31,23 @@ const ProductPreview = ({ product }) => {
     };
 
     return (
-        <div className="product-preview">
+        <div className={styles.productPreview}>
             <img src={photos[0]} alt={name} />
             <Link to={`/menu/${category}/${id}`} className="title">
                 <h4>{name}</h4>
             </Link>
             <NumInput amount={amount} onChange={handleAmountChange} />
-            <h4 className="price">${(price * amount).toFixed(2)}</h4>
+            <div className="price">
+                {discountPercent && (
+                    <span className="old-price">{`$${getTotalPrice(
+                        price,
+                        amount
+                    ).toFixed(2)}`}</span>
+                )}
+                <h4 className="price">
+                    ${getActualPrice(product, amount).toFixed(2)}
+                </h4>
+            </div>
             <button className="with-svg" onClick={handleProductRemove}>
                 <IoClose />
             </button>
