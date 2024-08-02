@@ -32,10 +32,10 @@
         }
     }
 
-    div.price {
+    .price {
         position: relative;
 
-        span.old-price {
+        .fullPrice {
             position: absolute;
             top: -16px;
             right: 0;
@@ -45,7 +45,7 @@
             color: $text-color-grey;
         }
 
-        h4.price {
+        .actualPrice {
             min-width: 50px;
             text-align: right;
         }
