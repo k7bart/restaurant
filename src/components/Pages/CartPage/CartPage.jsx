@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import Cart from "./Cart/Cart";
 import ContentSection from "../../ContentSection";
 import Cover from "../../Cover/Cover";
 import CoverSection from "../../CoverSection";
@@ -19,7 +19,7 @@ const CartPage = () => {
     };
 
     return (
-        <TwoSectionsPage title="Cart" className="cart-page">
+        <TwoSectionsPage title="Cart">
             <CoverSection>
                 <Cover
                     subtitle="Experience"
