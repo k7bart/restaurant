@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getActualPrice, getTotalDiscount } from "../../../../utils";
+import { getTotalDiscount, getTotalPrice } from "../../../../utils/priceUtils";
 import { reset } from "../../../../store/index";
 import ProductPreview from "../ProductPreview/ProductPreview";
 import Button from "../../../Button/Button";
@@ -21,7 +21,7 @@ const Cart = () => {
     const total = cart
         .reduce(
             (total, { price, discountPercent, amount }) =>
-                total + getActualPrice(price, discountPercent, amount),
+                total + getTotalPrice(price, discountPercent, amount),
             0
         )
         .toFixed(2); // returns string
