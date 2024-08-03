@@ -2,10 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosArrowBack } from "react-icons/io";
-
+import { getTotalPrice } from "../../../utils/priceUtils";
 import { addProduct, updateProductAmount } from "../../../store/index";
 import { menu } from "../../../state";
 
+import Button from "../../Button/Button";
 import CartLink from "../../NavBar/CartLink";
 import ContentSection from "../../ContentSection";
 import CoverSection from "../../CoverSection";
@@ -15,27 +16,30 @@ import ProductCarrousel from "./ProductCarrousel";
 import TwoSectionsPage from "../../TwoSectionsPage";
 
 const ProductPage = () => {
-    const { category, productId } = useParams();
-
-    const product = useMemo(() => {
-        return menu
-            .find((c) => c.name === category)
-            .products.find((p) => p.id === productId);
-    }, [category, productId]);
-
-    const { name, photos, description, ingredients, nutrients, price } =
-        product;
-
-    // store
     const dispatch = useDispatch();
+    const { category, productId } = useParams();
     const cart = useSelector((state) => state.cart);
 
-    // amount
+    const product = useMemo(() => {
+        const categoryData = menu.find((c) => c.name === category);
+        return categoryData?.products.find((p) => p.id === productId);
+    }, [category, productId]);
+
+    const {
+        name,
+        photos,
+        description,
+        discountPercent,
+        ingredients,
+        nutrients,
+        price,
+    } = product;
+
     const productInCart = useMemo(() => {
         return cart.find((product) => product.id === productId);
     }, [cart, productId]);
 
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(productInCart?.amount || 0);
 
     useEffect(() => {
         setAmount(productInCart ? productInCart.amount : 0);
@@ -44,10 +48,9 @@ const ProductPage = () => {
     const handleAmountChange = (newAmount) => {
         if (productInCart) {
             dispatch(updateProductAmount({ productId: product.id, newAmount }));
-            return;
+        } else {
+            dispatch(addProduct({ ...product, amount: newAmount, category }));
         }
-
-        dispatch(addProduct({ ...product, amount: newAmount, category }));
     };
 
     return (
@@ -57,8 +60,6 @@ const ProductPage = () => {
             </CoverSection>
 
             <ContentSection
-                // headerTitle={name}
-                // headerText={description}
                 header={{
                     title: name,
                     text: description,
@@ -87,17 +88,26 @@ const ProductPage = () => {
                             />
                         </div>
                     ) : (
-                        <button
-                            className="small color"
+                        <Button
+                            size="small"
+                            color="wisteria"
+                            text="Add to cart"
                             onClick={() => handleAmountChange(1)}
-                        >
-                            Add to cart
-                        </button>
+                        />
                     )}
 
                     <div className="container">
+                        {discountPercent && (
+                            <div className="discount">{`-${discountPercent}%`}</div>
+                        )}
                         <h4>$</h4>
-                        <h3 className="price">{price}</h3>
+                        <h3 className="price">
+                            {getTotalPrice(
+                                price,
+                                discountPercent,
+                                amount
+                            ).toFixed(2)}
+                        </h3>
                     </div>
                 </div>
             </ContentSection>
