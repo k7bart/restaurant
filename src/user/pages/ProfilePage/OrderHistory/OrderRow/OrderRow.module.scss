@@ -1,0 +1,33 @@
+@import "../../../../../styles/variables.scss";
+
+.order {
+    :not(:first-child) {
+        margin-left: 8px;
+    }
+
+    > .id,
+    .amount {
+        width: 50px;
+    }
+    > .date {
+        width: 130px;
+    }
+    > .address {
+        flex-grow: 1;
+    }
+}
+
+.row:not(:first-child) {
+    border-top: 1px solid $border-color;
+    padding-top: 16px;
+}
+
+.row:not(:last-child) {
+    padding-bottom: 16px;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
