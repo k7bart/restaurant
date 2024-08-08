@@ -1,6 +1,7 @@
 import { IoCopyOutline } from "react-icons/io5";
 import { useState } from "react";
-import AccordionItem from "../../Accordion/AccordionItem";
+import styles from "./Referral.module.scss";
+import Button from "../../../../common/components/buttons/Button/Button";
 
 const Referral = ({ id }) => {
     const REFERRAL_LINK = "https://bart.ua/?referral=" + id; // make it work
@@ -24,28 +25,32 @@ const Referral = ({ id }) => {
     };
 
     return (
-        <AccordionItem
-            title="Referral link and promo code"
-            className="referral"
-        >
+        <section className={styles.referral}>
             <div>
-                <button
-                    className="small transparent referral-link"
+                <Button
+                    size="large"
+                    color="transparent"
                     onClick={copyReferralLink}
                 >
                     {copiedReferral ? "Copied" : REFERRAL_LINK}
                     <IoCopyOutline />
-                </button>
-                <button className="small transparent" onClick={copyPromoCode}>
+                </Button>
+
+                <Button
+                    size="small"
+                    color="transparent"
+                    onClick={copyPromoCode}
+                >
                     {copiedPromo ? "Copied" : PROMO_CODE}
                     <IoCopyOutline />
-                </button>
+                </Button>
             </div>
+
             <p className="large">
                 Copy the link or promo code, send it to your friend and you both
                 are guaranteed to receive $10 discount
             </p>
-        </AccordionItem>
+        </section>
     );
 };
 

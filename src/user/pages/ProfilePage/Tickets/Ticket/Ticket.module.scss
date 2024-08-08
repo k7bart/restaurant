@@ -1,0 +1,124 @@
+@import "../../../../../styles/variables.scss";
+
+.ticketWrapper {
+    width: 50%;
+    height: 150px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid $border-color;
+
+    .corner {
+        z-index: 1;
+        height: 25px;
+        width: 25px;
+        background: $background-color;
+        position: absolute;
+
+        &.topLeft {
+            top: -1px;
+            left: -1px;
+            border-radius: 0 0 100% 0;
+            border-bottom: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+        }
+
+        &.topRight {
+            top: -1px;
+            right: -1px;
+            border-radius: 0 0 0 100%;
+            border-bottom: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+        }
+
+        &.bottomRight {
+            bottom: -1px;
+            right: -1px;
+            border-radius: 100% 0 0 0;
+            border-top: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+        }
+
+        &.bottomLeft {
+            bottom: -1px;
+            left: -1px;
+            border-radius: 0 100% 0 0;
+            border-top: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+        }
+    }
+
+    .border {
+        position: absolute;
+        border-left: 4px dotted $border-color;
+
+        &.left,
+        &.right {
+            height: 100px;
+        }
+
+        &.right {
+            right: -1px;
+        }
+
+        &.left {
+            left: -1px;
+        }
+
+        &.within {
+            height: 145px;
+            right: 60px;
+        }
+    }
+
+    .ticket {
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        justify-content: center;
+        align-items: stretch;
+        position: relative;
+
+        h4 {
+            text-align: center;
+            color: $wisteria;
+        }
+
+        .info {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .first,
+        .third {
+            width: 20%;
+            display: flex;
+            align-items: center;
+        }
+
+        > .id,
+        .guests {
+            position: absolute;
+            top: 50%;
+            width: 120px;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            transform: translateY(-50%) rotate(-90deg);
+            overflow: hidden;
+        }
+
+        > .id {
+            right: -30px;
+        }
+        > .guests {
+            left: -30px;
+        }
+    }
+}

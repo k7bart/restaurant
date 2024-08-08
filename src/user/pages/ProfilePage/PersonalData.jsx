@@ -7,12 +7,13 @@ import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 import dayjs from "dayjs";
 
-import AccordionItem from "../../Accordion/AccordionItem";
-import BirthdayInput from "../../Inputs/BirthdayInput";
-import EmailInput from "../../Inputs/EmailInput";
-import NameInput from "../../Inputs/NameInput";
-import PhoneInput from "../../Inputs/PhoneInput";
-import SurnameInput from "../../Inputs/SurnameInput";
+import BirthdayInput from "../../components/Inputs/BirthdayInput";
+import Button from "../../../common/components/buttons/Button/Button";
+import EmailInput from "../../components/Inputs/EmailInput";
+import Form from "../../components/Form/Form";
+import NameInput from "../../components/Inputs/NameInput";
+import PhoneInput from "../../components/Inputs/PhoneInput";
+import SurnameInput from "../../components/Inputs/SurnameInput";
 
 const schema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -56,24 +57,22 @@ const PersonalData = ({ user }) => {
     };
 
     return (
-        <AccordionItem title="Personal data">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <NameInput register={register} error={errors.name} />
-                    <SurnameInput register={register} error={errors.surname} />
-                </div>
-                <div>
-                    <PhoneInput register={register} error={errors.phone} />
-                    <EmailInput register={register} error={errors.email} />
-                </div>
-                <div>
-                    <BirthdayInput control={control} error={errors.birthday} />
-                    <button type="submit" className="submit small color">
-                        Save changes
-                    </button>
-                </div>
-            </form>
-        </AccordionItem>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+                <NameInput register={register} error={errors.name} />
+                <SurnameInput register={register} error={errors.surname} />
+            </div>
+            <div>
+                <PhoneInput register={register} error={errors.phone} />
+                <EmailInput register={register} error={errors.email} />
+            </div>
+            <div>
+                <BirthdayInput control={control} error={errors.birthday} />
+                <Button size="small" color="wisteria" type="submit">
+                    Save changes
+                </Button>
+            </div>
+        </Form>
     );
 };
 

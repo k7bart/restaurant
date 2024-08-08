@@ -1,8 +1,11 @@
-import RemoveAddressPopup from "./RemoveAddressPopup";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { IoClose, IoCheckmark } from "react-icons/io5";
+import { IoCheckmark } from "react-icons/io5";
 import { setCurrentAddress } from "../../../../store";
+import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
+import Icon from "../../../components/Icon/Icon";
+import RemoveAddressPopup from "./RemoveAddressPopup";
+import Row from "../../../../common/components/Row/Row";
 
 const Address = ({ address, currentAddressId }) => {
     const dispatch = useDispatch();
@@ -11,30 +14,22 @@ const Address = ({ address, currentAddressId }) => {
 
     return (
         <>
-            <div
-                key={id}
-                className="row"
-                onClick={() => dispatch(setCurrentAddress(id))}
-            >
-                <div className="with-svg">
-                    {currentAddressId === id && <IoCheckmark />}
-                </div>
+            <Row onClick={() => dispatch(setCurrentAddress(id))}>
+                <Icon>{currentAddressId === id && <IoCheckmark />}</Icon>
+
                 <p>
                     {`${city}, ${street} ${house}${
                         apartment ? "/" + apartment : ""
                     }`}
                 </p>
 
-                <button
-                    className="with-svg"
+                <CloseButton
                     onClick={(e) => {
                         e.stopPropagation();
                         setAddressToRemove(address);
                     }}
-                >
-                    <IoClose />
-                </button>
-            </div>
+                />
+            </Row>
             {addressToRemove && addressToRemove.id === id && (
                 <RemoveAddressPopup
                     address={address}

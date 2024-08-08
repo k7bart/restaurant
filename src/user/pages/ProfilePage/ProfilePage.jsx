@@ -4,17 +4,17 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
-import Accordion from "../../Accordion/Accordion";
-import ContentSection from "../../ContentSection";
-import Cover from "../../Cover/Cover";
-import CoverSection from "../../CoverSection";
+import Accordion from "../../components/Accordion/Accordion";
+import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import Cover from "../../components/Cover/Cover";
+import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
 import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
-import OrderHistory from "./OrderHistory";
+import OrderHistory from "./OrderHistory/OrderHistory";
 import PersonalData from "./PersonalData";
-import Referral from "./Referral";
-import Reservations from "./Reservations";
-import Tickets from "./Tickets";
-import TwoSectionsPage from "../../TwoSectionsPage";
+import Referral from "./Referral/Referral";
+import Reservations from "./Reservations/Reservations";
+import Tickets from "./Tickets/Tickets";
+import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
 
 const ProfilePage = () => {
     const header = {
@@ -34,6 +34,33 @@ const ProfilePage = () => {
             navigate("/login"); // or to "/"?
         }
     }, [user, navigate]);
+
+    const items = [
+        {
+            title: "Order history",
+            content: <OrderHistory orders={user.orders} />,
+        },
+        {
+            title: "Table reservations",
+            content: <Reservations reservationIds={user.reservationIds} />,
+        },
+        {
+            title: "Tickets",
+            content: <Tickets tickets={user.tickets} />,
+        },
+        {
+            title: "Personal data",
+            content: <PersonalData user={user} />,
+        },
+        {
+            title: "Delivery addresses",
+            content: <DeliveryAddresses user={user} />,
+        },
+        {
+            title: "Referral link and promo code",
+            content: <Referral id={user.id} />,
+        },
+    ];
 
     return (
         user && (
@@ -59,14 +86,7 @@ const ProfilePage = () => {
                         </nav>
                     }
                 >
-                    <Accordion>
-                        <OrderHistory orders={user.orders} />
-                        <Reservations reservationIds={user.reservationIds} />
-                        <Tickets tickets={user.tickets} />
-                        <PersonalData user={user} />
-                        <DeliveryAddresses user={user} />
-                        <Referral id={user.id} />
-                    </Accordion>
+                    <Accordion items={items} />
                 </ContentSection>
             </TwoSectionsPage>
         )

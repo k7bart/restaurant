@@ -1,5 +1,5 @@
 import AddressForm from "./AddressForm";
-import Popup from "../../../Popup";
+import Popup from "../../../components/Popup/Popup";
 
 const AddAddressPopup = ({ closePopup }) => {
     return (

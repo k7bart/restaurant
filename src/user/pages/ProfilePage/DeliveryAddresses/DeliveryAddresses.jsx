@@ -1,6 +1,6 @@
-import AccordionItem from "../../../Accordion/AccordionItem";
 import AddAddressPopup from "./AddAddressPopup";
 import Address from "./Address";
+import Button from "../../../../common/components/buttons/Button/Button";
 import { useState } from "react";
 
 const DeliveryAddresses = ({ user }) => {
@@ -11,7 +11,7 @@ const DeliveryAddresses = ({ user }) => {
     };
 
     return (
-        <AccordionItem title="Delivery addresses">
+        <>
             {user.addresses.map((address) => (
                 <Address
                     key={address.id}
@@ -20,16 +20,16 @@ const DeliveryAddresses = ({ user }) => {
                 />
             ))}
 
-            <button className="small color" onClick={openAddAddressPopup}>
+            <Button size="small" color="wisteria" onClick={openAddAddressPopup}>
                 Add address
-            </button>
+            </Button>
 
             {isAddAddressPopupOpen && (
                 <AddAddressPopup
                     closePopup={() => setIsAddAddressPopupOpen(false)}
                 />
             )}
-        </AccordionItem>
+        </>
     );
 };
 

@@ -1,7 +1,7 @@
-import Popup from "../../../Popup";
-
 import { useDispatch } from "react-redux";
 import { removeAddress } from "../../../../store";
+import Button from "../../../../common/components/buttons/Button/Button";
+import Popup from "../../../components/Popup/Popup";
 
 const RemoveAddressPopup = ({ closePopup, address }) => {
     const dispatch = useDispatch();
@@ -18,18 +18,17 @@ const RemoveAddressPopup = ({ closePopup, address }) => {
             <h4>Do you want to delete the address?</h4>
             <p className="large">{addressStr}</p>
             <div className="container">
-                <button
-                    className="small transparent"
+                <Button
+                    color="transparent"
                     onClick={() => {
                         handleAddressRemove(id);
                         closePopup();
                     }}
                 >
                     Yes
-                </button>
-                <button className="small color" onClick={closePopup}>
-                    No
-                </button>
+                </Button>
+
+                <Button onClick={closePopup}>No</Button>
             </div>
         </Popup>
     );

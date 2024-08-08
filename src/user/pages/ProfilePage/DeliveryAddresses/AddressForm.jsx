@@ -6,6 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { addAddress } from "../../../../store";
 
+import Button from "../../../../common/components/buttons/Button/Button";
+import Form from "../../../components/Form/Form";
+
 const addressSchema = yup.object({
     city: yup.string().required("Please provide city"),
     street: yup.string().required("Please provide street"),
@@ -42,7 +45,7 @@ const AddressForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <label>
                     <p>City</p>
@@ -97,10 +100,10 @@ const AddressForm = () => {
                 </label>
             </div>
 
-            <button type="submit" className="small color submit">
+            <Button size="full" color="wisteria" type="submit">
                 Save
-            </button>
-        </form>
+            </Button>
+        </Form>
     );
 };
 
