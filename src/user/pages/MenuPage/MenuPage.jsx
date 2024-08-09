@@ -1,6 +1,6 @@
-import Cover from "../../../user/components/Cover/Cover.jsx";
-import CoverSection from "../../CoverSection.jsx";
-import TwoSectionsPage from "../../TwoSectionsPage.jsx";
+import Cover from "../../components/Cover/Cover.jsx";
+import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection.jsx";
+import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage.jsx";
 import Menu from "./Menu.jsx";
 
 function MenuPage() {

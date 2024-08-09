@@ -1,6 +1,6 @@
 import { FaCartArrowDown } from "react-icons/fa6";
 import styles from "./OrderRow.module.scss";
-import ButtonWithSVG from "../../../../../common/components/buttons/ButtonWithSVG/ButtonWithSVG";
+import ButtonWithIcon from "../../../../../common/components/buttons/ButtonWithIcon/ButtonWithIcon";
 import Row from "../../../../../common/components/Row/Row";
 
 const OrderRow = ({ order, onClick }) => {
@@ -11,9 +11,10 @@ const OrderRow = ({ order, onClick }) => {
             <p className={styles.date}>{date}</p>
             <p className={styles.amount}>${amount}</p>
             <p className={styles.address}>{address}</p>
-            <ButtonWithSVG>
-                <FaCartArrowDown onClick={() => onClick(orderedProducts)} />
-            </ButtonWithSVG>
+            <ButtonWithIcon
+                icon={<FaCartArrowDown />}
+                onClick={() => onClick(orderedProducts)}
+            />
         </Row>
     );
 };

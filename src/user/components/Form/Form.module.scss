@@ -1,0 +1,106 @@
+@import "../../../styles/variables.scss";
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    > :not(:first-child):not(button) {
+        padding-top: 48px;
+    }
+
+    > div {
+        display: flex;
+
+        > label {
+            width: 50%;
+
+            &.checkbox {
+                display: flex;
+                align-items: center;
+
+                > input[type="checkbox"] + p {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    padding-left: 8px;
+
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        > button[type="submit"] {
+            width: 50%;
+            margin-top: 32px;
+
+            &:disabled {
+                opacity: 0.5;
+            }
+        }
+
+        > :not(:first-child) {
+            margin-left: 32px;
+        }
+    }
+
+    label {
+        p {
+            padding-bottom: 16px;
+            font-weight: 200;
+        }
+
+        p.error {
+            color: $wisteria;
+            font-size: 14px;
+        }
+
+        input.error {
+            border: 1px solid $wisteria;
+        }
+
+        input:not([type="checkbox"]) {
+            height: 60px;
+        }
+
+        input:not([type="checkbox"]),
+        textarea {
+            padding: 16px 16px;
+            width: 100%;
+            border-radius: 10px;
+
+            @media (min-width: 578px) {
+                padding: 16px 24px;
+            }
+
+            &:focus {
+                outline: none;
+                border: 1px solid $wisteria;
+            }
+        }
+
+        input[type="text"] {
+            &::placeholder {
+                color: $text-color-grey;
+            }
+        }
+
+        input[type="password"] {
+            letter-spacing: 0.125em;
+            font-family: Verdana;
+        }
+
+        textarea {
+            resize: none;
+        }
+    }
+
+    > button[type="submit"] {
+        margin-top: 48px;
+        align-self: center;
+
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
+}

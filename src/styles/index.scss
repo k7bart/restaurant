@@ -75,25 +75,6 @@ svg {
     transition: 0.3s;
 }
 
-.with-svg {
-    display: flex;
-    background-color: transparent;
-    border-radius: 50%;
-    transition: transform 0.3s;
-    height: 24px;
-    width: 24px;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-        height: 24px;
-        width: 24px;
-        fill: $text-color-grey;
-        stroke: $text-color-grey;
-        transition: fill 0.3s, stroke 0.3s;
-    }
-}
-
 a.link {
     color: $text-color-grey;
     display: flex;
@@ -175,31 +156,31 @@ table {
 }
 
 // buttons
-button.with-svg {
-    &:hover {
-        transform: scale(1.05);
+// button.with-svg {
+//     &:hover {
+//         transform: scale(1.05);
 
-        svg {
-            fill: $wisteria;
-            stroke: $wisteria;
-        }
-    }
+//         svg {
+//             fill: $wisteria;
+//             stroke: $wisteria;
+//         }
+//     }
 
-    &:active {
-        transform: scale(1.05);
+//     &:active {
+//         transform: scale(1.05);
 
-        svg {
-            fill: white;
-            stroke: white;
-        }
-    }
-}
+//         svg {
+//             fill: white;
+//             stroke: white;
+//         }
+//     }
+// }
 
-button.with-svg.close {
-    position: absolute;
-    top: 32px;
-    right: 32px;
-}
+// button.with-svg.close {
+//     position: absolute;
+//     top: 32px;
+//     right: 32px;
+// }
 
 button.small,
 button.large {
@@ -553,9 +534,9 @@ button.transparent {
     .carrousel-container {
         width: 100%;
 
-        .cover > img {
-            position: relative !important;
-        }
+        // .cover > img {
+        //     position: relative !important;
+        // }
     }
     section.content > main {
         nav {
@@ -564,28 +545,6 @@ button.transparent {
 
         > :not(:first-child):not(button) {
             padding-top: 48px;
-        }
-
-        .nutrients {
-            display: flex;
-            width: 100%;
-
-            > :not(:first-child) {
-                border-left: 1px solid $border-color;
-            }
-
-            > div {
-                width: 25%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 0 16px;
-
-                .text {
-                    font-weight: 200;
-                    color: lightgray;
-                }
-            }
         }
 
         .prices-container {
@@ -746,195 +705,6 @@ button.transparent {
                             padding-left: 16px;
                         }
                     }
-                }
-            }
-        }
-    }
-}
-
-.profile-page {
-    .order {
-        :not(:first-child) {
-            margin-left: 8px;
-        }
-
-        > .id,
-        .amount {
-            width: 50px;
-        }
-        > .date {
-            width: 130px;
-        }
-        > .address {
-            flex-grow: 1;
-        }
-    }
-    .reservation {
-        flex-direction: column;
-        position: relative;
-
-        &.today p {
-            color: $wisteria;
-        }
-        &.upcoming p {
-            color: white;
-        }
-        &.past {
-            p,
-            .status {
-                color: $text-color-grey;
-            }
-        }
-
-        .status {
-            width: fit-content;
-            position: absolute;
-            right: 0;
-            font-size: 16px;
-            font-weight: 100;
-
-            &.cancelled {
-                color: $red;
-            }
-
-            &.confirmed {
-                color: $green;
-            }
-
-            &.new {
-                padding: 2px 6px;
-                border-radius: 30px;
-                background-color: $wisteria;
-                color: white;
-            }
-        }
-    }
-
-    .tickets {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-
-        .ticket-wrapper {
-            width: 50%;
-            height: 150px;
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-            position: relative;
-            border: 1px solid $border-color;
-
-            .corner {
-                z-index: 1;
-                height: 25px;
-                width: 25px;
-                background: $background-color;
-                position: absolute;
-
-                &.top-left {
-                    top: -1px;
-                    left: -1px;
-                    border-radius: 0 0 100% 0;
-                    border-bottom: 1px solid $border-color;
-                    border-right: 1px solid $border-color;
-                }
-
-                &.top-right {
-                    top: -1px;
-                    right: -1px;
-                    border-radius: 0 0 0 100%;
-                    border-bottom: 1px solid $border-color;
-                    border-left: 1px solid $border-color;
-                }
-
-                &.bottom-right {
-                    bottom: -1px;
-                    right: -1px;
-                    border-radius: 100% 0 0 0;
-                    border-top: 1px solid $border-color;
-                    border-left: 1px solid $border-color;
-                }
-
-                &.bottom-left {
-                    bottom: -1px;
-                    left: -1px;
-                    border-radius: 0 100% 0 0;
-                    border-top: 1px solid $border-color;
-                    border-right: 1px solid $border-color;
-                }
-            }
-
-            .border {
-                position: absolute;
-                border-left: 4px dotted $border-color;
-
-                &.left,
-                &.right {
-                    height: 100px;
-                }
-
-                &.right {
-                    right: -1px;
-                }
-
-                &.left {
-                    left: -1px;
-                }
-
-                &.within {
-                    height: 145px;
-                    right: 60px;
-                }
-            }
-
-            .ticket {
-                width: 100%;
-                height: 100%;
-                padding: 16px;
-                display: flex;
-                justify-content: space-between;
-                justify-content: center;
-                align-items: stretch;
-                position: relative;
-
-                h4 {
-                    text-align: center;
-                    color: $wisteria;
-                }
-
-                .info {
-                    width: 60%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-
-                .first,
-                .third {
-                    width: 20%;
-                    display: flex;
-                    align-items: center;
-                }
-
-                > .id,
-                .guests {
-                    position: absolute;
-                    top: 50%;
-                    width: 120px;
-                    text-align: center;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    transform: translateY(-50%) rotate(-90deg);
-                    overflow: hidden;
-                }
-
-                > .id {
-                    right: -30px;
-                }
-                > .guests {
-                    left: -30px;
                 }
             }
         }
@@ -1125,110 +895,110 @@ main.two-sections {
                     flex-grow: 1;
                 }
 
-                form {
-                    display: flex;
-                    flex-direction: column;
+                // form {
+                //     display: flex;
+                //     flex-direction: column;
 
-                    > :not(:first-child):not(button) {
-                        padding-top: 48px;
-                    }
+                //     > :not(:first-child):not(button) {
+                //         padding-top: 48px;
+                //     }
 
-                    > div {
-                        display: flex;
+                //     > div {
+                //         display: flex;
 
-                        > label {
-                            width: 50%;
+                //         > label {
+                //             width: 50%;
 
-                            &.checkbox {
-                                display: flex;
-                                align-items: center;
+                //             &.checkbox {
+                //                 display: flex;
+                //                 align-items: center;
 
-                                > input[type="checkbox"] + p {
-                                    padding-top: 0;
-                                    padding-bottom: 0;
-                                    padding-left: 8px;
+                //                 > input[type="checkbox"] + p {
+                //                     padding-top: 0;
+                //                     padding-bottom: 0;
+                //                     padding-left: 8px;
 
-                                    &:hover {
-                                        color: white;
-                                    }
-                                }
-                            }
-                        }
+                //                     &:hover {
+                //                         color: white;
+                //                     }
+                //                 }
+                //             }
+                //         }
 
-                        > .submit {
-                            width: 50%;
-                            margin-top: 32px;
+                //         > button[type="submit"] {
+                //             width: 50%;
+                //             margin-top: 32px;
 
-                            &:disabled {
-                                opacity: 0.5;
-                            }
-                        }
+                //             &:disabled {
+                //                 opacity: 0.5;
+                //             }
+                //         }
 
-                        > :not(:first-child) {
-                            margin-left: 32px;
-                        }
-                    }
+                //         > :not(:first-child) {
+                //             margin-left: 32px;
+                //         }
+                //     }
 
-                    label {
-                        p {
-                            padding-bottom: 16px;
-                            font-weight: 200;
-                        }
+                //     label {
+                //         p {
+                //             padding-bottom: 16px;
+                //             font-weight: 200;
+                //         }
 
-                        p.error {
-                            color: $wisteria;
-                            font-size: 14px;
-                        }
+                //         p.error {
+                //             color: $wisteria;
+                //             font-size: 14px;
+                //         }
 
-                        input.error {
-                            border: 1px solid $wisteria;
-                        }
+                //         input.error {
+                //             border: 1px solid $wisteria;
+                //         }
 
-                        input:not([type="checkbox"]) {
-                            height: 60px;
-                        }
+                //         input:not([type="checkbox"]) {
+                //             height: 60px;
+                //         }
 
-                        input:not([type="checkbox"]),
-                        textarea {
-                            padding: 16px 16px;
-                            width: 100%;
-                            border-radius: 10px;
+                //         input:not([type="checkbox"]),
+                //         textarea {
+                //             padding: 16px 16px;
+                //             width: 100%;
+                //             border-radius: 10px;
 
-                            @media (min-width: 578px) {
-                                padding: 16px 24px;
-                            }
+                //             @media (min-width: 578px) {
+                //                 padding: 16px 24px;
+                //             }
 
-                            &:focus {
-                                outline: none;
-                                border: 1px solid $wisteria;
-                            }
-                        }
+                //             &:focus {
+                //                 outline: none;
+                //                 border: 1px solid $wisteria;
+                //             }
+                //         }
 
-                        input[type="text"] {
-                            &::placeholder {
-                                color: $text-color-grey;
-                            }
-                        }
+                //         input[type="text"] {
+                //             &::placeholder {
+                //                 color: $text-color-grey;
+                //             }
+                //         }
 
-                        input[type="password"] {
-                            letter-spacing: 0.125em;
-                            font-family: Verdana;
-                        }
+                //         input[type="password"] {
+                //             letter-spacing: 0.125em;
+                //             font-family: Verdana;
+                //         }
 
-                        textarea {
-                            resize: none;
-                        }
-                    }
+                //         textarea {
+                //             resize: none;
+                //         }
+                //     }
 
-                    > button[type="submit"] {
-                        margin-top: 48px;
-                        align-self: center;
+                //     > button[type="submit"] {
+                //         margin-top: 48px;
+                //         align-self: center;
 
-                        &:disabled {
-                            opacity: 0.5;
-                        }
-                    }
-                }
+                //         &:disabled {
+                //             opacity: 0.5;
+                //         }
+                //     }
+                // }
 
                 footer {
                     width: 100%;
@@ -1404,166 +1174,6 @@ main.two-sections {
     }
     .react-datepicker-wrapper {
         display: flex;
-    }
-
-    .popup {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 50vw;
-        top: 0;
-        right: 0;
-        z-index: 9999;
-        position: fixed;
-        background-color: rgba(0, 0, 0, 0.7);
-
-        > div {
-            height: max-content;
-            width: 80%;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            padding: 80px 96px;
-            position: relative;
-            border: 1px solid $border-color;
-            background-color: $background-color;
-
-            > h4,
-            > p {
-                padding-bottom: 18px;
-            }
-
-            > .container {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-
-                :not(:first-child) {
-                    margin-left: 50px;
-                }
-
-                button {
-                    width: 100px;
-                }
-            }
-        }
-    }
-
-    .accordion {
-        width: 100%;
-
-        .item {
-            > header {
-                padding: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-bottom: 1px solid $border-color;
-                cursor: pointer;
-
-                > h4,
-                > svg {
-                    transition: 0.3s;
-                }
-
-                > svg {
-                    height: 24px;
-                    width: 24px;
-                }
-
-                &.open,
-                &:hover {
-                    > h4,
-                    > svg {
-                        transform: scale(1.05);
-                    }
-                    > h4 {
-                        color: $wisteria;
-                    }
-                    > svg {
-                        fill: $wisteria;
-                    }
-                }
-            }
-
-            .content {
-                &.hidden {
-                    display: none;
-                }
-
-                &.open {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 16px;
-                    border-right: 1px solid #1e1e1e;
-                    border-bottom: 1px solid #1e1e1e;
-                    border-left: 1px solid #1e1e1e;
-
-                    > .row:not(:first-child) {
-                        border-top: 1px solid $border-color;
-                        padding-top: 16px;
-                    }
-
-                    > .row:not(:last-child) {
-                        padding-bottom: 16px;
-                    }
-
-                    > .row {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                    }
-                }
-
-                &.referral {
-                    > div {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-evenly;
-
-                        button {
-                            color: $text-color-grey;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-
-                            svg {
-                                height: 24px;
-                                width: 24px;
-                                margin-left: 16px;
-                                stroke: $text-color-grey;
-                            }
-
-                            &.referral-link {
-                                width: 60%;
-                            }
-
-                            &:hover {
-                                color: white;
-
-                                svg {
-                                    stroke: white;
-                                }
-                            }
-
-                            &:active {
-                                color: $wisteria;
-
-                                svg {
-                                    stroke: $wisteria;
-                                }
-                            }
-                        }
-                    }
-
-                    > p {
-                        padding-top: 16px;
-                    }
-                }
-            }
-        }
     }
 
     .notice {

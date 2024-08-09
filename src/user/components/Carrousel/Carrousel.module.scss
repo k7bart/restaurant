@@ -1,0 +1,17 @@
+@import "../../../styles/variables.scss";
+
+// works well for product page
+.carrousel {
+    position: relative;
+    height: 100%;
+
+    .slidesContainer {
+        display: inline-flex;
+        height: 100%;
+        width: 100%;
+
+        .slide {
+            width: 100%;
+        }
+    }
+}

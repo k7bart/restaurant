@@ -1,8 +1,8 @@
-import ContentSection from "../../ContentSection";
-import Cover from "../../../user/components/Cover/Cover";
-import CoverSection from "../../CoverSection";
+import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import Cover from "../../components/Cover/Cover";
+import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
-import TwoSectionsPage from "../../TwoSectionsPage";
+import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
 
 function TableReservationPage() {
     const title = "Reservation";

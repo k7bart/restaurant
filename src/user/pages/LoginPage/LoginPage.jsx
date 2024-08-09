@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import ContentSection from "../../ContentSection";
-import Cover from "../../../user/components/Cover/Cover";
-import CoverSection from "../../CoverSection";
+import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import Cover from "../../components/Cover/Cover";
+import CoverSection from "../../components/TwoSectionsPage/TwoSectionsPage";
 import LoginForm from "./LoginForm";
-import TwoSectionsPage from "../../TwoSectionsPage";
+import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
 
 const LoginPage = () => {
     return (
