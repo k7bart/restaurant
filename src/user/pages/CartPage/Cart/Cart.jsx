@@ -28,12 +28,7 @@ const Cart = () => {
 
     return (
         <div className={styles.cart}>
-            <Button
-                size="small"
-                color="wisteria"
-                text="Empty cart"
-                onClick={() => dispatch(reset())}
-            />
+            <Button onClick={() => dispatch(reset())}>Empty cart</Button>
             <ul className={styles.products}>
                 {cart.map((product) => (
                     <ProductPreview key={product.id} product={product} />
@@ -50,7 +45,7 @@ const Cart = () => {
                     <h4 className={styles.price}>{total}</h4>
                 </div>
             </div>
-            <Button size="large" color="wisteria" text="Complete the order" />
+            <Button size="large">Complete the order</Button>
         </div>
     );
 };

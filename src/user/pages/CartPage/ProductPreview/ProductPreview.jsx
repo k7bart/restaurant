@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateProductAmount, removeProduct } from "../../../../store/index";
 import { getTotalPrice } from "../../../../utils/priceUtils";
-import { IoClose } from "react-icons/io5";
+import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
 import NumInput from "../../../components/Inputs/NumInput/NumInput";
 import styles from "./ProductPreview.module.scss";
 
@@ -50,9 +50,7 @@ const ProductPreview = ({ product }) => {
                         )}
                 </h4>
             </div>
-            <button className="with-svg" onClick={handleProductRemove}>
-                <IoClose />
-            </button>
+            <CloseButton onClick={handleProductRemove} />
         </div>
     );
 };
