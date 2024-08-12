@@ -13,21 +13,6 @@
 
         > label {
             width: 50%;
-
-            &.checkbox {
-                display: flex;
-                align-items: center;
-
-                > input[type="checkbox"] + p {
-                    padding-top: 0;
-                    padding-bottom: 0;
-                    padding-left: 8px;
-
-                    &:hover {
-                        color: white;
-                    }
-                }
-            }
         }
 
         > button[type="submit"] {

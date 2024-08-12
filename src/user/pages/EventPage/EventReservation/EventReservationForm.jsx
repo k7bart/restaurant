@@ -9,8 +9,11 @@ import { capitalize } from "../../../../utils/stringUtils";
 import * as yup from "yup";
 
 import dayjs from "dayjs";
+import Button from "../../../../common/components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
+import Form from "../../../components/Form/Form";
 import NameInput from "../../../components/Inputs/NameInput";
+import Notice from "../../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../components/Inputs/PhoneInput";
@@ -89,7 +92,7 @@ const EventReservationForm = ({ event }) => {
     };
 
     return ticket ? (
-        <div className="notice">
+        <Notice>
             <h4>Success!</h4>
             <p className="large">
                 We are waiting for you&nbsp;
@@ -98,20 +101,23 @@ const EventReservationForm = ({ event }) => {
                 {dayjs(event.date).format("HH:mm")}
             </p>
             <div className="buttons-container">
-                <button
-                    className="small transparent"
+                <Button
+                    size="small"
+                    color="transparent"
                     onClick={() => setTicket(null)}
                 >
                     Buy one more
-                </button>
+                </Button>
 
                 <Link to="/profile#tickets">
-                    <button className="small color">Check your tickets</button>
+                    <Button size="small" color="wisteria">
+                        Check your tickets
+                    </Button>
                 </Link>
             </div>
-        </div>
+        </Notice>
     ) : (
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             {!user && (
                 <p className="large">
                     We kindly invite you to
@@ -145,9 +151,9 @@ const EventReservationForm = ({ event }) => {
                         required={true}
                     />
 
-                    <button type="submit" className="small color submit">
+                    <Button size="small" color="wisteria" type="submit">
                         Submit
-                    </button>
+                    </Button>
                 </div>
             )}
 
@@ -165,12 +171,12 @@ const EventReservationForm = ({ event }) => {
                         />
                     </div>
 
-                    <button type="submit" className="small color submit">
+                    <Button size="small" color="wisteria" type="submit">
                         Submit
-                    </button>
+                    </Button>
                 </>
             )}
-        </form>
+        </Form>
     );
 };
 

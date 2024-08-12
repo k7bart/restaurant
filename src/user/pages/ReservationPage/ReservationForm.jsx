@@ -9,9 +9,12 @@ import { subDays, addMonths } from "date-fns";
 import * as yup from "yup";
 
 import dayjs from "dayjs";
+import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
+import Form from "../../components/Form/Form";
 import NameInput from "../../components/Inputs/NameInput";
+import Notice from "../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
@@ -132,7 +135,7 @@ const ReservationForm = () => {
     };
 
     return reservedTable ? (
-        <div className="notice">
+        <Notice>
             <h4>Table successfully reserved!</h4>
             <p className="large">
                 We are waiting for you&nbsp;
@@ -143,22 +146,23 @@ const ReservationForm = () => {
                 ).get("minutes")}`}
             </p>
             <div className="buttons-container">
-                <button
-                    className="small transparent"
+                <Button
+                    size="small"
+                    color="transparent"
                     onClick={() => setReservedTable(null)}
                 >
                     Make another one
-                </button>
+                </Button>
 
                 <Link to="/profile#table-reservations">
-                    <button className="small color">
+                    <Button size="small" color="wisteria">
                         Check my reservations
-                    </button>
+                    </Button>
                 </Link>
             </div>
-        </div>
+        </Notice>
     ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             {!user && (
                 <p className="large">
                     We kindly invite you to
@@ -210,10 +214,10 @@ const ReservationForm = () => {
                 <textarea {...register("additionalRequirements")} />
             </label>
 
-            <button type="submit" className="small color">
+            <Button size="small" color="wisteria" type="submit">
                 Submit
-            </button>
-        </form>
+            </Button>
+        </Form>
     );
 };
 

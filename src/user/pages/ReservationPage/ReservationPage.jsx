@@ -4,13 +4,13 @@ import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSec
 import ReservationForm from "./ReservationForm";
 import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
 
-function TableReservationPage() {
-    const title = "Reservation";
-    const header = {
-        title: "Book a table",
-        text: "In order to align with the relaxed and comfortable ambiance of our dining setting, we encourage a casual attire.",
-    };
+const title = "Reservation";
+const header = {
+    title: "Book a table",
+    text: "In order to align with the relaxed and comfortable ambiance of our dining setting, we encourage a casual attire.",
+};
 
+function TableReservationPage() {
     return (
         <TwoSectionsPage title={title}>
             <CoverSection>
