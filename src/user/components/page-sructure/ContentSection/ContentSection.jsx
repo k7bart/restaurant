@@ -1,18 +1,21 @@
-import Footer from "../../../components/Footer/Footer";
+import Footer from "../../Footer/Footer";
+import Text from "../../Text/Text";
+import Section from "../Section/Section";
+import styles from "./ContentSection.module.scss";
 
 const ContentSection = ({ header = undefined, nav = undefined, children }) => {
     return (
-        <section className="content">
+        <Section className={styles.content}>
             {nav}
             {header && (
                 <header>
                     <h3>{header.title}</h3>
-                    <p className="large">{header.text}</p>
+                    <Text size="large">{header.text}</Text>
                 </header>
             )}
             <main>{children}</main>
             <Footer />
-        </section>
+        </Section>
     );
 };
 

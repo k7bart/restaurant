@@ -3,7 +3,7 @@ label.checkbox {
     display: flex;
     align-items: center;
 
-    > input[type="checkbox"] + p {
+    > input[type="checkbox"] + span {
         padding-bottom: 0;
         padding-left: 8px;
 

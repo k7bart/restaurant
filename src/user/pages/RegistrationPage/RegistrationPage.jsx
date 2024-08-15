@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
 import Cover from "../../components/Cover/Cover";
-import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
+import LinkComponent from "../../components/LinkComponent/LinkComponent";
 import RegistrationForm from "./RegistrationForm";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
+import Text from "../../components/Text/Text";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 
 const RegistrationPage = () => {
     return (
@@ -23,12 +24,12 @@ const RegistrationPage = () => {
             >
                 <RegistrationForm />
 
-                <p className="large center">
+                <Text align="center" size="large">
                     Already registered?&nbsp;
-                    <NavLink className="large wisteria" to="/login">
+                    <LinkComponent color="wisteria" to="/login" size="large">
                         Sign in
-                    </NavLink>
-                </p>
+                    </LinkComponent>
+                </Text>
             </ContentSection>
         </TwoSectionsPage>
     );

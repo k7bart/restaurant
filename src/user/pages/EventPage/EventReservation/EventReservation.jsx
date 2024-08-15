@@ -1,8 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { events } from "../../../../state.js";
-import ContentSection from "../../../components/TwoSectionsPage/ContentSection/ContentSection.jsx";
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
 import EventReservationForm from "./EventReservationForm.jsx";
+
+// LinkComponent
+// Text
 
 const EventReservation = () => {
     const { eventId } = useParams();

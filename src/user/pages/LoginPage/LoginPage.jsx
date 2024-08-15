@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/Cover/Cover";
-import CoverSection from "../../components/TwoSectionsPage/TwoSectionsPage";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import LoginForm from "./LoginForm";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
     return (
-        <TwoSectionsPage title="Login" className="login-page">
+        <TwoSectionsPage title="Login" className={styles.loginPage}>
             <CoverSection>
                 <Cover
                     subtitle="Unlock with Your Credentials"
@@ -22,13 +22,6 @@ const LoginPage = () => {
                 }}
             >
                 <LoginForm />
-
-                <p className="large center">
-                    Don&apos;t have an account yet?&nbsp;
-                    <NavLink className="large wisteria" to="/registration">
-                        Register
-                    </NavLink>
-                </p>
             </ContentSection>
         </TwoSectionsPage>
     );

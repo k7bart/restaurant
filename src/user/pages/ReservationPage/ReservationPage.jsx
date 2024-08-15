@@ -1,8 +1,8 @@
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/Cover/Cover";
-import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 
 const title = "Reservation";
 const header = {

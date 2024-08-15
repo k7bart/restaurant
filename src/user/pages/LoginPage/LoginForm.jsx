@@ -2,14 +2,20 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
+import Form from "../../components/Form/Form";
+import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
+import LinkComponent from "../../components/LinkComponent/LinkComponent";
+import PasswordInput from "../../components/Inputs/PasswordInput";
+import Text from "../../components/Text/Text";
 
 const reservationSchema = yup.object({
     email: yup
         .string()
         .email("Please provide a valid email address")
         .required("Please provide your email"),
-    password: yup.string().required(),
+    password: yup.string().required("Please provide your password"),
 });
 
 const LoginForm = () => {
@@ -24,33 +30,44 @@ const LoginForm = () => {
     const onSubmit = (data) => console.log(data);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <EmailInput register={register} error={errors.email} />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <EmailInput
+                register={register}
+                error={errors.email}
+                required={true}
+            />
 
-            <label>
-                <p>Password</p>
-                <input {...register("password")} type="password" />
-                {errors.password && (
-                    <p className="error">Please provide your password</p>
-                )}
-            </label>
+            <PasswordInput register={register} error={errors.password} />
 
             <div className="container">
-                <label className="checkbox">
-                    {/* todo: make controlled */}
-                    <input type="checkbox" />
-                    <p className="large">Remember me</p>
-                </label>
+                <LabeledCheckbox text="Remember me" register={register} />
 
-                <a href="#" className="large wisteria">
+                <LinkComponent
+                    color="wisteria"
+                    target="_self"
+                    to="#"
+                    size="large"
+                >
                     Forgot password?
-                </a>
+                </LinkComponent>
             </div>
 
-            <button className="submit small color" type="submit">
+            <Button size="small" color="wisteria" type="submit">
                 Login
-            </button>
-        </form>
+            </Button>
+
+            <Text align="center" size="large">
+                Don&apos;t have an account yet?&nbsp;
+                <LinkComponent
+                    color="wisteria"
+                    target="_self"
+                    to="/registration"
+                    size="large"
+                >
+                    Register
+                </LinkComponent>
+            </Text>
+        </Form>
     );
 };
 

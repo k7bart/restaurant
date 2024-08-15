@@ -1,8 +1,13 @@
 import { useParams, NavLink, Link } from "react-router-dom";
 import { events, staff } from "../../../../state.js";
 import dayjs from "dayjs";
-import ContentSection from "../../../components/TwoSectionsPage/ContentSection/ContentSection.jsx";
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
 import SpecialGuest from "./SpecialGuest.jsx";
+
+// Text
+// Row
+// Button
+// LinkComponent
 
 const nav = (
     <nav className="content-evenly">

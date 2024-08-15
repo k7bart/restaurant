@@ -3,7 +3,7 @@ import { menu } from "../../../state";
 import { capitalize } from "../../../utils/stringUtils";
 import debounce from "../../../utils/debounce";
 import Category from "./Category";
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 
 const handleClick = (id) => () => {
     const element = document.getElementById(id);

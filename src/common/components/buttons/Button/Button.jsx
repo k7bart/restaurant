@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import styles from "./Button.module.scss";
 
 const Button = ({
@@ -7,10 +8,12 @@ const Button = ({
     children,
     onClick,
 }) => {
-    const buttonClass = `${styles.button} ${styles[size]} ${styles[color]}`;
-
     return (
-        <button className={buttonClass} onClick={onClick} type={type}>
+        <button
+            className={classNames(styles.button, styles[size], styles[color])}
+            onClick={onClick}
+            type={type}
+        >
             {children}
         </button>
     );

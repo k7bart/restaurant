@@ -5,22 +5,23 @@ import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 import Accordion from "../../components/Accordion/Accordion";
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
 import Cover from "../../components/Cover/Cover";
-import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
 import OrderHistory from "./OrderHistory/OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./Referral/Referral";
 import Reservations from "./Reservations/Reservations";
 import Tickets from "./Tickets/Tickets";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+
+const header = {
+    title: "Personal profile",
+    text: "Manage your personal information and preferences here.",
+};
 
 const ProfilePage = () => {
-    const header = {
-        title: "Personal profile",
-        text: "Manage your personal information and preferences here.",
-    };
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();

@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.text {
+    display: flex;
+    font-weight: 100;
+    align-items: center;
+
+    &.large {
+        font-size: 18px;
+    }
+
+    &.grey {
+        color: $text-color-grey;
+    }
+
+    &.white {
+        color: white;
+    }
+
+    &.center {
+        justify-content: center;
+    }
+
+    &.left {
+        justify-content: left;
+    }
+}

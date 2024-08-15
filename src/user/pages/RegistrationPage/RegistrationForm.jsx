@@ -3,9 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
+import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
+import Form from "../../components/Form/Form";
+import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
+import PasswordInput from "../../components/Inputs/PasswordInput";
 
 const registrationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -60,9 +64,13 @@ const RegistrationForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <div>
-                <NameInput register={register} error={errors.name} />
+                <NameInput
+                    register={register}
+                    error={errors.name}
+                    required={true}
+                />
                 <label>
                     <p>Surname</p>
                     <input {...register("surname")} type="text" />
@@ -74,17 +82,15 @@ const RegistrationForm = () => {
 
             <div>
                 <PhoneInput register={register} error={errors.phone} />
-                <EmailInput register={register} error={errors.email} />
+                <EmailInput
+                    register={register}
+                    error={errors.email}
+                    required={true}
+                />
             </div>
 
             <div>
-                <label>
-                    <p>Password</p>
-                    <input {...register("password")} type="password" />
-                    {errors.password && (
-                        <p className="error">{errors.password.message}</p>
-                    )}
-                </label>
+                <PasswordInput register={register} error={errors.password} />
 
                 <label>
                     <p>Confirm password</p>
@@ -97,17 +103,12 @@ const RegistrationForm = () => {
                 </label>
             </div>
 
-            <div className="container">
-                <label className="checkbox">
-                    <input type="checkbox" {...register("rememberMe")} />
-                    <p className="large">Remember me</p>
-                </label>
-            </div>
+            <LabeledCheckbox text="Remember me" register={register} />
 
-            <button className="submit small color" type="submit">
+            <Button size="small" color="wisteria" type="submit">
                 Register
-            </button>
-        </form>
+            </Button>
+        </Form>
     );
 };
 

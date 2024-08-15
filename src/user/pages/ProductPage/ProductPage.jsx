@@ -8,12 +8,12 @@ import { menu } from "../../../state";
 
 import Button from "../../../common/components/buttons/Button/Button";
 import CartLink from "../../components/NavBar/CartLink";
-import ContentSection from "../../components/TwoSectionsPage/ContentSection/ContentSection";
-import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import NumInput from "../../components/Inputs/NumInput/NumInput";
 import Nutrients from "./Nutrients/Nutrients";
 import ProductCarrousel from "./ProductCarrousel";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 
 const ProductPage = () => {
     const dispatch = useDispatch();

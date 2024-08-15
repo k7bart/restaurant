@@ -1,9 +1,6 @@
 @import "../../../../styles/variables.scss";
 
-//size
-button.small,
-button.large,
-button.full {
+.button {
     height: 60px;
     min-width: max-content;
     padding: 16px;
@@ -18,26 +15,25 @@ button.full {
         background-color: white;
         color: $wisteria;
     }
-}
 
-button.small {
-    width: 150px;
-}
+    &.small {
+        width: 150px;
+    }
 
-button.large {
-    width: 300px;
-}
+    &.large {
+        width: 300px;
+    }
 
-button.full {
-    width: 100%;
-}
+    &.full {
+        width: 100%;
+    }
 
-//color
-button.wisteria {
-    background-color: $wisteria;
-}
+    &.wisteria {
+        background-color: $wisteria;
+    }
 
-button.transparent {
-    background-color: transparent;
-    border: 1px solid $wisteria;
+    &.transparent {
+        background-color: transparent;
+        border: 1px solid $wisteria;
+    }
 }

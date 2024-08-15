@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.footer {
+    width: 100%;
+    padding-top: 48px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        padding-top: 20px;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}

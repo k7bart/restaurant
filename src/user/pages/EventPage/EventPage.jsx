@@ -1,8 +1,8 @@
 import { Outlet, useParams } from "react-router-dom";
 import { events } from "../../../state.js";
 import Cover from "../../components/Cover/Cover.jsx";
-import CoverSection from "../../components/TwoSectionsPage/CoverSection/CoverSection.jsx";
-import TwoSectionsPage from "../../components/TwoSectionsPage/TwoSectionsPage.jsx";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
 
 const EventPage = () => {
     const { eventId } = useParams();

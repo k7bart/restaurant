@@ -1,4 +1,6 @@
+import LinkComponent from "../LinkComponent/LinkComponent";
 import Logo from "../../../common/components/Logo/Logo";
+import styles from "./Footer.module.scss";
 import { Link, NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -25,7 +27,7 @@ const navLinks = links.map(({ to, text }) => (
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className={styles.footer}>
             <div className="container">
                 <Logo />
 
@@ -38,13 +40,9 @@ const Footer = () => {
                     b.art@gmail.com
                 </a>
 
-                <Link
-                    to="https://www.linkedin.com/in/kateryna-bartienieva/"
-                    target="_blank"
-                    className="link"
-                >
+                <LinkComponent to="https://www.linkedin.com/in/kateryna-bartienieva/">
                     By Kateryna Bartienieva
-                </Link>
+                </LinkComponent>
             </div>
 
             <div className="container">{navLinks}</div>
