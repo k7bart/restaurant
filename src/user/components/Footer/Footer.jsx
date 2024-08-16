@@ -1,7 +1,8 @@
-import LinkComponent from "../LinkComponent/LinkComponent";
+import ExternalLinkComponent from "../links/ExternalLinkComponent/ExternalLinkComponent";
+import LinkComponent from "../links/LinkComponent/LinkComponent";
 import Logo from "../../../common/components/Logo/Logo";
+import NavLinkComponent from "../links/NavLinkComponent/NavLinkComponent";
 import styles from "./Footer.module.scss";
-import { Link, NavLink } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
@@ -20,9 +21,9 @@ const links = [
 ];
 
 const navLinks = links.map(({ to, text }) => (
-    <NavLink to={to} className="link" key={to}>
+    <NavLinkComponent to={to} key={to}>
         {text}
-    </NavLink>
+    </NavLinkComponent>
 ));
 
 const Footer = () => {
@@ -31,14 +32,20 @@ const Footer = () => {
             <div className="container">
                 <Logo />
 
-                <a href="tel:+380630000000" className="link">
+                <ExternalLinkComponent
+                    href="tel:+380630000000"
+                    className="link"
+                >
                     <FaPhone />
                     {"+380 (63) 00 00 000"}
-                </a>
-                <a href="mailto:b.art@gmail.com" className="link">
+                </ExternalLinkComponent>
+                <ExternalLinkComponent
+                    href="mailto:b.art@gmail.com"
+                    className="link"
+                >
                     <IoMail />
                     b.art@gmail.com
-                </a>
+                </ExternalLinkComponent>
 
                 <LinkComponent to="https://www.linkedin.com/in/kateryna-bartienieva/">
                     By Kateryna Bartienieva
@@ -48,22 +55,14 @@ const Footer = () => {
             <div className="container">{navLinks}</div>
 
             <div>
-                <Link
-                    to="https://www.instagram.com"
-                    target="_blank"
-                    className="link"
-                >
+                <LinkComponent to="https://www.instagram.com" target="_blank">
                     <FaInstagram />
                     @b.art
-                </Link>
-                <Link
-                    to="https://www.facebook.com"
-                    target="_blank"
-                    className="link"
-                >
+                </LinkComponent>
+                <LinkComponent to="https://www.facebook.com" target="_blank">
                     <FaFacebook />
                     b.art
-                </Link>
+                </LinkComponent>
             </div>
         </footer>
     );

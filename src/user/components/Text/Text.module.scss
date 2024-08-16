@@ -1,9 +1,11 @@
 @import "../../../styles/variables.scss";
 
 .text {
-    display: flex;
     font-weight: 100;
-    align-items: center;
+
+    > a {
+        display: contents;
+    }
 
     &.large {
         font-size: 18px;
@@ -18,10 +20,12 @@
     }
 
     &.center {
+        display: inline-flex;
         justify-content: center;
     }
 
     &.left {
+        display: inline-flex;
         justify-content: left;
     }
 }

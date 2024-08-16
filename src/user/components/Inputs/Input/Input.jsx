@@ -1,4 +1,6 @@
-import { capitalize } from "../../../utils/stringUtils";
+import { capitalize } from "../../../../utils/stringUtils";
+import Text from "../../Text/Text";
+import styles from "./Input.module.scss";
 
 const Input = ({
     register,
@@ -8,16 +10,16 @@ const Input = ({
     label = capitalize(fieldName),
 }) => {
     return (
-        <label>
-            <p>
+        <label className={styles.label}>
+            <Text>
                 {label}
                 {required && "*"}
-            </p>
+            </Text>
             <input
                 {...register(fieldName)}
                 className={error ? "error" : undefined}
             />
-            {error && <p className="error">{error.message}</p>}
+            {error && <Text className="error">{error.message}</Text>}
         </label>
     );
 };

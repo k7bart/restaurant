@@ -6,7 +6,7 @@ import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/Form/Form";
 import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
-import LinkComponent from "../../components/LinkComponent/LinkComponent";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import Text from "../../components/Text/Text";
 

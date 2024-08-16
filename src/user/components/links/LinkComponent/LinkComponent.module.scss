@@ -1,9 +1,9 @@
-@import "../../../styles/variables.scss";
+@import "../../../../styles/variables.scss";
 
 .link {
     transition: 0.3s;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
 
     svg {
         fill: $text-color-grey;
@@ -31,13 +31,6 @@
         svg {
             fill: white;
             stroke: white;
-        }
-    }
-
-    &.active {
-        color: $wisteria;
-        svg {
-            fill: $wisteria;
         }
     }
 }

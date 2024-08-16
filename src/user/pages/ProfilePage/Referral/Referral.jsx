@@ -2,6 +2,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import { useState } from "react";
 import styles from "./Referral.module.scss";
 import Button from "../../../../common/components/buttons/Button/Button";
+import Text from "../../../components/Text/Text";
 
 const Referral = ({ id }) => {
     const REFERRAL_LINK = "https://bart.ua/?referral=" + id; // make it work
@@ -46,10 +47,10 @@ const Referral = ({ id }) => {
                 </Button>
             </div>
 
-            <p className="large">
+            <Text>
                 Copy the link or promo code, send it to your friend and you both
                 are guaranteed to receive $10 discount
-            </p>
+            </Text>
         </section>
     );
 };

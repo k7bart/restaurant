@@ -3,6 +3,7 @@ import classNames from "classnames";
 import dayjs from "dayjs";
 import styles from "./ReservationRow.module.scss";
 import Row from "../../../../../common/components/Row/Row";
+import Text from "../../../../components/Text/Text";
 
 const today = dayjs("2023-10-17T17:00:00+03:00");
 // const today = dayjs();
@@ -34,12 +35,14 @@ const ReservationRow = ({ reservation }) => {
                 <div className={classNames(styles.status, styles[status])}>
                     {capitalize(status)}
                 </div>
-                <p>{dayjs(dateTime).format("DD/MM/YYYY HH:mm")}</p>
-                <p>{formatGuestCount(guests)}</p>
+                <Text>{dayjs(dateTime).format("DD/MM/YYYY HH:mm")}</Text>
+                <Text>{formatGuestCount(guests)}</Text>
             </div>
             {additionalRequirements && (
                 <div>
-                    <p>Additional requirements: {additionalRequirements}</p>
+                    <Text>
+                        Additional requirements: {additionalRequirements}
+                    </Text>
                 </div>
             )}
         </Row>

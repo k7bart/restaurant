@@ -1,4 +1,4 @@
-import Input from "./Input";
+import Input from "./Input/Input";
 
 const PhoneInput = (props) => {
     return <Input fieldName="phone" {...props} />;

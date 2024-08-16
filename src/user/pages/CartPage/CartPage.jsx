@@ -3,7 +3,7 @@ import Cart from "./Cart/Cart";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/Cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import LinkComponent from "../../components/LinkComponent/LinkComponent";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import Text from "../../components/Text/Text";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 

@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
+import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
 import ReservationRow from "./ReservationRow/ReservationRow";
+import Text from "../../../components/Text/Text";
 
 const sortReservations = (reservations) => {
     return [...reservations].sort((a, b) =>
@@ -28,13 +30,17 @@ const Reservations = ({ reservationIds }) => {
     return (
         <>
             {userReservations.length === 0 ? (
-                <p className="large">
+                <Text className="large">
                     You don&apos;t have any reservations, but we are eagerly
                     awaiting your visit! You can reserve a table&nbsp;
-                    <Link className="large wisteria" to="/table-reservation">
+                    <LinkComponent
+                        color="wisteria"
+                        to="/table-reservation"
+                        size="large"
+                    >
                         here
-                    </Link>
-                </p>
+                    </LinkComponent>
+                </Text>
             ) : (
                 sortedUserReservations.map((reservation) => (
                     <ReservationRow

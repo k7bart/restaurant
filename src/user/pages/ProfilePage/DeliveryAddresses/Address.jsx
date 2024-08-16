@@ -6,6 +6,7 @@ import CloseButton from "../../../../common/components/buttons/CloseButton/Close
 import Icon from "../../../components/Icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
 import Row from "../../../../common/components/Row/Row";
+import Text from "../../../components/Text/Text";
 
 const Address = ({ address, currentAddressId }) => {
     const dispatch = useDispatch();
@@ -17,11 +18,11 @@ const Address = ({ address, currentAddressId }) => {
             <Row onClick={() => dispatch(setCurrentAddress(id))}>
                 <Icon>{currentAddressId === id && <IoCheckmark />}</Icon>
 
-                <p>
+                <Text>
                     {`${city}, ${street} ${house}${
                         apartment ? "/" + apartment : ""
                     }`}
-                </p>
+                </Text>
 
                 <CloseButton
                     onClick={(e) => {
