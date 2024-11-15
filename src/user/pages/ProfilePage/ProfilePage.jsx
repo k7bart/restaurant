@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
+import { profilePageBackgroundUrl } from "../../../constants/backgrounds/background-urls";
 import Accordion from "../../components/Accordion/Accordion";
 import Cover from "../../components/Cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
@@ -70,7 +71,7 @@ const ProfilePage = () => {
                     <Cover
                         subtitle="Your presence brightens our day"
                         title={"Hello, " + user.name}
-                        backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/table-in-cafe.jpeg?updatedAt=1718193744098"
+                        backgroundImage={profilePageBackgroundUrl}
                     />
                 </CoverSection>
                 <ContentSection
