@@ -12,3 +12,7 @@ export const getTotalPrice = (price, discountPercent, amount) => {
     const discountPrice = price - getDiscount(price, discountPercent);
     return !amount ? discountPrice : discountPrice * amount;
 };
+
+export const getPriceWithDiscount = (price, discountPercent) => {
+    return price - getDiscount(price, discountPercent);
+};
