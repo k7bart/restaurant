@@ -1,7 +1,7 @@
 import Cover from "../../components/Cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
-import Menu from "./Menu.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
+import Menu from "./menu/Menu.jsx";
 
 function MenuPage() {
     return (

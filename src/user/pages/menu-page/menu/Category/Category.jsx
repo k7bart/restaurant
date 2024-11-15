@@ -7,6 +7,8 @@ const Category = ({ category }) => {
     const { name, products } = category;
     return (
         <div className={styles.category} id={name}>
+            {/* <div className={classNames("category", styles.category)} id={name}> */}
+
             <h3>{capitalize(name)}</h3>
 
             <div>

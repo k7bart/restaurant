@@ -3,7 +3,7 @@ import { menu } from "../../../../state";
 import debounce from "../../../../utils/debounce";
 import Category from "./Category/Category";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import MenuNavigation from "./MenuNavigation/MenuNavigation";
+import MenuNavigation from "./menu-navigation/MenuNavigation";
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState(menu[0].name);
