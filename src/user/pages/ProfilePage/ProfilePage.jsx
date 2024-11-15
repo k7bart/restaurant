@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../../store";
 import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
-import { profilePageBackgroundUrl } from "../../../constants/backgrounds/background-urls";
+import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls.js";
 import Accordion from "../../components/Accordion/Accordion";
 import Cover from "../../components/Cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
