@@ -1,0 +1,59 @@
+@import "../../../../../../styles/variables.scss";
+
+.productLink {
+    width: 50%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+
+        .amountContainer:not(.visible) {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    > :not(:first-child) {
+        padding-top: 8px;
+    }
+
+    div.withImage {
+        width: 100%;
+        position: relative;
+
+        .badge {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+
+        .amountContainer {
+            height: 55px;
+            width: 100%;
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            background-color: $wisteria;
+            transition: 0.3s;
+
+            &.visible {
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button {
+                height: 100%;
+                width: 100%;
+                background-color: $wisteria;
+            }
+        }
+    }
+}

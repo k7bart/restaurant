@@ -194,6 +194,14 @@ export const menu = [
         name: "coffee",
         products: [
             {
+                name: "Espresso",
+                id: "espresso",
+                ingredients: null,
+                price: 2,
+                discountPercent: null,
+                isVegan: true,
+            },
+            {
                 name: "Cappuccino",
                 id: "cappuccino",
                 ingredients: ["espresso", "milk"],

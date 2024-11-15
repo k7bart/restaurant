@@ -1,0 +1,32 @@
+@import "../../../styles/variables.scss";
+
+.text {
+    font-weight: 100;
+
+    > a {
+        display: contents;
+    }
+
+    &.large {
+        font-size: 18px;
+    }
+
+    &.grey {
+        color: $text-color-grey;
+    }
+
+    &.white {
+        color: white;
+    }
+
+    &.center {
+        display: inline-flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &.left {
+        display: inline-flex;
+        justify-content: left;
+    }
+}

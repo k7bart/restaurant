@@ -1,0 +1,9 @@
+.twoSections {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+
+    @media (max-width: 820px) {
+        flex-direction: column;
+    }
+}

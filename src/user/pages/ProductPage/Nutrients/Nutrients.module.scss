@@ -1,0 +1,26 @@
+@import "../../../../styles/variables.scss";
+
+.nutrients {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    > :not(:first-child) {
+        border-left: 1px solid $border-color;
+    }
+
+    > div {
+        min-width: max-content;
+        width: 25%;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-wrap: nowrap;
+
+        .text {
+            font-weight: 200;
+            color: lightgray;
+        }
+    }
+}
