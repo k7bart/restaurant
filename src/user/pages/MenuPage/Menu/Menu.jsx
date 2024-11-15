@@ -1,19 +1,9 @@
 import { useState, useEffect } from "react";
-import { menu } from "../../../state";
-import { capitalize } from "../../../utils/stringUtils";
-import debounce from "../../../utils/debounce";
-import Category from "./Category";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-
-const handleClick = (id) => () => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    }
-};
+import { menu } from "../../../../state";
+import debounce from "../../../../utils/debounce";
+import Category from "./Category/Category";
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
+import MenuNavigation from "./MenuNavigation/MenuNavigation";
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState(menu[0].name);
@@ -42,21 +32,7 @@ const Menu = () => {
         };
     });
 
-    const nav = (
-        <nav className="content-evenly">
-            {menu.map((category) => (
-                <a
-                    className={`link ${
-                        activeCategory === category.name ? "active" : ""
-                    }`}
-                    key={category.name}
-                    onClick={handleClick(category.name)}
-                >
-                    {capitalize(category.name)}
-                </a>
-            ))}
-        </nav>
-    );
+    const nav = <MenuNavigation activeCategory={activeCategory} />;
 
     return (
         <ContentSection nav={nav}>
