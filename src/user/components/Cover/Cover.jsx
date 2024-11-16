@@ -1,3 +1,4 @@
+import CursiveSubtitle from "../cursive-subtitle/CursiveSubtitle";
 import Title from "../title/Title";
 
 function Cover({ subtitle, title, backgroundImage, text }) {
@@ -10,7 +11,7 @@ function Cover({ subtitle, title, backgroundImage, text }) {
             <div className="filter"></div>
             <div className="content">
                 <div className="titles-container">
-                    <h2 className="subtitle">{subtitle}</h2>
+                    <CursiveSubtitle text={subtitle} />
                     <Title text={title} />
                     {text && <p className="large">{text}</p>}
                 </div>
