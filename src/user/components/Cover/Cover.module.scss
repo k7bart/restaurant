@@ -1,0 +1,34 @@
+.cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    .image {
+      transform: scale(1.05);
+    }
+
+    .filter {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  transition: transform 0.5s, filter 0.5s;
+}
+
+.filter {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+}
