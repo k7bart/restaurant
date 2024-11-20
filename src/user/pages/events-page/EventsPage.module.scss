@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+
+.logo,
+.navbar {
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.logo {
+    top: 80px;
+}
+
+.navbar {
+    bottom: 80px;
+}
+
+.carrousel {
+    height: 100vh;
+}
+
+// .slide {
+// overflow: hidden;
+// position: relative;
+// }

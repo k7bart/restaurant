@@ -4,7 +4,7 @@ import Dashboard from "./admin/pages/Dashboard";
 import EventDetails from "./user/pages/EventPage/EventDetails/EventDetails";
 import EventPage from "./user/pages/EventPage/EventPage";
 import EventReservation from "./user/pages/EventPage/EventReservation/EventReservation";
-import EventsPage from "./user/pages/EventsPage/EventsPage";
+import EventsPage from "./user/pages/events-page/EventsPage";
 import ErrorPage from "./user/pages/ErrorPage/ErrorPage";
 import FrontPage from "./user/pages/FrontPage/FrontPage";
 import LoginPage from "./user/pages/LoginPage/LoginPage";
