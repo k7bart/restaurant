@@ -6,8 +6,9 @@ import styles from "./Logo.module.scss";
 const Logo = ({ additionalStyles }) => {
     return (
         <Link
-            to="/"
             className={classNames(styles.logo, additionalStyles, "logo")}
+            data-testid="logo"
+            to="/"
         >
             b.art
         </Link>

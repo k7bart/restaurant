@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import Arrows from "./Arrows/Arrows";
@@ -8,7 +7,7 @@ import Slide from "./slide/Slide";
 
 import styles from "./Carrousel.module.scss";
 
-const Carrousel = ({ content, dots, num, slideShow, customStyles }) => {
+const Carrousel = ({ content, dots, num, slideShow }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleSlideChange = (step) => {
@@ -38,17 +37,10 @@ const Carrousel = ({ content, dots, num, slideShow, customStyles }) => {
             : content.slice(currentIndex, currentIndex + num);
 
     return (
-        <div
-            className={classNames(customStyles?.carrousel, styles.carrousel)}
-            data-testid="carrousel"
-        >
+        <div className={styles.carrousel} data-testid="carrousel">
             <div className={styles.slidesContainer}>
                 {visibleGroup.map((slideContent, index) => (
-                    <Slide
-                        customStyles={customStyles?.slide}
-                        key={index}
-                        slideContent={slideContent}
-                    />
+                    <Slide key={index} slideContent={slideContent} />
                 ))}
             </div>
 
@@ -70,14 +62,12 @@ Carrousel.propTypes = {
     dots: PropTypes.bool,
     num: PropTypes.number,
     slideShow: PropTypes.bool,
-    customStyles: PropTypes.object,
 };
 
 Carrousel.defaultProps = {
     dots: false,
     num: 1,
     slideShow: false,
-    customStyles: undefined,
 };
 
 export default Carrousel;

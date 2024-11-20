@@ -1,22 +1,12 @@
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import styles from "./Slide.module.scss";
 
-const Slide = ({ customStyles, slideContent }) => {
-    return (
-        <div className={classNames(customStyles, styles.slide)}>
-            {slideContent}
-        </div>
-    );
+const Slide = ({ slideContent }) => {
+    return <div className={styles.slide}>{slideContent}</div>;
 };
 
 Slide.propTypes = {
-    customStyles: PropTypes.object,
-    slideContent: PropTypes.string.isRequired,
-};
-
-Slide.defaultProps = {
-    customStyles: undefined,
+    slideContent: PropTypes.object.isRequired,
 };
 
 export default Slide;

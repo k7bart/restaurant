@@ -12,10 +12,6 @@ const props = {
     content: events.map((event) => (
         <EventPreview key={event.id} event={event} />
     )),
-    customStyles: {
-        carrousel: styles.carrousel,
-        // slide: styles.slide,
-    },
     num: 3,
     dots: false,
     slideShow: false,
