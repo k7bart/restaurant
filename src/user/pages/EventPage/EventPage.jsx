@@ -1,6 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 import { events } from "../../../state.js";
-import Cover from "../../components/Cover/Cover.jsx";
+import Cover from "../../components/cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
 

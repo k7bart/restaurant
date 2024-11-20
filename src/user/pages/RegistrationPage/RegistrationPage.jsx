@@ -1,4 +1,4 @@
-import Cover from "../../components/Cover/Cover";
+import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import LinkComponent from "../../components/links/LinkComponent/LinkComponent";

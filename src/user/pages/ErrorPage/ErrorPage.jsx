@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import Logo from "../../../common/components/Logo/Logo";
 import NavBar from "../../components/NavBar/NavBar";
-import Cover from "../../components/Cover/Cover";
+import Cover from "../../components/cover/Cover";
 
 const ErrorPage = () => {
     const props = {

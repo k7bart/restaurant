@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Cart from "./Cart/Cart";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/Cover/Cover";
+import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import Text from "../../components/Text/Text";
