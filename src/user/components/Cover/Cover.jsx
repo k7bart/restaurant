@@ -4,7 +4,7 @@ import CoverTitles from "../cover-titles/CoverTitles";
 
 import styles from "./Cover.module.scss";
 
-function Cover({ subtitle, title, backgroundImage, text }) {
+function Cover({ addFilter, backgroundImage, subtitle, title, text }) {
     return (
         <div className={styles.cover}>
             <div
@@ -13,7 +13,7 @@ function Cover({ subtitle, title, backgroundImage, text }) {
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             ></div>
 
-            <div className={styles.filter}></div>
+            {addFilter && <div className={styles.filter}></div>}
 
             <CoverTitles title={title} subtitle={subtitle} text={text} />
         </div>
@@ -21,10 +21,15 @@ function Cover({ subtitle, title, backgroundImage, text }) {
 }
 
 Cover.propTypes = {
+    addFilter: PropTypes.bool,
+    backgroundImage: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     title: PropTypes.string,
-    backgroundImage: PropTypes.string.isRequired,
     text: PropTypes.string,
+};
+
+Cover.defaultProps = {
+    addFilter: true,
 };
 
 export default Cover;

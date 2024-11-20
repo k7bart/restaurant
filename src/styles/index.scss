@@ -302,54 +302,6 @@ table {
     }
 }
 
-.product-page {
-    .carrousel-container {
-        width: 100%;
-
-        // .cover > img {
-        //     position: relative !important;
-        // }
-    }
-    section.content > main {
-        nav {
-            justify-content: flex-start;
-        }
-
-        > :not(:first-child):not(button) {
-            padding-top: 48px;
-        }
-
-        .prices-container {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-
-            .amount {
-                height: 60px;
-                width: 150px;
-                display: flex;
-                justify-content: center;
-            }
-
-            .container {
-                display: flex;
-                align-items: center;
-
-                .discount {
-                    padding: 4px 8px;
-                    margin-right: 4px;
-                    border-radius: 30px;
-                    background-color: $wisteria;
-                }
-
-                .price {
-                    color: $wisteria;
-                }
-            }
-        }
-    }
-}
-
 .event-page {
     nav > p.current-location {
         font-weight: 200;

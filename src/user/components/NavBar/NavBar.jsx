@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+
 import CartLink from "./CartLink";
 import ProfileLink from "./ProfileLink";
 
@@ -15,11 +18,14 @@ const navLinks = links.map((link, i) => (
     </NavLink>
 ));
 
-const NavBar = () => {
+const NavBar = ({ additionalStyles }) => {
     const user = useSelector((state) => state.user);
 
     return (
-        <nav className="navbar">
+        <nav
+            className={classNames(additionalStyles, "navbar")}
+            data-testid="navbar"
+        >
             {user ? (
                 <ProfileLink name={user.name} />
             ) : (
@@ -29,6 +35,13 @@ const NavBar = () => {
             <CartLink />
         </nav>
     );
+};
+NavBar.propTypes = {
+    additionalStyles: PropTypes.string,
+};
+
+NavBar.defaultProps = {
+    additionalStyles: undefined,
 };
 
 export default NavBar;

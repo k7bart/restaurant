@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+
 import Arrows from "./Arrows/Arrows";
 import Dots from "./Dots/Dots";
+import Slide from "./slide/Slide";
+
 import styles from "./Carrousel.module.scss";
 
-const Carrousel = ({ content, dots, num = 1, slideShow = false }) => {
+const Carrousel = ({ content, dots, num, slideShow, customStyles }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleSlideChange = (step) => {
@@ -33,12 +38,17 @@ const Carrousel = ({ content, dots, num = 1, slideShow = false }) => {
             : content.slice(currentIndex, currentIndex + num);
 
     return (
-        <div className={styles.carrousel}>
+        <div
+            className={classNames(customStyles?.carrousel, styles.carrousel)}
+            data-testid="carrousel"
+        >
             <div className={styles.slidesContainer}>
-                {visibleGroup.map((s, index) => (
-                    <div key={index} className={styles.slide}>
-                        {s}
-                    </div>
+                {visibleGroup.map((slideContent, index) => (
+                    <Slide
+                        customStyles={customStyles?.slide}
+                        key={index}
+                        slideContent={slideContent}
+                    />
                 ))}
             </div>
 
@@ -53,6 +63,21 @@ const Carrousel = ({ content, dots, num = 1, slideShow = false }) => {
             )}
         </div>
     );
+};
+
+Carrousel.propTypes = {
+    content: PropTypes.array.isRequired,
+    dots: PropTypes.bool,
+    num: PropTypes.number,
+    slideShow: PropTypes.bool,
+    customStyles: PropTypes.object,
+};
+
+Carrousel.defaultProps = {
+    dots: false,
+    num: 1,
+    slideShow: false,
+    customStyles: undefined,
 };
 
 export default Carrousel;

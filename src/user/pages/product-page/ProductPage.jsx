@@ -2,18 +2,24 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosArrowBack } from "react-icons/io";
-import { getTotalPrice } from "../../../utils/priceUtils";
 import { addProduct, updateProductAmount } from "../../../store/index";
 import { menu } from "../../../state";
 
 import Button from "../../../common/components/buttons/Button/Button";
+import Carrousel from "../../components/Carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
+import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import NumInput from "../../components/Inputs/NumInput/NumInput";
-import Nutrients from "./Nutrients/Nutrients";
-import ProductCarrousel from "./ProductCarrousel";
+import Nutrients from "./nutrients/Nutrients";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+
+import styles from "./ProductPage.module.scss";
+import Amount from "./amount/Amount";
+import Price from "./price/Price";
+import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
+import Discount from "./discount/Discount";
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -35,6 +41,10 @@ const ProductPage = () => {
         price,
     } = product;
 
+    const slides = photos.map((photo, i) => (
+        <Cover addFilter={false} backgroundImage={photo} key={i} />
+    ));
+
     const productInCart = useMemo(() => {
         return cart.find((product) => product.id === productId);
     }, [cart, productId]);
@@ -54,11 +64,9 @@ const ProductPage = () => {
     };
 
     return (
-        <TwoSectionsPage title={name} className="product-page">
+        <TwoSectionsPage title={name} className={styles.productPage}>
             <CoverSection addLogo={false} addNavBar={false}>
-                <div className="carrousel-container">
-                    <ProductCarrousel photos={photos} />
-                </div>
+                <Carrousel content={slides} dots />
             </CoverSection>
 
             <ContentSection
@@ -66,47 +74,43 @@ const ProductPage = () => {
                     title: name,
                     text: description,
                 }}
-                nav={
-                    <nav>
-                        <Link to="/menu" className="link">
-                            <IoIosArrowBack />
-                            Menu
-                        </Link>
-                        <CartLink />
-                    </nav>
-                }
             >
-                <h4>{ingredients.join(", ")}</h4>
+                <ContentSectionNav>
+                    <LinkComponent to="/menu">
+                        <IoIosArrowBack />
+                        Menu
+                    </LinkComponent>
+                    <CartLink />
+                </ContentSectionNav>
 
-                <Nutrients nutrients={nutrients} />
+                <div className={styles.content}>
+                    <h4>{ingredients.join(", ")}</h4>
 
-                <div className="prices-container">
-                    {amount ? (
-                        <div className="amount">
-                            <NumInput
+                    <Nutrients nutrients={nutrients} />
+
+                    <div className={styles.container}>
+                        {amount ? (
+                            <Amount
                                 amount={amount}
-                                min={0}
                                 onChange={handleAmountChange}
                             />
-                        </div>
-                    ) : (
-                        <Button onClick={() => handleAmountChange(1)}>
-                            Add to cart
-                        </Button>
-                    )}
-
-                    <div className="container">
-                        {discountPercent && (
-                            <div className="discount">{`-${discountPercent}%`}</div>
+                        ) : (
+                            <Button onClick={() => handleAmountChange(1)}>
+                                Add to cart
+                            </Button>
                         )}
-                        <h4>$</h4>
-                        <h3 className="price">
-                            {getTotalPrice(
-                                price,
-                                discountPercent,
-                                amount
-                            ).toFixed(2)}
-                        </h3>
+
+                        <div className={styles.pricesContainer}>
+                            {discountPercent && (
+                                <Discount discountPercent={discountPercent} />
+                            )}
+
+                            <Price
+                                amount={amount}
+                                discountPercent={discountPercent}
+                                price={price}
+                            />
+                        </div>
                     </div>
                 </div>
             </ContentSection>

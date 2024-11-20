@@ -11,7 +11,7 @@ import LoginPage from "./user/pages/LoginPage/LoginPage";
 import Menu from "./user/pages/menu-page/menu/Menu";
 import MenuPage from "./user/pages/menu-page/MenuPage";
 import Orders from "./admin/pages/Orders";
-import ProductPage from "./user/pages/ProductPage/ProductPage";
+import ProductPage from "./user/pages/product-page/ProductPage";
 import RegistrationPage from "./user/pages/RegistrationPage/RegistrationPage";
 import ReservationPage from "./user/pages/ReservationPage/ReservationPage";
 import ProfilePage from "./user/pages/ProfilePage/ProfilePage";

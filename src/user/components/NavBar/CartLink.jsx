@@ -1,19 +1,30 @@
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
+import { getTotalPrice } from "../../../utils/priceUtils";
+
+import NavLinkComponent from "../links/NavLinkComponent/NavLinkComponent";
 
 const CartLink = () => {
     const cart = useSelector((state) => state.cart);
-    if (cart.length === 0) return;
 
     const total = cart.reduce(
-        (total, product) => total + product.price * product.amount,
+        (total, product) =>
+            total +
+            getTotalPrice(
+                product.price,
+                product.discountPercent,
+                product.amount
+            ),
         0
     );
+
+    if (total === 0) return null;
+
     return (
-        <NavLink to="/cart" className="cart link">
-            <FaShoppingCart />${total}
-        </NavLink>
+        <NavLinkComponent to="/cart">
+            <FaShoppingCart />
+            {"$" + total.toFixed(2)}
+        </NavLinkComponent>
     );
 };
 
