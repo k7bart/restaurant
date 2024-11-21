@@ -3,6 +3,7 @@ import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import { reservationPageBackgroundUrl } from "../../../constants/backgroundUrls";
 
 const title = "Reservation";
 const header = {
@@ -17,7 +18,7 @@ function TableReservationPage() {
                 <Cover
                     subtitle="Book a table"
                     title={title}
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/cake.jpeg?updatedAt=1718193803926"
+                    backgroundImage={reservationPageBackgroundUrl}
                 />
             </CoverSection>
             <ContentSection header={header}>

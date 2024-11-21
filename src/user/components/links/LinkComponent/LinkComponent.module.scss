@@ -10,6 +10,18 @@
         stroke: $text-color-grey;
     }
 
+    &.thin {
+        font-weight: 100;
+    }
+
+    &.extraLight {
+        font-weight: 200;
+    }
+
+    &.medium {
+        font-size: 16px;
+    }
+
     &.large {
         font-size: 18px;
     }

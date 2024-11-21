@@ -1,24 +1,21 @@
-import { Controller } from "react-hook-form";
-import { capitalize } from "../../../utils/stringUtils";
 import DatePicker from "react-datepicker";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Controller } from "react-hook-form";
 import { addMonths } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css";
+
+import Text from "../Text/Text";
 
 const today = new Date();
 
-const DateInput = ({
-    control,
-    error,
-    name = "date",
-    required = false,
-    label = capitalize(name),
-}) => {
+const DateInput = ({ control, error, name, required, label }) => {
     return (
-        <label className="date-picker">
-            <p>
+        <label className={classNames("date-picker", error && "error")}>
+            <Text>
                 {label}
                 {required && "*"}
-            </p>
+            </Text>
+
             <Controller
                 control={control}
                 name={name}
@@ -32,9 +29,30 @@ const DateInput = ({
                     />
                 )}
             />
-            {error && <p className="error">{error.message}</p>}
+
+            {error && (
+                <Text color="wisteria" fontWeight="extraLight" size="small">
+                    {error.message}
+                </Text>
+            )}
         </label>
     );
+};
+
+DateInput.propTypes = {
+    control: PropTypes.object.isRequired,
+    error: PropTypes.shape({
+        message: PropTypes.string,
+    }),
+    name: PropTypes.string,
+    required: PropTypes.bool,
+    label: PropTypes.string,
+};
+
+DateInput.defaultProps = {
+    name: "date",
+    required: false,
+    label: "Date",
 };
 
 export default DateInput;

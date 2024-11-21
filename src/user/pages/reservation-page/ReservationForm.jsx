@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
 import { subDays, addMonths } from "date-fns";
+import { addReservation, addReservationId } from "../../../store";
 
 import * as yup from "yup";
 
@@ -13,13 +14,14 @@ import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/Form/Form";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
 import Notice from "../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
+import Text from "../../components/Text/Text";
 import TimeInput from "../../components/Inputs/TimeInput";
-import { addReservation, addReservationId } from "../../../store";
 
 const today = new Date();
 
@@ -50,7 +52,7 @@ const reservationSchema = yup.object({
     phone: yup
         .string()
         .required(
-            "Please share your phone number. We'll only reach out if we have questions."
+            "Please share your phone number. We'll only reach out if we have questions"
         ),
     date: yup
         .date()
@@ -137,19 +139,21 @@ const ReservationForm = () => {
     return reservedTable ? (
         <Notice>
             <h4>Table successfully reserved!</h4>
-            <p className="large">
+
+            <Text size="large">
                 We are waiting for you&nbsp;
                 {dayjs(reservedTable.date).format("DD/MM/YYYY")}
                 &nbsp;at&nbsp;
                 {`${dayjs(reservedTable.date).get("hours")}:${dayjs(
                     reservedTable.date
                 ).get("minutes")}`}
-            </p>
+            </Text>
+
             <div className="buttons-container">
                 <Button
-                    size="small"
                     color="transparent"
                     onClick={() => setReservedTable(null)}
+                    size="small"
                 >
                     Make another one
                 </Button>
@@ -164,13 +168,18 @@ const ReservationForm = () => {
     ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
             {!user && (
-                <p className="large">
+                <Text size="large">
                     We kindly invite you to
-                    <Link to="/login" className="large wisteria">
+                    <LinkComponent
+                        color="wisteria"
+                        fontWeight="thin"
+                        to="/login"
+                        size="large"
+                    >
                         &nbsp;log in&nbsp;
-                    </Link>
+                    </LinkComponent>
                     for a smoother and quicker experience.
-                </p>
+                </Text>
             )}
 
             <NameInput
@@ -206,6 +215,7 @@ const ReservationForm = () => {
                     error={errors.date}
                     required={true}
                 />
+
                 <TimeInput control={control} error={errors.time} />
             </div>
 

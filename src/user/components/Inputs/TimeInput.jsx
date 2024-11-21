@@ -1,20 +1,18 @@
-import { Controller } from "react-hook-form";
+import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
-import { capitalize } from "../../../utils/stringUtils";
+import classNames from "classnames";
+import { Controller } from "react-hook-form";
 
-const TimeInput = ({
-    control,
-    error,
-    name = "time",
-    required = true,
-    label = capitalize(name),
-}) => {
+import Text from "../Text/Text";
+
+const TimeInput = ({ control, error, name, required, label }) => {
     return (
-        <label className="time-picker">
-            <p>
+        <label className={classNames("time-picker", error && "error")}>
+            <Text>
                 {label}
                 {required && "*"}
-            </p>
+            </Text>
+
             <Controller
                 control={control}
                 name={name}
@@ -36,9 +34,30 @@ const TimeInput = ({
                     />
                 )}
             />
-            {error && <p className="error">{error.message}</p>}
+
+            {error && (
+                <Text color="wisteria" fontWeight="extraLight" size="small">
+                    {error.message}
+                </Text>
+            )}
         </label>
     );
+};
+
+TimeInput.propTypes = {
+    control: PropTypes.object.isRequired,
+    error: PropTypes.shape({
+        message: PropTypes.string,
+    }),
+    name: PropTypes.string,
+    required: PropTypes.bool,
+    label: PropTypes.string,
+};
+
+TimeInput.defaultProps = {
+    name: "time",
+    required: true,
+    label: "Time",
 };
 
 export default TimeInput;
