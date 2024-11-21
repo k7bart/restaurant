@@ -1,12 +1,28 @@
 import classNames from "classnames";
+import PropTypes from "prop-types";
+
 import styles from "./Row.module.scss";
 
-const Row = ({ children, className = undefined, onClick = undefined }) => {
+const Row = ({ additionalStyles, children, onClick }) => {
     return (
-        <div className={classNames(styles.row, className)} onClick={onClick}>
+        <div
+            className={classNames(styles.row, additionalStyles)}
+            onClick={onClick}
+        >
             {children}
         </div>
     );
+};
+
+Row.propTypes = {
+    additionalStyles: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func,
+};
+
+Row.defaultProps = {
+    additionalStyles: undefined,
+    onClick: undefined,
 };
 
 export default Row;

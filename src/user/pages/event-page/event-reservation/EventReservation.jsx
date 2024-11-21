@@ -1,27 +1,32 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { events } from "../../../../state.js";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
-import EventReservationForm from "./EventReservationForm.jsx";
 
-// LinkComponent
-// Text
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
+import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
+import EventReservationForm from "./EventReservationForm.jsx";
+import LinkComponent from "../../../components/links/LinkComponent/LinkComponent.jsx";
+import Text from "../../../components/Text/Text.jsx";
 
 const EventReservation = () => {
     const { eventId } = useParams();
     const event = events.find((e) => e.id === eventId);
     const nav = (
-        <nav>
-            <Link to="/events" className="link">
-                Events
-            </Link>
+        <ContentSectionNav>
+            <LinkComponent to="/events">Events</LinkComponent>
+
             <IoIosArrowForward />
-            <Link to={"/events/" + eventId} className="link">
+
+            <LinkComponent to={"/events/" + eventId}>
                 {event.title}
-            </Link>
+            </LinkComponent>
+
             <IoIosArrowForward />
-            <p className="current-location">Reservation</p>
-        </nav>
+
+            <Text color="wisteria" fontWeight="extraLight">
+                Reservation
+            </Text>
+        </ContentSectionNav>
     );
     return (
         <ContentSection

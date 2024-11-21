@@ -1,11 +1,11 @@
 @import "../../../styles/variables.scss";
 
-.row:not(:first-child) {
+.row:not(:first-of-type) {
     border-top: 1px solid $border-color;
     padding-top: 16px;
 }
 
-.row:not(:last-child) {
+.row:not(:last-of-type) {
     padding-bottom: 16px;
 }
 
@@ -13,4 +13,5 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }

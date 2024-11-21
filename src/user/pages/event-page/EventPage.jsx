@@ -1,5 +1,6 @@
 import { Outlet, useParams } from "react-router-dom";
 import { events } from "../../../state.js";
+
 import Cover from "../../components/cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
@@ -9,7 +10,7 @@ const EventPage = () => {
     const event = events.find((e) => e.id === eventId);
 
     return (
-        <TwoSectionsPage title={event.title} className="event-page">
+        <TwoSectionsPage title={event.title}>
             <CoverSection>
                 <Cover
                     subtitle={event.subtitle}

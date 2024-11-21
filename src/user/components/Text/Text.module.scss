@@ -1,10 +1,16 @@
 @import "../../../styles/variables.scss";
 
 .text {
-    font-weight: 100;
-
     > a {
         display: contents;
+    }
+
+    &.thin {
+        font-weight: 100;
+    }
+
+    &.extraLight {
+        font-weight: 200;
     }
 
     &.large {
@@ -13,6 +19,10 @@
 
     &.grey {
         color: $text-color-grey;
+    }
+
+    &.wisteria {
+        color: $wisteria;
     }
 
     &.white {

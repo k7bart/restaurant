@@ -1,0 +1,41 @@
+@import "../../../../styles/variables.scss";
+
+.eventDetails {
+    > div {
+        padding-top: 48px;
+    }
+
+    .mainInfo {
+        display: inline-flex;
+        align-items: center;
+
+        :not(:first-child) {
+            padding-left: 32px;
+        }
+    }
+
+    h3 {
+        font-family: "Kaushan Script", cursive;
+        color: $wisteria;
+        padding-bottom: 24px;
+    }
+
+    .specialGuest {
+        display: inline-flex;
+        align-items: center;
+
+        img {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        span {
+            padding-left: 8px;
+        }
+    }
+
+    .button {
+        display: block;
+        margin: 48px auto 0;
+    }
+}
