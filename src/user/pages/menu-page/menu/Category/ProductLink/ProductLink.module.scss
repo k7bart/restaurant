@@ -25,10 +25,14 @@
         width: 100%;
         position: relative;
 
-        .badge {
+        .badges {
             position: absolute;
             top: 4px;
             left: 4px;
+
+            :not(:first-child) {
+                margin-left: 4px;
+            }
         }
 
         .amountContainer {

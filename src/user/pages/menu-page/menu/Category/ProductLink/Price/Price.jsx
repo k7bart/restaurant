@@ -8,11 +8,9 @@ const Price = ({ discountPercent, price }) => {
     return (
         <div className={styles.price}>
             {discountPercent && (
-                <h4 className={styles.sale}>
-                    {"$" + priceWithDiscount.toFixed(2)}
-                </h4>
+                <h4 className={styles.sale}>{"$" + price.toFixed(2)}</h4>
             )}
-            <h4>{"$" + price}</h4>
+            <h4>{"$" + priceWithDiscount.toFixed(2)}</h4>
         </div>
     );
 };

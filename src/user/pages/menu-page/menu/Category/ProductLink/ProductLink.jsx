@@ -67,12 +67,14 @@ const ProductLink = ({ product, category }) => {
             <div className={styles.withImage}>
                 <Photo photo={photo} />
 
-                {isDishOfTheDay && (
-                    <Badge
-                        text={`${capitalize(category)} of the Day`}
-                        additionalStyles={styles.badge}
-                    />
-                )}
+                <div className={styles.badges}>
+                    {isDishOfTheDay && (
+                        <Badge text={`${capitalize(category)} of the Day`} />
+                    )}
+
+                    {discountPercent && <Badge text={`-${discountPercent}$`} />}
+                </div>
+
                 <div
                     className={classNames(styles.amountContainer, {
                         [styles.visible]: amount,

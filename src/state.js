@@ -110,7 +110,7 @@ export const menu = [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/croque-madame.webp?updatedAt=1720593159472",
                 ],
                 price: 29,
-                discountPercent: null,
+                discountPercent: 5,
                 isVegan: false,
                 isDishOfTheDay: true,
             },
