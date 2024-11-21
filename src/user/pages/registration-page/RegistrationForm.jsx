@@ -11,6 +11,7 @@ import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";
+import SurnameInput from "../../components/Inputs/SurnameInput";
 import Text from "../../components/Text/Text";
 
 const registrationSchema = yup.object({
@@ -74,13 +75,7 @@ const RegistrationForm = () => {
                     required={true}
                 />
 
-                <label>
-                    <p>Surname</p>
-                    <input {...register("surname")} type="text" />
-                    {errors.surname && (
-                        <p className="error">{errors.surname.message}</p>
-                    )}
-                </label>
+                <SurnameInput register={register} surname={errors.surname} />
             </div>
 
             <div>
