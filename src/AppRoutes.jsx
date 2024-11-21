@@ -12,7 +12,7 @@ import Menu from "./user/pages/menu-page/menu/Menu";
 import MenuPage from "./user/pages/menu-page/MenuPage";
 import Orders from "./admin/pages/Orders";
 import ProductPage from "./user/pages/product-page/ProductPage";
-import RegistrationPage from "./user/pages/RegistrationPage/RegistrationPage";
+import RegistrationPage from "./user/pages/registration-page/RegistrationPage";
 import ReservationPage from "./user/pages/ReservationPage/ReservationPage";
 import ProfilePage from "./user/pages/ProfilePage/ProfilePage";
 import ReservationsTable from "./admin/pages/ReservationsTable";

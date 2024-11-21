@@ -1,19 +1,19 @@
+import { registrationsPageBackgroundUrl } from "../../../constants/backgroundUrls";
+
 import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import RegistrationForm from "./RegistrationForm";
-import Text from "../../components/Text/Text";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 
 const RegistrationPage = () => {
     return (
-        <TwoSectionsPage title="Registration" className="registration-page">
+        <TwoSectionsPage title="Registration">
             <CoverSection>
                 <Cover
                     subtitle="For a smoother experience"
                     title="Register"
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/mango-passion-fruit-tart.webp?updatedAt=1720592608890"
+                    backgroundImage={registrationsPageBackgroundUrl}
                 />
             </CoverSection>
             <ContentSection
@@ -23,13 +23,6 @@ const RegistrationPage = () => {
                 }}
             >
                 <RegistrationForm />
-
-                <Text align="center" size="large">
-                    Already registered?&nbsp;
-                    <LinkComponent color="wisteria" to="/login" size="large">
-                        Sign in
-                    </LinkComponent>
-                </Text>
             </ContentSection>
         </TwoSectionsPage>
     );

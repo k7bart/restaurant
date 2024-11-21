@@ -7,9 +7,11 @@ import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/Form/Form";
 import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";
+import Text from "../../components/Text/Text";
 
 const registrationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -71,6 +73,7 @@ const RegistrationForm = () => {
                     error={errors.name}
                     required={true}
                 />
+
                 <label>
                     <p>Surname</p>
                     <input {...register("surname")} type="text" />
@@ -82,6 +85,7 @@ const RegistrationForm = () => {
 
             <div>
                 <PhoneInput register={register} error={errors.phone} />
+
                 <EmailInput
                     register={register}
                     error={errors.email}
@@ -93,8 +97,10 @@ const RegistrationForm = () => {
                 <PasswordInput register={register} error={errors.password} />
 
                 <label>
-                    <p>Confirm password</p>
+                    <Text>Confirm password</Text>
+
                     <input {...register("confirmPassword")} type="password" />
+
                     {errors.confirmPassword && (
                         <p className="error">
                             {errors.confirmPassword.message}
@@ -108,6 +114,13 @@ const RegistrationForm = () => {
             <Button size="small" color="wisteria" type="submit">
                 Register
             </Button>
+
+            <Text align="center" size="large">
+                Already registered?&nbsp;
+                <LinkComponent color="wisteria" to="/login" size="large">
+                    Sign in
+                </LinkComponent>
+            </Text>
         </Form>
     );
 };
