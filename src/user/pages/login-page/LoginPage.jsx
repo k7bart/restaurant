@@ -1,13 +1,12 @@
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import LoginForm from "./LoginForm";
+import LoginForm from "./login-form/LoginForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
-import styles from "./LoginPage.module.scss";
 
 const LoginPage = () => {
     return (
-        <TwoSectionsPage title="Login" className={styles.loginPage}>
+        <TwoSectionsPage title="Login">
             <CoverSection>
                 <Cover
                     subtitle="Unlock with Your Credentials"

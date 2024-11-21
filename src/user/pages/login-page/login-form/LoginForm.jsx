@@ -2,13 +2,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Button from "../../../common/components/buttons/Button/Button";
-import EmailInput from "../../components/Inputs/EmailInput";
-import Form from "../../components/Form/Form";
-import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
-import PasswordInput from "../../components/Inputs/PasswordInput";
-import Text from "../../components/Text/Text";
+import Button from "../../../../common/components/buttons/Button/Button";
+import EmailInput from "../../../components/Inputs/EmailInput";
+import Form from "../../../components/Form/Form";
+import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
+import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import PasswordInput from "../../../components/Inputs/PasswordInput";
+import Text from "../../../components/Text/Text";
+
+import styles from "./LoginForm.module.scss";
 
 const reservationSchema = yup.object({
     email: yup
@@ -39,7 +41,7 @@ const LoginForm = () => {
 
             <PasswordInput register={register} error={errors.password} />
 
-            <div className="container">
+            <div className={styles.container}>
                 <LabeledCheckbox text="Remember me" register={register} />
 
                 <LinkComponent
