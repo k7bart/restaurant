@@ -1,3 +1,6 @@
+export const errorPageBackgroundUrl =
+    "https://ik.imagekit.io/k7bart/restaurant/covers/cheesecake-oreo.webp?updatedAt=1722077728528";
+
 export const frontPageBackgroundUrl =
     "https://ik.imagekit.io/k7bart/restaurant/covers/restaurant.webp?updatedAt=1720591678414";
 
