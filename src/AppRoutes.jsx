@@ -6,7 +6,7 @@ import EventPage from "./user/pages/event-page/EventPage";
 import EventReservation from "./user/pages/event-page/event-reservation/EventReservation";
 import EventsPage from "./user/pages/events-page/EventsPage";
 import ErrorPage from "./user/pages/ErrorPage/ErrorPage";
-import FrontPage from "./user/pages/FrontPage/FrontPage";
+import FrontPage from "./user/pages/front-page/FrontPage";
 import LoginPage from "./user/pages/login-page/LoginPage";
 import Menu from "./user/pages/menu-page/menu/Menu";
 import MenuPage from "./user/pages/menu-page/MenuPage";

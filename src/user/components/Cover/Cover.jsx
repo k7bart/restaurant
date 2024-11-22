@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import CoverImage from "../cover-image/CoverImage";
+import CoverFilter from "../cover-filter/CoverFilter";
 import CoverTitles from "../cover-titles/CoverTitles";
 
 import styles from "./Cover.module.scss";
@@ -7,13 +9,12 @@ import styles from "./Cover.module.scss";
 function Cover({ addFilter, backgroundImage, subtitle, title, text }) {
     return (
         <div className={styles.cover}>
-            <div
-                className={styles.image}
-                data-testid="image"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
-            ></div>
+            <CoverImage
+                additionalStyles={styles.image}
+                imageUrl={backgroundImage}
+            />
 
-            {addFilter && <div className={styles.filter}></div>}
+            {addFilter && <CoverFilter additionalStyles={styles.filter} />}
 
             <CoverTitles title={title} subtitle={subtitle} text={text} />
         </div>
