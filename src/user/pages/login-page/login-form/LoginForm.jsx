@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
-import Form from "../../../components/form/Form";
+import Form from "../../../components/Form/Form";
 import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
 import PasswordInput from "../../../components/Inputs/PasswordInput";
