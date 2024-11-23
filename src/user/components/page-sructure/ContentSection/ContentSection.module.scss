@@ -1,0 +1,60 @@
+@import "../../../../styles/variables.scss";
+
+.content {
+    position: relative;
+    padding: 16px;
+    overflow: scroll;
+    flex-direction: column;
+
+    @media (min-width: 578px) {
+        padding: 80px 96px 0;
+    }
+
+    // use ContentSectionNav instead
+    > nav {
+        height: 60px;
+        width: 100%;
+        padding: 0 24px;
+        background-color: $background-color;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 60px;
+        z-index: 9998;
+
+        @media (min-width: 820px) {
+            width: 50%;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        > .link {
+            text-align: center;
+            padding: 0 4px;
+        }
+
+        svg {
+            margin: 0 4px;
+        }
+
+        &.content-evenly {
+            justify-content: space-evenly;
+        }
+
+        &.content-left {
+            justify-content: flex-end;
+        }
+    }
+
+    > header > span {
+        padding-top: 18px;
+    }
+
+    > main {
+        padding-top: 48px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+}

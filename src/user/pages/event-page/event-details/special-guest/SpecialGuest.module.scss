@@ -1,0 +1,28 @@
+.specialGuest {
+    display: flex;
+
+    img {
+        height: 90px;
+        border-radius: 50%;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        padding-left: 24px;
+
+        .links {
+            display: flex;
+            padding-top: 24px;
+
+            svg {
+                height: 24px;
+                width: 24px;
+            }
+
+            > :not(:first-child) {
+                padding-left: 16px;
+            }
+        }
+    }
+}

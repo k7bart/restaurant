@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+
+.badge {
+    width: fit-content;
+    padding: 4px 8px;
+    background-color: $wisteria;
+    color: white;
+    font-size: 14px;
+    border-radius: 14px;
+    font-weight: 300;
+}

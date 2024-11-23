@@ -1,21 +1,21 @@
-import AdminPage from "./components/Pages/admin/pages/AdminPage";
-import CartPage from "./components/Pages/CartPage/CartPage";
-import Dashboard from "./components/Pages/admin/pages/Dashboard";
-import EventDetails from "./components/Pages/EventPage/EventDetails";
-import EventPage from "./components/Pages/EventPage/EventPage";
-import EventReservation from "./components/Pages/EventPage/EventReservation/EventReservation";
-import EventsPage from "./components/Pages/EventsPage";
-import ErrorPage from "./components/Pages/ErrorPage";
-import FrontPage from "./components/Pages/FrontPage";
-import LoginPage from "./components/Pages/LoginPage/LoginPage";
-import Menu from "./components/Pages/admin/pages/Menu";
-import MenuPage from "./components/Pages/MenuPage/MenuPage";
-import Orders from "./components/Pages/admin/pages/Orders";
-import ProductPage from "./components/Pages/ProductPage/ProductPage";
-import RegistrationPage from "./components/Pages/RegistrationPage/RegistrationPage";
-import ReservationPage from "./components/Pages/ReservationPage/ReservationPage";
-import UserProfilePage from "./components/Pages/ProfilePage/ProfilePage";
-import Table from "./components/Pages/admin/Reservations/ReservationsTable";
+import AdminPage from "./admin/pages/AdminPage";
+import CartPage from "./user/pages/CartPage/CartPage";
+import Dashboard from "./admin/pages/Dashboard";
+import EventDetails from "./user/pages/event-page/event-details/EventDetails";
+import EventPage from "./user/pages/event-page/EventPage";
+import EventReservation from "./user/pages/event-page/event-reservation/EventReservation";
+import EventsPage from "./user/pages/events-page/EventsPage";
+import ErrorPage from "./user/pages/ErrorPage/ErrorPage";
+import FrontPage from "./user/pages/front-page/FrontPage";
+import LoginPage from "./user/pages/login-page/LoginPage";
+import Menu from "./user/pages/menu-page/menu/Menu";
+import MenuPage from "./user/pages/menu-page/MenuPage";
+import Orders from "./admin/pages/Orders";
+import ProductPage from "./user/pages/product-page/ProductPage";
+import ProfilePage from "./user/pages/profile-page/ProfilePage";
+import RegistrationPage from "./user/pages/registration-page/RegistrationPage";
+import ReservationPage from "./user/pages/reservation-page/ReservationPage";
+import ReservationsTable from "./admin/pages/ReservationsTable";
 
 const routes = [
     {
@@ -36,7 +36,7 @@ const routes = [
             },
             {
                 path: "reservations",
-                element: <Table />,
+                element: <ReservationsTable />,
             },
             {
                 path: "orders",
@@ -92,7 +92,7 @@ const routes = [
     },
     {
         path: "/profile",
-        element: <UserProfilePage />,
+        element: <ProfilePage />,
     },
 ];
 export default routes;

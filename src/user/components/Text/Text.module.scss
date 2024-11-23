@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+.text {
+    > a {
+        display: contents;
+    }
+
+    &.thin {
+        font-weight: 100;
+    }
+
+    &.extraLight {
+        font-weight: 200;
+    }
+
+    &.small {
+        font-size: 14px;
+    }
+
+    &.medium {
+        font-size: 16px;
+    }
+
+    &.large {
+        font-size: 18px;
+    }
+
+    &.grey {
+        color: $text-color-grey;
+    }
+
+    &.wisteria {
+        color: $wisteria;
+    }
+
+    &.white {
+        color: white;
+    }
+
+    &.center {
+        display: inline-flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &.left {
+        display: inline-flex;
+        justify-content: left;
+    }
+}

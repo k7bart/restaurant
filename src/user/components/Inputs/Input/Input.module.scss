@@ -1,0 +1,47 @@
+@import "../../../../styles/variables.scss";
+
+.label {
+    span {
+        padding-bottom: 16px;
+        font-weight: 200;
+    }
+
+    input.error {
+        border: 1px solid $wisteria;
+    }
+
+    input:not([type="checkbox"]) {
+        height: 60px;
+    }
+
+    input:not([type="checkbox"]),
+    textarea {
+        padding: 16px 16px;
+        width: 100%;
+        border-radius: 10px;
+
+        @media (min-width: 578px) {
+            padding: 16px 24px;
+        }
+
+        &:focus {
+            outline: none;
+            border: 1px solid $wisteria;
+        }
+    }
+
+    input[type="text"] {
+        &::placeholder {
+            color: $text-color-grey;
+        }
+    }
+
+    input[type="password"] {
+        letter-spacing: 0.125em;
+        font-family: Verdana;
+    }
+
+    textarea {
+        resize: none;
+    }
+}

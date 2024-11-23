@@ -1,0 +1,39 @@
+@import "../../../../styles/variables.scss";
+
+.button {
+    height: 60px;
+    min-width: max-content;
+    padding: 16px;
+    border-radius: 30px;
+    transition: 0.3s;
+
+    &:not(:disabled):hover {
+        transform: scale(1.05);
+    }
+
+    &:not(:disabled):active {
+        background-color: white;
+        color: $wisteria;
+    }
+
+    &.small {
+        width: 150px;
+    }
+
+    &.large {
+        width: 300px;
+    }
+
+    &.full {
+        width: 100%;
+    }
+
+    &.wisteria {
+        background-color: $wisteria;
+    }
+
+    &.transparent {
+        background-color: transparent;
+        border: 1px solid $wisteria;
+    }
+}

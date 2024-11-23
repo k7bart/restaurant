@@ -1,0 +1,48 @@
+@import "../../../../styles/variables.scss";
+
+.link {
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+
+    svg {
+        fill: $text-color-grey;
+        stroke: $text-color-grey;
+    }
+
+    &.thin {
+        font-weight: 100;
+    }
+
+    &.extraLight {
+        font-weight: 200;
+    }
+
+    &.medium {
+        font-size: 16px;
+    }
+
+    &.large {
+        font-size: 18px;
+    }
+
+    &.grey {
+        color: $text-color-grey;
+    }
+
+    &.white {
+        color: white;
+    }
+
+    &.wisteria {
+        color: $wisteria;
+    }
+
+    &:hover {
+        color: white;
+        svg {
+            fill: white;
+            stroke: white;
+        }
+    }
+}

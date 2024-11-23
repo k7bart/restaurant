@@ -1,0 +1,39 @@
+@import "../../../../../styles/variables.scss";
+
+.nav {
+    height: 60px;
+    width: 100%;
+    padding: 0 24px;
+    background-color: $background-color;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 60px;
+    z-index: 9998;
+
+    @media (min-width: 820px) {
+        width: 50vw;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    a {
+        text-align: center;
+        padding: 0 4px;
+    }
+
+    svg {
+        margin: 0 4px;
+        fill: $text-color-grey;
+        stroke: $text-color-grey;
+    }
+
+    &.contentEvenly {
+        justify-content: space-evenly;
+    }
+
+    &.contentRight {
+        justify-content: flex-end;
+    }
+}

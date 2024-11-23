@@ -1,0 +1,41 @@
+@import "../../../../styles/variables.scss";
+
+.referral {
+    > div {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        button {
+            margin: 16px 0;
+            color: $text-color-grey;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                height: 24px;
+                width: 24px;
+                margin-left: 16px;
+                stroke: $text-color-grey;
+            }
+
+            &:hover {
+                color: white;
+
+                svg {
+                    stroke: white;
+                }
+            }
+
+            &:active {
+                color: $wisteria;
+
+                svg {
+                    stroke: $wisteria;
+                }
+            }
+        }
+    }
+}
