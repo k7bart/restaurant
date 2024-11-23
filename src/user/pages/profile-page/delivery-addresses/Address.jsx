@@ -45,13 +45,13 @@ const Address = ({ address, currentAddressId }) => {
 };
 Address.propTypes = {
     address: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         city: PropTypes.string.isRequired,
         street: PropTypes.string.isRequired,
         house: PropTypes.string.isRequired,
-        apartment: PropTypes.string,
+        apartment: PropTypes.number,
     }).isRequired,
-    currentAddressId: PropTypes.number.isRequired,
+    currentAddressId: PropTypes.string.isRequired,
 };
 
 export default Address;

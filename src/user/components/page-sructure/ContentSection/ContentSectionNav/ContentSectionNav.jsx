@@ -12,7 +12,7 @@ const ContentSectionNav = ({ children, justifyContent = undefined }) => {
 
 ContentSectionNav.propTypes = {
     children: PropTypes.node.isRequired,
-    justifyContent: PropTypes.oneOf(["contentEvenly", "contentLeft"]),
+    justifyContent: PropTypes.oneOf(["contentEvenly", "contentRight"]),
 };
 
 export default ContentSectionNav;

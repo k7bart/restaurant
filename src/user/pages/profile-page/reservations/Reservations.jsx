@@ -56,7 +56,7 @@ const Reservations = ({ reservationIds }) => {
 };
 
 Reservations.propTypes = {
-    reservationIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+    reservationIds: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Reservations;

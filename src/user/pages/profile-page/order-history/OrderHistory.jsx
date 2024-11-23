@@ -41,8 +41,13 @@ OrderHistory.propTypes = {
     orders: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
-            category: PropTypes.string.isRequired,
-            amount: PropTypes.number.isRequired,
+            orderedProducts: PropTypes.arrayOf(
+                PropTypes.shape({
+                    id: PropTypes.string.isRequired,
+                    category: PropTypes.string.isRequired,
+                    amount: PropTypes.number.isRequired,
+                })
+            ).isRequired,
         })
     ).isRequired,
 };

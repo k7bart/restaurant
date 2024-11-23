@@ -36,7 +36,7 @@ const OrderRow = ({ order, onClick }) => {
 };
 OrderRow.propTypes = {
     order: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         date: PropTypes.string.isRequired,
         amount: PropTypes.number.isRequired,
         address: PropTypes.string.isRequired,
