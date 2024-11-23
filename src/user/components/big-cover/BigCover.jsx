@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import styles from "./BigCover.module.scss";
-import coverStyles from "../cover/Cover.module.scss";
+import coverStyles from "../half-page-cover/Cover.module.scss";
 import CoverImage from "../cover-image/CoverImage";
 import CoverFilter from "../cover-filter/CoverFilter";
 import CursiveSubtitle from "../cover-titles/cursive-subtitle/CursiveSubtitle";

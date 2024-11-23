@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import Cover from "../../../components/cover/Cover";
+import Cover from "../../../components/half-page-cover/Cover";
 
 import styles from "./EventPreview.module.scss";
 

@@ -1,5 +1,5 @@
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/cover/Cover";
+import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";

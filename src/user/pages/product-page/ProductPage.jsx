@@ -9,7 +9,7 @@ import Button from "../../../common/components/buttons/Button/Button";
 import Carrousel from "../../components/Carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/cover/Cover";
+import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import Nutrients from "./nutrients/Nutrients";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";

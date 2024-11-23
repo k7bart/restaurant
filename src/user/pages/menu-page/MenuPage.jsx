@@ -1,4 +1,4 @@
-import Cover from "../../components/cover/Cover.jsx";
+import Cover from "../../components/half-page-cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
 import Menu from "./menu/Menu.jsx";

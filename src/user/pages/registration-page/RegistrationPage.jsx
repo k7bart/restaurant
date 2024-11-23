@@ -1,6 +1,6 @@
 import { registrationsPageBackgroundUrl } from "../../../constants/backgroundUrls";
 
-import Cover from "../../components/cover/Cover";
+import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import RegistrationForm from "./RegistrationForm";

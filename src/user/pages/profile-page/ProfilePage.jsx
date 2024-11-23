@@ -7,7 +7,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls.js";
 
 import Accordion from "../../components/Accordion/Accordion.jsx";
-import Cover from "../../components/cover/Cover.jsx";
+import Cover from "../../components/half-page-cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection.jsx";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
