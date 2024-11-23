@@ -11,7 +11,7 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import Button from "../../../../common/components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
-import Form from "../../../components/Form/Form";
+import Form from "../../../components/form/Form";
 import NameInput from "../../../components/Inputs/NameInput";
 import Notice from "../../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../../components/Inputs/NumberOfAdultsInput";
