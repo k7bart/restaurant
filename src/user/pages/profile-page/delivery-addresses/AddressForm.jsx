@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { addAddress } from "../../../../store";
 
 import Button from "../../../../common/components/buttons/Button/Button";
-import Form from "../../../components/Form/Form";
+import Form from "../../../components/form/Form";
 import CityInput from "../../../components/Inputs/address-inputs/CityInput";
 import StreetInput from "../../../components/Inputs/address-inputs/StreetInput";
 import HouseInput from "../../../components/Inputs/address-inputs/HouseInput";

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import BirthdayInput from "../../components/Inputs/BirthdayInput";
 import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
-import Form from "../../components/Form/Form";
+import Form from "../../components/form/Form";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import SurnameInput from "../../components/Inputs/SurnameInput";
