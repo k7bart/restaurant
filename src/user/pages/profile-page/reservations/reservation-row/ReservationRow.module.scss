@@ -1,0 +1,33 @@
+@import "../../../../../styles/variables.scss";
+
+.reservation {
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+
+    .text {
+        display: block;
+    }
+
+    &.today {
+        .text {
+            color: $wisteria;
+        }
+    }
+
+    &.upcoming {
+        .text {
+            color: white;
+        }
+    }
+    &.past {
+        .status {
+            color: $text-color-grey;
+        }
+    }
+
+    .status {
+        position: absolute;
+        right: 0;
+    }
+}

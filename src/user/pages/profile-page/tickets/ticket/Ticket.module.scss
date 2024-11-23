@@ -1,6 +1,7 @@
 @import "../../../../../styles/variables.scss";
 
 .ticketWrapper {
+    min-width: 240px;
     width: 50%;
     height: 150px;
     margin: 8px 0;
@@ -104,6 +105,7 @@
 
         > .id,
         .guests {
+            display: block;
             position: absolute;
             top: 50%;
             width: 120px;

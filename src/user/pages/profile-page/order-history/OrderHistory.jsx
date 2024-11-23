@@ -1,8 +1,11 @@
+import PropTypes from "prop-types";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../../store/slices/cartSlice";
 import { menu } from "../../../../state";
-import OrderRow from "./OrderRow/OrderRow";
+
+import OrderRow from "./order-row/OrderRow";
 
 const addOrderToCart = (dispatch, orderedProducts) => {
     orderedProducts.forEach(({ id, category, amount }) => {
@@ -32,6 +35,16 @@ const OrderHistory = ({ orders }) => {
             ))}
         </>
     );
+};
+
+OrderHistory.propTypes = {
+    orders: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            category: PropTypes.string.isRequired,
+            amount: PropTypes.number.isRequired,
+        })
+    ).isRequired,
 };
 
 export default OrderHistory;

@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+
 import dayjs from "dayjs";
+import PropTypes from "prop-types";
+
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
-import ReservationRow from "./ReservationRow/ReservationRow";
+import ReservationRow from "./reservation-row/ReservationRow";
 import Text from "../../../components/Text/Text";
 
 const sortReservations = (reservations) => {
@@ -51,6 +53,10 @@ const Reservations = ({ reservationIds }) => {
             )}
         </>
     );
+};
+
+Reservations.propTypes = {
+    reservationIds: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Reservations;

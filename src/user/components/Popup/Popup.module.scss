@@ -23,8 +23,7 @@
         border: 1px solid $border-color;
         background-color: $background-color;
 
-        > h4,
-        > p {
+        > :not(:last-child) {
             padding-bottom: 18px;
         }
 

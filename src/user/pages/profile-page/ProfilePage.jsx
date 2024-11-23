@@ -1,21 +1,24 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { logOut } from "../../../store";
-import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../../../store/index.js";
+import { useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls.js";
-import Accordion from "../../components/Accordion/Accordion";
-import Cover from "../../components/cover/Cover";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import DeliveryAddresses from "./DeliveryAddresses/DeliveryAddresses";
-import OrderHistory from "./OrderHistory/OrderHistory";
-import PersonalData from "./PersonalData";
-import Referral from "./Referral/Referral";
-import Reservations from "./Reservations/Reservations";
-import Tickets from "./Tickets/Tickets";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+
+import Accordion from "../../components/Accordion/Accordion.jsx";
+import Cover from "../../components/cover/Cover.jsx";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection.jsx";
+import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
+import DeliveryAddresses from "./delivery-addresses/DeliveryAddresses.jsx";
+import OrderHistory from "./order-history/OrderHistory.jsx";
+import PersonalData from "./PersonalData.jsx";
+import Referral from "./referral/Referral.jsx";
+import Reservations from "./reservations/Reservations.jsx";
+import Tickets from "./tickets/Tickets.jsx";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent.jsx";
 
 const header = {
     title: "Personal profile",
@@ -74,20 +77,17 @@ const ProfilePage = () => {
                         backgroundImage={profilePageBackgroundUrl}
                     />
                 </CoverSection>
-                <ContentSection
-                    header={header}
-                    nav={
-                        <nav className="content-left">
-                            <Link
-                                className="link"
-                                to="/"
-                                onClick={handleLogOut}
-                            >
-                                Log out <IoLogOutOutline />
-                            </Link>
-                        </nav>
-                    }
-                >
+                <ContentSection header={header}>
+                    <ContentSectionNav justifyContent="contentRight">
+                        <LinkComponent
+                            className="link"
+                            to="/"
+                            onClick={handleLogOut}
+                        >
+                            Log out <IoLogOutOutline />
+                        </LinkComponent>
+                    </ContentSectionNav>
+
                     <Accordion items={items} />
                 </ContentSection>
             </TwoSectionsPage>

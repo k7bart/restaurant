@@ -51,6 +51,10 @@
                 border-bottom: 1px solid #1e1e1e;
                 border-left: 1px solid #1e1e1e;
             }
+
+            > button:last-child {
+                margin-top: 16px;
+            }
         }
     }
 }

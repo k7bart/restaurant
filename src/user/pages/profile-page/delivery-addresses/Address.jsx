@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IoCheckmark } from "react-icons/io5";
 import { setCurrentAddress } from "../../../../store";
+
+import PropTypes from "prop-types";
+
 import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
 import Icon from "../../../components/Icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
@@ -18,7 +21,7 @@ const Address = ({ address, currentAddressId }) => {
             <Row onClick={() => dispatch(setCurrentAddress(id))}>
                 <Icon>{currentAddressId === id && <IoCheckmark />}</Icon>
 
-                <Text>
+                <Text size="medium">
                     {`${city}, ${street} ${house}${
                         apartment ? "/" + apartment : ""
                     }`}
@@ -39,6 +42,16 @@ const Address = ({ address, currentAddressId }) => {
             )}
         </>
     );
+};
+Address.propTypes = {
+    address: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        city: PropTypes.string.isRequired,
+        street: PropTypes.string.isRequired,
+        house: PropTypes.string.isRequired,
+        apartment: PropTypes.string,
+    }).isRequired,
+    currentAddressId: PropTypes.number.isRequired,
 };
 
 export default Address;

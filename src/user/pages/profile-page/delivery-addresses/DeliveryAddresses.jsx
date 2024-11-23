@@ -1,7 +1,10 @@
+import { useState } from "react";
+
+import PropTypes from "prop-types";
+
 import AddAddressPopup from "./AddAddressPopup";
 import Address from "./Address";
 import Button from "../../../../common/components/buttons/Button/Button";
-import { useState } from "react";
 
 const DeliveryAddresses = ({ user }) => {
     const [isAddAddressPopupOpen, setIsAddAddressPopupOpen] = useState(false);
@@ -31,6 +34,17 @@ const DeliveryAddresses = ({ user }) => {
             )}
         </>
     );
+};
+
+DeliveryAddresses.propTypes = {
+    user: PropTypes.shape({
+        addresses: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string.isRequired,
+            })
+        ).isRequired,
+        currentAddressId: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default DeliveryAddresses;
