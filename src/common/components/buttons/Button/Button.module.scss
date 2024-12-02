@@ -11,11 +11,6 @@
         transform: scale(1.05);
     }
 
-    &:not(:disabled):active {
-        background-color: white;
-        color: $wisteria;
-    }
-
     &.small {
         width: 150px;
     }
@@ -30,10 +25,27 @@
 
     &.wisteria {
         background-color: $wisteria;
+        border: 1px solid $wisteria;
     }
 
     &.transparent {
-        background-color: transparent;
+        background-color: $background-color;
         border: 1px solid $wisteria;
+    }
+
+    &.inactive {
+        background-color: $background-color;
+        color: $text-color-grey;
+        border: 1px solid $border-color;
+
+        &:hover {
+            color: white;
+            border: 1px solid $text-color-grey;
+        }
+    }
+
+    &:not(:disabled):active {
+        background-color: white;
+        color: $wisteria;
     }
 }
