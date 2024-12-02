@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getTotalDiscount, getTotalPrice } from "../../../../utils/priceUtils";
+import {
+    getTotalDiscount,
+    getTotalOrderPrice,
+} from "../../../../utils/priceUtils";
 import { reset } from "../../../../store/index";
 
 import Button from "../../../../common/components/buttons/Button/Button";
@@ -8,6 +11,7 @@ import ContentSection from "../../../components/page-sructure/ContentSection/Con
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
 import ProductPreview from "../ProductPreview/ProductPreview";
 import Text from "../../../components/Text/Text";
+import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Cart.module.scss";
 
@@ -34,13 +38,7 @@ const Cart = () => {
         )
         .toFixed(2); // returns string
 
-    const total = cart
-        .reduce(
-            (total, { price, discountPercent, amount }) =>
-                total + getTotalPrice(price, discountPercent, amount),
-            0
-        )
-        .toFixed(2); // returns string
+    const total = getTotalOrderPrice(cart);
 
     return (
         <ContentSection header={isCartEmpty ? emptyCartHeader : header}>
@@ -71,13 +69,11 @@ const Cart = () => {
                             <h4>Discount: $</h4>
                             <h4>{totalDiscount}</h4>
                         </div>
-                        <div>
-                            <h4>Total: $</h4>
-                            <h4 className={styles.price}>{total}</h4>
-                        </div>
+
+                        <TotalPrice price={total} />
                     </div>
                     <Link to="/cart/checkout">
-                        <Button size="large">Complete the order</Button>
+                        <Button size="large">Checkout</Button>
                     </Link>
                 </div>
             )}

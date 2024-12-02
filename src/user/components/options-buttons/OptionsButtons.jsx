@@ -7,7 +7,11 @@ import styles from "./OptionsButtons.module.scss";
 
 const OptionsButtons = ({ label, onClick, options, selectedOption }) => (
     <div className={styles.container}>
-        {label && <Text className={styles.text}>{label}</Text>}
+        {label && (
+            <Text className={styles.text} size="medium">
+                {label}
+            </Text>
+        )}
 
         <div className={styles.optionsButtons}>
             {options.map(({ option, label }) => (
