@@ -5,18 +5,16 @@ import Text from "../Text/Text";
 
 import styles from "./OptionsButtons.module.scss";
 
-const OptionsButtons = ({ label, onChange, options, selectedOption }) => (
-    <div>
+const OptionsButtons = ({ label, onClick, options, selectedOption }) => (
+    <div className={styles.container}>
         {label && <Text className={styles.text}>{label}</Text>}
 
-        <div className={styles.container}>
+        <div className={styles.optionsButtons}>
             {options.map(({ option, label }) => (
                 <Button
                     key={option}
                     isActive={selectedOption === option}
-                    onClick={() =>
-                        selectedOption !== option && onChange(option)
-                    }
+                    onClick={() => selectedOption !== option && onClick(option)}
                 >
                     {label}
                 </Button>
@@ -27,7 +25,7 @@ const OptionsButtons = ({ label, onChange, options, selectedOption }) => (
 
 OptionsButtons.propTypes = {
     label: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
     options: PropTypes.arrayOf(
         PropTypes.shape({
             option: PropTypes.string.isRequired,
