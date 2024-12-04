@@ -8,8 +8,9 @@ import { subDays, addMonths } from "date-fns";
 import { addReservation, addReservationId } from "../../../store";
 
 import * as yup from "yup";
-
 import dayjs from "dayjs";
+import timeSchema from "../../components/Inputs/time-input/timeSchema";
+
 import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
@@ -21,7 +22,7 @@ import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import Text from "../../components/Text/Text";
-import TimeInput from "../../components/Inputs/TimeInput";
+import TimeInput from "../../components/Inputs/time-input/TimeInput";
 
 const today = new Date();
 
@@ -62,10 +63,7 @@ const reservationSchema = yup.object({
             addMonths(today, 2),
             "Date cannot be later than 2 month from today"
         ),
-    time: yup
-        .date()
-        .required("Please select a time")
-        .typeError("Please select a time"),
+    time: timeSchema,
     additionalRequirements: yup.string(),
 });
 

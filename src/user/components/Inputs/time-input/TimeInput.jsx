@@ -3,12 +3,12 @@ import DatePicker from "react-datepicker";
 import classNames from "classnames";
 import { Controller } from "react-hook-form";
 
-import Text from "../Text/Text";
+import Text from "../../Text/Text";
 
 const TimeInput = ({ control, error, name, required, label }) => {
     return (
         <label className={classNames("time-picker", error && "error")}>
-            <Text>
+            <Text size="medium">
                 {label}
                 {required && "*"}
             </Text>
