@@ -244,3 +244,8 @@ export const menu = [
         ],
     },
 ];
+
+export const addresses = [
+    { id: 1, text: "Lviv, Svobody 6" },
+    { id: 2, text: "Lviv, Hetmana Mazepy, 25" },
+];
