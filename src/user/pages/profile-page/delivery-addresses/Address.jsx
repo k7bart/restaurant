@@ -48,7 +48,7 @@ Address.propTypes = {
         id: PropTypes.string.isRequired,
         city: PropTypes.string.isRequired,
         street: PropTypes.string.isRequired,
-        house: PropTypes.string.isRequired,
+        house: PropTypes.number.isRequired,
         apartment: PropTypes.number,
     }).isRequired,
     currentAddressId: PropTypes.string.isRequired,

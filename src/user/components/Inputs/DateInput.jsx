@@ -8,10 +8,10 @@ import Text from "../Text/Text";
 
 const today = new Date();
 
-const DateInput = ({ control, error, name, required, label }) => {
+const DateInput = ({ control, error, label, maxDate, name, required }) => {
     return (
         <label className={classNames("date-picker", error && "error")}>
-            <Text>
+            <Text size="medium">
                 {label}
                 {required && "*"}
             </Text>
@@ -24,7 +24,7 @@ const DateInput = ({ control, error, name, required, label }) => {
                         selected={field.value}
                         onChange={field.onChange}
                         minDate={today}
-                        maxDate={addMonths(today, 2)}
+                        maxDate={maxDate}
                         dateFormat="dd/MM/yyyy"
                     />
                 )}
@@ -44,15 +44,17 @@ DateInput.propTypes = {
     error: PropTypes.shape({
         message: PropTypes.string,
     }),
-    name: PropTypes.string,
-    required: PropTypes.bool,
     label: PropTypes.string,
+    name: PropTypes.string,
+    maxDate: PropTypes.instanceOf(Date),
+    required: PropTypes.bool,
 };
 
 DateInput.defaultProps = {
-    name: "date",
-    required: false,
     label: "Date",
+    name: "date",
+    maxDate: addMonths(today, 2),
+    required: false,
 };
 
 export default DateInput;
