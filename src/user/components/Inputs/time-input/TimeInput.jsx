@@ -2,12 +2,15 @@ import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import classNames from "classnames";
 import { Controller } from "react-hook-form";
+import { filterTime } from "../../../../utils/timeUtils";
 
 import Text from "../../Text/Text";
 
-const TimeInput = ({ control, error, name, required, label }) => {
+const TimeInput = ({ control, error, name, required, label, selectedDate }) => {
+    const today = new Date();
+
     return (
-        <label className={classNames("time-picker", error && "error")}>
+        <label className={classNames("time-picker", { error })}>
             <Text size="medium">
                 {label}
                 {required && "*"}
@@ -19,17 +22,14 @@ const TimeInput = ({ control, error, name, required, label }) => {
                 render={({ field }) => (
                     <DatePicker
                         selected={field.value}
-                        onChange={(time) => {
-                            field.onChange(time);
-                        }}
+                        onChange={field.onChange}
                         showTimeSelect
                         showTimeSelectOnly
                         timeIntervals={30}
                         dateFormat="h:mm aa"
-                        filterTime={(time) => {
-                            const hour = time.getHours();
-                            return hour >= 10 && hour <= 20;
-                        }}
+                        filterTime={(time) =>
+                            filterTime(time, today, selectedDate)
+                        }
                         timeCaption="Time"
                     />
                 )}
@@ -46,12 +46,11 @@ const TimeInput = ({ control, error, name, required, label }) => {
 
 TimeInput.propTypes = {
     control: PropTypes.object.isRequired,
-    error: PropTypes.shape({
-        message: PropTypes.string,
-    }),
+    error: PropTypes.shape({ message: PropTypes.string }),
     name: PropTypes.string,
     required: PropTypes.bool,
     label: PropTypes.string,
+    selectedDate: PropTypes.instanceOf(Date),
 };
 
 TimeInput.defaultProps = {
