@@ -1,5 +1,7 @@
 import AdminPage from "./admin/pages/AdminPage";
-import CartPage from "./user/pages/CartPage/CartPage";
+import Cart from "./user/pages/cart-page/cart/Cart";
+import CartPage from "./user/pages/cart-page/CartPage";
+import Checkout from "./user/pages/cart-page/checkout/Checkout";
 import Dashboard from "./admin/pages/Dashboard";
 import EventDetails from "./user/pages/event-page/event-details/EventDetails";
 import EventPage from "./user/pages/event-page/EventPage";
@@ -51,6 +53,16 @@ const routes = [
     {
         path: "/cart",
         element: <CartPage />,
+        children: [
+            {
+                index: true,
+                element: <Cart />,
+            },
+            {
+                path: "checkout",
+                element: <Checkout />,
+            },
+        ],
     },
     {
         path: "/login",
