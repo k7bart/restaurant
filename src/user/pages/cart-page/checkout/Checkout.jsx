@@ -8,6 +8,7 @@ import { getTotalOrderPrice } from "../../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
 
 import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
+import getSchema from "./checkoutSchema";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
@@ -25,7 +26,6 @@ import Textarea from "../../../components/textarea/Textarea";
 import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Checkout.module.scss";
-import getSchema from "./checkoutSchema";
 
 const HEADER = {
     title: "Placing an order",

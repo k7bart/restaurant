@@ -7,10 +7,10 @@ import { capitalize } from "../../../utils/stringUtils";
 import { combineDateTime } from "../../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
 import { addReservation, addReservationId } from "../../../store";
+import { timeSchema } from "../../components/Inputs/yupInputsSchemas";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
-import timeSchema from "../../components/Inputs/time-input/timeSchema";
 
 import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
@@ -23,7 +23,7 @@ import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import Text from "../../components/Text/Text";
-import TimeInput from "../../components/Inputs/time-input/TimeInput";
+import TimeInput from "../../components/Inputs/TimeInput";
 
 const today = new Date();
 

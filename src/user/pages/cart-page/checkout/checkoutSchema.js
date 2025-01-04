@@ -3,10 +3,10 @@ import { addMonths, subDays } from "date-fns";
 import * as yup from "yup";
 import addressSchema from "../../../components/Inputs/address-inputs/address-yup-utils/addressSchema";
 import textareaSchema from "../../../components/textarea/textareaSchema";
-import timeSchema from "../../../components/Inputs/time-input/timeSchema";
 import {
     nameSchema,
     phoneSchema,
+    timeSchema,
 } from "../../../components/Inputs/yupInputsSchemas";
 
 const today = new Date();

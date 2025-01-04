@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { addMonths } from "date-fns";
 
 import DateInput from "../DateInput";
-import TimeInput from "../time-input/TimeInput";
+import TimeInput from "../TimeInput";
 
 const DateTimeInputs = ({ control, errors, startDate }) => {
     const [selectedDate, setSelectedDate] = useState(startDate);

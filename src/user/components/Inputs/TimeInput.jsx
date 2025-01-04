@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import classNames from "classnames";
 import { Controller } from "react-hook-form";
-import { filterTime } from "../../../../utils/timeUtils";
+import { filterTime } from "../../../utils/timeUtils";
 
-import Text from "../../Text/Text";
+import Text from "../Text/Text";
 
 const TimeInput = ({ control, error, name, required, label, selectedDate }) => {
     const today = new Date();
