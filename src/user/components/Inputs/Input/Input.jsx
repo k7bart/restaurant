@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const Input = ({ error, fieldName, label, register, required }) => {
     return (
         <label className={styles.label}>
-            <Text>
+            <Text size="medium">
                 {label ? label : capitalize(fieldName)}
                 {required && "*"}
             </Text>

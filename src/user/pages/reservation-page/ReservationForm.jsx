@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
+import { combineDateTime } from "../../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
 import { addReservation, addReservationId } from "../../../store";
+import { timeSchema } from "../../components/Inputs/yupInputsSchemas";
 
 import * as yup from "yup";
-
 import dayjs from "dayjs";
+
 import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
@@ -62,10 +64,7 @@ const reservationSchema = yup.object({
             addMonths(today, 2),
             "Date cannot be later than 2 month from today"
         ),
-    time: yup
-        .date()
-        .required("Please select a time")
-        .typeError("Please select a time"),
+    time: timeSchema,
     additionalRequirements: yup.string(),
 });
 
@@ -114,10 +113,7 @@ const ReservationForm = () => {
             email: email || null,
         };
 
-        const dateTime = dayjs(date)
-            .set("hour", time.getHours())
-            .set("minute", time.getMinutes())
-            .toDate();
+        const dateTime = combineDateTime(date, time);
 
         const reservation = {
             id: 6, // add proper id

@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.textarea {
+    padding: 16px 16px;
+    width: 100%;
+    border-radius: 10px;
+
+    @media (min-width: 578px) {
+        padding: 16px 24px;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid $wisteria;
+    }
+}

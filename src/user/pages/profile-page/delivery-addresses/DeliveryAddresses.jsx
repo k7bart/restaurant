@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import AddAddressPopup from "./AddAddressPopup";
+import AddAddressPopup from "./add-address-popup/AddAddressPopup";
 import Address from "./Address";
 import Button from "../../../../common/components/buttons/Button/Button";
 

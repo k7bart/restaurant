@@ -6,6 +6,7 @@ import styles from "./Button.module.scss";
 const Button = ({
     size = "small",
     color = "wisteria",
+    isActive = true,
     type = undefined,
     children,
     onClick,
@@ -17,7 +18,8 @@ const Button = ({
                 additionalStyles,
                 styles.button,
                 styles[size],
-                styles[color]
+                styles[color],
+                !isActive && styles.inactive
             )}
             onClick={onClick}
             type={type}
@@ -30,6 +32,7 @@ const Button = ({
 Button.propTypes = {
     size: PropTypes.string,
     color: PropTypes.string,
+    isActive: PropTypes.bool,
     type: PropTypes.string,
     children: PropTypes.node,
     onClick: PropTypes.func,
@@ -39,7 +42,7 @@ Button.propTypes = {
 Button.defaultProps = {
     size: "small",
     color: "wisteria",
-    type: undefined,
+    type: "button",
 };
 
 export default Button;

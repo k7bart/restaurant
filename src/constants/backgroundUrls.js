@@ -1,3 +1,6 @@
+export const cartPageBackgroundUrl =
+    "https://ik.imagekit.io/k7bart/restaurant/covers/moped.webp?updatedAt=1720592730650";
+
 export const errorPageBackgroundUrl =
     "https://ik.imagekit.io/k7bart/restaurant/covers/cheesecake-oreo.webp?updatedAt=1722077728528";
 

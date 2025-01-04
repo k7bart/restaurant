@@ -12,6 +12,14 @@ export const getTotalDiscount = (price, discountPercent, amount) => {
     return getDiscount(price, discountPercent) * amount;
 };
 
+export const getTotalOrderPrice = (order) => {
+    return order.reduce(
+        (total, { price, discountPercent, amount }) =>
+            total + getTotalPrice(price, discountPercent, amount),
+        0
+    );
+};
+
 export const getTotalPrice = (price, discountPercent, amount) => {
     if (!amount) return 0;
 
