@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
+import { combineDateTime } from "../../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
 import { addReservation, addReservationId } from "../../../store";
 
@@ -112,10 +113,7 @@ const ReservationForm = () => {
             email: email || null,
         };
 
-        const dateTime = dayjs(date)
-            .set("hour", time.getHours())
-            .set("minute", time.getMinutes())
-            .toDate();
+        const dateTime = combineDateTime(date, time);
 
         const reservation = {
             id: 6, // add proper id

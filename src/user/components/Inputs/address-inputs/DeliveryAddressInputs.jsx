@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-import CityInput from "../../Inputs/address-inputs/CityInput";
-import EntranceInput from "../../Inputs/address-inputs/Entrance";
-import HouseInput from "../../Inputs/address-inputs/HouseInput";
-import Input from "../../Inputs/Input/Input";
-import StreetInput from "../../Inputs/address-inputs/StreetInput";
+import CityInput from "./CityInput";
+import EntranceInput from "./Entrance";
+import HouseInput from "./HouseInput";
+import Input from "../Input/Input";
+import StreetInput from "./StreetInput";
 
 const DeliveryAddressInputs = ({ errors, register }) => {
     return (

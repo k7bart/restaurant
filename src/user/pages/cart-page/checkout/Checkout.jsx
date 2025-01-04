@@ -7,12 +7,12 @@ import { getAvailableDay } from "../../../../utils/dateUtils";
 import { getTotalOrderPrice } from "../../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
 
-import getAddressDefaultValues from "../../../components/forms/address-form/addressDefaultValues";
+import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import DateTimeInputs from "../../../components/Inputs/date-time-inputs/DateTimeInputs";
-import DeliveryAddressInputs from "../../../components/forms/address-form/DeliveryAddressInputs";
+import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
 import Form from "../../../components/form/Form";
 import HorizontalDevider from "../../../components/horizontal-divider/HorizontalDevider";
 import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
