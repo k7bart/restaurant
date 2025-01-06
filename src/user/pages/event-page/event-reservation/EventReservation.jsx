@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEventData } from "../useEventData.js";
 import { IoIosArrowForward } from "react-icons/io";
-import { events } from "../../../../state.js";
 
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
@@ -9,15 +8,15 @@ import LinkComponent from "../../../components/links/LinkComponent/LinkComponent
 import Text from "../../../components/Text/Text.jsx";
 
 const EventReservation = () => {
-    const { eventId } = useParams();
-    const event = events.find((e) => e.id === eventId);
+    const event = useEventData();
+
     const nav = (
         <ContentSectionNav>
             <LinkComponent to="/events">Events</LinkComponent>
 
             <IoIosArrowForward />
 
-            <LinkComponent to={"/events/" + eventId}>
+            <LinkComponent to={`/events/${event.name}`}>
                 {event.title}
             </LinkComponent>
 
@@ -28,11 +27,12 @@ const EventReservation = () => {
             </Text>
         </ContentSectionNav>
     );
+
     return (
         <ContentSection
             header={{
-                title: "Signing up for the " + event.title,
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam.",
+                title: `Signing up for the ${event.title}`,
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam.",
             }}
             nav={nav}
         >

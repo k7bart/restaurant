@@ -1,11 +1,15 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-import { useParams, Link } from "react-router-dom";
-import { events, staff } from "../../../../state.js";
+import { staff } from "../../../../state.js";
+import { useEventData } from "../useEventData.js";
+import { eventService } from "../../../../services/event-service.js";
 
 import Button from "../../../../common/components/buttons/Button/Button.jsx";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
+import DetailsRow from "./special-guest/DetailsRow.jsx";
 import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent.jsx";
 import Row from "../../../../common/components/Row/Row.jsx";
 import SpecialGuest from "./special-guest/SpecialGuest.jsx";
@@ -13,49 +17,52 @@ import Text from "../../../components/Text/Text.jsx";
 
 import styles from "./EventDetails.module.scss";
 
-const nav = (
-    <ContentSectionNav justifyContent="contentEvenly">
-        {events.map((event) => (
-            <NavLinkComponent to={`/events/${event.id}`} key={event.id}>
-                {event.title}
-            </NavLinkComponent>
-        ))}
-    </ContentSectionNav>
-);
-
 const header = {
     title: "Reserve Your Spot",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam.",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 };
 
 const EventDetails = () => {
-    const { eventId } = useParams();
-    const event = events.find((e) => e.id === eventId);
-    const { id, ageLimit, date, language, menu, price, specialGuest } = event;
+    const event = useEventData();
+    const { ageLimit, date, language, menu, name, price, specialGuest } = event;
     const guest = staff.find((person) => person.name === specialGuest);
+
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        eventService
+            .getEvents()
+            .then((response) => setEvents(response.data))
+            .catch((error) => console.error("Failed to fetch events:", error));
+    }, []);
+
+    const nav = (
+        <ContentSectionNav justifyContent="contentEvenly">
+            {events.map((event) => (
+                <NavLinkComponent to={`/events/${event.name}`} key={event._id}>
+                    {event.title}
+                </NavLinkComponent>
+            ))}
+        </ContentSectionNav>
+    );
 
     return (
         <ContentSection nav={nav} header={header}>
             <div className={styles.eventDetails}>
                 <span className={styles.mainInfo}>
-                    <Link to={`/events/${id}/reservation`}>
+                    <Link to={`/events/${name}/reservation`}>
                         <Button>Book a spot</Button>
                     </Link>
-
                     {ageLimit && <h4>{ageLimit}+</h4>}
-
                     <h4>${price}</h4>
                 </span>
 
                 <div>
                     <h3>Details</h3>
-                    <Row>
-                        <Text size="large">Date</Text>
-                        <Text color="white" size="large">
-                            {dayjs(date).format("DD/MM/YYYY")}
-                        </Text>
-                    </Row>
-
+                    <DetailsRow
+                        label="Date"
+                        value={dayjs(date).format("DD/MM/YYYY")}
+                    />
                     {guest && (
                         <Row>
                             <Text size="large">Special guest</Text>
@@ -67,23 +74,11 @@ const EventDetails = () => {
                             </span>
                         </Row>
                     )}
-
-                    <Row>
-                        <Text size="large">Location</Text>
-                        <Text color="white" size="large">
-                            Lviv
-                        </Text>
-                    </Row>
-
-                    <Row>
-                        <Text size="large">Language</Text>
-                        <Text color="white" size="large">
-                            {language}
-                        </Text>
-                    </Row>
+                    <DetailsRow label="Location" value="Lviv" />
+                    <DetailsRow label="Language" value={language} />
                 </div>
 
-                {menu && (
+                {menu.length > 0 && (
                     <div>
                         <h3>Menu</h3>
                         {menu.map((item) => (
@@ -98,7 +93,7 @@ const EventDetails = () => {
 
                 {guest && <SpecialGuest guest={guest} />}
 
-                <Link to={`/events/${id}/reservation`}>
+                <Link to={`/events/${name}/reservation`}>
                     <Button additionalStyles={styles.button} size="large">
                         Book a spot
                     </Button>
