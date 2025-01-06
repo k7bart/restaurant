@@ -7,14 +7,14 @@ import Cover from "../../../components/half-page-cover/Cover";
 import styles from "./EventPreview.module.scss";
 
 const EventPreview = ({ event }) => {
-    const { id, title, subtitle, photo, date } = event;
+    const { _id, date, name, photo, subtitle, title } = event;
 
     return (
         <Link
             className={styles.container}
             data-testid="event-preview"
-            key={id}
-            to={`/events/${id}`}
+            key={_id}
+            to={`/events/${name}`}
         >
             <Cover
                 subtitle={subtitle}
@@ -28,11 +28,12 @@ const EventPreview = ({ event }) => {
 
 EventPreview.propTypes = {
     event: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string,
-        photo: PropTypes.string,
+        _id: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        photo: PropTypes.string,
+        subtitle: PropTypes.string,
+        title: PropTypes.string.isRequired,
     }).isRequired,
 };
 
