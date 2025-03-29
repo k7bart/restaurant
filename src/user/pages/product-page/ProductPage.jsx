@@ -41,7 +41,7 @@ const ProductPage = () => {
         price,
     } = product;
 
-    const slides = photos.map((photo, i) => (
+    const slides = photos?.map((photo, i) => (
         <Cover addFilter={false} backgroundImage={photo} key={i} />
     ));
 
@@ -66,7 +66,7 @@ const ProductPage = () => {
     return (
         <TwoSectionsPage title={name} className={styles.productPage}>
             <CoverSection addLogo={false} addNavBar={false}>
-                <Carrousel content={slides} dots />
+                {photos && <Carrousel content={slides} dots />}
             </CoverSection>
 
             <ContentSection
@@ -84,9 +84,9 @@ const ProductPage = () => {
                 </ContentSectionNav>
 
                 <div className={styles.content}>
-                    <h4>{ingredients.join(", ")}</h4>
+                    <h4>{ingredients?.join(", ")}</h4>
 
-                    <Nutrients nutrients={nutrients} />
+                    {nutrients && <Nutrients nutrients={nutrients} />}
 
                     <div className={styles.container}>
                         {amount ? (
