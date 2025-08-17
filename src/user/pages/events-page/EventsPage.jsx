@@ -12,7 +12,7 @@ const props = {
     )),
     num: 3,
     dots: true,
-    slideShow: true,
+    autoPlay: true,
 };
 
 const EventsPage = () => {

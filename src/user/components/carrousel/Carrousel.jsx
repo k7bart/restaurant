@@ -5,21 +5,21 @@ import Dots from "./dots/Dots";
 import Slide from "./slide/Slide";
 import styles from "./Carrousel.module.scss";
 
-const Carrousel = ({ content, dots, num, slideShow }) => {
+const Carrousel = ({ content, dots, num, autoPlay }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [paused, setPaused] = useState(false);
 
     useEffect(() => {
-        if (slideShow && !paused) {
+        if (autoPlay && !paused) {
             const interval = setInterval(() => {
                 setCurrentIndex((prev) => (prev + 1) % content.length);
             }, 2000);
 
             return () => clearInterval(interval);
         }
-    }, [slideShow, paused, content.length]);
+    }, [autoPlay, paused, content.length]);
 
-    const resetSlideShow = () => {
+    const resetAutoPlay = () => {
         setPaused(true);
         setTimeout(() => setPaused(false), 5000);
     };
@@ -28,12 +28,12 @@ const Carrousel = ({ content, dots, num, slideShow }) => {
         setCurrentIndex(
             (prev) => (prev + step + content.length) % content.length
         );
-        resetSlideShow();
+        resetAutoPlay();
     };
 
     const handleGoToSlide = (index) => {
         setCurrentIndex(index);
-        resetSlideShow();
+        resetAutoPlay();
     };
 
     const visibleGroup =
@@ -69,13 +69,13 @@ Carrousel.propTypes = {
     content: PropTypes.array.isRequired,
     dots: PropTypes.bool,
     num: PropTypes.number,
-    slideShow: PropTypes.bool,
+    autoPlay: PropTypes.bool,
 };
 
 Carrousel.defaultProps = {
     dots: false,
     num: 1,
-    slideShow: false,
+    autoPlay: false,
 };
 
 export default Carrousel;
