@@ -38,7 +38,8 @@ const EventsPage = () => {
                     <EventPreview key={event.id} event={event} />
                 ))}
                 num={3}
-                dots={false}
+                dots
+                autoPlay
             />
             <NavBar additionalStyles={styles.navbar} />
         </div>

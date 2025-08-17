@@ -6,6 +6,7 @@ import {
     EventLazyPage,
     EventReservationLazy,
     EventsLazyPage,
+    MenuLazyPage,
     LoginLazyPage,
     ProductLazyPage,
     ProfileLazyPage,
@@ -14,8 +15,6 @@ import {
 } from "./pages/LazyPages";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import FrontPage from "./pages/front-page/FrontPage";
-import MenuPage from "./pages/menu-page/MenuPage";
-
 const routes = [
     {
         path: "/",
@@ -45,7 +44,7 @@ const routes = [
     },
     {
         path: "/menu",
-        element: <MenuPage />,
+        element: <MenuLazyPage />,
     },
     {
         path: "/menu/:category/:productId",
