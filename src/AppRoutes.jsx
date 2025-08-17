@@ -6,18 +6,17 @@ import Dashboard from "./admin/pages/Dashboard";
 import EventDetails from "./user/pages/event-page/event-details/EventDetails";
 import EventPage from "./user/pages/event-page/EventPage";
 import EventReservation from "./user/pages/event-page/event-reservation/EventReservation";
-import EventsPage from "./user/pages/events-page/EventsPage";
 import ErrorPage from "./user/pages/ErrorPage/ErrorPage";
 import FrontPage from "./user/pages/front-page/FrontPage";
 import LoginPage from "./user/pages/login-page/LoginPage";
 import Menu from "./user/pages/menu-page/menu/Menu";
-import MenuPage from "./user/pages/menu-page/MenuPage";
 import Orders from "./admin/pages/Orders";
 import ProductPage from "./user/pages/product-page/ProductPage";
 import ProfilePage from "./user/pages/profile-page/ProfilePage";
 import RegistrationPage from "./user/pages/registration-page/RegistrationPage";
 import ReservationPage from "./user/pages/reservation-page/ReservationPage";
 import ReservationsTable from "./admin/pages/ReservationsTable";
+import { EventsLazyPage, MenuLazyPage } from "./user/pages/LazyPages";
 
 const routes = [
     {
@@ -70,7 +69,7 @@ const routes = [
     },
     {
         path: "/menu",
-        element: <MenuPage />,
+        element: <MenuLazyPage />,
     },
     {
         path: "/menu/:category/:productId",
@@ -82,7 +81,7 @@ const routes = [
     },
     {
         path: "/events",
-        element: <EventsPage />,
+        element: <EventsLazyPage />,
     },
     {
         path: "/events/:eventId",
