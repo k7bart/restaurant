@@ -1,19 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosArrowBack } from "react-icons/io";
 import { addProduct, updateProductAmount } from "../../../store/index";
 import { menu } from "../../../state";
-
 import Button from "../../../common/components/buttons/Button/Button";
-import Carrousel from "../../components/Carrousel/Carrousel";
+import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import Nutrients from "./nutrients/Nutrients";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
-
 import styles from "./ProductPage.module.scss";
 import Amount from "./amount/Amount";
 import Price from "./price/Price";

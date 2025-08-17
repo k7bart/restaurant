@@ -1,32 +1,40 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
-import Arrows from "./Arrows/Arrows";
-import Dots from "./Dots/Dots";
+import Arrows from "./arrows/Arrows";
+import Dots from "./dots/Dots";
 import Slide from "./slide/Slide";
-
 import styles from "./Carrousel.module.scss";
 
-const Carrousel = ({ content, dots, num, slideShow }) => {
+const Carrousel = ({ content, dots, num, autoPlay }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    const handleSlideChange = (step) => {
-        const newIndex =
-            (currentIndex + step + content.length) % content.length;
-        setCurrentIndex(newIndex);
-    };
-
-    const handleGoToSlide = (index) => setCurrentIndex(index);
+    const [paused, setPaused] = useState(false);
 
     useEffect(() => {
-        if (slideShow) {
+        if (autoPlay && !paused) {
             const interval = setInterval(() => {
-                handleSlideChange(1);
-            }, 3000);
+                setCurrentIndex((prev) => (prev + 1) % content.length);
+            }, 2000);
 
             return () => clearInterval(interval);
         }
-    }, [slideShow]);
+    }, [autoPlay, paused, content.length]);
+
+    const resetAutoPlay = () => {
+        setPaused(true);
+        setTimeout(() => setPaused(false), 5000);
+    };
+
+    const handleSlideChange = (step) => {
+        setCurrentIndex(
+            (prev) => (prev + step + content.length) % content.length
+        );
+        resetAutoPlay();
+    };
+
+    const handleGoToSlide = (index) => {
+        setCurrentIndex(index);
+        resetAutoPlay();
+    };
 
     const visibleGroup =
         content.length - currentIndex < num
@@ -61,13 +69,13 @@ Carrousel.propTypes = {
     content: PropTypes.array.isRequired,
     dots: PropTypes.bool,
     num: PropTypes.number,
-    slideShow: PropTypes.bool,
+    autoPlay: PropTypes.bool,
 };
 
 Carrousel.defaultProps = {
     dots: false,
     num: 1,
-    slideShow: false,
+    autoPlay: false,
 };
 
 export default Carrousel;
