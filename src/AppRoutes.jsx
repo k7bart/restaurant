@@ -70,7 +70,6 @@ const routes = [
     {
         path: "/menu",
         element: <MenuLazyPage />,
-        element: <MenuLazyPage />,
     },
     {
         path: "/menu/:category/:productId",
