@@ -10,7 +10,7 @@
     &:hover {
         transform: scale(1.05);
 
-        .amountContainer:not(.visible) {
+        .amount:not(.visible) {
             display: flex !important;
             justify-content: center;
             align-items: center;
@@ -35,7 +35,7 @@
             }
         }
 
-        .amountContainer {
+        .amount {
             height: 55px;
             width: 100%;
             display: none;
