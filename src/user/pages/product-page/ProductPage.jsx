@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useProductInCart } from "../../../hooks/useProductInCart";
 import { IoIosArrowBack } from "react-icons/io";
-import { addProduct, updateProductAmount } from "../../../store/index";
 import { menu } from "../../../state";
 import Button from "../../../common/components/buttons/Button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
@@ -20,9 +19,7 @@ import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import Discount from "./discount/Discount";
 
 const ProductPage = () => {
-    const dispatch = useDispatch();
     const { category, productId } = useParams();
-    const cart = useSelector((state) => state.cart);
 
     const product = useMemo(() => {
         const categoryData = menu.find((c) => c.name === category);
@@ -39,27 +36,11 @@ const ProductPage = () => {
         price,
     } = product;
 
+    const { amount, handleAmountChange } = useProductInCart(product, category);
+
     const slides = photos.map((photo, i) => (
         <Cover addFilter={false} backgroundImage={photo} key={i} />
     ));
-
-    const productInCart = useMemo(() => {
-        return cart.find((product) => product.id === productId);
-    }, [cart, productId]);
-
-    const [amount, setAmount] = useState(productInCart?.amount || 0);
-
-    useEffect(() => {
-        setAmount(productInCart ? productInCart.amount : 0);
-    }, [productInCart]);
-
-    const handleAmountChange = (newAmount) => {
-        if (productInCart) {
-            dispatch(updateProductAmount({ productId: product.id, newAmount }));
-        } else {
-            dispatch(addProduct({ ...product, amount: newAmount, category }));
-        }
-    };
 
     return (
         <TwoSectionsPage title={name} className={styles.productPage}>
