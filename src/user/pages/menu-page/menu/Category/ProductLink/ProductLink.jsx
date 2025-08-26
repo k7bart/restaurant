@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useProductInCart } from "../../../../../../hooks/useProductInCart";
 import { capitalize } from "../../../../../../utils/stringUtils";
-import { addProduct, updateProductAmount } from "../../../../../../store";
 import Amount from "./Amount";
 import Badge from "../../../../../components/Badge/Badge";
 import Ingrediens from "./Ingredients";
@@ -26,41 +24,7 @@ const ProductLink = ({ product, category }) => {
     } = product;
     const photo = photos?.[0];
 
-    const dispatch = useDispatch();
-    const cart = useSelector((state) => state.cart);
-
-    const productInCart = useMemo(
-        () => cart.find((p) => p.id === id),
-        [cart, id]
-    );
-    const [amount, setAmount] = useState(productInCart?.amount || 0);
-
-    useEffect(() => {
-        setAmount(productInCart?.amount || 0);
-    }, [productInCart]);
-
-    const handleAmountChange = useCallback(
-        (newAmount) => {
-            if (productInCart) {
-                dispatch(
-                    updateProductAmount({ productId: product.id, newAmount })
-                );
-            } else {
-                dispatch(
-                    addProduct({ ...product, amount: newAmount, category })
-                );
-            }
-        },
-        [productInCart, product, category, dispatch]
-    );
-
-    const handleAddToCartClick = useCallback(
-        (e) => {
-            e.preventDefault();
-            handleAmountChange(1);
-        },
-        [handleAmountChange]
-    );
+    const { amount, handleAmountChange } = useProductInCart(product, category);
 
     return (
         <Link to={`/menu/${category}/${id}`} className={styles.productLink}>
@@ -84,7 +48,7 @@ const ProductLink = ({ product, category }) => {
                     {amount ? (
                         <Amount amount={amount} onChange={handleAmountChange} />
                     ) : (
-                        <button onClick={handleAddToCartClick}>
+                        <button onClick={() => handleAmountChange(1)}>
                             Add to cart
                         </button>
                     )}
