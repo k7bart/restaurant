@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.popupBackground {
+    width: 100vw;
+
+    .popup {
+        min-width: 40vw;
+        max-width: fit-content;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+}

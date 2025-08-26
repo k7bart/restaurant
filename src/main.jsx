@@ -6,6 +6,7 @@ import "./styles/index.scss";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./AppRoutes";
+import CallMePopup from "./user/components/call-me-popup/CallMePopup";
 
 const router = createBrowserRouter(routes);
 
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Provider store={store}>
             <Suspense fallback={<div>Loading...</div>}>
                 <RouterProvider router={router} />
+                <CallMePopup />
             </Suspense>
         </Provider>
     </React.StrictMode>
