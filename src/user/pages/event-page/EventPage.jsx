@@ -1,6 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, Suspense } from "react";
 import { Outlet, useParams } from "react-router-dom";
-
 import Cover from "../../components/half-page-cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
@@ -44,7 +43,9 @@ const EventPage = () => {
                         backgroundImage={eventData.photo}
                     />
                 </CoverSection>
-                <Outlet />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
             </TwoSectionsPage>
         </EventContext.Provider>
     );
