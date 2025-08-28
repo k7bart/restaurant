@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { events } from "../../../state.js";
-
 import Cover from "../../components/half-page-cover/Cover.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
@@ -18,7 +18,9 @@ const EventPage = () => {
                     backgroundImage={event.photo}
                 />
             </CoverSection>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet />
+            </Suspense>
         </TwoSectionsPage>
     );
 };

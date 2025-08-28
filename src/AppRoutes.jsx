@@ -1,22 +1,20 @@
-import AdminPage from "./admin/pages/AdminPage";
-import Cart from "./user/pages/cart-page/cart/Cart";
-import CartPage from "./user/pages/cart-page/CartPage";
-import Checkout from "./user/pages/cart-page/checkout/Checkout";
-import Dashboard from "./admin/pages/Dashboard";
-import EventDetails from "./user/pages/event-page/event-details/EventDetails";
-import EventPage from "./user/pages/event-page/EventPage";
-import EventReservation from "./user/pages/event-page/event-reservation/EventReservation";
-import ErrorPage from "./user/pages/ErrorPage/ErrorPage";
+import {
+    CartLazy,
+    CartLazyPage,
+    CheckoutLazy,
+    EventDetailsLazy,
+    EventLazyPage,
+    EventReservationLazy,
+    EventsLazyPage,
+    LoginLazyPage,
+    ProductLazyPage,
+    ProfileLazyPage,
+    RegistrationLazyPage,
+    ReservationLazyPage,
+} from "./user/pages/LazyPages";
+import ErrorPage from "./user/pages/error-page/ErrorPage";
 import FrontPage from "./user/pages/front-page/FrontPage";
-import LoginPage from "./user/pages/login-page/LoginPage";
-import Menu from "./user/pages/menu-page/menu/Menu";
-import Orders from "./admin/pages/Orders";
-import ProductPage from "./user/pages/product-page/ProductPage";
-import ProfilePage from "./user/pages/profile-page/ProfilePage";
-import RegistrationPage from "./user/pages/registration-page/RegistrationPage";
-import ReservationPage from "./user/pages/reservation-page/ReservationPage";
-import ReservationsTable from "./admin/pages/ReservationsTable";
-import { EventsLazyPage, MenuLazyPage } from "./user/pages/LazyPages";
+import MenuPage from "./user/pages/menu-page/MenuPage";
 
 const routes = [
     {
@@ -28,56 +26,34 @@ const routes = [
         element: <ErrorPage />,
     },
     {
-        path: "/admin",
-        element: <AdminPage />,
-        children: [
-            {
-                path: "dashboard",
-                element: <Dashboard />,
-            },
-            {
-                path: "reservations",
-                element: <ReservationsTable />,
-            },
-            {
-                path: "orders",
-                element: <Orders />,
-            },
-            {
-                path: "menu",
-                element: <Menu />,
-            },
-        ],
-    },
-    {
         path: "/cart",
-        element: <CartPage />,
+        element: <CartLazyPage />,
         children: [
             {
                 index: true,
-                element: <Cart />,
+                element: <CartLazy />,
             },
             {
                 path: "checkout",
-                element: <Checkout />,
+                element: <CheckoutLazy />,
             },
         ],
     },
     {
         path: "/login",
-        element: <LoginPage />,
+        element: <LoginLazyPage />,
     },
     {
         path: "/menu",
-        element: <MenuLazyPage />,
+        element: <MenuPage />,
     },
     {
         path: "/menu/:category/:productId",
-        element: <ProductPage />,
+        element: <ProductLazyPage />,
     },
     {
         path: "/table-reservation",
-        element: <ReservationPage />,
+        element: <ReservationLazyPage />,
     },
     {
         path: "/events",
@@ -85,25 +61,25 @@ const routes = [
     },
     {
         path: "/events/:eventId",
-        element: <EventPage />,
+        element: <EventLazyPage />,
         children: [
             {
                 index: true,
-                element: <EventDetails />,
+                element: <EventDetailsLazy />,
             },
             {
                 path: "reservation",
-                element: <EventReservation />,
+                element: <EventReservationLazy />,
             },
         ],
     },
     {
         path: "/registration",
-        element: <RegistrationPage />,
+        element: <RegistrationLazyPage />,
     },
     {
         path: "/profile",
-        element: <ProfilePage />,
+        element: <ProfileLazyPage />,
     },
 ];
 export default routes;
