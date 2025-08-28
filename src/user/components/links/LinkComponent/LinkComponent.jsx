@@ -22,11 +22,11 @@ const LinkComponent = ({ children, color, fontWeight, target, to, size }) => {
 
 LinkComponent.propTypes = {
     children: PropTypes.node.isRequired,
-    color: PropTypes.string,
-    fontWeight: PropTypes.string,
+    color: PropTypes.oneOf(["grey", "white", "wisteria"]),
+    fontWeight: PropTypes.oneOf(["thin", "extraLight"]),
     target: PropTypes.string,
     to: PropTypes.string.isRequired,
-    size: PropTypes.string,
+    size: PropTypes.oneOf(["medium", "large"]),
 };
 
 LinkComponent.defaultProps = {
