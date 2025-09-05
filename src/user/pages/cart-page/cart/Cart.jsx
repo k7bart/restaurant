@@ -4,7 +4,7 @@ import {
     getTotalDiscount,
     getTotalOrderPrice,
 } from "../../../../utils/priceUtils";
-import { reset } from "../../../../store/index";
+import { resetCart } from "../../../../store";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
@@ -52,7 +52,7 @@ const Cart = () => {
                 </Text>
             ) : (
                 <div className={styles.cart}>
-                    <Button onClick={() => dispatch(reset())}>
+                    <Button onClick={() => dispatch(resetCart())}>
                         Empty cart
                     </Button>
                     <ul className={styles.products}>

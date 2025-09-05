@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateProductAmount, removeProduct } from "../../../../store/index";
+import {
+    updateProductAmountInCart,
+    removeProductFromCart,
+} from "../../../../store";
 import { getTotalPrice } from "../../../../utils/priceUtils";
 import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
 import NumInput from "../../../components/Inputs/NumInput/NumInput";
@@ -24,10 +27,10 @@ const ProductPreview = ({ product }) => {
 
     const handleAmountChange = (newAmount) => {
         setAmount(newAmount);
-        dispatch(updateProductAmount({ productId: id, newAmount }));
+        dispatch(updateProductAmountInCart({ productId: id, newAmount }));
     };
     const handleProductRemove = () => {
-        dispatch(removeProduct(id));
+        dispatch(removeProductFromCart(id));
     };
 
     return (

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, updateProductAmount } from "../store";
+import { addProductToCart, updateProductAmountInCart } from "../store";
 
 export function useProductInCart(product, category) {
     const dispatch = useDispatch();
@@ -15,11 +15,18 @@ export function useProductInCart(product, category) {
         (newAmount) => {
             if (productInCart) {
                 dispatch(
-                    updateProductAmount({ productId: product.id, newAmount })
+                    updateProductAmountInCart({
+                        productId: product.id,
+                        newAmount,
+                    })
                 );
             } else {
                 dispatch(
-                    addProduct({ ...product, amount: newAmount, category })
+                    addProductToCart({
+                        ...product,
+                        amount: newAmount,
+                        category,
+                    })
                 );
             }
         },

@@ -4,7 +4,7 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: [],
     reducers: {
-        addProduct(state, action) {
+        addProductToCart(state, action) {
             const { id, amount } = action.payload;
             const existingProduct = state.find((product) => product.id === id);
             if (existingProduct) {
@@ -13,7 +13,7 @@ const cartSlice = createSlice({
                 state.push(action.payload);
             }
         },
-        updateProductAmount(state, action) {
+        updateProductAmountInCart(state, action) {
             const { productId, newAmount } = action.payload;
             const productIndex = state.findIndex(
                 (product) => product.id === productId
@@ -23,16 +23,19 @@ const cartSlice = createSlice({
                 state[productIndex].amount = newAmount;
             }
         },
-        removeProduct(state, action) {
+        removeProductFromCart(state, action) {
             return state.filter((product) => product.id !== action.payload);
         },
-        reset(state, action) {
+        resetCart() {
             return [];
         },
     },
 });
 
-export const { addProduct, updateProductAmount, removeProduct, reset } =
-    cartSlice.actions;
-// export default cartSlice.reducer;
+export const {
+    addProductToCart,
+    updateProductAmountInCart,
+    removeProductFromCart,
+    resetCart,
+} = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

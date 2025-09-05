@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../../../store/slices/cartSlice";
+import { addProductToCart } from "../../../../store";
 import { menu } from "../../../../state";
 
 import OrderRow from "./order-row/OrderRow";
@@ -14,7 +14,7 @@ const addOrderToCart = (dispatch, orderedProducts) => {
             ?.products.find((p) => p.id === id);
 
         if (product) {
-            dispatch(addProduct({ ...product, amount }));
+            dispatch(addProductToCart({ ...product, amount }));
         }
     });
 };
