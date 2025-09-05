@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
     cartReducer,
-    addProduct,
-    updateProductAmount,
-    removeProduct,
-    reset,
+    addProductToCart,
+    updateProductAmountInCart,
+    removeProductFromCart,
+    resetCart,
 } from "./slices/cartSlice";
 import {
     userReducer,
@@ -31,10 +31,10 @@ const store = configureStore({
 
 export { store };
 export {
-    addProduct,
-    updateProductAmount,
-    removeProduct,
-    reset,
+    addProductToCart,
+    updateProductAmountInCart,
+    removeProductFromCart,
+    resetCart,
     updateUserData,
     addAddress,
     addReservationId,
