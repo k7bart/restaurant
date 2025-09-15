@@ -15,7 +15,7 @@
         "@k7bart/restaurant-shared-types": "^1.0.0",
         "@reduxjs/toolkit": "^2.2.3",
         "@testing-library/user-event": "^14.5.2",
-        "axios": "^1.7.9",
+        "axios": "^1.12.2",
         "classnames": "^2.5.1",
         "dayjs": "^1.11.11",
         "react": "^18.2.0",
@@ -26,7 +26,6 @@
         "react-icons": "^5.1.0",
         "react-redux": "^9.1.2",
         "react-router-dom": "^6.22.3",
-        "redux": "^5.0.1",
         "sass": "^1.75.0",
         "typescript": "^5.9.3",
         "yup": "^1.4.0"
