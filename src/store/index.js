@@ -19,6 +19,7 @@ import {
 import {
     reservationsReducer,
     addReservation,
+    fetchReservations,
 } from "./slices/reservationsSlice";
 
 const store = configureStore({
@@ -43,4 +44,5 @@ export {
     removeAddress,
     setCurrentAddress,
     addReservation,
+    fetchReservations,
 };

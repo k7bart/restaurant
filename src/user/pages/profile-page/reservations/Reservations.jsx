@@ -15,7 +15,9 @@ const sortReservations = (reservations) => {
 };
 
 const Reservations = ({ reservationIds }) => {
-    const reservations = useSelector((state) => state.reservations);
+    const reservations = useSelector(
+        (state) => state.reservations.list // todo: rename
+    );
 
     const userReservations = reservationIds
         .map(
