@@ -1,13 +1,20 @@
 import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import classNames from "classnames";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { filterTime } from "../../../utils/timeUtils";
 
 import Text from "../Text/Text";
 
-const TimeInput = ({ control, error, name, required, label, selectedDate }) => {
+const TimeInput = ({
+    name = "time",
+    required,
+    label = "Time",
+    selectedDate,
+}) => {
     const today = new Date();
+    const { control, formState, getFieldState } = useFormContext();
+    const { error } = getFieldState(name, formState);
 
     return (
         <label className={classNames("time-picker", { error })}>
@@ -45,18 +52,10 @@ const TimeInput = ({ control, error, name, required, label, selectedDate }) => {
 };
 
 TimeInput.propTypes = {
-    control: PropTypes.object.isRequired,
-    error: PropTypes.shape({ message: PropTypes.string }),
     name: PropTypes.string,
     required: PropTypes.bool,
     label: PropTypes.string,
     selectedDate: PropTypes.instanceOf(Date),
-};
-
-TimeInput.defaultProps = {
-    name: "time",
-    required: true,
-    label: "Time",
 };
 
 export default TimeInput;

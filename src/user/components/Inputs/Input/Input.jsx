@@ -1,19 +1,25 @@
+import { useFormContext } from "react-hook-form";
 import { capitalize } from "../../../../utils/stringUtils";
 import Text from "../../Text/Text";
 import styles from "./Input.module.scss";
 import PropTypes from "prop-types";
 
-const Input = ({ error, fieldName, label, register, required }) => {
+const Input = ({ fieldName, onBlur, label, required, type = "text" }) => {
+    const { register, getFieldState, formState } = useFormContext();
+    const { error } = getFieldState(fieldName, formState);
+
     return (
         <label className={styles.label}>
             <Text size="medium">
-                {label ? label : capitalize(fieldName)}
+                {label || capitalize(fieldName)}
                 {required && "*"}
             </Text>
 
             <input
                 {...register(fieldName)}
                 className={error ? styles.error : undefined}
+                type={type}
+                onBlur={onBlur}
             />
 
             {error && (
@@ -26,16 +32,11 @@ const Input = ({ error, fieldName, label, register, required }) => {
 };
 
 Input.propTypes = {
-    error: PropTypes.object,
     fieldName: PropTypes.string.isRequired,
     label: PropTypes.string,
-    register: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
     required: PropTypes.bool,
-};
-
-Input.defaultProps = {
-    label: undefined,
-    required: false,
+    type: PropTypes.oneOf(["text", "email", "password", "tel"]),
 };
 
 export default Input;

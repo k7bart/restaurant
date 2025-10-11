@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { checkEmailUsed } from "../../../services/user/user";
 import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
 import Button from "../../../common/components/buttons/Button/Button";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";
+import Input from "../../components/Inputs/Input/Input";
 import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
 import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
@@ -38,12 +40,7 @@ const registrationSchema = yup.object({
 });
 
 const RegistrationForm = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset,
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
             name: "",
@@ -56,6 +53,13 @@ const RegistrationForm = () => {
         },
     });
 
+    const {
+        reset,
+        setError,
+        clearErrors,
+        formState: { errors },
+    } = methods;
+
     const onSubmit = (data) => {
         const formattedData = {
             ...data,
@@ -66,57 +70,54 @@ const RegistrationForm = () => {
         reset();
     };
 
+    const handleEmailBlur = async ({ target: { value } }) => {
+        if (errors.email) return;
+
+        (await checkEmailUsed(value))
+            ? setError("email", { message: "Email is already registered" })
+            : clearErrors("email");
+    };
+
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <NameInput
-                    register={register}
-                    error={errors.name}
-                    required={true}
-                />
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                <div>
+                    <NameInput required />
 
-                <SurnameInput register={register} surname={errors.surname} />
-            </div>
+                    <SurnameInput />
+                </div>
 
-            <div>
-                <PhoneInput register={register} error={errors.phone} />
+                <div>
+                    <PhoneInput required />
 
-                <EmailInput
-                    register={register}
-                    error={errors.email}
-                    required={true}
-                />
-            </div>
+                    <EmailInput required onBlur={handleEmailBlur} />
+                </div>
 
-            <div>
-                <PasswordInput register={register} error={errors.password} />
+                <div>
+                    <PasswordInput />
 
-                <label>
-                    <Text>Confirm password</Text>
+                    <Input
+                        fieldName="confirmPassword"
+                        label="Confirm password"
+                        required
+                        type="password"
+                    />
+                </div>
 
-                    <input {...register("confirmPassword")} type="password" />
+                <LabeledCheckbox fieldName="rememberMe" label="Remember me" />
 
-                    {errors.confirmPassword && (
-                        <p className="error">
-                            {errors.confirmPassword.message}
-                        </p>
-                    )}
-                </label>
-            </div>
+                <Button size="small" color="wisteria" type="submit">
+                    Register
+                </Button>
 
-            <LabeledCheckbox text="Remember me" register={register} />
-
-            <Button size="small" color="wisteria" type="submit">
-                Register
-            </Button>
-
-            <Text align="center" size="large">
-                Already registered?&nbsp;
-                <LinkComponent color="wisteria" to="/login" size="large">
-                    Sign in
-                </LinkComponent>
-            </Text>
-        </Form>
+                <Text align="center" size="large">
+                    Already registered?&nbsp;
+                    <LinkComponent color="wisteria" to="/login" size="large">
+                        Sign in
+                    </LinkComponent>
+                </Text>
+            </Form>
+        </FormProvider>
     );
 };
 

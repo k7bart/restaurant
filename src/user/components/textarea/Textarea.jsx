@@ -1,22 +1,25 @@
+import { useFormContext } from "react-hook-form";
 import PropTypes from "prop-types";
 
 import Text from "../Text/Text";
 
 import styles from "./Textarea.module.scss";
 
-const Textarea = ({ text, register }) => {
+const Textarea = ({ fieldName, label }) => {
+    const { register } = useFormContext();
+
     return (
         <label>
-            <Text size="medium">{text}</Text>
+            <Text size="medium">{label}</Text>
 
-            <textarea className={styles.textarea} {...register} />
+            <textarea className={styles.textarea} {...register(fieldName)} />
         </label>
     );
 };
 
 Textarea.propTypes = {
-    text: PropTypes.string.isRequired,
-    register: PropTypes.object.isRequired,
+    fieldName: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
 };
 
 export default Textarea;

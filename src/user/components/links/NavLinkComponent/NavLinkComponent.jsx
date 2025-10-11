@@ -1,18 +1,13 @@
+import PropTypes from "prop-types";
 import classNames from "classnames";
-import styles from "./NavLinkComponent.module.scss";
 import { NavLink } from "react-router-dom";
+import styles from "./NavLinkComponent.module.scss";
 
-const NavLinkComponent = ({
-    children,
-    color = "grey",
-    target = "_self",
-    to,
-    size,
-}) => {
+const NavLinkComponent = ({ children, target, to }) => {
     return (
         <NavLink
             className={({ isActive }) =>
-                classNames(styles.link, styles[size], styles[color], {
+                classNames({
                     [styles.active]: isActive,
                 })
             }
@@ -22,6 +17,16 @@ const NavLinkComponent = ({
             {children}
         </NavLink>
     );
+};
+
+NavLinkComponent.propTypes = {
+    children: PropTypes.node.isRequired,
+    target: PropTypes.string,
+    to: PropTypes.string.isRequired,
+};
+
+NavLinkComponent.defaultProps = {
+    target: "_self",
 };
 
 export default NavLinkComponent;
