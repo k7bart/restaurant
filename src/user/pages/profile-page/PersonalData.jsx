@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { updateUserData } from "../../../store/index";
 import { capitalize } from "../../../utils/stringUtils";
@@ -8,8 +8,8 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import PropTypes from "prop-types";
 
-import BirthdayInput from "../../components/Inputs/BirthdayInput";
 import Button from "../../../common/components/buttons/Button/Button";
+import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";
 import NameInput from "../../components/Inputs/NameInput";
@@ -31,12 +31,7 @@ const PersonalData = ({ user }) => {
     const dispatch = useDispatch();
     const { name, surname, email, phone, birthday } = user;
 
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(schema),
         defaultValues: {
             name,
@@ -58,27 +53,33 @@ const PersonalData = ({ user }) => {
     };
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-                <NameInput register={register} error={errors.name} />
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                <div>
+                    <NameInput />
 
-                <SurnameInput register={register} error={errors.surname} />
-            </div>
+                    <SurnameInput />
+                </div>
 
-            <div>
-                <PhoneInput register={register} error={errors.phone} />
+                <div>
+                    <PhoneInput />
 
-                <EmailInput register={register} error={errors.email} />
-            </div>
+                    <EmailInput />
+                </div>
 
-            <div>
-                <BirthdayInput control={control} error={errors.birthday} />
+                <div>
+                    <DateInput
+                        label="Birthday"
+                        name="birthday"
+                        minDate={new Date(1900, 0, 1)}
+                    />
 
-                <Button size="small" color="wisteria" type="submit">
-                    Save changes
-                </Button>
-            </div>
-        </Form>
+                    <Button size="small" color="wisteria" type="submit">
+                        Save changes
+                    </Button>
+                </div>
+            </Form>
+        </FormProvider>
     );
 };
 

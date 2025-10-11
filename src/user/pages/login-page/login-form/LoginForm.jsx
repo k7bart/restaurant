@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -21,55 +21,52 @@ const reservationSchema = yup.object({
 });
 
 const LoginForm = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(reservationSchema),
     });
 
     const onSubmit = (data) => console.log(data);
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <EmailInput
-                register={register}
-                error={errors.email}
-                required={true}
-            />
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                <EmailInput required />
 
-            <PasswordInput register={register} error={errors.password} />
+                <PasswordInput />
 
-            <div className={styles.container}>
-                <LabeledCheckbox text="Remember me" register={register} />
+                <div className={styles.container}>
+                    <LabeledCheckbox
+                        fieldName="rememberMe"
+                        label="Remember me"
+                    />
 
-                <LinkComponent
-                    color="wisteria"
-                    target="_self"
-                    to="#"
-                    size="large"
-                >
-                    Forgot password?
-                </LinkComponent>
-            </div>
+                    <LinkComponent
+                        color="wisteria"
+                        target="_self"
+                        to="#"
+                        size="large"
+                    >
+                        Forgot password?
+                    </LinkComponent>
+                </div>
 
-            <Button size="small" color="wisteria" type="submit">
-                Login
-            </Button>
+                <Button size="small" color="wisteria" type="submit">
+                    Login
+                </Button>
 
-            <Text align="center" size="large">
-                Don&apos;t have an account yet?&nbsp;
-                <LinkComponent
-                    color="wisteria"
-                    target="_self"
-                    to="/registration"
-                    size="large"
-                >
-                    Register
-                </LinkComponent>
-            </Text>
-        </Form>
+                <Text align="center" size="large">
+                    Don&apos;t have an account yet?&nbsp;
+                    <LinkComponent
+                        color="wisteria"
+                        target="_self"
+                        to="/registration"
+                        size="large"
+                    >
+                        Register
+                    </LinkComponent>
+                </Text>
+            </Form>
+        </FormProvider>
     );
 };
 

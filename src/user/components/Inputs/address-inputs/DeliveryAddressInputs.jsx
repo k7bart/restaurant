@@ -1,55 +1,31 @@
-import PropTypes from "prop-types";
-
 import CityInput from "./CityInput";
 import EntranceInput from "./Entrance";
 import HouseInput from "./HouseInput";
 import Input from "../Input/Input";
 import StreetInput from "./StreetInput";
 
-const DeliveryAddressInputs = ({ errors, register }) => {
+const DeliveryAddressInputs = () => {
     return (
         <>
             <div>
-                <CityInput error={errors.city} register={register} required />
+                <CityInput required />
 
-                <StreetInput
-                    error={errors.street}
-                    register={register}
-                    required
-                />
+                <StreetInput required />
 
-                <HouseInput error={errors.house} register={register} required />
+                <HouseInput required />
             </div>
 
             <div>
-                <EntranceInput error={errors.entrance} register={register} />
+                <EntranceInput />
 
-                <Input
-                    error={errors.floor}
-                    fieldName="floor"
-                    register={register}
-                />
+                <Input fieldName="floor" />
 
-                <Input
-                    error={errors.apartment}
-                    fieldName="apartment"
-                    label="Apt/office"
-                    register={register}
-                />
+                <Input fieldName="apartment" label="Apt/office" />
 
-                <Input
-                    error={errors.intercom}
-                    fieldName="intercom"
-                    register={register}
-                />
+                <Input fieldName="intercom" />
             </div>
         </>
     );
-};
-
-DeliveryAddressInputs.propTypes = {
-    errors: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
 };
 
 export default DeliveryAddressInputs;

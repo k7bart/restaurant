@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../../utils/stringUtils";
@@ -54,12 +54,7 @@ const EventReservationForm = ({ event }) => {
     const dispatch = useDispatch();
     const [ticket, setTicket] = useState(null);
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(reservationSchema),
         defaultValues: {
             name: user ? user.fullName : "",
@@ -88,7 +83,7 @@ const EventReservationForm = ({ event }) => {
 
         setTicket(ticket);
 
-        reset();
+        methods.reset();
     };
 
     return ticket ? (
@@ -117,66 +112,49 @@ const EventReservationForm = ({ event }) => {
             </div>
         </Notice>
     ) : (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            {!user && (
-                <p className="large">
-                    We kindly invite you to
-                    <NavLink to="/login" className="large wisteria">
-                        &nbsp;log in&nbsp;
-                    </NavLink>
-                    for a smoother and quicker experience.
-                </p>
-            )}
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                {!user && (
+                    <p className="large">
+                        We kindly invite you to
+                        <NavLink to="/login" className="large wisteria">
+                            &nbsp;log in&nbsp;
+                        </NavLink>
+                        for a smoother and quicker experience.
+                    </p>
+                )}
 
-            <NameInput
-                register={register}
-                error={errors.name}
-                required={true}
-            />
+                <NameInput required />
 
-            <div>
-                <PhoneInput
-                    register={register}
-                    error={errors.phone}
-                    required={true}
-                />
-                <EmailInput register={register} error={errors.email} />
-            </div>
-
-            {event.ageLimit === 18 && (
                 <div>
-                    <NumberOfAdultsInput
-                        register={register}
-                        error={errors.numberOfAdults}
-                        required={true}
-                    />
-
-                    <Button size="small" color="wisteria" type="submit">
-                        Submit
-                    </Button>
+                    <PhoneInput required />
+                    <EmailInput />
                 </div>
-            )}
 
-            {event.ageLimit !== 18 && (
-                <>
+                {event.ageLimit === 18 && (
                     <div>
-                        <NumberOfAdultsInput
-                            register={register}
-                            error={errors.numberOfAdults}
-                            required={true}
-                        />
-                        <NumberOfChildrenInput
-                            register={register}
-                            error={errors.numberOfChildren}
-                        />
-                    </div>
+                        <NumberOfAdultsInput required />
 
-                    <Button size="small" color="wisteria" type="submit">
-                        Submit
-                    </Button>
-                </>
-            )}
-        </Form>
+                        <Button size="small" color="wisteria" type="submit">
+                            Submit
+                        </Button>
+                    </div>
+                )}
+
+                {event.ageLimit !== 18 && (
+                    <>
+                        <div>
+                            <NumberOfAdultsInput required />
+                            <NumberOfChildrenInput />
+                        </div>
+
+                        <Button size="small" color="wisteria" type="submit">
+                            Submit
+                        </Button>
+                    </>
+                )}
+            </Form>
+        </FormProvider>
     );
 };
 

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addAddress } from "../../../../../store";
 import { capitalize } from "../../../../../utils/stringUtils";
@@ -18,12 +18,7 @@ const schema = yup.object({
 const AddAddressForm = () => {
     const dispatch = useDispatch();
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(schema),
     });
 
@@ -37,15 +32,17 @@ const AddAddressForm = () => {
             street: capitalize(data.street),
         };
         dispatch(addAddress(formattedData));
-        reset();
+        methods.reset();
     };
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <DeliveryAddressInputs errors={errors} register={register} />
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                <DeliveryAddressInputs />
 
-            <Button type="submit">Add address</Button>
-        </Form>
+                <Button type="submit">Add address</Button>
+            </Form>
+        </FormProvider>
     );
 };
 

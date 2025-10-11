@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
@@ -23,6 +23,7 @@ import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import Text from "../../components/Text/Text";
+import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/Inputs/TimeInput";
 
 const today = new Date();
@@ -73,13 +74,7 @@ const ReservationForm = () => {
     const dispatch = useDispatch();
     const [reservedTable, setReservedTable] = useState(null);
 
-    const {
-        register,
-        handleSubmit,
-        control,
-        reset,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(reservationSchema),
         mode: "onChange",
         defaultValues: {
@@ -129,7 +124,7 @@ const ReservationForm = () => {
         user && dispatch(addReservationId(reservation.id));
 
         setReservedTable(reservation);
-        reset();
+        methods.reset();
     };
 
     return reservedTable ? (
@@ -162,68 +157,50 @@ const ReservationForm = () => {
             </div>
         </Notice>
     ) : (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            {!user && (
-                <Text size="large">
-                    We kindly invite you to
-                    <LinkComponent
-                        color="wisteria"
-                        fontWeight="thin"
-                        to="/login"
-                        size="large"
-                    >
-                        &nbsp;log in&nbsp;
-                    </LinkComponent>
-                    for a smoother and quicker experience.
-                </Text>
-            )}
+        <FormProvider {...methods}>
+            <Form onSubmit={onSubmit}>
+                {!user && (
+                    <Text size="large">
+                        We kindly invite you to
+                        <LinkComponent
+                            color="wisteria"
+                            fontWeight="thin"
+                            to="/login"
+                            size="large"
+                        >
+                            &nbsp;log in&nbsp;
+                        </LinkComponent>
+                        for a smoother and quicker experience.
+                    </Text>
+                )}
 
-            <NameInput
-                register={register}
-                error={errors.name}
-                required={true}
-            />
+                <NameInput required />
 
-            <div>
-                <PhoneInput
-                    register={register}
-                    error={errors.phone}
-                    required={true}
-                />
-                <EmailInput register={register} error={errors.email} />
-            </div>
+                <div>
+                    <PhoneInput required />
+                    <EmailInput />
+                </div>
 
-            <div>
-                <NumberOfAdultsInput
-                    register={register}
-                    error={errors.numberOfAdults}
-                    required={true}
-                />
-                <NumberOfChildrenInput
-                    register={register}
-                    error={errors.numberOfChildren}
-                />
-            </div>
+                <div>
+                    <NumberOfAdultsInput required />
+                    <NumberOfChildrenInput />
+                </div>
 
-            <div>
-                <DateInput
-                    control={control}
-                    error={errors.date}
-                    required={true}
+                <div>
+                    <DateInput required />
+                    <TimeInput required />
+                </div>
+
+                <Textarea
+                    fieldName="additionalRequirements"
+                    label="Additional requirements"
                 />
 
-                <TimeInput control={control} error={errors.time} />
-            </div>
-
-            <label>
-                <p>Additional requirements</p>
-                <textarea {...register("additionalRequirements")} />
-            </label>
-
-            <Button size="small" color="wisteria" type="submit">
-                Submit
-            </Button>
-        </Form>
+                <Button size="small" color="wisteria" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </FormProvider>
     );
 };
 

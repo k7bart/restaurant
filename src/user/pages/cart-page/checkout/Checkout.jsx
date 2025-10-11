@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { combineDateTime } from "../../../../utils/timeUtils";
 import { getAvailableDay } from "../../../../utils/dateUtils";
@@ -52,12 +52,7 @@ const Checkout = () => {
     const [paymentMethod, setPaymentMethod] = useState("online");
     const [pickupAddress, setPickupAddress] = useState(null);
 
-    const {
-        register,
-        handleSubmit,
-        control,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(getSchema(deliveryMethod)),
         defaultValues: {
             ...addressDefaultValues,
@@ -116,101 +111,90 @@ const Checkout = () => {
 
     return (
         <ContentSection additionalStyles={styles.content} header={HEADER}>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <OptionsButtons
-                    label="Delivery method"
-                    onClick={setDeliveryMethod}
-                    options={DELIVERY_OPTIONS}
-                    selectedOption={deliveryMethod}
-                />
-
-                <div>
-                    <NameInput
-                        register={register}
-                        error={errors.name}
-                        required
+            <FormProvider {...methods}>
+                <Form onSubmit={onSubmit}>
+                    <OptionsButtons
+                        label="Delivery method"
+                        onClick={setDeliveryMethod}
+                        options={DELIVERY_OPTIONS}
+                        selectedOption={deliveryMethod}
                     />
 
-                    <PhoneInput
-                        register={register}
-                        error={errors.phone}
-                        required
+                    <div>
+                        <NameInput required />
+
+                        <PhoneInput required />
+                    </div>
+
+                    {deliveryMethod !== "selfPickup" && (
+                        <>
+                            <HorizontalDevider />
+
+                            <DeliveryAddressInputs />
+
+                            <Textarea
+                                fieldName="addressComment"
+                                label="Comment on the address"
+                            />
+                        </>
+                    )}
+
+                    {deliveryMethod === "selfPickup" && (
+                        <>
+                            <HorizontalDevider />
+
+                            <SelfPickupCheckout
+                                handlePaymentMethod={setPaymentMethod}
+                                handlePickupAddress={setPickupAddress}
+                                selectedOption={paymentMethod}
+                            />
+                        </>
+                    )}
+
+                    {deliveryMethod === "advance" && (
+                        <>
+                            <HorizontalDevider />
+
+                            <DateTimeInputs
+                                startDate={availableAdvanceOrderDay}
+                            />
+                        </>
+                    )}
+
+                    {deliveryMethod !== "selfPickup" && (
+                        <>
+                            <HorizontalDevider />
+
+                            <PaymentOptions
+                                onClick={setPaymentMethod}
+                                options={PAYMENT_OPTIONS}
+                                selectedOption={paymentMethod}
+                            />
+                        </>
+                    )}
+
+                    <HorizontalDevider />
+
+                    <Textarea
+                        fieldName="orderComment"
+                        label="Comment on the order"
                     />
-                </div>
 
-                {deliveryMethod !== "selfPickup" && (
-                    <>
-                        <HorizontalDevider />
+                    <LabeledCheckbox
+                        fieldName="callForDetails"
+                        label="Call me for details"
+                    />
 
-                        <DeliveryAddressInputs
-                            errors={errors}
-                            register={register}
-                        />
+                    <TotalPrice
+                        additionalStyles={styles.totalPrice}
+                        price={total}
+                    />
 
-                        <Textarea
-                            text="Comment on the address"
-                            register={register("addressComment")}
-                        />
-                    </>
-                )}
-
-                {deliveryMethod === "selfPickup" && (
-                    <>
-                        <HorizontalDevider />
-
-                        <SelfPickupCheckout
-                            handlePaymentMethod={setPaymentMethod}
-                            handlePickupAddress={setPickupAddress}
-                            selectedOption={paymentMethod}
-                        />
-                    </>
-                )}
-
-                {deliveryMethod === "advance" && (
-                    <>
-                        <HorizontalDevider />
-
-                        <DateTimeInputs
-                            control={control}
-                            errors={errors}
-                            startDate={availableAdvanceOrderDay}
-                        />
-                    </>
-                )}
-
-                {deliveryMethod !== "selfPickup" && (
-                    <>
-                        <HorizontalDevider />
-
-                        <PaymentOptions
-                            onClick={setPaymentMethod}
-                            options={PAYMENT_OPTIONS}
-                            selectedOption={paymentMethod}
-                        />
-                    </>
-                )}
-
-                <HorizontalDevider />
-
-                <Textarea
-                    text="Comment on the order"
-                    register={register("orderComment")}
-                />
-
-                <LabeledCheckbox
-                    text="Call me for details"
-                    register={register("callForDetails")}
-                />
-
-                <TotalPrice
-                    additionalStyles={styles.totalPrice}
-                    price={total}
-                />
-
-                <Button type="submit" size="large">
-                    Complete the order
-                </Button>
-            </Form>
+                    <Button type="submit" size="large">
+                        Complete the order
+                    </Button>
+                </Form>
+            </FormProvider>
         </ContentSection>
     );
 };
