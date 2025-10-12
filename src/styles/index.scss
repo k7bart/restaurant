@@ -429,10 +429,7 @@ div.react-datepicker {
     background-color: white;
     border-radius: 35px;
     padding: 8px;
-
-    > :not(:first-child) {
-        margin-left: 8px;
-    }
+    gap: 8px;
 
     a,
     p {
