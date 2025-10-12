@@ -29,7 +29,7 @@ const CartLink = () => {
                 <FaShoppingCart />
                 {"$" + total.toFixed(2)}
             </NavLinkComponent>
-            <Tooltip targetRef={cartRef}>view cart</Tooltip>
+            <Tooltip targetRef={cartRef} text="View cart" />
         </>
     );
 };
