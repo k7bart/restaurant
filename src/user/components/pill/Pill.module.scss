@@ -1,0 +1,50 @@
+@import "../../../styles/variables.scss";
+
+@mixin pill-color($color) {
+    border: 1px solid $color;
+    color: $color;
+
+    > svg {
+        fill: $color;
+        stroke: $color;
+    }
+
+    &:hover {
+        background-color: white !important;
+        color: $color !important;
+
+        > svg {
+            fill: $color !important;
+            stroke: $color !important;
+        }
+    }
+
+    &.active {
+        background-color: $color;
+        color: $background-color;
+
+        > svg {
+            fill: $background-color;
+            stroke: $background-color;
+        }
+    }
+}
+
+.pill {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 26px;
+    padding: 16px;
+    background-color: transparent;
+    transition: 0.3s;
+
+    &.wisteria {
+        @include pill-color($wisteria);
+    }
+
+    &.green {
+        @include pill-color($green);
+    }
+}
