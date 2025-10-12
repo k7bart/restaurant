@@ -185,7 +185,7 @@ export const menu = [
                 ],
                 price: 29,
                 discountPercent: null,
-                isVegan: true,
+                isVegan: false,
                 isDishOfTheDay: false,
             },
         ],

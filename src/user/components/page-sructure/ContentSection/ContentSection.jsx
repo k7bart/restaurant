@@ -1,11 +1,13 @@
+import PropTypes from "prop-types";
+import cn from "classnames";
 import Footer from "../../Footer/Footer";
 import Text from "../../Text/Text";
 import Section from "../Section/Section";
 import styles from "./ContentSection.module.scss";
 
-const ContentSection = ({ header = undefined, nav = undefined, children }) => {
+const ContentSection = ({ children, className, header, nav }) => {
     return (
-        <Section className={styles.content}>
+        <Section className={cn(styles.content, className)}>
             {nav}
             {header && (
                 <header>
@@ -17,6 +19,16 @@ const ContentSection = ({ header = undefined, nav = undefined, children }) => {
             <Footer />
         </Section>
     );
+};
+
+ContentSection.propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    header: PropTypes.shape({
+        title: PropTypes.string,
+        text: PropTypes.string,
+    }),
+    nav: PropTypes.node,
 };
 
 export default ContentSection;
