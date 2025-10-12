@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ACTIVITY_EVENTS, INACTIVITY_TIME } from "../../../consts";
@@ -44,11 +44,7 @@ const CallMePopup = () => {
 
     const { phone } = useSelector((state) => state.user);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
+    const methods = useForm({
         resolver: yupResolver(callMePopupSchema),
         defaultValues: {
             phone,
@@ -65,22 +61,24 @@ const CallMePopup = () => {
             closePopup={handleClose}
             popupStyles={styles.popup}
         >
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <header className={styles.header}>
-                    <h3>Need some help?</h3>
+            <FormProvider {...methods}>
+                <Form onSubmit={onSubmit}>
+                    <header className={styles.header}>
+                        <h3>Need some help?</h3>
 
-                    <Text size="large">
-                        Don&apos;t worry, we&apos;re always here for you
-                        whenever you need us
-                    </Text>
-                </header>
+                        <Text size="large">
+                            Don&apos;t worry, we&apos;re always here for you
+                            whenever you need us
+                        </Text>
+                    </header>
 
-                <PhoneInput register={register} error={errors.phone} />
+                    <PhoneInput />
 
-                <Button size="small" color="wisteria" type="submit">
-                    Call Me
-                </Button>
-            </Form>
+                    <Button size="small" color="wisteria" type="submit">
+                        Call Me
+                    </Button>
+                </Form>
+            </FormProvider>
         </Popup>
     ) : null;
 };
