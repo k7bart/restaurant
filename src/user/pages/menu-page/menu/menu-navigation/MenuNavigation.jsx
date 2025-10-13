@@ -1,18 +1,9 @@
+import PropTypes from "prop-types";
 import { capitalize } from "../../../../../utils/stringUtils";
 import { menu } from "../../../../../state";
 import classNames from "classnames";
 import styles from "../../../../components/links/NavLinkComponent/NavLinkComponent.module.scss";
 import ContentSectionNav from "../../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
-
-const handleClick = (id) => () => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    }
-};
 
 const MenuLink = ({ children, isActive, onClick }) => {
     return (
@@ -27,14 +18,14 @@ const MenuLink = ({ children, isActive, onClick }) => {
     );
 };
 
-const MenuNavigation = ({ activeCategory }) => {
+const MenuNavigation = ({ activeCategory, handleNavigation }) => {
     return (
         <ContentSectionNav justifyContent="contentEvenly">
             {menu.map((category) => (
                 <MenuLink
                     key={category.name}
                     isActive={activeCategory === category.name}
-                    onClick={handleClick(category.name)}
+                    onClick={() => handleNavigation(category.name)}
                 >
                     {capitalize(category.name)}
                 </MenuLink>
@@ -44,3 +35,8 @@ const MenuNavigation = ({ activeCategory }) => {
 };
 
 export default MenuNavigation;
+
+MenuNavigation.propTypes = {
+    activeCategory: PropTypes.string,
+    handleNavigation: PropTypes.func,
+};
