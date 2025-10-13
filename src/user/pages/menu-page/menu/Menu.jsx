@@ -1,4 +1,4 @@
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect, useTransition, useRef } from "react";
 import { FaLeaf } from "react-icons/fa";
 import { menu } from "../../../../state";
 import debounce from "../../../../utils/debounce";
@@ -23,6 +23,7 @@ const Menu = () => {
     const [filteredMenu, setFilteredMenu] = useState(menu);
     const [activeCategory, setActiveCategory] = useState(filteredMenu[0].name);
     const [activeFilter, setActiveFilter] = useState(null);
+    const categoryRefs = useRef({});
 
     const applyFilter = (filter) => {
         setActiveFilter(filter);
@@ -79,10 +80,15 @@ const Menu = () => {
         };
     });
 
-    const nav = <MenuNavigation activeCategory={activeCategory} />;
-
     return (
-        <ContentSection nav={nav} className={styles.section}>
+        <ContentSection className={styles.section}>
+            <MenuNavigation
+                activeCategory={activeCategory}
+                handleNavigation={(c) =>
+                    categoryRefs.current[c].scrollIntoView()
+                }
+            />
+
             <Pill
                 active={activeFilter === "vegan"}
                 color="green"
@@ -96,7 +102,11 @@ const Menu = () => {
                 <Loader />
             ) : (
                 filteredMenu.map((category) => (
-                    <Category key={category.name} category={category} />
+                    <Category
+                        key={category.name}
+                        category={category}
+                        ref={(el) => (categoryRefs.current[category.name] = el)}
+                    />
                 ))
             )}
         </ContentSection>
