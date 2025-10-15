@@ -1,4 +1,4 @@
-export const capitalize = (str) => {
+export const capitalize = (str: string) => {
     return str
         .split(" ")
         .map(
@@ -7,6 +7,6 @@ export const capitalize = (str) => {
         .join(" ");
 };
 
-export const removeSpaces = (str) => {
+export const removeSpaces = (str: string) => {
     return str.replace(/\s/g, "");
 };
