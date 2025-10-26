@@ -1,6 +1,6 @@
 type TimeoutId = ReturnType<typeof setTimeout> | undefined;
 
-export function debounce<T extends (...args: any[]) => void>(
+function debounce<T extends (...args: any[]) => void>(
     func: T,
     delay = 300
 ): (...args: Parameters<T>) => void {
@@ -15,3 +15,5 @@ export function debounce<T extends (...args: any[]) => void>(
         }, delay);
     };
 }
+
+export default debounce;
