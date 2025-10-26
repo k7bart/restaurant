@@ -1,5 +1,4 @@
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
@@ -14,13 +13,11 @@ const header = {
 function TableReservationPage() {
     return (
         <TwoSectionsPage title={title}>
-            <CoverSection>
-                <Cover
-                    subtitle="Book a table"
-                    title={title}
-                    backgroundImage={reservationPageBackgroundUrl}
-                />
-            </CoverSection>
+            <CoverSection
+                subtitle="Book a table"
+                title={title}
+                backgroundImage={reservationPageBackgroundUrl}
+            />
             <ContentSection header={header}>
                 <ReservationForm />
             </ContentSection>

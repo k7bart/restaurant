@@ -1,5 +1,4 @@
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import LoginForm from "./login-form/LoginForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
@@ -7,13 +6,11 @@ import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoS
 const LoginPage = () => {
     return (
         <TwoSectionsPage title="Login">
-            <CoverSection>
-                <Cover
-                    subtitle="Unlock with Your Credentials"
-                    title="Log in"
-                    backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1720592065786"
-                />
-            </CoverSection>
+            <CoverSection
+                subtitle="Unlock with Your Credentials"
+                title="Log in"
+                backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1720592065786"
+            />
             <ContentSection
                 header={{
                     title: "Savor the Moment",

@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState, Suspense } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import Cover from "../../components/half-page-cover/Cover.jsx";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
 import { eventService } from "../../../services/event-service.js";
 
@@ -36,13 +35,11 @@ const EventPage = () => {
     return (
         <EventContext.Provider value={eventData}>
             <TwoSectionsPage title={eventData.title}>
-                <CoverSection>
-                    <Cover
-                        subtitle={eventData.subtitle}
-                        title={eventData.title}
-                        backgroundImage={eventData.photo}
-                    />
-                </CoverSection>
+                <CoverSection
+                    subtitle={eventData.subtitle}
+                    title={eventData.title}
+                    backgroundImage={eventData.photo}
+                />
                 <Suspense fallback={<div>Loading...</div>}>
                     <Outlet />
                 </Suspense>

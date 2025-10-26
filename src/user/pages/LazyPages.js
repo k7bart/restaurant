@@ -20,7 +20,7 @@ export const EventsLazyPage = lazy(() =>
     import("./events-page/EventsPage.jsx")
 );
 
-export const LoginLazyPage = lazy(() => import("./login-page/LoginPage.jsx"));
+export const LoginLazyPage = lazy(() => import("./login-page/LoginPage.tsx"));
 
 export const ProductLazyPage = lazy(() =>
     import("./product-page/ProductPage.jsx")

@@ -7,8 +7,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls.js";
 
 import Accordion from "../../components/accordion/Accordion.jsx";
-import Cover from "../../components/half-page-cover/Cover.jsx";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection.jsx";
+import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection.jsx";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
 import DeliveryAddresses from "./delivery-addresses/DeliveryAddresses.jsx";
@@ -70,13 +69,11 @@ const ProfilePage = () => {
     return (
         user && (
             <TwoSectionsPage title="Profile" className="profile-page">
-                <CoverSection>
-                    <Cover
-                        subtitle="Your presence brightens our day"
-                        title={"Hello, " + user.name}
-                        backgroundImage={profilePageBackgroundUrl}
-                    />
-                </CoverSection>
+                <CoverSection
+                    subtitle="Your presence brightens our day"
+                    title={"Hello, " + user.name}
+                    backgroundImage={profilePageBackgroundUrl}
+                />
                 <ContentSection header={header}>
                     <ContentSectionNav justifyContent="contentRight">
                         <LinkComponent

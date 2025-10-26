@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { type LoginCredentials } from "@k7bart/restaurant-shared-types";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
@@ -25,7 +26,7 @@ const LoginForm = () => {
         resolver: yupResolver(reservationSchema),
     });
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data: LoginCredentials) => console.log(data);
 
     return (
         <FormProvider {...methods}>

@@ -1,6 +1,5 @@
 import { registrationsPageBackgroundUrl } from "../../../constants/backgroundUrls";
 
-import Cover from "../../components/half-page-cover/Cover";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import RegistrationForm from "./RegistrationForm";
@@ -9,13 +8,11 @@ import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoS
 const RegistrationPage = () => {
     return (
         <TwoSectionsPage title="Registration">
-            <CoverSection>
-                <Cover
-                    subtitle="For a smoother experience"
-                    title="Register"
-                    backgroundImage={registrationsPageBackgroundUrl}
-                />
-            </CoverSection>
+            <CoverSection
+                subtitle="For a smoother experience"
+                title="Register"
+                backgroundImage={registrationsPageBackgroundUrl}
+            />
             <ContentSection
                 header={{
                     title: "Taste the Difference",

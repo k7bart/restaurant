@@ -8,7 +8,6 @@ import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import Cover from "../../components/half-page-cover/Cover";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import Nutrients from "./nutrients/Nutrients";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
 import styles from "./ProductPage.module.scss";
@@ -17,6 +16,7 @@ import Price from "./price/Price";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
 import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import Discount from "./discount/Discount";
+import Section from "../../components/page-sructure/Section/Section";
 
 const ProductPage = () => {
     const { category, productId } = useParams();
@@ -44,9 +44,9 @@ const ProductPage = () => {
 
     return (
         <TwoSectionsPage title={name} className={styles.productPage}>
-            <CoverSection addLogo={false} addNavBar={false}>
+            <Section className={styles.cover}>
                 {photos && <Carrousel content={slides} dots />}
-            </CoverSection>
+            </Section>
 
             <ContentSection
                 header={{

@@ -1,17 +1,28 @@
+import { type ReactNode } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import styles from "./Button.module.scss";
 
+type Props = {
+    size?: "small" | "large" | "full";
+    color?: "wisteria" | "transparent";
+    isActive?: boolean;
+    type?: "button" | "submit" | "reset";
+    children: ReactNode;
+    onClick?: () => void;
+    additionalStyles?: string;
+};
+
 const Button = ({
     size = "small",
     color = "wisteria",
     isActive = true,
-    type = undefined,
+    type,
     children,
     onClick,
     additionalStyles,
-}) => {
+}: Props) => {
     return (
         <button
             className={classNames(
