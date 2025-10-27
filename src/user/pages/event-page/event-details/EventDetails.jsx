@@ -7,7 +7,7 @@ import { useEventData } from "../useEventData.js";
 import { eventService } from "../../../../services/event-service.js";
 
 import Button from "../../../../common/components/buttons/Button/Button.jsx";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
 import DetailsRow from "./special-guest/DetailsRow.jsx";
 import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent.jsx";
@@ -16,11 +16,6 @@ import SpecialGuest from "./special-guest/SpecialGuest.jsx";
 import Text from "../../../components/Text/Text.jsx";
 
 import styles from "./EventDetails.module.scss";
-
-const header = {
-    title: "Reserve Your Spot",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-};
 
 const EventDetails = () => {
     const event = useEventData();
@@ -36,18 +31,22 @@ const EventDetails = () => {
             .catch((error) => console.error("Failed to fetch events:", error));
     }, []);
 
-    const nav = (
-        <ContentSectionNav justifyContent="contentEvenly">
-            {events.map((event) => (
-                <NavLinkComponent to={`/events/${event.name}`} key={event._id}>
-                    {event.title}
-                </NavLinkComponent>
-            ))}
-        </ContentSectionNav>
-    );
-
     return (
-        <ContentSection nav={nav} header={header}>
+        <ContentSection
+            title="Reserve Your Spot"
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+        >
+            <ContentSectionNav justifyContent="contentEvenly">
+                {events.map((event) => (
+                    <NavLinkComponent
+                        to={`/events/${event.name}`}
+                        key={event._id}
+                    >
+                        {event.title}
+                    </NavLinkComponent>
+                ))}
+            </ContentSectionNav>
+
             <div className={styles.eventDetails}>
                 <span className={styles.mainInfo}>
                     <Link to={`/events/${name}/reservation`}>

@@ -14,10 +14,8 @@ const RegistrationPage = () => {
                 backgroundImage={registrationsPageBackgroundUrl}
             />
             <ContentSection
-                header={{
-                    title: "Taste the Difference",
-                    text: "Register to place your order easily. Fill out the form below to get started.",
-                }}
+                title="Taste the Difference"
+                subtitle="Register to place your order easily. Fill out the form below to get started"
             >
                 <RegistrationForm />
             </ContentSection>

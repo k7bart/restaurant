@@ -48,12 +48,7 @@ const ProductPage = () => {
                 {photos && <Carrousel content={slides} dots />}
             </Section>
 
-            <ContentSection
-                header={{
-                    title: name,
-                    text: description,
-                }}
-            >
+            <ContentSection title={name} subtitle={description}>
                 <ContentSectionNav>
                     <LinkComponent to="/menu">
                         <IoIosArrowBack />

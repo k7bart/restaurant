@@ -27,11 +27,6 @@ import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Checkout.module.scss";
 
-const HEADER = {
-    title: "Placing an order",
-    text: "Please fill in the form below to complete your order",
-};
-
 const DELIVERY_OPTIONS = [
     { option: "delivery", label: "Delivery" },
     { option: "selfPickup", label: "Self pickup" },
@@ -110,7 +105,11 @@ const Checkout = () => {
     };
 
     return (
-        <ContentSection additionalStyles={styles.content} header={HEADER}>
+        <ContentSection
+            className={styles.content}
+            title="Placing an order"
+            subtitle="Please fill in the form below to complete your order"
+        >
             <FormProvider {...methods}>
                 <Form onSubmit={onSubmit}>
                     <OptionsButtons

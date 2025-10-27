@@ -1,7 +1,7 @@
 import { useEventData } from "../useEventData.js";
 import { IoIosArrowForward } from "react-icons/io";
 
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection.jsx";
+import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
 import EventReservationForm from "./EventReservationForm.jsx";
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent.jsx";
@@ -10,32 +10,27 @@ import Text from "../../../components/Text/Text.jsx";
 const EventReservation = () => {
     const event = useEventData();
 
-    const nav = (
-        <ContentSectionNav>
-            <LinkComponent to="/events">Events</LinkComponent>
-
-            <IoIosArrowForward />
-
-            <LinkComponent to={`/events/${event.name}`}>
-                {event.title}
-            </LinkComponent>
-
-            <IoIosArrowForward />
-
-            <Text color="wisteria" fontWeight="extraLight">
-                Reservation
-            </Text>
-        </ContentSectionNav>
-    );
-
     return (
         <ContentSection
-            header={{
-                title: `Signing up for the ${event.title}`,
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam.",
-            }}
-            nav={nav}
+            title={`Signing up for the ${event.title}`}
+            subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam."
         >
+            <ContentSectionNav>
+                <LinkComponent to="/events">Events</LinkComponent>
+
+                <IoIosArrowForward />
+
+                <LinkComponent to={`/events/${event.name}`}>
+                    {event.title}
+                </LinkComponent>
+
+                <IoIosArrowForward />
+
+                <Text color="wisteria" fontWeight="extraLight">
+                    Reservation
+                </Text>
+            </ContentSectionNav>
+
             <EventReservationForm event={event} />
         </ContentSection>
     );

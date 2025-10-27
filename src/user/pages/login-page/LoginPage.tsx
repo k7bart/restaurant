@@ -12,10 +12,8 @@ const LoginPage = () => {
                 backgroundImage="https://ik.imagekit.io/k7bart/restaurant/covers/rosemary-lemon-cake.jpeg?updatedAt=1720592065786"
             />
             <ContentSection
-                header={{
-                    title: "Savor the Moment",
-                    text: "Welcome back! Sign in to explore our delicious menu and place your order with ease.",
-                }}
+                title="Savor the Moment"
+                subtitle="Welcome back! Sign in to explore our delicious menu and place your order with ease."
             >
                 <LoginForm />
             </ContentSection>

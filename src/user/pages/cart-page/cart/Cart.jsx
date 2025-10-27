@@ -15,14 +15,13 @@ import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Cart.module.scss";
 
-const HEADER = {
-    title: "You're ordering",
-    text: "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.",
-};
-const ENPTY_CART_HEADER = {
-    title: "Place your order",
-    text: "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.",
-};
+const TITLE = "You're ordering";
+const SUBTITLE =
+    "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.";
+
+const ENPTY_CART_TITLE = "Place your order";
+const ENPTY_CART_SUBTITLE =
+    "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.";
 
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
@@ -41,7 +40,10 @@ const Cart = () => {
     const total = getTotalOrderPrice(cart);
 
     return (
-        <ContentSection header={isCartEmpty ? ENPTY_CART_HEADER : HEADER}>
+        <ContentSection
+            title={isCartEmpty ? ENPTY_CART_TITLE : TITLE}
+            subtitle={isCartEmpty ? ENPTY_CART_SUBTITLE : SUBTITLE}
+        >
             {isCartEmpty ? (
                 <Text size="large">
                     Your cart is empty, but we are eagerly awaiting your order!

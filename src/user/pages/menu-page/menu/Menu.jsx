@@ -79,10 +79,10 @@ const Menu = () => {
         };
     });
 
-    const nav = <MenuNavigation activeCategory={activeCategory} />;
-
     return (
-        <ContentSection nav={nav} className={styles.section}>
+        <ContentSection className={styles.section}>
+            <MenuNavigation activeCategory={activeCategory} />
+
             <Pill
                 active={activeFilter === "vegan"}
                 color="green"

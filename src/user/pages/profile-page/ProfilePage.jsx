@@ -8,7 +8,7 @@ import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls.js";
 
 import Accordion from "../../components/accordion/Accordion.jsx";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection.jsx";
+import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
 import DeliveryAddresses from "./delivery-addresses/DeliveryAddresses.jsx";
 import OrderHistory from "./order-history/OrderHistory.jsx";
@@ -18,11 +18,6 @@ import Reservations from "./reservations/Reservations.jsx";
 import Tickets from "./tickets/Tickets.jsx";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage.jsx";
 import LinkComponent from "../../components/links/LinkComponent/LinkComponent.jsx";
-
-const header = {
-    title: "Personal profile",
-    text: "Manage your personal information and preferences here.",
-};
 
 const ProfilePage = () => {
     const user = useSelector((state) => state.user);
@@ -74,7 +69,10 @@ const ProfilePage = () => {
                     title={"Hello, " + user.name}
                     backgroundImage={profilePageBackgroundUrl}
                 />
-                <ContentSection header={header}>
+                <ContentSection
+                    title="Personal profile"
+                    text="Manage your personal information and preferences here"
+                >
                     <ContentSectionNav justifyContent="contentRight">
                         <LinkComponent
                             className="link"

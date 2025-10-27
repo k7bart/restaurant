@@ -1,3 +1,4 @@
+import { type FocusEvent } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { checkEmailUsed } from "../../../services/user/user";
@@ -15,6 +16,8 @@ import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import SurnameInput from "../../components/Inputs/SurnameInput";
 import Text from "../../components/Text/Text";
+
+import { RegistrationData } from "@k7bart/restaurant-shared-types";
 
 const registrationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -35,12 +38,12 @@ const registrationSchema = yup.object({
         ),
     confirmPassword: yup
         .string()
-        .oneOf([yup.ref("password"), null], "Passwords must match")
+        .oneOf([yup.ref("password")], "Passwords must match")
         .required("Please confirm your password"),
 });
 
 const RegistrationForm = () => {
-    const methods = useForm({
+    const methods = useForm<RegistrationData>({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
             name: "",
@@ -60,22 +63,23 @@ const RegistrationForm = () => {
         formState: { errors },
     } = methods;
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: RegistrationData) => {
         const formattedData = {
             ...data,
             name: capitalize(data.name),
-            surname: capitalize(data.surname),
+            surname: data.surname && capitalize(data.surname),
         };
         console.log(formattedData);
         reset();
     };
 
-    const handleEmailBlur = async ({ target: { value } }) => {
+    const handleEmailBlur = async ({
+        target,
+    }: FocusEvent<HTMLInputElement>) => {
         if (errors.email) return;
 
-        (await checkEmailUsed(value))
-            ? setError("email", { message: "Email is already registered" })
-            : clearErrors("email");
+        (await checkEmailUsed(target.value)) &&
+            setError("email", { message: "Email is already registered" });
     };
 
     return (

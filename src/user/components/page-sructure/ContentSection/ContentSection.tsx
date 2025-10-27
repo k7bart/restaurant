@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import Footer from "../../Footer/Footer";
@@ -5,14 +6,20 @@ import Text from "../../Text/Text";
 import Section from "../Section/Section";
 import styles from "./ContentSection.module.scss";
 
-const ContentSection = ({ children, className, header, nav }) => {
+type Props = {
+    children: ReactNode;
+    className?: string;
+    title?: string;
+    subtitle?: string;
+};
+
+const ContentSection = ({ children, title, subtitle, className }: Props) => {
     return (
         <Section className={cn(styles.content, className)}>
-            {nav}
-            {header && (
+            {(title || subtitle) && (
                 <header>
-                    <h3>{header.title}</h3>
-                    <Text size="large">{header.text}</Text>
+                    {title && <h3>{title}</h3>}
+                    {subtitle && <Text size="large">{subtitle}</Text>}
                 </header>
             )}
             <main>{children}</main>
@@ -24,11 +31,8 @@ const ContentSection = ({ children, className, header, nav }) => {
 ContentSection.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
-    header: PropTypes.shape({
-        title: PropTypes.string,
-        text: PropTypes.string,
-    }),
-    nav: PropTypes.node,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
 };
 
 export default ContentSection;

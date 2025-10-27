@@ -5,10 +5,6 @@ import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoS
 import { reservationPageBackgroundUrl } from "../../../constants/backgroundUrls";
 
 const title = "Reservation";
-const header = {
-    title: "Book a table",
-    text: "In order to align with the relaxed and comfortable ambiance of our dining setting, we encourage a casual attire.",
-};
 
 function TableReservationPage() {
     return (
@@ -18,7 +14,10 @@ function TableReservationPage() {
                 title={title}
                 backgroundImage={reservationPageBackgroundUrl}
             />
-            <ContentSection header={header}>
+            <ContentSection
+                title="Book a table"
+                subtitle="In order to align with the relaxed and comfortable ambiance of our dining setting, we encourage a casual attire"
+            >
                 <ReservationForm />
             </ContentSection>
         </TwoSectionsPage>
