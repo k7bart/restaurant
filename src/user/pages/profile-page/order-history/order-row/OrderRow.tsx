@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import { addressToStr } from "../../../../../utils/addressUtils";
+import { dateFormat } from "../../../../../utils/dateUtils";
 import { FaCartArrowDown } from "react-icons/fa6";
+import type { Order } from "@k7bart/restaurant-shared-types";
 
 import ButtonWithIcon from "../../../../../common/components/buttons/ButtonWithIcon/ButtonWithIcon";
 import Text from "../../../../components/Text/Text";
@@ -7,8 +12,15 @@ import Row from "../../../../../common/components/Row/Row";
 
 import styles from "./OrderRow.module.scss";
 
-const OrderRow = ({ order, onClick }) => {
-    const { id, date, amount, address, orderedProducts } = order;
+const OrderRow = ({ order }: { order: Order }) => {
+    const navigate = useNavigate();
+    const { id, date, amount, address, orderedItems } = order;
+
+    const handleClick = () => {
+        console.log(orderedItems);
+        navigate("/cart");
+    };
+
     return (
         <Row additionalStyles={styles.order}>
             <Text className={styles.id} size="medium">
@@ -16,7 +28,7 @@ const OrderRow = ({ order, onClick }) => {
             </Text>
 
             <Text className={styles.date} size="medium">
-                {date}
+                {dayjs(date).format(dateFormat)}
             </Text>
 
             <Text className={styles.amount} size="medium">
@@ -24,13 +36,10 @@ const OrderRow = ({ order, onClick }) => {
             </Text>
 
             <Text className={styles.address} size="medium">
-                {address}
+                {addressToStr(address)}
             </Text>
 
-            <ButtonWithIcon
-                icon={<FaCartArrowDown />}
-                onClick={() => onClick(orderedProducts)}
-            />
+            <ButtonWithIcon icon={<FaCartArrowDown />} onClick={handleClick} />
         </Row>
     );
 };
