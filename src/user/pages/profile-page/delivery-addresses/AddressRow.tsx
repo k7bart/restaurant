@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
 import { removeAddress, setCurrentAddress } from "../../../../store";
 import { useAppDispatch } from "../../../../hooks";
+import { addressToStr } from "../../../../utils/addressUtils";
 
 import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
 import Icon from "../../../components/Icon/Icon";
@@ -10,12 +11,6 @@ import Row from "../../../../common/components/Row/Row";
 import Text from "../../../components/Text/Text";
 
 import type { Address } from "@k7bart/restaurant-shared-types";
-
-const addressToStr = (address: Address) => {
-    return `${address.city}, ${address.street} ${address.house}${
-        address.apartment && "/" + address.apartment
-    }`;
-};
 
 const AddressRow = ({ address }: { address: Address }) => {
     const dispatch = useAppDispatch();
