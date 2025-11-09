@@ -9,17 +9,17 @@ import styles from "./Referral.module.scss";
 
 const Referral = () => {
     const { refferalLink, referralPromoCode } = useMe();
-    const [copiedItem, setCopiedItem] = useState(null);
+    const [copiedItemId, setCopiedItemId] = useState<string | null>(null);
 
     const copyItems = [
-        { id: "referral", text: refferalLink, size: "large" },
-        { id: "promo", text: referralPromoCode, size: "small" },
+        { id: "referral", text: refferalLink, size: "large" as const },
+        { id: "promo", text: referralPromoCode, size: "small" as const },
     ];
 
-    const handleCopy = (text, id) => {
+    const handleCopy = (text: string, id: string) => {
         navigator.clipboard.writeText(text);
-        setCopiedItem(id);
-        setTimeout(() => setCopiedItem(null), 3000);
+        setCopiedItemId(id);
+        setTimeout(() => setCopiedItemId(null), 3000);
     };
 
     return (
@@ -32,7 +32,7 @@ const Referral = () => {
                         color="transparent"
                         onClick={() => handleCopy(item.text, item.id)}
                     >
-                        {copiedItem === item.id ? "Copied" : item.text}
+                        {copiedItemId === item.id ? "Copied" : item.text}
                         <IoCopyOutline />
                     </Button>
                 ))}
