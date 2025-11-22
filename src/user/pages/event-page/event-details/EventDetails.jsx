@@ -6,14 +6,14 @@ import { staff } from "../../../../state.js";
 import { useEventData } from "../useEventData.js";
 import { eventService } from "../../../../services/event-service.js";
 
-import Button from "../../../../common/components/buttons/Button/Button.jsx";
+import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
-import DetailsRow from "./special-guest/DetailsRow.jsx";
-import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent.jsx";
-import Row from "../../../../common/components/Row/Row.jsx";
-import SpecialGuest from "./special-guest/SpecialGuest.jsx";
-import Text from "../../../components/Text/Text.jsx";
+import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import DetailsRow from "./special-guest/DetailsRow";
+import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent";
+import Row from "../../../../common/components/Row/Row";
+import SpecialGuest from "./special-guest/SpecialGuest";
+import Text from "../../../components/Text/Text";
 
 import styles from "./EventDetails.module.scss";
 

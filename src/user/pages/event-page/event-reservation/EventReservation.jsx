@@ -2,10 +2,10 @@ import { useEventData } from "../useEventData.js";
 import { IoIosArrowForward } from "react-icons/io";
 
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav.jsx";
-import EventReservationForm from "./EventReservationForm.jsx";
-import LinkComponent from "../../../components/links/LinkComponent/LinkComponent.jsx";
-import Text from "../../../components/Text/Text.jsx";
+import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import EventReservationForm from "./EventReservationForm";
+import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import Text from "../../../components/Text/Text";
 
 const EventReservation = () => {
     const event = useEventData();
