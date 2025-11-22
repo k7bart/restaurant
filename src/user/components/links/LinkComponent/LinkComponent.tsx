@@ -1,9 +1,26 @@
-import classNames from "classnames";
-import styles from "./LinkComponent.module.scss";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const LinkComponent = ({ children, color, fontWeight, target, to, size }) => {
+import styles from "./LinkComponent.module.scss";
+
+type Props = {
+    children: React.ReactNode;
+    color?: "grey" | "white" | "wisteria";
+    fontWeight?: "thin" | "extraLight";
+    target?: string;
+    to: string;
+    size?: "medium" | "large";
+};
+
+const LinkComponent = ({
+    children,
+    color = "grey",
+    fontWeight = "extraLight",
+    target = "_self",
+    to,
+    size = "medium",
+}: Props) => {
     return (
         <Link
             className={classNames(
@@ -27,13 +44,6 @@ LinkComponent.propTypes = {
     target: PropTypes.string,
     to: PropTypes.string.isRequired,
     size: PropTypes.oneOf(["medium", "large"]),
-};
-
-LinkComponent.defaultProps = {
-    color: "grey",
-    fontWeight: "extraLight",
-    target: "_self",
-    size: "medium",
 };
 
 export default LinkComponent;
