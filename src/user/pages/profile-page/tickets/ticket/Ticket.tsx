@@ -1,12 +1,16 @@
 import classNames from "classnames";
 import dayjs from "dayjs";
-import PropTypes from "prop-types";
+import { dateTimeFormat } from "../../../../../utils/dateUtils";
 
 import Text from "../../../../components/Text/Text";
 
 import styles from "./Ticket.module.scss";
 
-const Ticket = ({ event, guests, id }) => {
+import type { Ticket } from "@k7bart/restaurant-shared-types/dist/ticket";
+
+const Ticket = ({ ticket }: { ticket: Ticket }) => {
+    const { id, event, guests } = ticket;
+
     return (
         <div className={styles.ticketWrapper}>
             <div className={classNames(styles.topLeft, styles.corner)}></div>
@@ -23,11 +27,11 @@ const Ticket = ({ event, guests, id }) => {
                 <Text className={styles.guests} size="medium">
                     🧑{guests.adults}
                     &nbsp;
-                    {guests.children ? `🧒${guests.children}` : ""}
+                    {guests.children && `🧒${guests.children}`}
                 </Text>
 
                 <div className={styles.info}>
-                    <Text>{dayjs(event.date).format("DD/MM/YYYY HH:MM")}</Text>
+                    <Text>{dayjs(event.date).format(dateTimeFormat)}</Text>
 
                     <h4>{event.title}</h4>
 
@@ -40,18 +44,6 @@ const Ticket = ({ event, guests, id }) => {
             </div>
         </div>
     );
-};
-
-Ticket.propTypes = {
-    event: PropTypes.shape({
-        date: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-    }).isRequired,
-    guests: PropTypes.shape({
-        adults: PropTypes.number.isRequired,
-        children: PropTypes.number,
-    }).isRequired,
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default Ticket;
