@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../../utils/stringUtils";
 import { combineDateTime } from "../../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
-import { addReservation, addReservationId } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { addReservation } from "../../../store";
 import { timeSchema } from "../../components/Inputs/yupInputsSchemas";
 
 import * as yup from "yup";
@@ -22,9 +22,15 @@ import Notice from "../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
+import SurnameInput from "../../components/Inputs/SurnameInput";
 import Text from "../../components/Text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/Inputs/TimeInput";
+
+import type {
+    Reservation,
+    ReservationForm,
+} from "@k7bart/restaurant-shared-types";
 
 const today = new Date();
 
@@ -51,7 +57,7 @@ const reservationSchema = yup.object({
         .string()
         .email("Please provide a valid email address")
         .optional(),
-    // add better phone validation
+    // todo: add better phone validation
     phone: yup
         .string()
         .required(
@@ -70,93 +76,77 @@ const reservationSchema = yup.object({
 });
 
 const ReservationForm = () => {
-    const user = useSelector((state) => state.user) || null;
-    const dispatch = useDispatch();
-    const [reservedTable, setReservedTable] = useState(null);
+    const user = useAppSelector((state) => state.user);
+    const dispatch = useAppDispatch();
+    const [reserved, setReserved] = useState<Reservation | null>(null);
 
     const methods = useForm({
         resolver: yupResolver(reservationSchema),
         mode: "onChange",
         defaultValues: {
             name: user ? `${user.name} ${user.surname}` : "",
-            numberOfAdults: "",
-            numberOfChildren: "",
             phone: user ? user.phone : "",
             email: user ? user.email : "",
             date: today,
-            time: "",
-            additionalRequirements: "",
         },
     });
 
-    const onSubmit = (data) => {
-        const {
-            name,
-            numberOfAdults: adults,
-            numberOfChildren: children,
-            phone,
-            email,
-            date,
-            time,
-            additionalRequirements,
-        } = data;
-
-        const reservedBy = {
-            id: user ? user.id : null,
-            name: capitalize(name),
-            phone: phone,
-            email: email || null,
-        };
+    const onSubmit = (data: ReservationForm) => {
+        const { reservedBy, date, time, ...rest } = data;
 
         const dateTime = combineDateTime(date, time);
 
-        const reservation = {
-            id: 6, // add proper id
+        const reservation: Reservation = {
+            id: crypto.randomUUID(),
             dateTime,
-            code: undefined,
+            reservedBy: {
+                ...reservedBy,
+                name: capitalize(reservedBy.name),
+                surname: reservedBy.surname && capitalize(reservedBy.surname),
+            },
             status: "new",
-            guests: { adults, children },
-            reservedBy,
-            additionalRequirements,
+            ...rest,
         };
 
         dispatch(addReservation(reservation));
-        user && dispatch(addReservationId(reservation.id));
 
-        setReservedTable(reservation);
+        setReserved(reservation);
         methods.reset();
     };
 
-    return reservedTable ? (
-        <Notice>
-            <h4>Table successfully reserved!</h4>
+    if (reserved)
+        return (
+            <Notice>
+                <h4>Table successfully reserved!</h4>
 
-            <Text size="large">
-                We are waiting for you&nbsp;
-                {dayjs(reservedTable.date).format("DD/MM/YYYY")}
-                &nbsp;at&nbsp;
-                {`${dayjs(reservedTable.date).get("hours")}:${dayjs(
-                    reservedTable.date
-                ).get("minutes")}`}
-            </Text>
+                <Text size="large">
+                    We are waiting for you&nbsp;
+                    {dayjs(reserved.dateTime).format("DD/MM/YYYY")}
+                    &nbsp;at&nbsp;
+                    {`${dayjs(reserved.dateTime).get("hours")}:${dayjs(
+                        reserved.dateTime
+                    ).get("minutes")}`}
+                </Text>
 
-            <div className="buttons-container">
-                <Button
-                    color="transparent"
-                    onClick={() => setReservedTable(null)}
-                    size="small"
-                >
-                    Make another one
-                </Button>
-
-                <Link to="/profile#table-reservations">
-                    <Button size="small" color="wisteria">
-                        Check my reservations
+                <div className="buttons-container">
+                    <Button
+                        color="transparent"
+                        onClick={() => setReserved(null)}
+                        size="small"
+                    >
+                        Make another one
                     </Button>
-                </Link>
-            </div>
-        </Notice>
-    ) : (
+
+                    <Link to="/profile#table-reservations">
+                        <Button size="small" color="wisteria">
+                            Check my reservations
+                        </Button>
+                    </Link>
+                </div>
+            </Notice>
+        );
+
+    return (
         <FormProvider {...methods}>
             <Form onSubmit={onSubmit}>
                 {!user && (
@@ -174,7 +164,10 @@ const ReservationForm = () => {
                     </Text>
                 )}
 
-                <NameInput required />
+                <div>
+                    <NameInput required />
+                    <SurnameInput />
+                </div>
 
                 <div>
                     <PhoneInput required />
