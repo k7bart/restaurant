@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAppDispatch } from "../../../hooks";
+import { useMe } from "../../../hooks/useMe";
 import { updateUserData } from "../../../store/index";
 import { capitalize } from "../../../utils/stringUtils";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
-import PropTypes from "prop-types";
 
 import Button from "../../../common/components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
@@ -15,6 +15,8 @@ import Form from "../../components/form/Form";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import SurnameInput from "../../components/Inputs/SurnameInput";
+
+import type { User } from "@k7bart/restaurant-shared-types";
 
 const schema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -27,9 +29,10 @@ const schema = yup.object({
     birthday: yup.date().nullable().optional(),
 });
 
-const PersonalData = ({ user }) => {
-    const dispatch = useDispatch();
-    const { name, surname, email, phone, birthday } = user;
+const PersonalData = () => {
+    const { name, surname, email, phone, birthday } = useMe();
+
+    const dispatch = useAppDispatch();
 
     const methods = useForm({
         resolver: yupResolver(schema),
@@ -42,13 +45,15 @@ const PersonalData = ({ user }) => {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: User) => {
+        const { name, surname } = data;
+
         const formattedData = {
             ...data,
-            name: capitalize(data.name),
-            surname: capitalize(data.surname),
-            birthday: data.birthday ? dayjs(data.birthday).toISOString() : null,
+            name: capitalize(name),
+            surname: surname ? capitalize(surname) : undefined,
         };
+
         dispatch(updateUserData(formattedData));
     };
 
@@ -81,16 +86,6 @@ const PersonalData = ({ user }) => {
             </Form>
         </FormProvider>
     );
-};
-
-PersonalData.propTypes = {
-    user: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        surname: PropTypes.string,
-        email: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired,
-        birthday: PropTypes.instanceOf(Date),
-    }).isRequired,
 };
 
 export default PersonalData;
