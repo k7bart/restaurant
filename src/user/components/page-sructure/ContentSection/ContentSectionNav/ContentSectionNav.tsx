@@ -1,10 +1,17 @@
-import classNames from "classnames";
+import cn from "classnames";
 import styles from "./ContentSectionNav.module.scss";
 import PropTypes from "prop-types";
 
-const ContentSectionNav = ({ children, justifyContent = undefined }) => {
+type Props = {
+    children: React.ReactNode;
+    justifyContent?: "contentEvenly" | "contentRight";
+};
+
+const ContentSectionNav = ({ children, justifyContent }: Props) => {
     return (
-        <nav className={classNames(styles.nav, styles[justifyContent])}>
+        <nav
+            className={cn(styles.nav, justifyContent && styles[justifyContent])}
+        >
             {children}
         </nav>
     );

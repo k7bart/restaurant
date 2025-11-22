@@ -3,7 +3,12 @@ import HeaderNavigation from "../../HeaderNavigation/HeaderNavigation";
 import styles from "./TwoSectionsPage.module.scss";
 import classNames from "classnames";
 
-const TwoSectionsPage = ({ children, title }) => {
+type Props = {
+    children: React.ReactNode;
+    title: string;
+};
+
+const TwoSectionsPage = ({ children, title }: Props) => {
     return (
         <>
             <Helmet>
