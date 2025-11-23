@@ -1,20 +1,18 @@
-import PropTypes from "prop-types";
-
 import NumInput from "../../../components/Inputs/NumInput/NumInput";
 
 import styles from "./Amount.module.scss";
 
-const Amount = ({ amount, onChange }) => {
+interface Props {
+    amount: number;
+    onChange: (value: number) => void;
+}
+
+const Amount = ({ amount, onChange }: Props) => {
     return (
         <div className={styles.amount}>
             <NumInput amount={amount} min={0} onChange={onChange} />
         </div>
     );
-};
-
-Amount.propTypes = {
-    amount: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
 };
 
 export default Amount;

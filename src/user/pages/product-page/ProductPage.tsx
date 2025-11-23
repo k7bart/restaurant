@@ -3,20 +3,22 @@ import { useParams } from "react-router-dom";
 import { useProductInCart } from "../../../hooks/useProductInCart";
 import { IoIosArrowBack } from "react-icons/io";
 import { menu } from "../../../state";
+
+import Amount from "./amount/Amount";
 import Button from "../../../common/components/buttons/Button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import Cover from "../../components/half-page-cover/Cover";
-import Nutrients from "./nutrients/Nutrients";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
-import styles from "./ProductPage.module.scss";
-import Amount from "./amount/Amount";
-import Price from "./price/Price";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
+import Cover from "../../components/half-page-cover/Cover";
 import Discount from "./discount/Discount";
+import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
+import Nutrients from "./nutrients/Nutrients";
+import Price from "./price/Price";
 import Section from "../../components/page-sructure/Section/Section";
+import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+
+import styles from "./ProductPage.module.scss";
 
 const ProductPage = () => {
     const { category, productId } = useParams();
@@ -26,26 +28,29 @@ const ProductPage = () => {
         return categoryData?.products.find((p) => p.id === productId);
     }, [category, productId]);
 
+    if (!product) return;
+
     const {
-        name,
-        photos,
         description,
         discountPercent,
         ingredients,
+        name,
         nutrients,
+        photos,
         price,
     } = product;
 
     const { amount, handleAmountChange } = useProductInCart(product, category);
 
-    const slides = photos?.map((photo, i) => (
-        <Cover addFilter={false} backgroundImage={photo} key={i} />
-    ));
+    const getSlides = (photos: string[]): JSX.Element[] =>
+        photos.map((photo, i) => (
+            <Cover addFilter={false} backgroundImage={photo} key={i} />
+        ));
 
     return (
-        <TwoSectionsPage title={name} className={styles.productPage}>
+        <TwoSectionsPage title={name}>
             <Section className={styles.cover}>
-                {photos && <Carrousel content={slides} dots />}
+                {photos && <Carrousel content={getSlides(photos)} dots />}
             </Section>
 
             <ContentSection title={name} subtitle={description}>
