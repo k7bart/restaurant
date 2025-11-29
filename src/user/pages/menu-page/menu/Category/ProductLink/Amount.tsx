@@ -1,15 +1,18 @@
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import cn from "classnames";
 import { useProductInCart } from "../../../../../../hooks/useProductInCart";
+
 import NumInput from "../../../../../components/Inputs/NumInput/NumInput";
+
 import styles from "./ProductLink.module.scss";
 
-const Amount = ({ product, category }) => {
-    const { amount, handleAmountChange } = useProductInCart(product, category);
+import type { Dish } from "@k7bart/restaurant-shared-types";
+
+const Amount = ({ dish }: { dish: Dish }) => {
+    const { amount, handleAmountChange } = useProductInCart(dish);
 
     return (
         <div
-            className={classNames(styles.amount, {
+            className={cn(styles.amount, {
                 [styles.visible]: amount,
             })}
             onClick={(e) => e.preventDefault()}
@@ -29,10 +32,6 @@ const Amount = ({ product, category }) => {
             )}
         </div>
     );
-};
-Amount.propTypes = {
-    product: PropTypes.object.isRequired,
-    category: PropTypes.string.isRequired,
 };
 
 export default Amount;

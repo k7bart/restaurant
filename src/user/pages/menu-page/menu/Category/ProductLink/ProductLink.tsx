@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import { capitalize } from "../../../../../../utils/stringUtils";
 import Amount from "./Amount";
 import Badge from "../../../../../components/Badge/Badge";
-import Ingrediens from "./Ingredients";
 import Photo from "./Photo/Photo";
 import Price from "./Price/Price";
-import PropTypes from "prop-types";
 import Title from "./Title/Title";
 import styles from "./ProductLink.module.scss";
+import Text from "../../../../../components/Text/Text";
 
-const ProductLink = ({ product, category }) => {
+import type { Dish } from "@k7bart/restaurant-shared-types";
+
+const ProductLink = ({ dish }: { dish: Dish }) => {
     const {
+        category,
         discountPercent,
         id,
         ingredients,
@@ -19,13 +21,12 @@ const ProductLink = ({ product, category }) => {
         name,
         photos,
         price,
-    } = product;
-    const photo = photos?.[0];
+    } = dish;
 
     return (
         <Link to={`/menu/${category}/${id}`} className={styles.productLink}>
             <div className={styles.withImage}>
-                <Photo photo={photo} />
+                <Photo url={photos?.[0]} />
 
                 <div className={styles.badges}>
                     {isDishOfTheDay && (
@@ -35,30 +36,16 @@ const ProductLink = ({ product, category }) => {
                     {discountPercent && <Badge text={`-${discountPercent}$`} />}
                 </div>
 
-                <Amount product={product} category={category} />
+                <Amount dish={dish} />
             </div>
 
             <Title name={name} isVegan={isVegan} />
 
-            {ingredients && <Ingrediens ingredients={ingredients} />}
+            {ingredients && <Text size="large">{ingredients.join(", ")}</Text>}
 
             <Price discountPercent={discountPercent} price={price} />
         </Link>
     );
-};
-
-ProductLink.propTypes = {
-    product: PropTypes.shape({
-        discountPercent: PropTypes.number,
-        id: PropTypes.string.isRequired,
-        ingredients: PropTypes.arrayOf(PropTypes.string),
-        isDishOfTheDay: PropTypes.bool,
-        isVegan: PropTypes.bool,
-        name: PropTypes.string.isRequired,
-        photos: PropTypes.arrayOf(PropTypes.string),
-        price: PropTypes.number.isRequired,
-    }).isRequired,
-    category: PropTypes.string.isRequired,
 };
 
 export default ProductLink;

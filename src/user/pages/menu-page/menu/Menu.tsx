@@ -2,43 +2,38 @@ import { useState, useEffect, useTransition } from "react";
 import { FaLeaf } from "react-icons/fa";
 import { menu } from "../../../../state";
 import debounce from "../../../../utils/debounce";
+
 import Category from "./Category/Category";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import Loader from "../../../components/loader/Loader";
 import MenuNavigation from "./menu-navigation/MenuNavigation";
 import Pill from "../../../components/pill/Pill";
+
 import styles from "./Menu.module.scss";
+
+import type { Category as ICategory } from "@k7bart/restaurant-shared-types";
+
+type FilterType = "vegan" | null;
 
 const getVeganOptions = () => {
     return menu
         .map((category) => ({
             ...category,
-            products: category.products?.filter((p) => p.isVegan),
+            dishes: category.dishes.filter((p) => p.isVegan),
         }))
-        .filter((c) => c.products?.length);
+        .filter((c) => c.dishes.length);
 };
 
 const Menu = () => {
     const [isPending, startTransition] = useTransition();
     const [filteredMenu, setFilteredMenu] = useState(menu);
     const [activeCategory, setActiveCategory] = useState(filteredMenu[0].name);
-    const [activeFilter, setActiveFilter] = useState(null);
+    const [activeFilter, setActiveFilter] = useState<FilterType>(null);
 
-    const applyFilter = (filter) => {
+    const applyFilter = (filter: FilterType) => {
         setActiveFilter(filter);
         startTransition(() => {
             const veganMenu = getVeganOptions();
-
-            // Heavy render
-            // const repeatedMenu = [];
-            // for (let i = 0; i < 500; i++) {
-            //     veganMenu.forEach((category) => {
-            //         repeatedMenu.push({
-            //             ...category,
-            //             name: `${category.name} ${i}`,
-            //         });
-            //     });
-            // }
 
             setFilteredMenu(veganMenu);
         });
@@ -51,7 +46,7 @@ const Menu = () => {
         });
     };
 
-    const handleFilter = (filter) => {
+    const handleFilter = (filter: FilterType) => {
         filter === activeFilter ? resetFilter() : applyFilter(filter);
     };
 
@@ -62,10 +57,10 @@ const Menu = () => {
         categories.forEach((category) => {
             const rect = category.getBoundingClientRect();
             if (
-                rect.bottom > navbar.offsetHeight + 20 &&
-                rect.top < navbar.offsetHeight + 20
+                rect.bottom > (navbar?.offsetHeight ?? 0) + 20 &&
+                rect.top < (navbar?.offsetHeight ?? 0) + 20
             ) {
-                setActiveCategory(category.id);
+                setActiveCategory(category.id as ICategory["name"]);
             }
         });
     };

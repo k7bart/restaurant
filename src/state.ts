@@ -1,3 +1,5 @@
+import { Category } from "@k7bart/restaurant-shared-types";
+
 export const events = [
     {
         id: "cupping",
@@ -83,12 +85,13 @@ export const staff = [
     },
 ];
 
-export const menu = [
+export const menu: Category[] = [
     {
         name: "breakfast",
-        products: [
+        dishes: [
             {
                 name: "Croque Madame",
+                category: "breakfast",
                 id: "croque-madame",
                 description:
                     "A Croque Madame is a French sandwich made with ham, cheese, and béchamel sauce, topped with a fried or poached egg. It is similar to a Croque Monsieur but distinguished by the addition of the egg.",
@@ -101,10 +104,10 @@ export const menu = [
                     "butter",
                 ],
                 nutrients: [
-                    { name: "calories", amount: 721 },
-                    { name: "proteins", amount: 37 },
-                    { name: "fats", amount: 37 },
-                    { name: "carbohydrates", amount: 57 },
+                    { name: "calories", amount: 721, unit: "kcal" },
+                    { name: "proteins", amount: 37, unit: "g" },
+                    { name: "fats", amount: 37, unit: "g" },
+                    { name: "carbohydrates", amount: 57, unit: "g" },
                 ],
                 photos: [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/croque-madame.webp?updatedAt=1720593159472",
@@ -116,15 +119,16 @@ export const menu = [
             },
             {
                 name: "Crêpes Suzette",
+                category: "breakfast",
                 id: "crepes-suzette",
                 description:
                     "Crêpes Suzette is a classic French dessert featuring thin crêpes flambéed with a sauce of caramelized sugar, butter, orange juice, zest, and Grand Marnier or orange liqueur.",
                 ingredients: ["crêpes", "beurre suzette", "whipped cream"],
                 nutrients: [
-                    { name: "calories", amount: 241 },
-                    { name: "proteins", amount: 4 },
-                    { name: "fats", amount: 15 },
-                    { name: "carbohydrates", amount: 35 },
+                    { name: "calories", amount: 241, unit: "kcal" },
+                    { name: "proteins", amount: 4, unit: "g" },
+                    { name: "fats", amount: 15, unit: "g" },
+                    { name: "carbohydrates", amount: 35, unit: "g" },
                 ],
                 photos: [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/crepes-suzette.webp?updatedAt=1720593159493",
@@ -136,21 +140,21 @@ export const menu = [
             },
             {
                 name: "Banana Pancakes",
+                category: "breakfast",
                 id: "banana-pancakes",
                 description:
                     "Indulge in fluffy, golden vegan banana pancakes made with sweet banana purée – a delightful, guilt-free breakfast treat.",
                 ingredients: ["pancakes", "banana", "maple syrop"],
                 nutrients: [
-                    { name: "calories", amount: 166 },
-                    { name: "proteins", amount: 5 },
-                    { name: "fats", amount: 6 },
-                    { name: "carbohydrates", amount: 26 },
+                    { name: "calories", amount: 166, unit: "kcal" },
+                    { name: "proteins", amount: 5, unit: "g" },
+                    { name: "fats", amount: 6, unit: "g" },
+                    { name: "carbohydrates", amount: 26, unit: "g" },
                 ],
                 photos: [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/breakfast/banana-pancakes.webp?updatedAt=1720593369684",
                 ],
                 price: 12,
-                discountPercent: null,
                 isVegan: true,
                 isDishOfTheDay: false,
             },
@@ -159,14 +163,15 @@ export const menu = [
 
     {
         name: "desserts",
-        products: [
+        dishes: [
             {
                 name: "Raspberry-Coconut Tart",
+                category: "desserts",
                 nutrients: [
-                    { name: "calories", amount: 721 },
-                    { name: "proteins", amount: 37 },
-                    { name: "fats", amount: 37 },
-                    { name: "carbohydrates", amount: 57 },
+                    { name: "calories", amount: 721, unit: "kcal" },
+                    { name: "proteins", amount: 37, unit: "g" },
+                    { name: "fats", amount: 37, unit: "g" },
+                    { name: "carbohydrates", amount: 57, unit: "g" },
                 ],
                 ingredients: [
                     "bread",
@@ -184,25 +189,26 @@ export const menu = [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/desserts/tart%20raspberry%20coconut/tart-raspberry-coconut-3.jpeg?updatedAt=1720605286287",
                 ],
                 price: 29,
-                discountPercent: null,
+                discountPercent: undefined,
                 isVegan: false,
                 isDishOfTheDay: false,
             },
         ],
     },
     {
-        name: "coffee",
-        products: [
+        name: "beverages",
+        dishes: [
             {
                 name: "Espresso",
+                category: "beverages",
                 id: "espresso",
-                ingredients: null,
                 price: 2,
-                discountPercent: null,
+                discountPercent: undefined,
                 isVegan: true,
             },
             {
                 name: "Cappuccino",
+                category: "beverages",
                 id: "cappuccino",
                 ingredients: ["espresso", "milk"],
                 description:
@@ -211,18 +217,19 @@ export const menu = [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/cappuccino.webp?updatedAt=1720604130807",
                 ],
                 price: 3,
-                discountPercent: null,
+                discountPercent: undefined,
                 isVegan: false,
                 isDishOfTheDay: false,
                 nutrients: [
-                    { name: "calories", amount: 150 },
-                    { name: "proteins", amount: 8 },
-                    { name: "fats", amount: 7 },
-                    { name: "carbohydrates", amount: 12 },
+                    { name: "calories", amount: 150, unit: "kcal" },
+                    { name: "proteins", amount: 8, unit: "g" },
+                    { name: "fats", amount: 7, unit: "g" },
+                    { name: "carbohydrates", amount: 12, unit: "g" },
                 ],
             },
             {
                 name: "Lavender Latte",
+                category: "beverages",
                 id: "lavender-latte",
                 ingredients: ["espresso", "milk infused with lavender"],
                 description:
@@ -231,14 +238,14 @@ export const menu = [
                     "https://ik.imagekit.io/k7bart/restaurant/menu/coffee/lavender-latte.webp?updatedAt=1720604184471",
                 ],
                 price: 4,
-                discountPercent: null,
+                discountPercent: undefined,
                 isVegan: false,
                 isDishOfTheDay: false,
                 nutrients: [
-                    { name: "calories", amount: 120 },
-                    { name: "proteins", amount: 8 },
-                    { name: "fats", amount: 6 },
-                    { name: "carbohydrates", amount: 10 },
+                    { name: "calories", amount: 120, unit: "kcal" },
+                    { name: "proteins", amount: 8, unit: "g" },
+                    { name: "fats", amount: 6, unit: "g" },
+                    { name: "carbohydrates", amount: 10, unit: "g" },
                 ],
             },
         ],
