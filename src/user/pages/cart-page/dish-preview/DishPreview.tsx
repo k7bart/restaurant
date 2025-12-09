@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import {
     updateProductAmountInCart,
     removeProductFromCart,
 } from "../../../../store";
 import { getTotalPrice } from "../../../../utils/priceUtils";
+import { useAppDispatch } from "../../../../hooks";
 import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
 import NumInput from "../../../components/Inputs/NumInput/NumInput";
-import styles from "./ProductPreview.module.scss";
 
-const ProductPreview = ({ product }) => {
+import styles from "./DishPreview.module.scss";
+
+import type { Dish } from "@k7bart/restaurant-shared-types";
+
+const DishPreview = ({ dish }: { dish: Dish }) => {
     const {
         amount: initialAmount,
         category,
@@ -19,23 +22,32 @@ const ProductPreview = ({ product }) => {
         name,
         photos,
         price,
-    } = product;
+    } = dish;
 
     const [amount, setAmount] = useState(initialAmount);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const handleAmountChange = (newAmount) => {
+    const handleAmountChange = (newAmount: number) => {
         setAmount(newAmount);
-        dispatch(updateProductAmountInCart({ productId: id, newAmount }));
+        dispatch(updateProductAmountInCart({ id, amount: newAmount }));
     };
     const handleProductRemove = () => {
-        dispatch(removeProductFromCart(id));
+        dispatch(removeProductFromCart({ id }));
     };
 
     return (
-        <div className={styles.productPreview}>
-            <img src={photos[0]} alt={name} />
+        <div className={styles.dishPreview}>
+            <div
+                className={styles.image}
+                style={
+                    photos?.[0]
+                        ? { backgroundImage: `url(${photos[0]})` }
+                        : undefined
+                }
+            >
+                {!photos?.[0] && "No photo 🥲"}
+            </div>
             <Link to={`/menu/${category}/${id}`} className={styles.title}>
                 <h4>{name}</h4>
             </Link>
@@ -43,7 +55,8 @@ const ProductPreview = ({ product }) => {
             <div className={styles.price}>
                 {discountPercent && (
                     <span className={styles.fullPrice}>
-                        {"$" + getTotalPrice(price, null, amount).toFixed(2)}
+                        {"$" +
+                            getTotalPrice(price, undefined, amount).toFixed(2)}
                     </span>
                 )}
                 <h4 className={styles.actualPrice}>
@@ -58,4 +71,4 @@ const ProductPreview = ({ product }) => {
     );
 };
 
-export default ProductPreview;
+export default DishPreview;

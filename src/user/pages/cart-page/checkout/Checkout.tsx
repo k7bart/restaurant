@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { combineDateTime } from "../../../../utils/timeUtils";
 import { getAvailableDay } from "../../../../utils/dateUtils";
 import { getTotalOrderPrice } from "../../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
+import { useAppSelector } from "../../../../hooks";
 
 import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
 import getSchema from "./checkoutSchema";
@@ -27,6 +27,24 @@ import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Checkout.module.scss";
 
+import type { Address, Order } from "@k7bart/restaurant-shared-types";
+import type {
+    DeliveryMethod,
+    PaymentMethod,
+} from "@k7bart/restaurant-shared-types";
+
+interface OrderForm
+    extends Omit<Order, "id" | "customer" | "orderedItems" | "total">,
+        Omit<Address, "id" | "isCurrent"> {
+    name: string;
+    phone: string;
+    surname: string;
+    callForDetails: boolean;
+    orderComment: string;
+    date: string;
+    time: string;
+}
+
 const DELIVERY_OPTIONS = [
     { option: "delivery", label: "Delivery" },
     { option: "selfPickup", label: "Self pickup" },
@@ -34,18 +52,22 @@ const DELIVERY_OPTIONS = [
 ];
 
 const Checkout = () => {
-    const cart = useSelector((state) => state.cart);
-    const user = useSelector((state) => state.user);
+    const cart = useAppSelector((state) => state.cart);
+    const user = useAppSelector((state) => state.user);
 
     const total = getTotalOrderPrice(cart);
     const addressDefaultValues = getAddressDefaultValues(
-        user.addresses.find((address) => address.id === user.currentAddressId)
+        user?.addresses?.find((address) => address.isCurrent)
     );
     const availableAdvanceOrderDay = getAvailableDay();
 
-    const [deliveryMethod, setDeliveryMethod] = useState("delivery");
-    const [paymentMethod, setPaymentMethod] = useState("online");
-    const [pickupAddress, setPickupAddress] = useState(null);
+    const [deliveryMethod, setDeliveryMethod] =
+        useState<DeliveryMethod>("delivery");
+    const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("online");
+    const [pickupAddress, setPickupAddress] = useState<{
+        id: string;
+        text: string;
+    } | null>(null);
 
     const methods = useForm({
         resolver: yupResolver(getSchema(deliveryMethod)),
@@ -53,55 +75,84 @@ const Checkout = () => {
             ...addressDefaultValues,
             date: availableAdvanceOrderDay,
             deliveryMethod: "delivery",
-            name: user.name,
+            name: user?.name || "",
             paymentMethod: "online",
             phone: user?.phone || "",
         },
     });
 
-    const createPayload = (data) => {
-        const commonInfo = {
-            customerInfo: {
-                name: data.name,
-                phone: data.phone,
-                userId: user.id || null,
-            },
-            callForDetails: data.callForDetails,
+    const createPayload = (data: OrderForm): Order => {
+        const {
+            name,
+            phone,
+            surname,
+            callForDetails,
+            orderComment,
+            date,
+            time,
+            addressComment,
+            city,
+            street,
+            house,
+            entrance,
+            floor,
+            apartment,
+            intercom,
             deliveryMethod,
-            orderComment: data.orderComment,
             paymentMethod,
-            total,
+        } = data;
+
+        const commonInfo = {
+            id: crypto.randomUUID(),
+            customer: {
+                name,
+                phone,
+                surname: surname ?? undefined,
+                id: user?.id ?? crypto.randomUUID(),
+            },
+            callForDetails,
+            deliveryMethod,
+            orderComment,
+            orderedItems: cart,
+            paymentMethod,
+            total: getTotalOrderPrice(cart),
         };
 
         if (deliveryMethod === "selfPickup") {
-            return { ...commonInfo, pickupAddress };
+            return {
+                ...commonInfo,
+                pickupAddress: pickupAddress ?? undefined,
+            };
         }
 
         const address = {
-            addressComment: data.addressComment,
-            city: data.city,
-            street: data.street,
-            house: data.house,
-            entrance: data.entrance,
-            floor: data.floor,
-            apartment: data.apartment,
-            intercom: data.intercom,
+            id: crypto.randomUUID(),
+            addressComment: addressComment,
+            city: city,
+            street: street,
+            house: house,
+            entrance: entrance,
+            floor: floor,
+            apartment: apartment,
+            intercom: intercom,
         };
 
         if (deliveryMethod === "advance") {
             return {
                 ...commonInfo,
                 address,
-                deliveryDateTime: combineDateTime(data.date, data.time),
+                deliveryDateTime: combineDateTime(
+                    new Date(date),
+                    new Date(time)
+                ),
             };
         }
 
         return { ...commonInfo, address };
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = (data: OrderForm) => {
         console.log(createPayload(data));
-        // Further processing
     };
 
     return (

@@ -1,5 +1,4 @@
 import { addMonths, subDays } from "date-fns";
-
 import * as yup from "yup";
 import addressSchema from "../../../components/Inputs/address-inputs/address-yup-utils/addressSchema";
 import textareaSchema from "../../../components/textarea/textareaSchema";
@@ -8,6 +7,8 @@ import {
     phoneSchema,
     timeSchema,
 } from "../../../components/Inputs/yupInputsSchemas";
+
+import type { DeliveryMethod } from "@k7bart/restaurant-shared-types";
 
 const today = new Date();
 
@@ -41,4 +42,6 @@ const schemas = {
     }),
 };
 
-export default (deliveryMethod) => schemas[deliveryMethod];
+const getSchema = (deliveryMethod: DeliveryMethod) => schemas[deliveryMethod];
+
+export default getSchema;

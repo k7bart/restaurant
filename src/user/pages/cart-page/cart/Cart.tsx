@@ -1,48 +1,40 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import {
     getTotalDiscount,
     getTotalOrderPrice,
 } from "../../../../utils/priceUtils";
 import { resetCart } from "../../../../store";
+import { useAppDispatch, useAppSelector } from "../../../../hooks";
 
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
-import ProductPreview from "../ProductPreview/ProductPreview";
+import ProductPreview from "../dish-preview/DishPreview";
 import Text from "../../../components/Text/Text";
 import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Cart.module.scss";
 
-const TITLE = "You're ordering";
-const SUBTITLE =
-    "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.";
-
-const ENPTY_CART_TITLE = "Place your order";
-const ENPTY_CART_SUBTITLE =
-    "We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time.";
-
 const Cart = () => {
-    const cart = useSelector((state) => state.cart);
+    const cart = useAppSelector((state) => state.cart);
     const isCartEmpty = cart.length === 0;
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const totalDiscount = cart
-        .filter((product) => product.discountPercent !== null)
+        .filter((dish) => dish.discountPercent !== undefined)
         .reduce(
             (total, { price, discountPercent, amount }) =>
-                total + getTotalDiscount(price, discountPercent, amount),
+                total + getTotalDiscount(price, discountPercent ?? 0, amount),
             0
         )
-        .toFixed(2); // returns string
+        .toFixed(2);
 
     const total = getTotalOrderPrice(cart);
 
     return (
         <ContentSection
-            title={isCartEmpty ? ENPTY_CART_TITLE : TITLE}
-            subtitle={isCartEmpty ? ENPTY_CART_SUBTITLE : SUBTITLE}
+            title={isCartEmpty ? "Place your order" : "You're ordering"}
+            subtitle="We deliver within the city and guarantee delivery within an hour, ensuring your meal arrives fresh and right on time."
         >
             {isCartEmpty ? (
                 <Text size="large">
@@ -58,11 +50,8 @@ const Cart = () => {
                         Empty cart
                     </Button>
                     <ul className={styles.products}>
-                        {cart.map((product) => (
-                            <ProductPreview
-                                key={product.id}
-                                product={product}
-                            />
+                        {cart.map((dish) => (
+                            <ProductPreview key={dish.id} dish={dish} />
                         ))}
                     </ul>
                     <div className={styles.pricesContainer}>
