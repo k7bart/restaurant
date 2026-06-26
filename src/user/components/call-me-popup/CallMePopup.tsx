@@ -8,7 +8,7 @@ import * as yup from "yup";
 import Button from "../../../common/components/buttons/Button/Button";
 import Form from "../form/Form";
 import PhoneInput from "../Inputs/PhoneInput";
-import Popup from "../Popup/Popup";
+import Popup from "../popup/Popup";
 import Text from "../text/Text";
 
 import styles from "./CallMePopup.module.scss";
@@ -21,26 +21,26 @@ const callMePopupSchema = yup.object({
 
 const CallMePopup = () => {
     const [showModal, setShowModal] = useState(false);
-    const timerRef = useRef<number | null>(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const resetTimer = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
 
         timerRef.current = setTimeout(
             () => setShowModal(true),
-            INACTIVITY_TIME
+            INACTIVITY_TIME,
         );
     };
 
     useEffect(() => {
         ACTIVITY_EVENTS.forEach((event) =>
-            window.addEventListener(event, resetTimer)
+            window.addEventListener(event, resetTimer),
         );
         resetTimer();
 
         return () => {
             ACTIVITY_EVENTS.forEach((event) =>
-                window.removeEventListener(event, resetTimer)
+                window.removeEventListener(event, resetTimer),
             );
             if (timerRef.current) clearTimeout(timerRef.current);
         };
@@ -61,7 +61,7 @@ const CallMePopup = () => {
 
     return (
         <Popup
-            backgoundStyles={styles.popupBackground}
+            backgroundStyles={styles.popupBackground}
             closePopup={() => setShowModal(false)}
             popupStyles={styles.popup}
         >

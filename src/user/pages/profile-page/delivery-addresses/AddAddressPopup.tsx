@@ -10,7 +10,7 @@ import addressSchema from "../../../components/Inputs/address-inputs/address-yup
 import Button from "../../../../common/components/buttons/Button/Button";
 import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
 import Form from "../../../components/form/Form";
-import Popup from "../../../components/Popup/Popup";
+import Popup from "../../../components/popup/Popup";
 
 import type { Address } from "@k7bart/restaurant-shared-types";
 
