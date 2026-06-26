@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Conventional Commit'
+  short_description: 'Draft restaurant commit messages'
+  default_prompt: 'Use $conventional-commit-message to generate a Conventional Commit message from the current branch and git diff.'
