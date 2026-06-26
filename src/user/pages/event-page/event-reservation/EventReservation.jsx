@@ -1,11 +1,11 @@
-import { useEventData } from "../useEventData.js";
+import { useEventData } from "../useEventData";
 import { IoIosArrowForward } from "react-icons/io";
 
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
 import EventReservationForm from "./EventReservationForm";
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 
 const EventReservation = () => {
     const event = useEventData();

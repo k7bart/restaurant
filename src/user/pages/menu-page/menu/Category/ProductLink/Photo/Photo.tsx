@@ -1,4 +1,4 @@
-import Text from "../../../../../../components/Text/Text";
+import Text from "../../../../../../components/text/Text";
 import styles from "./Photo.module.scss";
 
 const Photo = ({ url }: { url?: string }) => (

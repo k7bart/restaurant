@@ -8,7 +8,7 @@ import CloseButton from "../../../../common/components/buttons/CloseButton/Close
 import Icon from "../../../components/Icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
 import Row from "../../../../common/components/Row/Row";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 
 import type { Address } from "@k7bart/restaurant-shared-types";
 

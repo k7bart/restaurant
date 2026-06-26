@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import { capitalize } from "../../../../utils/stringUtils";
-import Text from "../../Text/Text";
+import Text from "../../text/Text";
 import styles from "./Input.module.scss";
 import PropTypes from "prop-types";
 

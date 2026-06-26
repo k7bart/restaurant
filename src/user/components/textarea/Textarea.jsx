@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import PropTypes from "prop-types";
 
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 import styles from "./Textarea.module.scss";
 

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Controller, useFormContext } from "react-hook-form";
 import { filterTime } from "../../../utils/timeUtils";
 
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 const TimeInput = ({
     name = "time",

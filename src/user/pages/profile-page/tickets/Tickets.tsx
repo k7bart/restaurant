@@ -2,7 +2,7 @@ import { IoTicket } from "react-icons/io5";
 import { useMe } from "../../../../hooks/useMe";
 
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 import Ticket from "./ticket/Ticket";
 
 import styles from "./Tickets.module.scss";

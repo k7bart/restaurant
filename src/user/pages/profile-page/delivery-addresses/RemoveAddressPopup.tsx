@@ -1,6 +1,6 @@
 import Button from "../../../../common/components/buttons/Button/Button";
 import Popup from "../../../components/Popup/Popup";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 
 type Props = {
     addressStr: string;

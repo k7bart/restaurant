@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import PropTypes from "prop-types";
 import styles from "./LabeledCheckbox.module.scss";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 const LabeledCheckbox = ({ fieldName, label }) => {
     const { register } = useFormContext();

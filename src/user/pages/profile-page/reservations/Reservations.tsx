@@ -2,7 +2,7 @@ import { useMe } from "../../../../hooks/useMe";
 
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
 import ReservationRow from "./reservation-row/ReservationRow";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 
 const Reservations = () => {
     const { reservations } = useMe();

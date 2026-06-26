@@ -23,7 +23,7 @@ import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import SurnameInput from "../../components/Inputs/SurnameInput";
-import Text from "../../components/Text/Text";
+import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/Inputs/TimeInput";
 

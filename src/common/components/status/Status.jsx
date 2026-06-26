@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import Text from "../../../user/components/Text/Text";
+import Text from "../../../user/components/text/Text";
 import { capitalize } from "../../../utils/stringUtils";
 import styles from "./Status.module.scss";
 

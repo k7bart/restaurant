@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-import { staff } from "../../../../state.js";
-import { useEventData } from "../useEventData.js";
+import { staff } from "../../../../state";
+import { useEventData } from "../useEventData";
 import { eventService } from "../../../../services/event-service.js";
 
 import Button from "../../../../common/components/buttons/Button/Button";
@@ -13,7 +13,7 @@ import DetailsRow from "./special-guest/DetailsRow";
 import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent";
 import Row from "../../../../common/components/Row/Row";
 import SpecialGuest from "./special-guest/SpecialGuest";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 
 import styles from "./EventDetails.module.scss";
 

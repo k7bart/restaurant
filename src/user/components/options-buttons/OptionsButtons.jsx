@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import Button from "../../../common/components/buttons/Button/Button";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 import styles from "./OptionsButtons.module.scss";
 

@@ -9,7 +9,7 @@ import Button from "../../../common/components/buttons/Button/Button";
 import Form from "../form/Form";
 import PhoneInput from "../Inputs/PhoneInput";
 import Popup from "../Popup/Popup";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 import styles from "./CallMePopup.module.scss";
 

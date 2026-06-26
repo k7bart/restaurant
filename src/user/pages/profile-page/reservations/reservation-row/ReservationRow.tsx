@@ -4,7 +4,7 @@ import { dateTimeFormat } from "../../../../../utils/dateUtils";
 
 import Row from "../../../../../common/components/Row/Row";
 import Status from "../../../../../common/components/status/Status";
-import Text from "../../../../components/Text/Text";
+import Text from "../../../../components/text/Text";
 
 import styles from "./ReservationRow.module.scss";
 

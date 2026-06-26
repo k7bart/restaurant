@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Icon from "../Icon/Icon";
 import Row from "../../../common/components/Row/Row";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 
 import styles from "./Dropdown.module.scss";
 

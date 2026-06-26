@@ -2,7 +2,7 @@ import classNames from "classnames";
 import dayjs from "dayjs";
 import { dateTimeFormat } from "../../../../../utils/dateUtils";
 
-import Text from "../../../../components/Text/Text";
+import Text from "../../../../components/text/Text";
 
 import styles from "./Ticket.module.scss";
 

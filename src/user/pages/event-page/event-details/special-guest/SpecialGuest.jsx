@@ -4,7 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
-import Text from "../../../../components/Text/Text";
+import Text from "../../../../components/text/Text";
 
 import styles from "./SpecialGuest.module.scss";
 

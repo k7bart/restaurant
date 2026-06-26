@@ -10,7 +10,7 @@ import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
 import ProductPreview from "../dish-preview/DishPreview";
-import Text from "../../../components/Text/Text";
+import Text from "../../../components/text/Text";
 import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Cart.module.scss";

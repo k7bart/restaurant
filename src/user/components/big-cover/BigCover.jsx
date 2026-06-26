@@ -7,7 +7,7 @@ import CoverFilter from "../cover-filter/CoverFilter";
 import CursiveSubtitle from "../cover-titles/cursive-subtitle/CursiveSubtitle";
 import Logo from "../../../common/components/Logo/Logo";
 import NavBar from "../NavBar/NavBar";
-import Text from "../Text/Text";
+import Text from "../text/Text";
 import Title from "../cover-titles/title/Title";
 
 function BigCover({ imageUrl, helmet, subtitle, title, text }) {

@@ -15,7 +15,7 @@ import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";
 import SurnameInput from "../../components/Inputs/SurnameInput";
-import Text from "../../components/Text/Text";
+import Text from "../../components/text/Text";
 
 import { RegistrationData } from "@k7bart/restaurant-shared-types";
 

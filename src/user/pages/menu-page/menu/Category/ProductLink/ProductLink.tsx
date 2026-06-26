@@ -6,7 +6,7 @@ import Photo from "./Photo/Photo";
 import Price from "./Price/Price";
 import Title from "./Title/Title";
 import styles from "./ProductLink.module.scss";
-import Text from "../../../../../components/Text/Text";
+import Text from "../../../../../components/text/Text";
 
 import type { Dish } from "@k7bart/restaurant-shared-types";
 
