@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
-import Carrousel from "../../components/Carrousel/Carrousel";
+import Carrousel from "../../components/carrousel/Carrousel";
 import EventPreview from "./event-preview/EventPreview";
-import Logo from "../../../components/Logo/Logo";
-import NavBar from "../../components/NavBar/NavBar";
+import Logo from "../../../components/logo/Logo";
+import NavBar from "../../components/nav-bar/NavBar";
 import styles from "./EventsPage.module.scss";
 import { eventService } from "../../../services/event-service";
 

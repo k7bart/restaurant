@@ -1,4 +1,4 @@
-import Logo from "../Logo/Logo";
+import Logo from "../logo/Logo";
 import { Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
