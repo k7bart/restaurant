@@ -7,6 +7,8 @@ import {
     isRejected,
 } from "@reduxjs/toolkit";
 
+import type { Reservation } from "@k7bart/restaurant-shared-types";
+
 export const fetchReservations = createAsyncThunk(
     "reservations/fetchReservations",
     async () => {
@@ -17,7 +19,7 @@ export const fetchReservations = createAsyncThunk(
 
 export const addReservation = createAsyncThunk(
     "reservations/addReservation",
-    async (reservationObj) => {
+    async (reservationObj: Reservation) => {
         const { data } = await axios.post("/api/reservations", reservationObj);
         return data;
     }
@@ -117,7 +119,7 @@ const initialState = {
         },
     ],
     status: "idle",
-    error: null,
+    error: null as string | null,
 };
 
 const reservationsSlice = createSlice({
@@ -149,7 +151,7 @@ const reservationsSlice = createSlice({
                 isRejected(fetchReservations, addReservation),
                 (state, action) => {
                     state.status = "failed";
-                    state.error = action.error.message;
+                    state.error = action.error.message ?? null;
                 }
             );
     },

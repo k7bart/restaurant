@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-    updateProductAmountInCart,
-    removeProductFromCart,
-} from "../../../../store";
+import { updateAmountInCart, removeFromCart } from "../../../../store";
 import { getTotalPrice } from "../../../../utils/priceUtils";
 import { useAppDispatch } from "../../../../hooks";
 import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
@@ -30,10 +27,10 @@ const DishPreview = ({ dish }: { dish: Dish }) => {
 
     const handleAmountChange = (newAmount: number) => {
         setAmount(newAmount);
-        dispatch(updateProductAmountInCart({ id, amount: newAmount }));
+        dispatch(updateAmountInCart({ id, amount: newAmount }));
     };
     const handleProductRemove = () => {
-        dispatch(removeProductFromCart({ id }));
+        dispatch(removeFromCart({ id }));
     };
 
     return (
@@ -62,7 +59,7 @@ const DishPreview = ({ dish }: { dish: Dish }) => {
                 <h4 className={styles.actualPrice}>
                     {"$" +
                         getTotalPrice(price, discountPercent, amount).toFixed(
-                            2
+                            2,
                         )}
                 </h4>
             </div>

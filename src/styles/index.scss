@@ -231,14 +231,6 @@ table {
     }
 }
 
-.menu-page {
-    @media (min-width: 578px) {
-        .menu > *:not(:first-child) {
-            padding-top: 32px;
-        }
-    }
-}
-
 @media (max-width: 820px) {
     .events-page {
         .slides-container {

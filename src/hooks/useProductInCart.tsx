@@ -1,4 +1,4 @@
-import { addProductToCart, updateProductAmountInCart } from "../store";
+import { addToCart, updateAmountInCart } from "../store";
 import { useAppDispatch, useAppSelector } from "../hooks";
 
 import type { Dish } from "@k7bart/restaurant-shared-types";
@@ -7,7 +7,7 @@ export function useProductInCart(dish: Dish) {
     const dispatch = useAppDispatch();
 
     const dishInCart = useAppSelector((state) =>
-        state.cart.find((d) => d.id === dish.id)
+        state.cart.find((d) => d.id === dish.id),
     );
 
     const amount = dishInCart?.amount ?? 0;
@@ -15,17 +15,17 @@ export function useProductInCart(dish: Dish) {
     const handleAmountChange = (newAmount: number) => {
         if (dishInCart) {
             dispatch(
-                updateProductAmountInCart({
+                updateAmountInCart({
                     id: dish.id,
                     amount: newAmount,
-                })
+                }),
             );
         } else {
             dispatch(
-                addProductToCart({
+                addToCart({
                     ...dish,
                     amount: newAmount,
-                })
+                }),
             );
         }
     };
