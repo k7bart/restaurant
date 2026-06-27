@@ -4,12 +4,12 @@ import { setUser } from "../../../../store";
 import { useAppDispatch } from "../../../../hooks";
 import * as yup from "yup";
 import Button from "../../../../components/buttons/Button/Button";
-import CustomLink from "../../../components/links/custom-link/CustomLink";
-import EmailInput from "../../../components/Inputs/EmailInput";
-import Form from "../../../components/form/Form";
-import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
-import PasswordInput from "../../../components/Inputs/PasswordInput";
-import Text from "../../../components/text/Text";
+import CustomLink from "../../../../components/links/custom-link/CustomLink";
+import EmailInput from "../../../../components/Inputs/EmailInput";
+import Form from "../../../../components/form/Form";
+import LabeledCheckbox from "../../../../components/labeled-checkbox/LabeledCheckbox";
+import PasswordInput from "../../../../components/Inputs/PasswordInput";
+import Text from "../../../../components/text/Text";
 import styles from "./LoginForm.module.scss";
 import type { User, LoginCredentials } from "@k7bart/restaurant-shared-types";
 

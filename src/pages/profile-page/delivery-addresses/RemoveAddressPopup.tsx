@@ -1,4 +1,4 @@
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import Popup from "../../../components/popup/Popup";
 import Text from "../../../components/text/Text";
 

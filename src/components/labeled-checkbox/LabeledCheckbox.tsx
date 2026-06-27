@@ -1,9 +1,13 @@
 import { useFormContext } from "react-hook-form";
-import PropTypes from "prop-types";
 import styles from "./LabeledCheckbox.module.scss";
 import Text from "../text/Text";
 
-const LabeledCheckbox = ({ fieldName, label }) => {
+type Props = {
+    fieldName: string;
+    label: string;
+};
+
+const LabeledCheckbox = ({ fieldName, label }: Props) => {
     const { register } = useFormContext();
 
     return (
@@ -12,11 +16,6 @@ const LabeledCheckbox = ({ fieldName, label }) => {
             <Text size="large">{label}</Text>
         </label>
     );
-};
-
-LabeledCheckbox.propTypes = {
-    fieldName: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
 };
 
 export default LabeledCheckbox;

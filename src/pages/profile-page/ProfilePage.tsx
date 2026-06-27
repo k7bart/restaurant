@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../hooks";
-import { useMe } from "../../../hooks/useMe";
-import { logOut } from "../../../store";
+import { useAppDispatch } from "../../hooks";
+import { useMe } from "../../hooks/useMe";
+import { logOut } from "../../store";
 import { IoLogOutOutline } from "react-icons/io5";
-import { profilePageBackgroundUrl } from "../../../constants/backgroundUrls";
+import { profilePageBackgroundUrl } from "../../constants/backgroundUrls";
 
 import Accordion from "../../components/accordion/Accordion";
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";

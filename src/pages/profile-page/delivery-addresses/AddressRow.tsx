@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-import { removeAddress, setCurrentAddress } from "../../../../store";
-import { useAppDispatch } from "../../../../hooks";
-import { addressToStr } from "../../../../utils/addressUtils";
+import { removeAddress, setCurrentAddress } from "../../../store";
+import { useAppDispatch } from "../../../hooks";
+import { addressToStr } from "../../../utils/addressUtils";
 
-import CloseButton from "../../../../common/components/buttons/CloseButton/CloseButton";
+import CloseButton from "../../../components/buttons/CloseButton/CloseButton";
 import Icon from "../../../components/Icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
-import Row from "../../../../common/components/Row/Row";
+import Row from "../../../components/row/Row";
 import Text from "../../../components/text/Text";
 
 import type { Address } from "@k7bart/restaurant-shared-types";

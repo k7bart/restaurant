@@ -2,9 +2,9 @@ import cn from "classnames";
 import dayjs from "dayjs";
 import { dateTimeFormat } from "../../../../../utils/dateUtils";
 
-import Row from "../../../../../components/Row/Row";
+import Row from "../../../../../components/row/Row";
 import Status from "../../../../../components/status/Status";
-import Text from "../../../../components/text/Text";
+import Text from "../../../../../components/text/Text";
 
 import styles from "./ReservationRow.module.scss";
 

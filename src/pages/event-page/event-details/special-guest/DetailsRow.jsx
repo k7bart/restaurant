@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import Row from "../../../../../common/components/Row/Row";
+import Row from "../../../../components/row/Row";
 import Text from "../../../../components/text/Text";
 
 const DetailsRow = ({ label, value }) => (

@@ -10,7 +10,7 @@ import CustomLink from "../../components/links/custom-link/CustomLink";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";
 import Input from "../../components/Inputs/Input/Input";
-import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
+import LabeledCheckbox from "../../components/labeled-checkbox/LabeledCheckbox";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";

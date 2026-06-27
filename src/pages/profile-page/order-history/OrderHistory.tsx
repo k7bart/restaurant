@@ -1,4 +1,4 @@
-import { useMe } from "../../../../hooks/useMe";
+import { useMe } from "../../../hooks/useMe";
 
 import OrderRow from "./order-row/OrderRow";
 

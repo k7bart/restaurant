@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { combineDateTime } from "../../../../utils/timeUtils";
-import { getAvailableDay } from "../../../../utils/dateUtils";
-import { getTotalOrderPrice } from "../../../../utils/priceUtils";
+import { combineDateTime } from "../../../utils/timeUtils";
+import { getAvailableDay } from "../../../utils/dateUtils";
+import { getTotalOrderPrice } from "../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
-import { useAppSelector } from "../../../../hooks";
+import { useAppSelector } from "../../../hooks";
 
 import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
 import getSchema from "./checkoutSchema";
 
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import DateTimeInputs from "../../../components/Inputs/date-time-inputs/DateTimeInputs";
 import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
 import Form from "../../../components/form/Form";
 import HorizontalDevider from "../../../components/horizontal-divider/HorizontalDevider";
-import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
+import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
 import NameInput from "../../../components/Inputs/NameInput";
 import OptionsButtons from "../../../components/options-buttons/OptionsButtons";
 import PaymentOptions from "../../../components/payment-options/PaymentOptions";

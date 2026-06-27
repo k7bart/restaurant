@@ -9,7 +9,7 @@ import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
 import dayjs from "dayjs";
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
 import Form from "../../../components/form/Form";
 import NameInput from "../../../components/Inputs/NameInput";
@@ -17,7 +17,7 @@ import Notice from "../../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../../components/Inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../../components/Inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../components/Inputs/PhoneInput";
-import { addTicket } from "../../../../store";
+import { addTicket } from "../../../store";
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),

@@ -1,5 +1,5 @@
 import { IoTicket } from "react-icons/io5";
-import { useMe } from "../../../../hooks/useMe";
+import { useMe } from "../../../hooks/useMe";
 
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import Text from "../../../components/text/Text";

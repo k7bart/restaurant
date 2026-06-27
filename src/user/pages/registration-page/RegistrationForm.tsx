@@ -2,20 +2,20 @@ import { type FocusEvent } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { checkEmailUsed } from "../../../services/user/user";
-import { capitalize } from "../../utils/stringUtils";
+import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
 import Button from "../../../components/buttons/Button/Button";
-import CustomLink from "../../components/links/custom-link/CustomLink";
-import EmailInput from "../../components/Inputs/EmailInput";
-import Form from "../../components/form/Form";
-import Input from "../../components/Inputs/Input/Input";
-import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
-import NameInput from "../../components/Inputs/NameInput";
-import PhoneInput from "../../components/Inputs/PhoneInput";
-import PasswordInput from "../../components/Inputs/PasswordInput";
-import SurnameInput from "../../components/Inputs/SurnameInput";
-import Text from "../../components/text/Text";
+import CustomLink from "../../../components/links/custom-link/CustomLink";
+import EmailInput from "../../../components/Inputs/EmailInput";
+import Form from "../../../components/form/Form";
+import Input from "../../../components/Inputs/Input/Input";
+import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
+import NameInput from "../../../components/Inputs/NameInput";
+import PhoneInput from "../../../components/Inputs/PhoneInput";
+import PasswordInput from "../../../components/Inputs/PasswordInput";
+import SurnameInput from "../../../components/Inputs/SurnameInput";
+import Text from "../../../components/text/Text";
 
 import { RegistrationData } from "@k7bart/restaurant-shared-types";
 

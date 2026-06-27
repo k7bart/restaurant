@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-import { staff } from "../../../../state";
+import { staff } from "../../../state";
 import { useEventData } from "../useEventData";
-import { eventService } from "../../../../services/event-service.js";
+import { eventService } from "../../../services/event-service.js";
 
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
 import CustomNavLink from "../../../components/links/custom-nav-link/CustomNavLink";
 import DetailsRow from "./special-guest/DetailsRow";
-import Row from "../../../../common/components/Row/Row";
+import Row from "../../../components/row/Row";
 import SpecialGuest from "./special-guest/SpecialGuest";
 import Text from "../../../components/text/Text";
 

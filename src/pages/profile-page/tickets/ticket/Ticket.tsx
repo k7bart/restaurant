@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { dateTimeFormat } from "../../../../../utils/dateUtils";
+import { dateTimeFormat } from "../../../../utils/dateUtils";
 
 import Text from "../../../../components/text/Text";
 

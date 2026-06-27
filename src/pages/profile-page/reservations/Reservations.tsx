@@ -1,4 +1,4 @@
-import { useMe } from "../../../../hooks/useMe";
+import { useMe } from "../../../hooks/useMe";
 
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import ReservationRow from "./reservation-row/ReservationRow";

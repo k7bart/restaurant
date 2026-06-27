@@ -3,7 +3,7 @@ import { IoCheckmark } from "react-icons/io5";
 import PropTypes from "prop-types";
 
 import Icon from "../Icon/Icon";
-import Row from "../../../common/components/Row/Row";
+import Row from "../row/Row";
 import Text from "../text/Text";
 
 import styles from "./Dropdown.module.scss";

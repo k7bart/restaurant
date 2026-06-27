@@ -5,10 +5,10 @@ import { useAppDispatch } from "../../../../hooks";
 import { addressToStr } from "../../../../utils/addressUtils";
 
 import CloseButton from "../../../../components/buttons/CloseButton/CloseButton";
-import Icon from "../../../components/Icon/Icon";
+import Icon from "../../../../components/Icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
-import Row from "../../../../components/Row/Row";
-import Text from "../../../components/text/Text";
+import Row from "../../../../components/row/Row";
+import Text from "../../../../components/text/Text";
 
 import type { Address } from "@k7bart/restaurant-shared-types";
 

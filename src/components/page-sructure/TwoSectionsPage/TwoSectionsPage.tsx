@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import HeaderNavigation from "../../HeaderNavigation/HeaderNavigation";
+import HeaderNavigation from "../../header-navigation/HeaderNavigation";
 import styles from "./TwoSectionsPage.module.scss";
 import classNames from "classnames";
 

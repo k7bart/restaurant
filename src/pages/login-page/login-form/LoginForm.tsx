@@ -7,7 +7,7 @@ import Button from "../../../components/buttons/Button/Button";
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import EmailInput from "../../../components/Inputs/EmailInput";
 import Form from "../../../components/form/Form";
-import LabeledCheckbox from "../../../components/LabeledCheckbox/LabeledCheckbox";
+import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
 import PasswordInput from "../../../components/Inputs/PasswordInput";
 import Text from "../../../components/text/Text";
 import styles from "./LoginForm.module.scss";

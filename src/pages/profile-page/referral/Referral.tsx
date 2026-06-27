@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useMe } from "../../../../hooks/useMe";
+import { useMe } from "../../../hooks/useMe";
 import { IoCopyOutline } from "react-icons/io5";
 
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import Text from "../../../components/text/Text";
 
 import styles from "./Referral.module.scss";
