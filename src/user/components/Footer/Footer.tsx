@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import ExternalLinkComponent from "../links/ExternalLinkComponent/ExternalLinkComponent";
 import LinkComponent from "../links/LinkComponent/LinkComponent";
 import Logo from "../../../common/components/Logo/Logo";
@@ -20,7 +21,7 @@ const links = [
     { to: "/error", text: "Error" },
 ];
 
-const navLinks = links.map(({ to, text }) => (
+const navLinks: ReactNode = links.map(({ to, text }) => (
     <NavLinkComponent to={to} key={to}>
         {text}
     </NavLinkComponent>
