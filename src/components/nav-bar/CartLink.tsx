@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks";
 import { getTotalPrice } from "../../utils/priceUtils";
 import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import Tooltip from "../tooltip/Tooltip";
@@ -12,7 +12,7 @@ type CartItem = {
 };
 
 const CartLink = () => {
-    const cart = useSelector((state: { cart: CartItem[] }) => state.cart);
+    const cart = useAppSelector((state) => state.cart);
     const cartRef = useRef<HTMLAnchorElement>(null);
 
     const total = cart.reduce(
