@@ -5,10 +5,9 @@ import {
 } from "../../../../utils/priceUtils";
 import { resetCart } from "../../../../store";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
-
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import CustomLink from "../../../components/links/custom-link/CustomLink";
 import ProductPreview from "../dish-preview/DishPreview";
 import Text from "../../../components/text/Text";
 import TotalPrice from "../../../components/total-price/TotalPrice";
@@ -25,7 +24,7 @@ const Cart = () => {
         .reduce(
             (total, { price, discountPercent, amount }) =>
                 total + getTotalDiscount(price, discountPercent ?? 0, amount),
-            0
+            0,
         )
         .toFixed(2);
 
@@ -40,9 +39,9 @@ const Cart = () => {
                 <Text size="large">
                     Your cart is empty, but we are eagerly awaiting your order!
                     You can checkout our menu&nbsp;
-                    <LinkComponent color="wisteria" to="/menu" size="large">
+                    <CustomLink color="wisteria" to="/menu" size="large">
                         here
-                    </LinkComponent>
+                    </CustomLink>
                 </Text>
             ) : (
                 <div className={styles.cart}>

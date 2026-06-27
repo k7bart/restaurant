@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import PropTypes from "prop-types";
-
-import styles from "./LinkComponent.module.scss";
+import styles from "./CustomLink.module.scss";
 
 type Props = {
     children: React.ReactNode;
@@ -13,7 +11,7 @@ type Props = {
     size?: "medium" | "large";
 };
 
-const LinkComponent = ({
+const CustomLink = ({
     children,
     color = "grey",
     fontWeight = "extraLight",
@@ -27,7 +25,7 @@ const LinkComponent = ({
                 styles.link,
                 styles[size],
                 styles[color],
-                styles[fontWeight]
+                styles[fontWeight],
             )}
             target={target}
             to={to}
@@ -37,13 +35,4 @@ const LinkComponent = ({
     );
 };
 
-LinkComponent.propTypes = {
-    children: PropTypes.node.isRequired,
-    color: PropTypes.oneOf(["grey", "white", "wisteria"]),
-    fontWeight: PropTypes.oneOf(["thin", "extraLight"]),
-    target: PropTypes.string,
-    to: PropTypes.string.isRequired,
-    size: PropTypes.oneOf(["medium", "large"]),
-};
-
-export default LinkComponent;
+export default CustomLink;

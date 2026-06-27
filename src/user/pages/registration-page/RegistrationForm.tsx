@@ -6,11 +6,11 @@ import { capitalize } from "../../../utils/stringUtils";
 import * as yup from "yup";
 
 import Button from "../../../common/components/buttons/Button/Button";
+import CustomLink from "../../components/links/custom-link/CustomLink";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";
 import Input from "../../components/Inputs/Input/Input";
 import LabeledCheckbox from "../../components/LabeledCheckbox/LabeledCheckbox";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
 import PhoneInput from "../../components/Inputs/PhoneInput";
 import PasswordInput from "../../components/Inputs/PasswordInput";
@@ -34,7 +34,7 @@ const registrationSchema = yup.object({
         .test(
             "is-valid-length",
             "The password must be at least 8 characters long",
-            (value) => !value || value.length >= 8
+            (value) => !value || value.length >= 8,
         ),
     confirmPassword: yup
         .string()
@@ -116,9 +116,9 @@ const RegistrationForm = () => {
 
                 <Text align="center" size="large">
                     Already registered?&nbsp;
-                    <LinkComponent color="wisteria" to="/login" size="large">
+                    <CustomLink color="wisteria" to="/login" size="large">
                         Sign in
-                    </LinkComponent>
+                    </CustomLink>
                 </Text>
             </Form>
         </FormProvider>

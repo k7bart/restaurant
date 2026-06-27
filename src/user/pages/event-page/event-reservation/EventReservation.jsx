@@ -1,10 +1,9 @@
 import { useEventData } from "../useEventData";
 import { IoIosArrowForward } from "react-icons/io";
-
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
 import EventReservationForm from "./EventReservationForm";
-import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import CustomLink from "../../../components/links/custom-link/CustomLink";
 import Text from "../../../components/text/Text";
 
 const EventReservation = () => {
@@ -16,13 +15,13 @@ const EventReservation = () => {
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam."
         >
             <ContentSectionNav>
-                <LinkComponent to="/events">Events</LinkComponent>
+                <CustomLink to="/events">Events</CustomLink>
 
                 <IoIosArrowForward />
 
-                <LinkComponent to={`/events/${event.name}`}>
+                <CustomLink to={`/events/${event.name}`}>
                     {event.title}
-                </LinkComponent>
+                </CustomLink>
 
                 <IoIosArrowForward />
 

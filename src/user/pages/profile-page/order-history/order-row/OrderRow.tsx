@@ -7,7 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import type { Order } from "@k7bart/restaurant-shared-types";
 
 import ButtonWithIcon from "../../../../../common/components/buttons/ButtonWithIcon/ButtonWithIcon";
-import Text from "../../../../components/Text/Text";
+import Text from "../../../../components/text/Text";
 import Row from "../../../../../common/components/Row/Row";
 
 import styles from "./OrderRow.module.scss";

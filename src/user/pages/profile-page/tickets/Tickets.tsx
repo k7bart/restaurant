@@ -1,7 +1,7 @@
 import { IoTicket } from "react-icons/io5";
 import { useMe } from "../../../../hooks/useMe";
 
-import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import CustomLink from "../../../components/links/custom-link/CustomLink";
 import Text from "../../../components/text/Text";
 import Ticket from "./ticket/Ticket";
 
@@ -16,9 +16,9 @@ const Tickets = () => {
                 <IoTicket />
                 &nbsp;You don&apos;t have any tickets yet. We invite you to
                 check out our events&nbsp;
-                <LinkComponent color="wisteria" fontWeight="thin" to="/events">
+                <CustomLink color="wisteria" fontWeight="thin" to="/events">
                     here
-                </LinkComponent>
+                </CustomLink>
             </Text>
         );
 

@@ -1,6 +1,6 @@
 import { useMe } from "../../../../hooks/useMe";
 
-import LinkComponent from "../../../components/links/LinkComponent/LinkComponent";
+import CustomLink from "../../../components/links/custom-link/CustomLink";
 import ReservationRow from "./reservation-row/ReservationRow";
 import Text from "../../../components/text/Text";
 
@@ -12,13 +12,13 @@ const Reservations = () => {
             <Text className="large">
                 You don&apos;t have any reservations, but we are eagerly
                 awaiting your visit! You can reserve a table&nbsp;
-                <LinkComponent
+                <CustomLink
                     color="wisteria"
                     to="/table-reservation"
                     size="large"
                 >
                     here
-                </LinkComponent>
+                </CustomLink>
             </Text>
         );
 

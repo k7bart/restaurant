@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import ExternalLinkComponent from "../links/ExternalLinkComponent/ExternalLinkComponent";
-import LinkComponent from "../links/LinkComponent/LinkComponent";
+import CustomLink from "../links/custom-link/CustomLink";
 import Logo from "../../../common/components/Logo/Logo";
 import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import styles from "./Footer.module.scss";
@@ -48,22 +48,22 @@ const Footer = () => {
                     b.art@gmail.com
                 </ExternalLinkComponent>
 
-                <LinkComponent to="https://www.linkedin.com/in/kateryna-bartienieva/">
+                <CustomLink to="https://www.linkedin.com/in/kateryna-bartienieva/">
                     By Kateryna Bartienieva
-                </LinkComponent>
+                </CustomLink>
             </div>
 
             <div className="container">{NAV_LINKS}</div>
 
             <div>
-                <LinkComponent to="https://www.instagram.com" target="_blank">
+                <CustomLink to="https://www.instagram.com" target="_blank">
                     <FaInstagram />
                     @b.art
-                </LinkComponent>
-                <LinkComponent to="https://www.facebook.com" target="_blank">
+                </CustomLink>
+                <CustomLink to="https://www.facebook.com" target="_blank">
                     <FaFacebook />
                     b.art
-                </LinkComponent>
+                </CustomLink>
             </div>
         </footer>
     );

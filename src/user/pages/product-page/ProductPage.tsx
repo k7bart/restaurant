@@ -11,8 +11,8 @@ import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
 import Cover from "../../components/half-page-cover/Cover";
+import CustomLink from "../../components/links/custom-link/CustomLink";
 import Discount from "./discount/Discount";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import Nutrients from "./nutrients/Nutrients";
 import Price from "./price/Price";
 import Section from "../../components/page-sructure/Section/Section";
@@ -55,10 +55,10 @@ const ProductPage = () => {
 
             <ContentSection title={name} subtitle={description}>
                 <ContentSectionNav>
-                    <LinkComponent to="/menu">
+                    <CustomLink to="/menu">
                         <IoIosArrowBack />
                         Menu
-                    </LinkComponent>
+                    </CustomLink>
                     <CartLink />
                 </ContentSectionNav>
 

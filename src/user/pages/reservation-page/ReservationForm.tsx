@@ -13,10 +13,10 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 
 import Button from "../../../common/components/buttons/Button/Button";
+import CustomLink from "../../components/links/custom-link/CustomLink";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";
-import LinkComponent from "../../components/links/LinkComponent/LinkComponent";
 import NameInput from "../../components/Inputs/NameInput";
 import Notice from "../../components/Notice/Notice";
 import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
@@ -61,7 +61,7 @@ const reservationSchema = yup.object({
     phone: yup
         .string()
         .required(
-            "Please share your phone number. We'll only reach out if we have questions"
+            "Please share your phone number. We'll only reach out if we have questions",
         ),
     date: yup
         .date()
@@ -69,7 +69,7 @@ const reservationSchema = yup.object({
         .min(subDays(today, 1), "Date cannot be earlier than today")
         .max(
             addMonths(today, 2),
-            "Date cannot be later than 2 month from today"
+            "Date cannot be later than 2 month from today",
         ),
     time: timeSchema,
     additionalRequirements: yup.string(),
@@ -124,7 +124,7 @@ const ReservationForm = () => {
                     {dayjs(reserved.dateTime).format("DD/MM/YYYY")}
                     &nbsp;at&nbsp;
                     {`${dayjs(reserved.dateTime).get("hours")}:${dayjs(
-                        reserved.dateTime
+                        reserved.dateTime,
                     ).get("minutes")}`}
                 </Text>
 
@@ -152,14 +152,14 @@ const ReservationForm = () => {
                 {!user && (
                     <Text size="large">
                         We kindly invite you to
-                        <LinkComponent
+                        <CustomLink
                             color="wisteria"
                             fontWeight="thin"
                             to="/login"
                             size="large"
                         >
                             &nbsp;log in&nbsp;
-                        </LinkComponent>
+                        </CustomLink>
                         for a smoother and quicker experience.
                     </Text>
                 )}
