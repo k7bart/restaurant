@@ -7,25 +7,25 @@ import { combineDateTime } from "../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { addReservation } from "../../store";
-import { timeSchema } from "../../components/Inputs/yupInputsSchemas";
+import { timeSchema } from "../../components/inputs/yupInputsSchemas";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
 
-import Button from "../../components/buttons/Button/Button";
+import Button from "../../components/buttons/button/Button";
 import CustomLink from "../../components/links/custom-link/CustomLink";
-import DateInput from "../../components/Inputs/DateInput";
-import EmailInput from "../../components/Inputs/EmailInput";
+import DateInput from "../../components/inputs/DateInput";
+import EmailInput from "../../components/inputs/EmailInput";
 import Form from "../../components/form/Form";
-import NameInput from "../../components/Inputs/NameInput";
-import Notice from "../../components/Notice/Notice";
-import NumberOfAdultsInput from "../../components/Inputs/NumberOfAdultsInput";
-import NumberOfChildrenInput from "../../components/Inputs/NumberOfChildrenInput";
-import PhoneInput from "../../components/Inputs/PhoneInput";
-import SurnameInput from "../../components/Inputs/SurnameInput";
+import NameInput from "../../components/inputs/NameInput";
+import Notice from "../../components/notice/Notice";
+import NumberOfAdultsInput from "../../components/inputs/NumberOfAdultsInput";
+import NumberOfChildrenInput from "../../components/inputs/NumberOfChildrenInput";
+import PhoneInput from "../../components/inputs/PhoneInput";
+import SurnameInput from "../../components/inputs/SurnameInput";
 import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
-import TimeInput from "../../components/Inputs/TimeInput";
+import TimeInput from "../../components/inputs/TimeInput";
 
 import type {
     Reservation,

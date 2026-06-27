@@ -1,7 +1,7 @@
 import { useEventData } from "../useEventData";
 import { IoIosArrowForward } from "react-icons/io";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
+import ContentSectionNav from "../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import EventReservationForm from "./EventReservationForm";
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import Text from "../../../components/text/Text";

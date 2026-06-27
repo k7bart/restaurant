@@ -1,5 +1,5 @@
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 import Menu from "./menu/Menu";
 
 const MenuPage = () => (

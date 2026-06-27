@@ -1,12 +1,12 @@
 import { addMonths, subDays } from "date-fns";
 import * as yup from "yup";
-import addressSchema from "../../../components/Inputs/address-inputs/address-yup-utils/addressSchema";
+import addressSchema from "../../../components/inputs/address-inputs/address-yup-utils/addressSchema";
 import textareaSchema from "../../../components/textarea/textareaSchema";
 import {
     nameSchema,
     phoneSchema,
     timeSchema,
-} from "../../../components/Inputs/yupInputsSchemas";
+} from "../../../components/inputs/yupInputsSchemas";
 
 import type { DeliveryMethod } from "@k7bart/restaurant-shared-types";
 

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { capitalize } from "../../../../utils/stringUtils";
 import { menu } from "../../../../state";
-import ContentSectionNav from "../../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import ContentSectionNav from "../../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import styles from "../../../../components/links/custom-nav-link/CustomNavLink.module.scss";
 import type { Category } from "@k7bart/restaurant-shared-types";
 

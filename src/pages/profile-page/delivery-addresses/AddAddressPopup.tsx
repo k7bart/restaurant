@@ -5,10 +5,10 @@ import { useAppDispatch } from "../../../hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addAddress } from "../../../store";
 import { capitalize } from "../../../utils/stringUtils";
-import addressSchema from "../../../components/Inputs/address-inputs/address-yup-utils/addressSchema";
+import addressSchema from "../../../components/inputs/address-inputs/address-yup-utils/addressSchema";
 
-import Button from "../../../components/buttons/Button/Button";
-import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
+import Button from "../../../components/buttons/button/Button";
+import DeliveryAddressInputs from "../../../components/inputs/address-inputs/DeliveryAddressInputs";
 import Form from "../../../components/form/Form";
 import Popup from "../../../components/popup/Popup";
 

@@ -1,9 +1,9 @@
 import { registrationsPageBackgroundUrl } from "../../constants/backgroundUrls";
 
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
+import ContentSection from "../../components/page-sructure/content-section/ContentSection";
 import RegistrationForm from "./RegistrationForm";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 
 const RegistrationPage = () => {
     return (

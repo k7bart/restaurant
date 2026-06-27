@@ -3,7 +3,7 @@ import { useMe } from "../../../hooks/useMe";
 
 import AddAddressPopup from "./AddAddressPopup";
 import AddressRow from "./AddressRow";
-import Button from "../../../components/buttons/Button/Button";
+import Button from "../../../components/buttons/button/Button";
 
 const DeliveryAddresses = () => {
     const { addresses } = useMe();

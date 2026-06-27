@@ -1,4 +1,4 @@
-import NumInput from "../../../components/Inputs/NumInput/NumInput";
+import NumInput from "../../../components/inputs/num-input/NumInput";
 
 import styles from "./Amount.module.scss";
 

@@ -7,20 +7,20 @@ import { getTotalOrderPrice } from "../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
 import { useAppSelector } from "../../../hooks";
 
-import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
+import getAddressDefaultValues from "../../../components/inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
 import getSchema from "./checkoutSchema";
 
-import Button from "../../../components/buttons/Button/Button";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import DateTimeInputs from "../../../components/Inputs/date-time-inputs/DateTimeInputs";
-import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
+import Button from "../../../components/buttons/button/Button";
+import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
+import DateTimeInputs from "../../../components/inputs/date-time-inputs/DateTimeInputs";
+import DeliveryAddressInputs from "../../../components/inputs/address-inputs/DeliveryAddressInputs";
 import Form from "../../../components/form/Form";
 import HorizontalDevider from "../../../components/horizontal-divider/HorizontalDevider";
 import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
-import NameInput from "../../../components/Inputs/NameInput";
+import NameInput from "../../../components/inputs/NameInput";
 import OptionsButtons from "../../../components/options-buttons/OptionsButtons";
 import PaymentOptions from "../../../components/payment-options/PaymentOptions";
-import PhoneInput from "../../../components/Inputs/PhoneInput";
+import PhoneInput from "../../../components/inputs/PhoneInput";
 import SelfPickupCheckout from "./SelfPickupCheckout";
 import Textarea from "../../../components/textarea/Textarea";
 import TotalPrice from "../../../components/total-price/TotalPrice";

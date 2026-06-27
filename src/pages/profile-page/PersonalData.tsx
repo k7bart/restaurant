@@ -8,13 +8,13 @@ import { capitalize } from "../../utils/stringUtils";
 import * as yup from "yup";
 import dayjs from "dayjs";
 
-import Button from "../../components/buttons/Button/Button";
-import DateInput from "../../components/Inputs/DateInput";
-import EmailInput from "../../components/Inputs/EmailInput";
+import Button from "../../components/buttons/button/Button";
+import DateInput from "../../components/inputs/DateInput";
+import EmailInput from "../../components/inputs/EmailInput";
 import Form from "../../components/form/Form";
-import NameInput from "../../components/Inputs/NameInput";
-import PhoneInput from "../../components/Inputs/PhoneInput";
-import SurnameInput from "../../components/Inputs/SurnameInput";
+import NameInput from "../../components/inputs/NameInput";
+import PhoneInput from "../../components/inputs/PhoneInput";
+import SurnameInput from "../../components/inputs/SurnameInput";
 
 import type { User } from "@k7bart/restaurant-shared-types";
 

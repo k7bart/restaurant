@@ -5,9 +5,9 @@ import { useAppSelector } from "../../hooks";
 
 import { ACTIVITY_EVENTS, INACTIVITY_TIME } from "../../consts";
 import * as yup from "yup";
-import Button from "../buttons/Button/Button";
+import Button from "../buttons/button/Button";
 import Form from "../form/Form";
-import PhoneInput from "../Inputs/PhoneInput";
+import PhoneInput from "../inputs/PhoneInput";
 import Popup from "../popup/Popup";
 import Text from "../text/Text";
 

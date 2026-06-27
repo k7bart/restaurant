@@ -5,8 +5,8 @@ import {
 } from "../../../utils/priceUtils";
 import { resetCart } from "../../../store";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import Button from "../../../components/buttons/Button/Button";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
+import Button from "../../../components/buttons/button/Button";
+import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import ProductPreview from "../dish-preview/DishPreview";
 import Text from "../../../components/text/Text";

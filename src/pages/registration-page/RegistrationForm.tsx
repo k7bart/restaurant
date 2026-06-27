@@ -5,16 +5,16 @@ import { checkEmailUsed } from "../../services/user/user";
 import { capitalize } from "../../utils/stringUtils";
 import * as yup from "yup";
 
-import Button from "../../components/buttons/Button/Button";
+import Button from "../../components/buttons/button/Button";
 import CustomLink from "../../components/links/custom-link/CustomLink";
-import EmailInput from "../../components/Inputs/EmailInput";
+import EmailInput from "../../components/inputs/EmailInput";
 import Form from "../../components/form/Form";
-import Input from "../../components/Inputs/Input/Input";
+import Input from "../../components/inputs/input/Input";
 import LabeledCheckbox from "../../components/labeled-checkbox/LabeledCheckbox";
-import NameInput from "../../components/Inputs/NameInput";
-import PhoneInput from "../../components/Inputs/PhoneInput";
-import PasswordInput from "../../components/Inputs/PasswordInput";
-import SurnameInput from "../../components/Inputs/SurnameInput";
+import NameInput from "../../components/inputs/NameInput";
+import PhoneInput from "../../components/inputs/PhoneInput";
+import PasswordInput from "../../components/inputs/PasswordInput";
+import SurnameInput from "../../components/inputs/SurnameInput";
 import Text from "../../components/text/Text";
 
 import { RegistrationData } from "@k7bart/restaurant-shared-types";

@@ -1,7 +1,7 @@
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
+import ContentSection from "../../components/page-sructure/content-section/ContentSection";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
 import ReservationForm from "./ReservationForm";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 import { reservationPageBackgroundUrl } from "../../constants/backgroundUrls";
 
 const title = "Reservation";

@@ -6,16 +6,16 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { profilePageBackgroundUrl } from "../../constants/backgroundUrls";
 
 import Accordion from "../../components/accordion/Accordion";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
+import ContentSection from "../../components/page-sructure/content-section/ContentSection";
+import ContentSectionNav from "../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import DeliveryAddresses from "./delivery-addresses/DeliveryAddresses";
 import OrderHistory from "./order-history/OrderHistory";
 import PersonalData from "./PersonalData";
 import Referral from "./referral/Referral";
 import Reservations from "./reservations/Reservations";
 import Tickets from "./tickets/Tickets";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 
 import styles from "./ProfilePage.module.scss";
 

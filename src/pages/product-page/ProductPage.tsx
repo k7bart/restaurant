@@ -5,18 +5,18 @@ import { IoIosArrowBack } from "react-icons/io";
 import { menu } from "../../state";
 
 import Amount from "./amount/Amount";
-import Button from "../../components/buttons/Button/Button";
+import Button from "../../components/buttons/button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
-import CartLink from "../../components/NavBar/CartLink";
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import CartLink from "../../components/nav-bar/CartLink";
+import ContentSection from "../../components/page-sructure/content-section/ContentSection";
+import ContentSectionNav from "../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import Cover from "../../components/half-page-cover/Cover";
 import CustomLink from "../../components/links/custom-link/CustomLink";
 import Discount from "./discount/Discount";
 import Nutrients from "./nutrients/Nutrients";
 import Price from "./price/Price";
-import Section from "../../components/page-sructure/Section/Section";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import Section from "../../components/page-sructure/section/Section";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 
 import styles from "./ProductPage.module.scss";
 

@@ -4,7 +4,7 @@ import { menu } from "../../../state";
 import debounce from "../../../utils/debounce";
 
 import Category from "./Category/Category";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
+import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import Loader from "../../../components/loader/Loader";
 import MenuNavigation from "./menu-navigation/MenuNavigation";
 import Pill from "../../../components/pill/Pill";

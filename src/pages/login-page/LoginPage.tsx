@@ -1,7 +1,7 @@
-import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
+import ContentSection from "../../components/page-sructure/content-section/ContentSection";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
 import LoginForm from "./login-form/LoginForm";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
 
 const LoginPage = () => {
     return (

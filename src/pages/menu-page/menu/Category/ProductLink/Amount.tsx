@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useProductInCart } from "../../../../../hooks/useProductInCart";
 
-import NumInput from "../../../../../components/Inputs/NumInput/NumInput";
+import NumInput from "../../../../../components/inputs/num-input/NumInput";
 
 import styles from "./ProductLink.module.scss";
 

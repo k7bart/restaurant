@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState, Suspense } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
-import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
-import { eventService } from "../../../services/event-service.js";
+import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
+import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
+import { eventService } from "../../services/event-service.js";
 
 export const EventContext = createContext();
 

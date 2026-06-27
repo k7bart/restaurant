@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { updateAmountInCart, removeFromCart } from "../../../store";
 import { getTotalPrice } from "../../../utils/priceUtils";
 import { useAppDispatch } from "../../../hooks";
-import CloseButton from "../../../components/buttons/CloseButton/CloseButton";
-import NumInput from "../../../components/Inputs/NumInput/NumInput";
+import CloseButton from "../../../components/buttons/close-button/CloseButton";
+import NumInput from "../../../components/inputs/num-input/NumInput";
 
 import styles from "./DishPreview.module.scss";
 

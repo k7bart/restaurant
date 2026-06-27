@@ -6,9 +6,9 @@ import { staff } from "../../../state";
 import { useEventData } from "../useEventData";
 import { eventService } from "../../../services/event-service.js";
 
-import Button from "../../../components/buttons/Button/Button";
-import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
-import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import Button from "../../../components/buttons/button/Button";
+import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
+import ContentSectionNav from "../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import CustomNavLink from "../../../components/links/custom-nav-link/CustomNavLink";
 import DetailsRow from "./special-guest/DetailsRow";
 import Row from "../../../components/row/Row";

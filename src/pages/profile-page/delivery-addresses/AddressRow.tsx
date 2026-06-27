@@ -4,8 +4,8 @@ import { removeAddress, setCurrentAddress } from "../../../store";
 import { useAppDispatch } from "../../../hooks";
 import { addressToStr } from "../../../utils/addressUtils";
 
-import CloseButton from "../../../components/buttons/CloseButton/CloseButton";
-import Icon from "../../../components/Icon/Icon";
+import CloseButton from "../../../components/buttons/close-button/CloseButton";
+import Icon from "../../../components/icon/Icon";
 import RemoveAddressPopup from "./RemoveAddressPopup";
 import Row from "../../../components/row/Row";
 import Text from "../../../components/text/Text";
