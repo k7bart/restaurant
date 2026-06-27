@@ -3,7 +3,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "lib": ["dom", "esnext"],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
