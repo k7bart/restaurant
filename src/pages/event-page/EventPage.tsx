@@ -1,36 +1,42 @@
 import { createContext, useEffect, useState, Suspense } from "react";
 import { Outlet, useParams } from "react-router-dom";
+import type { Event } from "@k7bart/restaurant-shared-types";
+
 import CoverSection from "../../components/page-sructure/cover-section/CoverSection";
 import TwoSectionsPage from "../../components/page-sructure/two-sections-page/TwoSectionsPage";
-import { eventService } from "../../services/event-service.js";
+import { eventService } from "../../services/event-service";
 
-export const EventContext = createContext();
+export const EventContext = createContext<Event | null>(null);
 
 const EventPage = () => {
-    const { eventId } = useParams();
-    const [eventData, setEventData] = useState(null);
+    const { eventId } = useParams<{ eventId: string }>();
+    const [eventData, setEventData] = useState<Event | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setLoading(true);
-        setError(null);
+        if (!eventId) return;
 
-        eventService
-            .getEventByName(eventId)
-            .then((res) => {
+        const fetchEvent = async () => {
+            setLoading(true);
+            setError(null);
+
+            try {
+                const res = await eventService.getEventByName(eventId);
                 setEventData(res.data);
-                setLoading(false);
-            })
-            .catch((err) => {
+            } catch (err) {
                 console.error("Failed to fetch event:", err);
                 setError("Failed to load event. Please try again later.");
+            } finally {
                 setLoading(false);
-            });
+            }
+        };
+
+        fetchEvent();
     }, [eventId]);
 
-    if (loading) return <p>Loading...</p>; // TODO: replace with a proper loading UI
-    if (error) return <p>{error}</p>; // TODO: replace with a proper error UI
+    if (loading) return <p>Loading...</p>;
+    if (error || !eventData) return <p>{error ?? "Event not found"}</p>;
 
     return (
         <EventContext.Provider value={eventData}>

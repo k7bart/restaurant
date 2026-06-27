@@ -1,5 +1,6 @@
-import { useEventData } from "../useEventData";
 import { IoIosArrowForward } from "react-icons/io";
+
+import { useEventData } from "../useEventData";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import EventReservationForm from "./EventReservationForm";

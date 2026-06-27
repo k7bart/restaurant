@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 import { staff } from "../../../state";
 import { useEventData } from "../useEventData";
-import { eventService } from "../../../services/event-service.js";
+import { eventService } from "../../../services/event-service";
 
 import Button from "../../../components/buttons/button/Button";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
@@ -15,6 +15,8 @@ import Row from "../../../components/row/Row";
 import SpecialGuest from "./special-guest/SpecialGuest";
 import Text from "../../../components/text/Text";
 
+import type { EventListItem } from "../../../types/event";
+
 import styles from "./EventDetails.module.scss";
 
 const EventDetails = () => {
@@ -22,13 +24,19 @@ const EventDetails = () => {
     const { ageLimit, date, language, menu, name, price, specialGuest } = event;
     const guest = staff.find((person) => person.name === specialGuest);
 
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<EventListItem[]>([]);
 
     useEffect(() => {
-        eventService
-            .getEvents()
-            .then((response) => setEvents(response.data))
-            .catch((error) => console.error("Failed to fetch events:", error));
+        const fetchEvents = async () => {
+            try {
+                const response = await eventService.getEvents();
+                setEvents(response.data);
+            } catch (error) {
+                console.error("Failed to fetch events:", error);
+            }
+        };
+
+        fetchEvents();
     }, []);
 
     return (
@@ -37,9 +45,12 @@ const EventDetails = () => {
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
         >
             <ContentSectionNav justifyContent="contentEvenly">
-                {events.map((event) => (
-                    <CustomNavLink to={`/events/${event.name}`} key={event._id}>
-                        {event.title}
+                {events.map((eventItem) => (
+                    <CustomNavLink
+                        to={`/events/${eventItem.name}`}
+                        key={eventItem._id}
+                    >
+                        {eventItem.title}
                     </CustomNavLink>
                 ))}
             </ContentSectionNav>
@@ -71,10 +82,10 @@ const EventDetails = () => {
                         </Row>
                     )}
                     <DetailsRow label="Location" value="Lviv" />
-                    <DetailsRow label="Language" value={language} />
+                    <DetailsRow label="Language" value={language ?? ""} />
                 </div>
 
-                {menu.length > 0 && (
+                {menu && menu.length > 0 && (
                     <div>
                         <h3>Menu</h3>
                         {menu.map((item) => (

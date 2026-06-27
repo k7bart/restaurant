@@ -19,11 +19,11 @@ const OptionsButtons = ({ label, onClick, options, selectedOption }: Props) => (
         )}
 
         <div className={styles.optionsButtons}>
-            {options.map(({ option, label: optionLabel }) => (
+            {options.map(({ value, label: optionLabel }) => (
                 <Button
-                    key={option}
-                    isActive={selectedOption === option}
-                    onClick={() => selectedOption !== option && onClick(option)}
+                    key={value}
+                    isActive={selectedOption === value}
+                    onClick={() => selectedOption !== value && onClick(value)}
                 >
                     {optionLabel}
                 </Button>

@@ -1,23 +1,25 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { capitalize } from "../../../utils/stringUtils";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { addTicket } from "../../../store";
 
 import * as yup from "yup";
 
 import dayjs from "dayjs";
 import Button from "../../../components/buttons/button/Button";
 import EmailInput from "../../../components/inputs/EmailInput";
-import Form from "../../../components/form/Form";
+import formStyles from "../../../components/form/Form.module.scss";
 import NameInput from "../../../components/inputs/NameInput";
 import Notice from "../../../components/notice/Notice";
 import NumberOfAdultsInput from "../../../components/inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../../components/inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../components/inputs/PhoneInput";
-import { addTicket } from "../../../store";
+
+import type { Event, Ticket } from "@k7bart/restaurant-shared-types";
+import Form from "../../../components/form/Form";
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -49,69 +51,80 @@ const reservationSchema = yup.object({
         ),
 });
 
-const EventReservationForm = ({ event }) => {
-    const user = useSelector((state) => state.user) || null;
-    const dispatch = useDispatch();
-    const [ticket, setTicket] = useState(null);
+type ReservationFormValues = yup.InferType<typeof reservationSchema>;
 
-    const methods = useForm({
+const EventReservationForm = ({ event }: { event: Event }) => {
+    const user = useAppSelector((state) => state.user);
+    const dispatch = useAppDispatch();
+    const [ticket, setTicket] = useState<Ticket | null>(null);
+
+    const userName = user ? `${user.name} ${user.surname ?? ""}`.trim() : "";
+
+    const methods = useForm<ReservationFormValues>({
         resolver: yupResolver(reservationSchema),
         defaultValues: {
-            name: user ? user.fullName : "",
-            numberOfAdults: "",
+            name: userName,
             email: user ? user.email : "",
             phone: user ? user.phone : "",
-            numberOfChildren: "",
         },
     });
 
     const onSubmit = ({
-        name,
-        email,
         numberOfAdults: adults,
         numberOfChildren: children,
-        phone,
-    }) => {
-        const ticket = {
-            id: 123456, // fix id number
-            eventId: event.id,
-            guests: { adults, children },
-            owner: { name: capitalize(name), email, phone },
+    }: ReservationFormValues) => {
+        const newTicket: Ticket = {
+            id: crypto.randomUUID(),
+            event: {
+                id: event.id,
+                title: event.title,
+                date: new Date(event.date),
+            },
+            guests: {
+                adults,
+                children: children || undefined,
+            },
         };
 
-        user && dispatch(addTicket(ticket));
+        if (user) {
+            dispatch(addTicket(newTicket));
+        }
 
-        setTicket(ticket);
+        setTicket(newTicket);
 
         methods.reset();
     };
 
-    return ticket ? (
-        <Notice>
-            <h4>Success!</h4>
-            <p className="large">
-                We are waiting for you&nbsp;
-                {dayjs(event.date).format("DD/MM/YYYY")}
-                &nbsp;at&nbsp;
-                {dayjs(event.date).format("HH:mm")}
-            </p>
-            <div className="buttons-container">
-                <Button
-                    size="small"
-                    color="transparent"
-                    onClick={() => setTicket(null)}
-                >
-                    Buy one more
-                </Button>
-
-                <Link to="/profile#tickets">
-                    <Button size="small" color="wisteria">
-                        Check your tickets
+    if (ticket) {
+        return (
+            <Notice>
+                <h4>Success!</h4>
+                <p className="large">
+                    We are waiting for you&nbsp;
+                    {dayjs(event.date).format("DD/MM/YYYY")}
+                    &nbsp;at&nbsp;
+                    {dayjs(event.date).format("HH:mm")}
+                </p>
+                <div className="buttons-container">
+                    <Button
+                        size="small"
+                        color="transparent"
+                        onClick={() => setTicket(null)}
+                    >
+                        Buy one more
                     </Button>
-                </Link>
-            </div>
-        </Notice>
-    ) : (
+
+                    <Link to="/profile#tickets">
+                        <Button size="small" color="wisteria">
+                            Check your tickets
+                        </Button>
+                    </Link>
+                </div>
+            </Notice>
+        );
+    }
+
+    return (
         <FormProvider {...methods}>
             <Form onSubmit={onSubmit}>
                 {!user && (

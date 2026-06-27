@@ -1,9 +1,8 @@
-import PropTypes from "prop-types";
-
 import Row from "../../../../components/row/Row";
 import Text from "../../../../components/text/Text";
+import type { Option } from "../../../../types/Option";
 
-const DetailsRow = ({ label, value }) => (
+const DetailsRow = ({ label, value }: Option) => (
     <Row>
         <Text size="large">{label}</Text>
         <Text color="white" size="large">
@@ -11,10 +10,5 @@ const DetailsRow = ({ label, value }) => (
         </Text>
     </Row>
 );
-
-DetailsRow.propTypes = {
-    label: PropTypes.string,
-    value: PropTypes.string,
-};
 
 export default DetailsRow;
