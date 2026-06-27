@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import PropTypes from "prop-types";
 import { FormProvider, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -52,10 +51,6 @@ const AddAddressPopup = ({ onClose }: { onClose: () => void }) => {
             {/* TODO: add map */}
         </Popup>
     );
-};
-
-AddAddressPopup.propTypes = {
-    onClose: PropTypes.func.isRequired,
 };
 
 export default AddAddressPopup;

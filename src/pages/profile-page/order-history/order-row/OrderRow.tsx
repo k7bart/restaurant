@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { addressToStr } from "../../../../utils/addressUtils";
@@ -42,16 +41,6 @@ const OrderRow = ({ order }: { order: Order }) => {
             <ButtonWithIcon icon={<FaCartArrowDown />} onClick={handleClick} />
         </Row>
     );
-};
-OrderRow.propTypes = {
-    order: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        date: PropTypes.string.isRequired,
-        amount: PropTypes.number.isRequired,
-        address: PropTypes.string.isRequired,
-        orderedProducts: PropTypes.array.isRequired,
-    }).isRequired,
-    onClick: PropTypes.func,
 };
 
 export default OrderRow;
