@@ -1,9 +1,8 @@
+import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
 import { getTotalPrice } from "../../../utils/priceUtils";
-
-import NavLinkComponent from "../links/NavLinkComponent/NavLinkComponent";
-import { useRef } from "react";
+import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import Tooltip from "../tooltip/Tooltip";
 
 const CartLink = () => {
@@ -16,19 +15,19 @@ const CartLink = () => {
             getTotalPrice(
                 product.price,
                 product.discountPercent,
-                product.amount
+                product.amount,
             ),
-        0
+        0,
     );
 
     if (total === 0) return null;
 
     return (
         <>
-            <NavLinkComponent ref={cartRef} to="/cart">
+            <CustomNavLink ref={cartRef} to="/cart">
                 <FaShoppingCart />
                 {"$" + total.toFixed(2)}
-            </NavLinkComponent>
+            </CustomNavLink>
             <Tooltip targetRef={cartRef} text="View cart" />
         </>
     );

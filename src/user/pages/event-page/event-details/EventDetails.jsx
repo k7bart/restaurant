@@ -9,8 +9,8 @@ import { eventService } from "../../../../services/event-service.js";
 import Button from "../../../../common/components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import ContentSectionNav from "../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
+import CustomNavLink from "../../../components/links/custom-nav-link/CustomNavLink";
 import DetailsRow from "./special-guest/DetailsRow";
-import NavLinkComponent from "../../../components/links/NavLinkComponent/NavLinkComponent";
 import Row from "../../../../common/components/Row/Row";
 import SpecialGuest from "./special-guest/SpecialGuest";
 import Text from "../../../components/text/Text";
@@ -38,12 +38,9 @@ const EventDetails = () => {
         >
             <ContentSectionNav justifyContent="contentEvenly">
                 {events.map((event) => (
-                    <NavLinkComponent
-                        to={`/events/${event.name}`}
-                        key={event._id}
-                    >
+                    <CustomNavLink to={`/events/${event.name}`} key={event._id}>
                         {event.title}
-                    </NavLinkComponent>
+                    </CustomNavLink>
                 ))}
             </ContentSectionNav>
 

@@ -2,9 +2,7 @@ import classNames from "classnames";
 import { capitalize } from "../../../../../utils/stringUtils";
 import { menu } from "../../../../../state";
 import ContentSectionNav from "../../../../components/page-sructure/ContentSection/ContentSectionNav/ContentSectionNav";
-
-import styles from "../../../../components/links/NavLinkComponent/NavLinkComponent.module.scss";
-
+import styles from "../../../../components/links/custom-nav-link/CustomNavLink.module.scss";
 import type { Category } from "@k7bart/restaurant-shared-types";
 
 type MenuLinkProps = {

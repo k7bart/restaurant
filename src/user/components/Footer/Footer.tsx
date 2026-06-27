@@ -2,14 +2,14 @@ import { type ReactNode } from "react";
 import ExternalLinkComponent from "../links/ExternalLinkComponent/ExternalLinkComponent";
 import LinkComponent from "../links/LinkComponent/LinkComponent";
 import Logo from "../../../common/components/Logo/Logo";
-import NavLinkComponent from "../links/NavLinkComponent/NavLinkComponent";
+import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import styles from "./Footer.module.scss";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 
-const links = [
+const LINKS = [
     { to: "/login", text: "Login" },
     { to: "/registration", text: "Register" },
     { to: "/profile", text: "Profile" },
@@ -21,10 +21,10 @@ const links = [
     { to: "/error", text: "Error" },
 ];
 
-const navLinks: ReactNode = links.map(({ to, text }) => (
-    <NavLinkComponent to={to} key={to}>
+const NAV_LINKS: ReactNode = LINKS.map(({ to, text }) => (
+    <CustomNavLink to={to} key={to}>
         {text}
-    </NavLinkComponent>
+    </CustomNavLink>
 ));
 
 const Footer = () => {
@@ -53,7 +53,7 @@ const Footer = () => {
                 </LinkComponent>
             </div>
 
-            <div className="container">{navLinks}</div>
+            <div className="container">{NAV_LINKS}</div>
 
             <div>
                 <LinkComponent to="https://www.instagram.com" target="_blank">
