@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { capitalize } from "../../../../../utils/stringUtils";
 import Amount from "./Amount";
-import Badge from "../../../../../components/Badge/Badge";
+import Badge from "../../../../../components/badge/Badge";
 import Photo from "./Photo/Photo";
 import Price from "./Price/Price";
 import Title from "./Title/Title";
