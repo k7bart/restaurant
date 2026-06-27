@@ -3,16 +3,16 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../utils/stringUtils";
-import { combineDateTime } from "../../../utils/timeUtils";
+import { combineDateTime } from "../../utils/timeUtils";
 import { subDays, addMonths } from "date-fns";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { addReservation } from "../../../store";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { addReservation } from "../../store";
 import { timeSchema } from "../../components/Inputs/yupInputsSchemas";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
 
-import Button from "../../../common/components/buttons/Button/Button";
+import Button from "../../components/buttons/Button/Button";
 import CustomLink from "../../components/links/custom-link/CustomLink";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import classNames from "classnames";
 import { Controller, useFormContext } from "react-hook-form";
-import { filterTime } from "../../../utils/timeUtils";
+import { filterTime } from "../../utils/timeUtils";
 
 import Text from "../text/Text";
 

@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { useProductInCart } from "../../../hooks/useProductInCart";
+import { useProductInCart } from "../../hooks/useProductInCart";
 import { IoIosArrowBack } from "react-icons/io";
-import { menu } from "../../../state";
+import { menu } from "../../state";
 
 import Amount from "./amount/Amount";
-import Button from "../../../common/components/buttons/Button/Button";
+import Button from "../../components/buttons/Button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";
@@ -25,7 +25,7 @@ const ProductPage = () => {
 
     const product = useMemo(() => {
         const categoryData = menu.find((c) => c.name === category);
-        return categoryData?.products.find((p) => p.id === productId);
+        return categoryData?.dishes.find((d) => d.id === productId);
     }, [category, productId]);
 
     if (!product) return;

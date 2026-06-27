@@ -1,4 +1,4 @@
-import { registrationsPageBackgroundUrl } from "../../../constants/backgroundUrls";
+import { registrationsPageBackgroundUrl } from "../../constants/backgroundUrls";
 
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";

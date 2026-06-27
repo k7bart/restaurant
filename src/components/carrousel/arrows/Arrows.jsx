@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./Arrows.module.scss";
-import ButtonWithIcon from "../../../../common/components/buttons/ButtonWithIcon/ButtonWithIcon";
+import ButtonWithIcon from "../../buttons/ButtonWithIcon/ButtonWithIcon";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const Arrows = ({ onClick }) => {

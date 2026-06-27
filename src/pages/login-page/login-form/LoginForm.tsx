@@ -1,9 +1,9 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { setUser } from "../../../../store";
-import { useAppDispatch } from "../../../../hooks";
+import { setUser } from "../../../store";
+import { useAppDispatch } from "../../../hooks";
 import * as yup from "yup";
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import CustomLink from "../../../components/links/custom-link/CustomLink";
 import EmailInput from "../../../components/Inputs/EmailInput";
 import Form from "../../../components/form/Form";

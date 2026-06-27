@@ -2,7 +2,7 @@ import ContentSection from "../../components/page-sructure/ContentSection/Conten
 import CoverSection from "../../components/page-sructure/CoverSection/CoverSection";
 import ReservationForm from "./ReservationForm";
 import TwoSectionsPage from "../../components/page-sructure/TwoSectionsPage/TwoSectionsPage";
-import { reservationPageBackgroundUrl } from "../../../constants/backgroundUrls";
+import { reservationPageBackgroundUrl } from "../../constants/backgroundUrls";
 
 const title = "Reservation";
 

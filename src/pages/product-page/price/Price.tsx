@@ -1,4 +1,4 @@
-import { getPrice, getTotalPrice } from "../../../../utils/priceUtils";
+import { getPrice, getTotalPrice } from "../../../utils/priceUtils";
 
 import styles from "./Price.module.scss";
 
