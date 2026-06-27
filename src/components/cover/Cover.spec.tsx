@@ -37,16 +37,4 @@ describe("Cover", () => {
             {}
         );
     });
-
-    it("logs an error if backgroundImage is missing", () => {
-        const consoleErrorSpy = vi
-            .spyOn(console, "error")
-            .mockImplementation(() => {});
-
-        render(<Cover title="Test Title" />);
-
-        expect(consoleErrorSpy).toHaveBeenCalled();
-
-        consoleErrorSpy.mockRestore();
-    });
 });

@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
+import cn from "classnames";
 
 import styles from "./Button.module.scss";
 
@@ -18,14 +17,14 @@ const Button = ({
     size = "small",
     color = "wisteria",
     isActive = true,
-    type,
+    type = "button",
     children,
     onClick,
     additionalStyles,
 }: Props) => {
     return (
         <button
-            className={classNames(
+            className={cn(
                 additionalStyles,
                 styles.button,
                 styles[size],
@@ -38,22 +37,6 @@ const Button = ({
             {children}
         </button>
     );
-};
-
-Button.propTypes = {
-    size: PropTypes.string,
-    color: PropTypes.string,
-    isActive: PropTypes.bool,
-    type: PropTypes.string,
-    children: PropTypes.node,
-    onClick: PropTypes.func,
-    additionalStyles: PropTypes.string,
-};
-
-Button.defaultProps = {
-    size: "small",
-    color: "wisteria",
-    type: "button",
 };
 
 export default Button;

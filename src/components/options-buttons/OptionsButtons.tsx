@@ -1,7 +1,7 @@
 import Button from "../buttons/button/Button";
 import Text from "../text/Text";
 import styles from "./OptionsButtons.module.scss";
-import { type Option } from "../../types/Option";
+import { type Option } from "@k7bart/restaurant-shared-types";
 
 type Props = {
     label?: string;

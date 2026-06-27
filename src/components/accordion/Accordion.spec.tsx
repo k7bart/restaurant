@@ -20,17 +20,17 @@ describe("Accordion", () => {
         const content1 = screen.queryByText("Content 1");
         const content2 = screen.queryByText("Content 2");
 
-        expect(content1.className).contains("hidden");
-        expect(content2.className).contains("hidden");
+        expect(content1!.className).contains("hidden");
+        expect(content2!.className).contains("hidden");
 
         await userEvent.click(header1);
-        expect(content1.className).contains("open");
-        expect(content2.className).contains("hidden");
+        expect(content1!.className).contains("open");
+        expect(content2!.className).contains("hidden");
 
         await userEvent.click(header2);
-        expect(content1.className).contains("open");
-        expect(content1.className).not.contains("hidden");
-        expect(content2.className).contains("open");
-        expect(content2.className).not.contains("hidden");
+        expect(content1!.className).contains("open");
+        expect(content1!.className).not.contains("hidden");
+        expect(content2!.className).contains("open");
+        expect(content2!.className).not.contains("hidden");
     });
 });

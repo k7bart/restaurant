@@ -1,4 +1,4 @@
-import { type Option } from "../../types/Option";
+import { Option } from "@k7bart/restaurant-shared-types";
 import OptionsButtons from "../options-buttons/OptionsButtons";
 
 type Props = {

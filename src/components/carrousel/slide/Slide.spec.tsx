@@ -9,11 +9,8 @@ describe("Slide component", () => {
         expect(getByText("Test Content")).toBeInTheDocument();
     });
 
-    it("applies custom styles correctly", () => {
-        const customStyles = { backgroundColor: "red" };
-        const { container } = render(
-            <Slide customStyles={customStyles} slideContent="Test Content" />
-        );
+    it("applies default background styles", () => {
+        const { container } = render(<Slide slideContent="Test Content" />);
         expect(container.firstChild).toHaveStyle(
             "background-color: rgba(0, 0, 0, 0)"
         );
@@ -21,6 +18,6 @@ describe("Slide component", () => {
 
     it("applies default styles correctly", () => {
         const { container } = render(<Slide slideContent="Test Content" />);
-        expect(container.firstChild.className).toContain("slide");
+        expect((container.firstChild as HTMLElement).className).toContain("slide");
     });
 });
