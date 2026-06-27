@@ -10,7 +10,7 @@ import { useAppSelector } from "../../../../hooks";
 import getAddressDefaultValues from "../../../components/Inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
 import getSchema from "./checkoutSchema";
 
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../../components/buttons/Button/Button";
 import ContentSection from "../../../components/page-sructure/ContentSection/ContentSection";
 import DateTimeInputs from "../../../components/Inputs/date-time-inputs/DateTimeInputs";
 import DeliveryAddressInputs from "../../../components/Inputs/address-inputs/DeliveryAddressInputs";
@@ -34,7 +34,8 @@ import type {
 } from "@k7bart/restaurant-shared-types";
 
 interface OrderForm
-    extends Omit<Order, "id" | "customer" | "orderedItems" | "total">,
+    extends
+        Omit<Order, "id" | "customer" | "orderedItems" | "total">,
         Omit<Address, "id" | "isCurrent"> {
     name: string;
     phone: string;
@@ -57,7 +58,7 @@ const Checkout = () => {
 
     const total = getTotalOrderPrice(cart);
     const addressDefaultValues = getAddressDefaultValues(
-        user?.addresses?.find((address) => address.isCurrent)
+        user?.addresses?.find((address) => address.isCurrent),
     );
     const availableAdvanceOrderDay = getAvailableDay();
 
@@ -143,7 +144,7 @@ const Checkout = () => {
                 address,
                 deliveryDateTime: combineDateTime(
                     new Date(date),
-                    new Date(time)
+                    new Date(time),
                 ),
             };
         }

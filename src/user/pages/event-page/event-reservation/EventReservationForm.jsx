@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { capitalize } from "../../../../utils/stringUtils";
+import { capitalize } from "../../../utils/stringUtils";
 
 import * as yup from "yup";
 
 import dayjs from "dayjs";
-import Button from "../../../../common/components/buttons/Button/Button";
+import Button from "../../../../components/buttons/Button/Button";
 import EmailInput from "../../../components/Inputs/EmailInput";
 import Form from "../../../components/form/Form";
 import NameInput from "../../../components/Inputs/NameInput";
@@ -45,7 +45,7 @@ const reservationSchema = yup.object({
     phone: yup
         .string()
         .required(
-            "Please share your phone number. We'll only reach out if we have questions."
+            "Please share your phone number. We'll only reach out if we have questions.",
         ),
 });
 

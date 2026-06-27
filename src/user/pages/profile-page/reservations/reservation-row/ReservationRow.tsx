@@ -2,8 +2,8 @@ import cn from "classnames";
 import dayjs from "dayjs";
 import { dateTimeFormat } from "../../../../../utils/dateUtils";
 
-import Row from "../../../../../common/components/Row/Row";
-import Status from "../../../../../common/components/status/Status";
+import Row from "../../../../../components/Row/Row";
+import Status from "../../../../../components/status/Status";
 import Text from "../../../../components/text/Text";
 
 import styles from "./ReservationRow.module.scss";
@@ -33,7 +33,7 @@ const ReservationRow = ({ reservation }: { reservation: Reservation }) => {
         <Row
             additionalStyles={cn(
                 styles[getDateStatus(dayjs(dateTime))],
-                styles.reservation
+                styles.reservation,
             )}
         >
             <Status additionalStyles={styles.status} status={status} />

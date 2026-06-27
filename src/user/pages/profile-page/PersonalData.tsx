@@ -3,12 +3,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch } from "../../../hooks";
 import { useMe } from "../../../hooks/useMe";
 import { updateUserData } from "../../../store/index";
-import { capitalize } from "../../../utils/stringUtils";
+import { capitalize } from "../../utils/stringUtils";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
 
-import Button from "../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import DateInput from "../../components/Inputs/DateInput";
 import EmailInput from "../../components/Inputs/EmailInput";
 import Form from "../../components/form/Form";

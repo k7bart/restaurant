@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routes from "./AppRoutes";
-import CallMePopup from "./user/components/call-me-popup/CallMePopup";
+import CallMePopup from "./components/call-me-popup/CallMePopup";
 
 const router = createBrowserRouter(routes);
 

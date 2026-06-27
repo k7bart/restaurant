@@ -5,7 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { menu } from "../../../state";
 
 import Amount from "./amount/Amount";
-import Button from "../../../common/components/buttons/Button/Button";
+import Button from "../../../components/buttons/Button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/NavBar/CartLink";
 import ContentSection from "../../components/page-sructure/ContentSection/ContentSection";

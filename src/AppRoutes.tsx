@@ -11,10 +11,10 @@ import {
     ProfileLazyPage,
     RegistrationLazyPage,
     ReservationLazyPage,
-} from "./user/pages/LazyPages";
-import ErrorPage from "./user/pages/error-page/ErrorPage";
-import FrontPage from "./user/pages/front-page/FrontPage";
-import MenuPage from "./user/pages/menu-page/MenuPage";
+} from "./pages/LazyPages";
+import ErrorPage from "./pages/error-page/ErrorPage";
+import FrontPage from "./pages/front-page/FrontPage";
+import MenuPage from "./pages/menu-page/MenuPage";
 
 const routes = [
     {

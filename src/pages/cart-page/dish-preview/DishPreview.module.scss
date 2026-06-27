@@ -1,0 +1,59 @@
+@import "../../../styles/variables.scss";
+
+.dishPreview {
+    width: 100%;
+    position: relative;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > :not(:last-child) {
+        margin-right: 16px;
+    }
+
+    .image {
+        border: 1px solid $border-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 72px;
+        min-width: 90px;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .title {
+        max-width: 225px;
+        flex-grow: 1;
+
+        h4 {
+            transition: 0.3s;
+        }
+
+        h4:hover {
+            color: $wisteria;
+        }
+    }
+
+    .price {
+        position: relative;
+
+        .fullPrice {
+            position: absolute;
+            top: -16px;
+            right: 0;
+            font-size: 14px;
+            font-weight: 100;
+            text-decoration: line-through;
+            color: $text-color-grey;
+        }
+
+        .actualPrice {
+            min-width: 50px;
+            text-align: right;
+        }
+    }
+}

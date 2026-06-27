@@ -6,9 +6,9 @@ import { dateFormat } from "../../../../../utils/dateUtils";
 import { FaCartArrowDown } from "react-icons/fa6";
 import type { Order } from "@k7bart/restaurant-shared-types";
 
-import ButtonWithIcon from "../../../../../common/components/buttons/ButtonWithIcon/ButtonWithIcon";
+import ButtonWithIcon from "../../../../../components/buttons/ButtonWithIcon/ButtonWithIcon";
 import Text from "../../../../components/text/Text";
-import Row from "../../../../../common/components/Row/Row";
+import Row from "../../../../../components/Row/Row";
 
 import styles from "./OrderRow.module.scss";
 

@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import ExternalLinkComponent from "../links/ExternalLinkComponent/ExternalLinkComponent";
 import CustomLink from "../links/custom-link/CustomLink";
-import Logo from "../../../common/components/Logo/Logo";
+import Logo from "../../../components/Logo/Logo";
 import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import styles from "./Footer.module.scss";
 import { FaInstagram } from "react-icons/fa";

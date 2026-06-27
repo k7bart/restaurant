@@ -18,7 +18,7 @@ This skill is intended for workspace-scoped migration work in the restaurant app
    - Confirm the target folder may require normalization, for example `Text` → `text`.
 
 2. Rename the component folder and source file.
-   - Rename `src/user/components/Text` to `src/user/components/text` when appropriate.
+   - Rename `src/components/Text` to `src/components/text` when appropriate.
    - For repositories using lowercase component directories, normalize folder names from PascalCase to lowercase, for example `Popup` → `popup`.
    - Rename `Text.jsx` to `Text.tsx`.
 
