@@ -1,0 +1,8 @@
+@import "../custom-link/CustomLink.module.scss";
+
+.active {
+    color: $wisteria !important;
+    svg {
+        fill: $wisteria !important;
+    }
+}
