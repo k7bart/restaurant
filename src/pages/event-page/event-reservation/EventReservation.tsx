@@ -20,7 +20,7 @@ const EventReservation = () => {
 
                 <IoIosArrowForward />
 
-                <CustomLink to={`/events/${event.name}`}>
+                <CustomLink to={`/events/${event.pathName}`}>
                     {event.title}
                 </CustomLink>
 

@@ -4,11 +4,9 @@ import Icon from "../icon/Icon";
 import Row from "../row/Row";
 import Text from "../text/Text";
 import styles from "./Dropdown.module.scss";
+import { BaseEntity, Option } from "@k7bart/restaurant-shared-types";
 
-type DropdownOption = {
-    id: string | number;
-    text: string;
-};
+type DropdownOption = Option & BaseEntity;
 
 type Props = {
     label?: string;
@@ -59,7 +57,7 @@ const Dropdown = ({
                 onClick={() => setIsOpen((prev) => !prev)}
                 type="button"
             >
-                {selected ? selected.text : placeholder}
+                {selected ? selected.label : placeholder}
             </button>
 
             {isOpen && (
@@ -76,7 +74,7 @@ const Dropdown = ({
                                 </Icon>
                             )}
 
-                            <Text size="medium">{option.text}</Text>
+                            <Text size="medium">{option.label}</Text>
                         </Row>
                     ))}
                 </div>

@@ -7,12 +7,12 @@ import Logo from "../../components/logo/Logo";
 import NavBar from "../../components/nav-bar/NavBar";
 import { eventService } from "../../services/event-service";
 
-import type { EventListItem } from "../../types/event";
+import type { Event } from "@k7bart/restaurant-shared-types";
 
 import styles from "./EventsPage.module.scss";
 
 const EventsPage = () => {
-    const [eventsData, setEventsData] = useState<EventListItem[]>([]);
+    const [eventsData, setEventsData] = useState<Event[]>([]);
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -35,11 +35,10 @@ const EventsPage = () => {
             <Logo additionalStyles={styles.logo} />
             <Carrousel
                 content={eventsData.map((event) => (
-                    <EventPreview key={event._id} event={event} />
+                    <EventPreview key={event.id} event={event} />
                 ))}
                 num={3}
                 dots={false}
-                slideShow={false}
             />
             <NavBar additionalStyles={styles.navbar} />
         </div>

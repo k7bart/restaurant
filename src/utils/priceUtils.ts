@@ -1,4 +1,4 @@
-import type { Dish } from "@k7bart/restaurant-shared-types";
+import type { CartItem } from "@k7bart/restaurant-shared-types";
 
 const getDiscount = (price: number, discountPercent = 0) =>
     price * (discountPercent / 100);
@@ -18,7 +18,7 @@ export const getTotalDiscount = (
     amount = 1
 ) => getDiscount(price, discountPercent) * amount;
 
-export const getTotalOrderPrice = (order: Dish[]) =>
+export const getTotalOrderPrice = (order: CartItem[]) =>
     order.reduce(
         (total, { price, discountPercent = 0, amount }) =>
             total + getTotalPrice(price, discountPercent, amount),

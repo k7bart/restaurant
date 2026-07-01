@@ -17,8 +17,6 @@ import PasswordInput from "../../components/inputs/PasswordInput";
 import SurnameInput from "../../components/inputs/SurnameInput";
 import Text from "../../components/text/Text";
 
-import { RegistrationData } from "@k7bart/restaurant-shared-types";
-
 const registrationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
     surname: yup.string().optional(),
@@ -40,10 +38,13 @@ const registrationSchema = yup.object({
         .string()
         .oneOf([yup.ref("password")], "Passwords must match")
         .required("Please confirm your password"),
+    rememberMe: yup.boolean().optional(),
 });
 
+type RegistrationFormValues = yup.InferType<typeof registrationSchema>;
+
 const RegistrationForm = () => {
-    const methods = useForm<RegistrationData>({
+    const methods = useForm<RegistrationFormValues>({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
             name: "",
@@ -59,11 +60,10 @@ const RegistrationForm = () => {
     const {
         reset,
         setError,
-        clearErrors,
         formState: { errors },
     } = methods;
 
-    const onSubmit = (data: RegistrationData) => {
+    const onSubmit = (data: RegistrationFormValues) => {
         const formattedData = {
             ...data,
             name: capitalize(data.name),
@@ -78,8 +78,9 @@ const RegistrationForm = () => {
     }: FocusEvent<HTMLInputElement>) => {
         if (errors.email) return;
 
-        (await checkEmailUsed(target.value)) &&
+        if (await checkEmailUsed(target.value)) {
             setError("email", { message: "Email is already registered" });
+        }
     };
 
     return (

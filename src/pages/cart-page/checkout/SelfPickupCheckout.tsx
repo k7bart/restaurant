@@ -5,34 +5,51 @@ import PaymentOptions from "../../../components/payment-options/PaymentOptions";
 import { addresses } from "../../../state";
 import { SELF_PICKUP_PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
 
-import type { PaymentMethod } from "@k7bart/restaurant-shared-types";
+import type { Address, PaymentMethod } from "@k7bart/restaurant-shared-types";
+
+type AddressRow =
+    `${Address["city"]}, ${Address["street"]} ${Address["house"]}${Address["apartment"] extends string ? `/${Address["apartment"]}` : ""}`;
+
+const formatAddressToString = (address: Address): AddressRow => {
+    return `${address.city}, ${address.street} ${address.house}${address.apartment ? "/" + address.apartment : ""}`;
+};
 
 type Props = {
     handlePaymentMethod: (method: PaymentMethod) => void;
-    handlePickupAddress: (address: { id: string; text: string }) => void;
+    handlePickupAddressId: (addressId: Address["id"]) => void;
     selectedOption: PaymentMethod;
 };
 
 const SelfPickupCheckout = ({
     handlePaymentMethod,
-    handlePickupAddress,
+    handlePickupAddressId,
     selectedOption,
-}: Props) => (
-    <>
-        <Dropdown
-            label="Pickup address*"
-            onSelect={handlePickupAddress}
-            options={addresses}
-        />
+}: Props) => {
+    const addressesOptions = addresses.map((address) => ({
+        id: address.id,
+        label: formatAddressToString(address),
+        value: address.id,
+    }));
 
-        <HorizontalDevider />
+    return (
+        <>
+            <Dropdown
+                label="Pickup address*"
+                onSelect={(option) => handlePickupAddressId(option.id)}
+                options={addressesOptions}
+            />
 
-        <PaymentOptions
-            onClick={handlePaymentMethod}
-            options={SELF_PICKUP_PAYMENT_OPTIONS}
-            selectedOption={selectedOption}
-        />
-    </>
-);
+            <HorizontalDevider />
+
+            <PaymentOptions
+                onClick={(value) =>
+                    handlePaymentMethod(value as PaymentMethod)
+                }
+                options={SELF_PICKUP_PAYMENT_OPTIONS}
+                selectedOption={selectedOption}
+            />
+        </>
+    );
+};
 
 export default SelfPickupCheckout;

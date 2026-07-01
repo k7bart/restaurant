@@ -55,7 +55,7 @@ const CallMePopup = () => {
         },
     });
 
-    const onSubmit = (data: User["phone"]) => console.log(data);
+    const onSubmit = (data: Pick<User, "phone">) => console.log(data);
 
     if (!showModal) return null;
 

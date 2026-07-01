@@ -15,16 +15,17 @@ import Row from "../../../components/row/Row";
 import SpecialGuest from "./special-guest/SpecialGuest";
 import Text from "../../../components/text/Text";
 
-import type { EventListItem } from "../../../types/event";
+import type { Event } from "@k7bart/restaurant-shared-types";
 
 import styles from "./EventDetails.module.scss";
 
 const EventDetails = () => {
     const event = useEventData();
-    const { ageLimit, date, language, menu, name, price, specialGuest } = event;
+    const { ageLimit, date, language, menu, pathName, price, specialGuest } =
+        event;
     const guest = staff.find((person) => person.name === specialGuest);
 
-    const [events, setEvents] = useState<EventListItem[]>([]);
+    const [events, setEvents] = useState<Event[]>([]);
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -47,8 +48,8 @@ const EventDetails = () => {
             <ContentSectionNav justifyContent="contentEvenly">
                 {events.map((eventItem) => (
                     <CustomNavLink
-                        to={`/events/${eventItem.name}`}
-                        key={eventItem._id}
+                        to={`/events/${eventItem.pathName}`}
+                        key={eventItem.id}
                     >
                         {eventItem.title}
                     </CustomNavLink>
@@ -57,7 +58,7 @@ const EventDetails = () => {
 
             <div className={styles.eventDetails}>
                 <span className={styles.mainInfo}>
-                    <Link to={`/events/${name}/reservation`}>
+                    <Link to={`/events/${pathName}/reservation`}>
                         <Button>Book a spot</Button>
                     </Link>
                     {ageLimit && <h4>{ageLimit}+</h4>}
@@ -89,9 +90,9 @@ const EventDetails = () => {
                     <div>
                         <h3>Menu</h3>
                         {menu.map((item) => (
-                            <Row key={item}>
+                            <Row key={item.id}>
                                 <Text color="white" size="large">
-                                    {item}
+                                    {item.name}
                                 </Text>
                             </Row>
                         ))}
@@ -100,7 +101,7 @@ const EventDetails = () => {
 
                 {guest && <SpecialGuest guest={guest} />}
 
-                <Link to={`/events/${name}/reservation`}>
+                <Link to={`/events/${pathName}/reservation`}>
                     <Button additionalStyles={styles.button} size="large">
                         Book a spot
                     </Button>

@@ -11,7 +11,6 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import Button from "../../../components/buttons/button/Button";
 import EmailInput from "../../../components/inputs/EmailInput";
-import formStyles from "../../../components/form/Form.module.scss";
 import NameInput from "../../../components/inputs/NameInput";
 import Notice from "../../../components/notice/Notice";
 import NumberOfAdultsInput from "../../../components/inputs/NumberOfAdultsInput";
@@ -75,11 +74,7 @@ const EventReservationForm = ({ event }: { event: Event }) => {
     }: ReservationFormValues) => {
         const newTicket: Ticket = {
             id: crypto.randomUUID(),
-            event: {
-                id: event.id,
-                title: event.title,
-                date: new Date(event.date),
-            },
+            event,
             guests: {
                 adults,
                 children: children || undefined,

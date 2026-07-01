@@ -28,6 +28,8 @@ const ProductPage = () => {
         return categoryData?.dishes.find((d) => d.id === productId);
     }, [category, productId]);
 
+    const { amount, handleAmountChange } = useProductInCart(product!);
+
     if (!product) return;
 
     const {
@@ -39,8 +41,6 @@ const ProductPage = () => {
         photos,
         price,
     } = product;
-
-    const { amount, handleAmountChange } = useProductInCart(product, category);
 
     const getSlides = (photos: string[]): JSX.Element[] =>
         photos.map((photo, i) => (

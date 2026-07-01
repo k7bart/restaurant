@@ -1,6 +1,6 @@
+import { type Option } from "@k7bart/restaurant-shared-types";
 import Row from "../../../../components/row/Row";
 import Text from "../../../../components/text/Text";
-import type { Option } from "../../../../types/Option";
 
 const DetailsRow = ({ label, value }: Option) => (
     <Row>

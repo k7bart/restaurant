@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, type DefaultValues } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { combineDateTime } from "../../../utils/timeUtils";
 import { getAvailableDay } from "../../../utils/dateUtils";
 import { getTotalOrderPrice } from "../../../utils/priceUtils";
 import { PAYMENT_OPTIONS } from "../../../components/payment-options/paymentOptionsConstants";
 import { useAppSelector } from "../../../hooks";
+import { addresses } from "../../../state";
 
 import getAddressDefaultValues from "../../../components/inputs/address-inputs/address-yup-utils/getAddressDefaultValues";
-import getSchema from "./checkoutSchema";
+import getSchema, { type CheckoutFormValues } from "./checkoutSchema";
 
 import Button from "../../../components/buttons/button/Button";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
@@ -27,28 +28,29 @@ import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Checkout.module.scss";
 
-import type { Address, Order } from "@k7bart/restaurant-shared-types";
+import type { Address, Option, Order } from "@k7bart/restaurant-shared-types";
 import type {
     DeliveryMethod,
     PaymentMethod,
 } from "@k7bart/restaurant-shared-types";
 
 interface OrderForm
-    extends Omit<Order, "id" | "customer" | "orderedItems" | "total">,
+    extends
+        Omit<Order, "id" | "customer" | "orderedItems" | "total">,
         Omit<Address, "id" | "isCurrent"> {
     name: string;
     phone: string;
     surname: string;
     callForDetails: boolean;
     orderComment: string;
-    date: string;
-    time: string;
+    date: Date;
+    time: Date;
 }
 
-const DELIVERY_OPTIONS = [
-    { option: "delivery", label: "Delivery" },
-    { option: "selfPickup", label: "Self pickup" },
-    { option: "advance", label: "Order in advance" },
+const DELIVERY_OPTIONS: Option[] = [
+    { value: "delivery", label: "Delivery" },
+    { value: "selfPickup", label: "Self pickup" },
+    { value: "advance", label: "Order in advance" },
 ];
 
 const Checkout = () => {
@@ -56,29 +58,30 @@ const Checkout = () => {
     const user = useAppSelector((state) => state.user);
 
     const total = getTotalOrderPrice(cart);
-    const addressDefaultValues = getAddressDefaultValues(
-        user?.addresses?.find((address) => address.isCurrent)
-    );
     const availableAdvanceOrderDay = getAvailableDay();
 
     const [deliveryMethod, setDeliveryMethod] =
         useState<DeliveryMethod>("delivery");
     const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("online");
-    const [pickupAddress, setPickupAddress] = useState<{
-        id: string;
-        text: string;
-    } | null>(null);
+    const [pickupAddressId, setPickupAddressId] = useState<
+        Address["id"] | undefined
+    >(undefined);
+    const pickupAddress = addresses.find(
+        (address) => address.id === pickupAddressId,
+    );
 
-    const methods = useForm({
+    const defaultValues: DefaultValues<CheckoutFormValues> = {
+        ...getAddressDefaultValues(
+            user?.addresses?.find((address) => address.isCurrent),
+        ),
+        date: availableAdvanceOrderDay,
+        name: user?.name || "",
+        phone: user?.phone || "",
+    };
+
+    const methods = useForm<CheckoutFormValues>({
         resolver: yupResolver(getSchema(deliveryMethod)),
-        defaultValues: {
-            ...addressDefaultValues,
-            date: availableAdvanceOrderDay,
-            deliveryMethod: "delivery",
-            name: user?.name || "",
-            paymentMethod: "online",
-            phone: user?.phone || "",
-        },
+        defaultValues,
     });
 
     const createPayload = (data: OrderForm): Order => {
@@ -98,8 +101,6 @@ const Checkout = () => {
             floor,
             apartment,
             intercom,
-            deliveryMethod,
-            paymentMethod,
         } = data;
 
         const commonInfo = {
@@ -143,7 +144,7 @@ const Checkout = () => {
                 address,
                 deliveryDateTime: combineDateTime(
                     new Date(date),
-                    new Date(time)
+                    new Date(time),
                 ),
             };
         }
@@ -165,7 +166,9 @@ const Checkout = () => {
                 <Form onSubmit={onSubmit}>
                     <OptionsButtons
                         label="Delivery method"
-                        onClick={setDeliveryMethod}
+                        onClick={(value) =>
+                            setDeliveryMethod(value as DeliveryMethod)
+                        }
                         options={DELIVERY_OPTIONS}
                         selectedOption={deliveryMethod}
                     />
@@ -195,7 +198,7 @@ const Checkout = () => {
 
                             <SelfPickupCheckout
                                 handlePaymentMethod={setPaymentMethod}
-                                handlePickupAddress={setPickupAddress}
+                                handlePickupAddressId={setPickupAddressId}
                                 selectedOption={paymentMethod}
                             />
                         </>
@@ -216,7 +219,9 @@ const Checkout = () => {
                             <HorizontalDevider />
 
                             <PaymentOptions
-                                onClick={setPaymentMethod}
+                                onClick={(value) =>
+                                    setPaymentMethod(value as PaymentMethod)
+                                }
                                 options={PAYMENT_OPTIONS}
                                 selectedOption={paymentMethod}
                             />

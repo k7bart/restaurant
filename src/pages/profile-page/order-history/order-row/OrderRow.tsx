@@ -13,7 +13,7 @@ import styles from "./OrderRow.module.scss";
 
 const OrderRow = ({ order }: { order: Order }) => {
     const navigate = useNavigate();
-    const { id, date, amount, address, orderedItems } = order;
+    const { id, createdAt, total, address, orderedItems } = order;
 
     const handleClick = () => {
         console.log(orderedItems);
@@ -27,16 +27,18 @@ const OrderRow = ({ order }: { order: Order }) => {
             </Text>
 
             <Text className={styles.date} size="medium">
-                {dayjs(date).format(dateFormat)}
+                {dayjs(createdAt).format(dateFormat)}
             </Text>
 
             <Text className={styles.amount} size="medium">
-                ${amount}
+                ${total}
             </Text>
 
-            <Text className={styles.address} size="medium">
-                {addressToStr(address)}
-            </Text>
+            {address && (
+                <Text className={styles.address} size="medium">
+                    {addressToStr(address)}
+                </Text>
+            )}
 
             <ButtonWithIcon icon={<FaCartArrowDown />} onClick={handleClick} />
         </Row>

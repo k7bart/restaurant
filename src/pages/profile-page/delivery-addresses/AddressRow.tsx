@@ -25,7 +25,7 @@ const AddressRow = ({ address }: { address: Address }) => {
 
     const handleSetCurrent = () => {
         // TODO: add api call
-        dispatch(setCurrentAddress(id));
+        dispatch(setCurrentAddress(address));
     };
 
     return (

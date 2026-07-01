@@ -5,12 +5,6 @@ import { getTotalPrice } from "../../utils/priceUtils";
 import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import Tooltip from "../tooltip/Tooltip";
 
-type CartItem = {
-    amount: number;
-    discountPercent: number;
-    price: number;
-};
-
 const CartLink = () => {
     const cart = useAppSelector((state) => state.cart);
     const cartRef = useRef<HTMLAnchorElement>(null);

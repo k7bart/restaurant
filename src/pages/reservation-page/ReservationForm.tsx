@@ -27,15 +27,13 @@ import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/inputs/TimeInput";
 
-import type {
-    Reservation,
-    ReservationForm,
-} from "@k7bart/restaurant-shared-types";
+import type { Reservation } from "@k7bart/restaurant-shared-types";
 
 const today = new Date();
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
+    surname: yup.string().optional(),
     numberOfAdults: yup
         .number()
         .transform((value, originalValue) => {
@@ -75,6 +73,8 @@ const reservationSchema = yup.object({
     additionalRequirements: yup.string(),
 });
 
+type ReservationFormValues = yup.InferType<typeof reservationSchema>;
+
 const ReservationForm = () => {
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
@@ -91,21 +91,37 @@ const ReservationForm = () => {
         },
     });
 
-    const onSubmit = (data: ReservationForm) => {
-        const { reservedBy, date, time, ...rest } = data;
+    const onSubmit = (data: ReservationFormValues) => {
+        const {
+            name,
+            surname,
+            phone,
+            email,
+            numberOfAdults,
+            numberOfChildren,
+            date,
+            time,
+            additionalRequirements,
+        } = data;
 
         const dateTime = combineDateTime(date, time);
 
         const reservation: Reservation = {
             id: crypto.randomUUID(),
             dateTime,
-            reservedBy: {
-                ...reservedBy,
-                name: capitalize(reservedBy.name),
-                surname: reservedBy.surname && capitalize(reservedBy.surname),
-            },
             status: "new",
-            ...rest,
+            reservedBy: {
+                id: user?.id,
+                name: capitalize(name),
+                surname: surname ? capitalize(surname) : undefined,
+                phone,
+                email: email || undefined,
+            },
+            guests: {
+                adults: numberOfAdults,
+                children: numberOfChildren || undefined,
+            },
+            additionalRequirements,
         };
 
         dispatch(addReservation(reservation));

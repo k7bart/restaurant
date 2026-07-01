@@ -8,9 +8,9 @@ import NumInput from "../../../components/inputs/num-input/NumInput";
 
 import styles from "./DishPreview.module.scss";
 
-import type { Dish } from "@k7bart/restaurant-shared-types";
+import type { CartItem } from "@k7bart/restaurant-shared-types";
 
-const DishPreview = ({ dish }: { dish: Dish }) => {
+const DishPreview = ({ dish }: { dish: CartItem }) => {
     const {
         amount: initialAmount,
         category,
@@ -48,7 +48,7 @@ const DishPreview = ({ dish }: { dish: Dish }) => {
             <Link to={`/menu/${category}/${id}`} className={styles.title}>
                 <h4>{name}</h4>
             </Link>
-            <NumInput amount={amount} onChange={handleAmountChange} />
+            <NumInput amount={amount ?? 1} onChange={handleAmountChange} />
             <div className={styles.price}>
                 {discountPercent && (
                     <span className={styles.fullPrice}>

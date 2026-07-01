@@ -3,14 +3,11 @@ import * as yup from "yup";
 const addressSchema = {
     city: yup.string().required("Please provide city"),
     street: yup.string().required("Please provide street"),
-    house: yup
-        .number()
-        .typeError("House must be a number")
-        .required("Please provide house number"),
-    entrance: yup.number().optional().positive().integer(),
-    floor: yup.number().optional().positive().integer(),
-    apartment: yup.number().optional().positive().integer(),
-    intercom: yup.number().optional().positive().integer(),
+    house: yup.string().required("Please provide house number"),
+    entrance: yup.string().optional(),
+    floor: yup.string().optional(),
+    apartment: yup.string().optional(),
+    intercom: yup.string().optional(),
 };
 
 export default addressSchema;

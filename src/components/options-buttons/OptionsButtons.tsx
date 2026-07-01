@@ -5,7 +5,7 @@ import { type Option } from "@k7bart/restaurant-shared-types";
 
 type Props = {
     label?: string;
-    onClick: (option: string) => void;
+    onClick: (value: Option["value"]) => void;
     options: Option[];
     selectedOption: string;
 };

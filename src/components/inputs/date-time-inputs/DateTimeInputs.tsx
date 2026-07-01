@@ -12,7 +12,7 @@ const DateTimeInputs = ({ startDate }: { startDate: Date }) => {
                 maxDate={addMonths(new Date(), 1)}
                 minDate={startDate}
                 required
-                onChange={setSelectedDate}
+                onChange={(date) => setSelectedDate(date as Date)}
             />
 
             <TimeInput selectedDate={selectedDate} />

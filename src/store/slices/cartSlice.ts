@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Dish } from "@k7bart/restaurant-shared-types";
+import type { CartItem } from "@k7bart/restaurant-shared-types";
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: [] as Dish[],
+    initialState: [] as CartItem[],
     reducers: {
-        addToCart(state, action: PayloadAction<Dish>) {
+        addToCart(state, action: PayloadAction<CartItem>) {
             const { id, amount } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
 
@@ -19,7 +19,7 @@ const cartSlice = createSlice({
         },
         updateAmountInCart(
             state,
-            action: PayloadAction<Pick<Dish, "id" | "amount">>
+            action: PayloadAction<Pick<CartItem, "id" | "amount">>,
         ) {
             const { id, amount } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
@@ -33,9 +33,9 @@ const cartSlice = createSlice({
 
             state[dishIndex].amount = amount;
         },
-        removeFromCart(state, action: PayloadAction<Pick<Dish, "id">>) {
+        removeFromCart(state, action: PayloadAction<Pick<CartItem, "id">>) {
             const dishIndex = state.findIndex(
-                (dish) => dish.id === action.payload.id
+                (dish) => dish.id === action.payload.id,
             );
 
             if (dishIndex !== -1) {

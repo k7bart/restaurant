@@ -42,6 +42,9 @@ const schemas = {
     }),
 };
 
-const getSchema = (deliveryMethod: DeliveryMethod) => schemas[deliveryMethod];
+const getSchema = (deliveryMethod: DeliveryMethod) =>
+    schemas[deliveryMethod] as typeof schemas.advance;
+
+export type CheckoutFormValues = yup.InferType<typeof schemas.advance>;
 
 export default getSchema;

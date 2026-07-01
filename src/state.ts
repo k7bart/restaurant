@@ -1,4 +1,4 @@
-import { Category } from "@k7bart/restaurant-shared-types";
+import { Address, Category } from "@k7bart/restaurant-shared-types";
 
 export const events = [
     {
@@ -252,7 +252,26 @@ export const menu: Category[] = [
     },
 ];
 
-export const addresses = [
-    { id: 1, text: "Lviv, Svobody 6" },
-    { id: 2, text: "Lviv, Hetmana Mazepy, 25" },
+export const addresses: Address[] = [
+    {
+        id: "svobody6/1",
+        city: "Lviv",
+        street: "Svobody",
+        house: "6",
+        apartment: "1",
+        entrance: "1",
+        floor: "1",
+        intercom: "1",
+    },
+    {
+        id: "hetmana-mazepy25/1",
+        city: "Lviv",
+        street: "Hetmana Mazepy",
+        house: "25",
+        apartment: "1",
+        entrance: "1",
+        floor: "1",
+        intercom: "1",
+        addressComment: "Address comment",
+    },
 ];
