@@ -4,7 +4,7 @@ export const eventService = {
     getEvents: () => {
         return axios.get("/events");
     },
-    getEventByName: (name: string) => {
-        return axios.get(`/events/name/${name}`);
+    getEventByPathName: (pathName: string) => {
+        return axios.get(`/events/pathName/${pathName}`);
     },
 };

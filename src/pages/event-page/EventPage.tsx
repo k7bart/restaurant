@@ -22,7 +22,7 @@ const EventPage = () => {
             setError(null);
 
             try {
-                const res = await eventService.getEventByName(eventId);
+                const res = await eventService.getEventByPathName(eventId);
                 setEventData(res.data);
             } catch (err) {
                 console.error("Failed to fetch event:", err);
