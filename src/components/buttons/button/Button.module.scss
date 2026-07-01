@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@use "../../../styles/variables.scss";
 
 .button {
     height: 60px;
@@ -24,28 +24,28 @@
     }
 
     &.wisteria {
-        background-color: $wisteria;
-        border: 1px solid $wisteria;
+        background-color: variables.$wisteria;
+        border: 1px solid variables.$wisteria;
     }
 
     &.transparent {
-        background-color: $background-color;
-        border: 1px solid $wisteria;
+        background-color: variables.$background-color;
+        border: 1px solid variables.$wisteria;
     }
 
     &.inactive {
-        background-color: $background-color;
-        color: $text-color-grey;
-        border: 1px solid $border-color;
+        background-color: variables.$background-color;
+        color: variables.$text-color-grey;
+        border: 1px solid variables.$border-color;
 
         &:hover {
             color: white;
-            border: 1px solid $text-color-grey;
+            border: 1px solid variables.$text-color-grey;
         }
     }
 
     &:not(:disabled):active {
         background-color: white;
-        color: $wisteria;
+        color: variables.$wisteria;
     }
 }

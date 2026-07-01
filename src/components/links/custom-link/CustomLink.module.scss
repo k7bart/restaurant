@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@use "../../../styles/variables.scss";
 
 .link {
     transition: 0.3s;
@@ -6,8 +6,8 @@
     align-items: center;
 
     svg {
-        fill: $text-color-grey;
-        stroke: $text-color-grey;
+        fill: variables.$text-color-grey;
+        stroke: variables.$text-color-grey;
     }
 
     &.thin {
@@ -27,7 +27,7 @@
     }
 
     &.grey {
-        color: $text-color-grey;
+        color: variables.$text-color-grey;
     }
 
     &.white {
@@ -35,7 +35,7 @@
     }
 
     &.wisteria {
-        color: $wisteria;
+        color: variables.$wisteria;
     }
 
     &:hover {

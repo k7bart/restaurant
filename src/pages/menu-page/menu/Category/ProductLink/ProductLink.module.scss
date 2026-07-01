@@ -1,4 +1,4 @@
-@import "../../../../../styles/variables.scss";
+@use "../../../../../styles/variables.scss";
 
 .productLink {
     width: 50%;
@@ -44,7 +44,7 @@
             left: 0;
             right: 0;
             margin: 0 auto;
-            background-color: $wisteria;
+            background-color: variables.$wisteria;
             transition: 0.3s;
 
             &.visible {
@@ -56,7 +56,7 @@
             button {
                 height: 100%;
                 width: 100%;
-                background-color: $wisteria;
+                background-color: variables.$wisteria;
             }
         }
     }

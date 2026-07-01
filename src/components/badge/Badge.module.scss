@@ -1,9 +1,9 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .badge {
     width: fit-content;
     padding: 4px 8px;
-    background-color: $wisteria;
+    background-color: variables.$wisteria;
     color: white;
     font-size: 14px;
     border-radius: 14px;

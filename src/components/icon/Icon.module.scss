@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .icon {
     display: flex;
@@ -13,8 +13,8 @@
     svg {
         height: 24px;
         width: 24px;
-        fill: $text-color-grey;
-        stroke: $text-color-grey;
+        fill: variables.$text-color-grey;
+        stroke: variables.$text-color-grey;
         transition:
             fill 0.3s,
             stroke 0.3s;

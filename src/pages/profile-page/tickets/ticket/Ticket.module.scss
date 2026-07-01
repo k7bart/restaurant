@@ -1,4 +1,4 @@
-@import "../../../../styles/variables.scss";
+@use "../../../../styles/variables.scss";
 
 .ticketWrapper {
     min-width: 240px;
@@ -8,51 +8,51 @@
     display: flex;
     align-items: center;
     position: relative;
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
 
     .corner {
         z-index: 1;
         height: 25px;
         width: 25px;
-        background: $background-color;
+        background: variables.$background-color;
         position: absolute;
 
         &.topLeft {
             top: -1px;
             left: -1px;
             border-radius: 0 0 100% 0;
-            border-bottom: 1px solid $border-color;
-            border-right: 1px solid $border-color;
+            border-bottom: 1px solid variables.$border-color;
+            border-right: 1px solid variables.$border-color;
         }
 
         &.topRight {
             top: -1px;
             right: -1px;
             border-radius: 0 0 0 100%;
-            border-bottom: 1px solid $border-color;
-            border-left: 1px solid $border-color;
+            border-bottom: 1px solid variables.$border-color;
+            border-left: 1px solid variables.$border-color;
         }
 
         &.bottomRight {
             bottom: -1px;
             right: -1px;
             border-radius: 100% 0 0 0;
-            border-top: 1px solid $border-color;
-            border-left: 1px solid $border-color;
+            border-top: 1px solid variables.$border-color;
+            border-left: 1px solid variables.$border-color;
         }
 
         &.bottomLeft {
             bottom: -1px;
             left: -1px;
             border-radius: 0 100% 0 0;
-            border-top: 1px solid $border-color;
-            border-right: 1px solid $border-color;
+            border-top: 1px solid variables.$border-color;
+            border-right: 1px solid variables.$border-color;
         }
     }
 
     .border {
         position: absolute;
-        border-left: 4px dotted $border-color;
+        border-left: 4px dotted variables.$border-color;
 
         &.left,
         &.right {
@@ -85,7 +85,7 @@
 
         h4 {
             text-align: center;
-            color: $wisteria;
+            color: variables.$wisteria;
         }
 
         .info {

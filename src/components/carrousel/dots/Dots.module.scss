@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@use "../../../styles/variables.scss";
 
 .dots {
     display: flex;
@@ -12,10 +12,10 @@
         margin: 0 3px;
         cursor: pointer;
         font-size: 20px;
-        color: $text-color-grey;
+        color: variables.$text-color-grey;
 
         &:hover {
-            color: $wisteria;
+            color: variables.$wisteria;
         }
     }
 

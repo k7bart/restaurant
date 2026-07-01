@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .form {
     width: 100%;
@@ -38,12 +38,12 @@
         }
 
         p.error {
-            color: $wisteria;
+            color: variables.$wisteria;
             font-size: 14px;
         }
 
         input.error {
-            border: 1px solid $wisteria;
+            border: 1px solid variables.$wisteria;
         }
 
         input:not([type="checkbox"]) {
@@ -62,13 +62,13 @@
 
             &:focus {
                 outline: none;
-                border: 1px solid $wisteria;
+                border: 1px solid variables.$wisteria;
             }
         }
 
         input[type="text"] {
             &::placeholder {
-                color: $text-color-grey;
+                color: variables.$text-color-grey;
             }
         }
 

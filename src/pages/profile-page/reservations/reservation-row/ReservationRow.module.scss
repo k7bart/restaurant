@@ -1,4 +1,4 @@
-@import "../../../../styles/variables.scss";
+@use "../../../../styles/variables.scss";
 
 .reservation {
     align-items: flex-start;
@@ -11,7 +11,7 @@
 
     &.today {
         .text {
-            color: $wisteria;
+            color: variables.$wisteria;
         }
     }
 
@@ -22,7 +22,7 @@
     }
     &.past {
         .status {
-            color: $text-color-grey;
+            color: variables.$text-color-grey;
         }
     }
 

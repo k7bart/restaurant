@@ -1,5 +1,4 @@
-$background-color: #050505;
-$wisteria: #c9a0dc;
+@use "../../../styles/variables.scss";
 
 .numInput {
     display: flex;
@@ -12,7 +11,7 @@ $wisteria: #c9a0dc;
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        background-color: $wisteria;
+        background-color: variables.$wisteria;
         transition: 0.3s;
 
         > svg {
@@ -30,10 +29,10 @@ $wisteria: #c9a0dc;
 
         &:not([disabled]):active {
             background-color: white;
-            color: $wisteria;
+            color: variables.$wisteria;
 
             > svg {
-                fill: $wisteria;
+                fill: variables.$wisteria;
             }
         }
     }
@@ -42,7 +41,7 @@ $wisteria: #c9a0dc;
         text-align: center;
         width: 38px;
         height: 38px;
-        background-color: $background-color;
+        background-color: variables.$background-color;
         border-radius: 15%;
         margin: 0 8px;
     }

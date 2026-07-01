@@ -1,10 +1,10 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .tooltip {
     position: fixed;
-    z-index: $tooltip-z-index;
+    z-index: variables.$tooltip-z-index;
     padding: 4px 8px;
-    background-color: $wisteria;
+    background-color: variables.$wisteria;
     color: white;
     font-size: 14px;
     border-radius: 14px;

@@ -1,5 +1,5 @@
-@import "../../styles/variables.scss";
-@import "../../components/page-sructure/cover-section/CoverSection.module.scss";
+@use "../../styles/variables.scss";
+@use "../../components/page-sructure/cover-section/CoverSection.module.scss";
 
 .content {
     display: flex;

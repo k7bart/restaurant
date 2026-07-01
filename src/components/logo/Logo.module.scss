@@ -1,4 +1,4 @@
-$wisteria: #c9a0dc;
+@use "../../styles/variables.scss";
 
 .logo {
     font-size: 28px;
@@ -12,6 +12,6 @@ $wisteria: #c9a0dc;
 }
 
 .logo:hover {
-    color: $wisteria;
+    color: variables.$wisteria;
     transform: scale(1.05);
 }

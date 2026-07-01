@@ -1,7 +1,7 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .row:not(:first-of-type) {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid variables.$border-color;
     padding-top: 16px;
 }
 

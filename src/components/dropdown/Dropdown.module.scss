@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .dropdown {
     width: 100%;
@@ -12,9 +12,9 @@
     .dropdownButton {
         padding: 16px 24px;
         text-align: start;
-        background-color: $background-color;
+        background-color: variables.$background-color;
         border-radius: 10px;
-        border: 1px solid $border-color;
+        border: 1px solid variables.$border-color;
         width: 100%;
         height: 60px;
     }
@@ -23,8 +23,8 @@
         top: 143px;
         width: 100%;
         padding: 16px 24px;
-        background-color: $background-color;
-        border: 1px solid $border-color;
+        background-color: variables.$background-color;
+        border: 1px solid variables.$border-color;
         position: absolute;
         z-index: 1000;
 

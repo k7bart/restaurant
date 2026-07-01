@@ -1,4 +1,4 @@
-@import "./variables";
+@use "variables";
 
 * {
     margin: 0;
@@ -9,7 +9,7 @@
     font-style: normal;
     font-size: 16px;
     color: white;
-    scrollbar-color: $wisteria $background-color;
+    scrollbar-color: variables.$wisteria variables.$background-color;
 }
 
 a {
@@ -17,7 +17,7 @@ a {
     font-weight: 200;
 
     &.wisteria {
-        color: $wisteria;
+        color: variables.$wisteria;
     }
 
     &:hover {
@@ -31,7 +31,7 @@ button {
 
 input,
 textarea {
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
     background-color: transparent;
 }
 
@@ -39,17 +39,17 @@ input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
     -webkit-text-fill-color: white;
-    -webkit-box-shadow: 0 0 0px 1000px $background-color inset;
-    box-shadow: 0 0 0px 1000px $background-color inset;
+    -webkit-box-shadow: 0 0 0px 1000px variables.$background-color inset;
+    box-shadow: 0 0 0px 1000px variables.$background-color inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill::first-line {
-    -webkit-text-fill-color: $background-color;
+    -webkit-text-fill-color: variables.$background-color;
 }
 
 body {
-    background-color: $background-color;
+    background-color: variables.$background-color;
 }
 
 h3 {
@@ -91,29 +91,29 @@ table {
                 font-size: 18px;
 
                 &.new {
-                    background-color: $wisteria;
+                    background-color: variables.$wisteria;
                 }
 
                 &.confirmed {
-                    color: $green;
+                    color: variables.$green;
                 }
 
                 &.cancelled {
-                    color: $red;
+                    color: variables.$red;
                 }
 
                 &.done {
-                    color: $text-color-grey;
+                    color: variables.$text-color-grey;
                 }
             }
         }
 
         &.done {
             > td {
-                color: $text-color-grey;
+                color: variables.$text-color-grey;
 
                 .status {
-                    color: $text-color-grey;
+                    color: variables.$text-color-grey;
                 }
             }
         }
@@ -152,7 +152,7 @@ table {
                 border-radius: 30px;
 
                 > span {
-                    color: $background-color;
+                    color: variables.$background-color;
                 }
 
                 > :not(:first-child) {
@@ -164,7 +164,7 @@ table {
                     width: 40px;
                     padding: 0px;
                     font-size: 24px;
-                    background-color: $wisteria;
+                    background-color: variables.$wisteria;
                     border-radius: 50%;
                     display: flex;
                     align-items: center;
@@ -174,12 +174,12 @@ table {
                 > svg {
                     height: 24px;
                     width: 24px;
-                    fill: $background-color;
-                    stroke: $background-color;
+                    fill: variables.$background-color;
+                    stroke: variables.$background-color;
                 }
 
                 &:hover {
-                    background-color: $background-color;
+                    background-color: variables.$background-color;
 
                     > span {
                         color: white;
@@ -194,16 +194,16 @@ table {
 
             &.active {
                 border-radius: 0;
-                background-color: $background-color;
+                background-color: variables.$background-color;
 
                 > div {
                     > span {
-                        color: $wisteria;
+                        color: variables.$wisteria;
                     }
 
                     > svg {
-                        fill: $wisteria;
-                        stroke: $wisteria;
+                        fill: variables.$wisteria;
+                        stroke: variables.$wisteria;
                     }
                 }
 
@@ -249,13 +249,11 @@ table {
     }
 }
 
-$background-color: #050505;
-
 header > nav {
     height: 60px;
     width: 100%;
     padding: 0 16px;
-    background-color: $background-color;
+    background-color: variables.$background-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -291,15 +289,15 @@ header > nav {
 
     &.error {
         input {
-            border-color: $wisteria;
+            border-color: variables.$wisteria;
         }
     }
 }
 
 div.react-datepicker {
-    background-color: $background-color;
+    background-color: variables.$background-color;
     color: white;
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
     border-radius: 10px;
 
     .react-datepicker__time-container {
@@ -321,20 +319,20 @@ div.react-datepicker {
         .react-datepicker__time-box
         ul.react-datepicker__time-list
         li.react-datepicker__time-list-item--selected {
-        background-color: $wisteria;
+        background-color: variables.$wisteria;
         color: white;
         font-weight: bold;
     }
 
     li.react-datepicker__time-list-item:hover {
         background-color: white;
-        color: $wisteria;
+        color: variables.$wisteria;
     }
 
     .react-datepicker__header {
         text-align: center;
-        background-color: $background-color;
-        border-bottom: 1px solid $border-color;
+        background-color: variables.$background-color;
+        border-bottom: 1px solid variables.$border-color;
         border-top-left-radius: 10px;
         padding: 8px 0;
         position: relative;
@@ -366,7 +364,7 @@ div.react-datepicker {
     .react-datepicker__day:hover {
         border-radius: 50%;
         background-color: white;
-        color: $wisteria;
+        color: variables.$wisteria;
     }
 
     .react-datepicker__day--selected,
@@ -381,7 +379,7 @@ div.react-datepicker {
     .react-datepicker__quarter-text--disabled,
     .react-datepicker__year-text--disabled {
         cursor: default;
-        color: $border-color;
+        color: variables.$border-color;
     }
 
     .react-datepicker__day--keyboard-selected,
@@ -399,7 +397,7 @@ div.react-datepicker {
     }
 
     .react-datepicker__time-container .react-datepicker__time {
-        background: $background-color;
+        background: variables.$background-color;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
     }
@@ -409,7 +407,7 @@ div.react-datepicker {
         .react-datepicker__time-box
         ul.react-datepicker__time-list
         li.react-datepicker__time-list-item--disabled {
-        color: $border-color;
+        color: variables.$border-color;
     }
 }
 
@@ -431,11 +429,11 @@ div.react-datepicker {
         display: flex;
         align-items: center;
         border-radius: 26px;
-        color: $background-color;
+        color: variables.$background-color;
         padding: 16px;
 
         &.profile {
-            color: $wisteria;
+            color: variables.$wisteria;
             display: flex;
             justify-content: center;
         }
@@ -443,7 +441,7 @@ div.react-datepicker {
         > svg {
             width: 20px;
             height: 20px;
-            fill: $background-color;
+            fill: variables.$background-color;
         }
 
         &.cart {
@@ -455,7 +453,7 @@ div.react-datepicker {
         &:hover,
         &.active {
             color: white;
-            background-color: $background-color;
+            background-color: variables.$background-color;
             > .total {
                 color: white;
             }

@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@use "../../../styles/variables.scss";
 
 .content {
     position: relative;
@@ -15,7 +15,7 @@
         height: 60px;
         width: 100%;
         padding: 0 24px;
-        background-color: $background-color;
+        background-color: variables.$background-color;
         display: flex;
         align-items: center;
         position: sticky;

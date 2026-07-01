@@ -1,8 +1,9 @@
-@import "../custom-link/CustomLink.module.scss";
+@use "../custom-link/CustomLink.module.scss";
+@use "../../../styles/variables.scss";
 
 .active {
-    color: $wisteria !important;
+    color: variables.$wisteria !important;
     svg {
-        fill: $wisteria !important;
+        fill: variables.$wisteria !important;
     }
 }

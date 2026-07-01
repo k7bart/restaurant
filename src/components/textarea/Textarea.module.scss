@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables.scss";
 
 .textarea {
     padding: 16px 16px;
@@ -12,6 +12,6 @@
 
     &:focus {
         outline: none;
-        border: 1px solid $wisteria;
+        border: 1px solid variables.$wisteria;
     }
 }
