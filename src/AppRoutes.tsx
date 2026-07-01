@@ -15,6 +15,7 @@ import {
 } from "./pages/LazyPages";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import FrontPage from "./pages/front-page/FrontPage";
+
 const routes = [
     {
         path: "/",

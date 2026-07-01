@@ -11,16 +11,6 @@ type MenuLinkProps = {
     onClick: () => void;
 };
 
-const handleClick = (id: string) => () => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-        });
-    }
-};
-
 const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
     <a
         className={classNames(styles.link, styles.grey, {
@@ -34,15 +24,19 @@ const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
 
 type MenuNavigationProps = {
     activeCategory: Category["name"];
+    handleNavigation: (categoryName: Category["name"]) => void;
 };
 
-const MenuNavigation = ({ activeCategory }: MenuNavigationProps) => (
+const MenuNavigation = ({
+    activeCategory,
+    handleNavigation,
+}: MenuNavigationProps) => (
     <ContentSectionNav justifyContent="contentEvenly">
         {menu.map((category) => (
             <MenuLink
                 key={category.name}
                 isActive={activeCategory === category.name}
-                onClick={handleClick(category.name)}
+                onClick={() => handleNavigation(category.name)}
             >
                 {capitalize(category.name)}
             </MenuLink>
