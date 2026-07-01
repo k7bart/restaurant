@@ -12,7 +12,9 @@ type Props = {
 const CustomNavLink = forwardRef<HTMLAnchorElement, Props>(
     ({ children, to, target = "_self" }, ref) => (
         <NavLink
-            className={({ isActive }) => cn(isActive && styles.active)}
+            className={({ isActive }) =>
+                cn(styles.link, styles.grey, isActive && styles.active)
+            }
             ref={ref}
             target={target}
             to={to}
@@ -21,5 +23,7 @@ const CustomNavLink = forwardRef<HTMLAnchorElement, Props>(
         </NavLink>
     ),
 );
+
+CustomNavLink.displayName = "CustomNavLink";
 
 export default CustomNavLink;

@@ -1,7 +1,9 @@
+import "react-datepicker/dist/react-datepicker.css";
 import cn from "classnames";
 import { addMonths } from "date-fns";
 import DatePicker from "react-datepicker";
 import { Controller, useFormContext } from "react-hook-form";
+import { getAvailableDay } from "../../utils/dateUtils";
 import Text from "../text/Text";
 
 type Props = {
@@ -42,7 +44,7 @@ const DateInput = ({
                             field.onChange(date);
                             onChange?.(date);
                         }}
-                        minDate={minDate || new Date()}
+                        minDate={minDate ?? getAvailableDay()}
                         maxDate={maxDate || addMonths(new Date(), 2)}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="DD/MM/YYYY"

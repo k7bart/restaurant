@@ -1,7 +1,8 @@
-import { addMonths, subDays } from "date-fns";
+import { addMonths } from "date-fns";
 import * as yup from "yup";
 import addressSchema from "../../../components/inputs/address-inputs/address-yup-utils/addressSchema";
 import textareaSchema from "../../../components/textarea/textareaSchema";
+import { getAvailableDay } from "../../../utils/dateUtils";
 import {
     nameSchema,
     phoneSchema,
@@ -11,6 +12,7 @@ import {
 import type { DeliveryMethod } from "@k7bart/restaurant-shared-types";
 
 const today = new Date();
+const earliestAvailableDay = getAvailableDay();
 
 const commonSchema = {
     name: nameSchema,
@@ -33,7 +35,7 @@ const schemas = {
         date: yup
             .date()
             .required("Please pick a date")
-            .min(subDays(today, 1), "Date cannot be earlier than today")
+            .min(earliestAvailableDay, "Date cannot be earlier than today")
             .max(
                 addMonths(today, 1),
                 "Date cannot be later than 1 month from today"

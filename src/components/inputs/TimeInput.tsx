@@ -1,6 +1,6 @@
 import cn from "classnames";
 import DatePicker from "react-datepicker";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { filterTime } from "../../utils/timeUtils";
 import Text from "../text/Text";
 
@@ -17,9 +17,11 @@ const TimeInput = ({
     label = "Time",
     selectedDate,
 }: Props) => {
-    const today = new Date();
+    const now = new Date();
     const { control, formState, getFieldState } = useFormContext();
+    const formDate = useWatch({ control, name: "date" });
     const { error } = getFieldState(name, formState);
+    const effectiveDate = selectedDate ?? formDate ?? now;
 
     return (
         <label className={cn("time-picker", { error })}>
@@ -40,7 +42,7 @@ const TimeInput = ({
                         timeIntervals={30}
                         dateFormat="h:mm aa"
                         filterTime={(time) =>
-                            filterTime(time, today, selectedDate ?? today)
+                            filterTime(time, now, effectiveDate)
                         }
                         timeCaption="Time"
                     />

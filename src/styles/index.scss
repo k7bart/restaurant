@@ -285,6 +285,10 @@ header > nav {
         width: 100%;
     }
 
+    input {
+        transition: border-color 0.3s;
+    }
+
     &.error {
         input {
             border-color: $wisteria;
@@ -343,17 +347,6 @@ div.react-datepicker {
             font-weight: bold;
             font-size: 0.944rem;
         }
-
-        .react-datepicker__day-name,
-        .react-datepicker__day,
-        .react-datepicker__time-name {
-            color: white;
-            display: inline-block;
-            width: 1.7rem;
-            line-height: 1.7rem;
-            text-align: center;
-            margin: 0.166rem;
-        }
     }
     .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
         border-top-right-radius: 10px;
@@ -363,6 +356,11 @@ div.react-datepicker {
     .react-datepicker__day,
     .react-datepicker__time-name {
         color: white;
+        display: inline-block;
+        width: 1.7rem;
+        line-height: 1.7rem;
+        text-align: center;
+        margin: 0.166rem;
     }
 
     .react-datepicker__day:hover {

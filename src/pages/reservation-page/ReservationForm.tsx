@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { capitalize } from "../../utils/stringUtils";
 import { combineDateTime } from "../../utils/timeUtils";
-import { subDays, addMonths } from "date-fns";
+import { getAvailableDay } from "../../utils/dateUtils";
+import { addMonths } from "date-fns";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { addReservation } from "../../store";
 import { timeSchema } from "../../components/inputs/yupInputsSchemas";
@@ -30,6 +31,7 @@ import TimeInput from "../../components/inputs/TimeInput";
 import type { Reservation } from "@k7bart/restaurant-shared-types";
 
 const today = new Date();
+const earliestAvailableDay = getAvailableDay();
 
 const reservationSchema = yup.object({
     name: yup.string().required("Please provide your name"),
@@ -64,7 +66,7 @@ const reservationSchema = yup.object({
     date: yup
         .date()
         .required("Please pick a date")
-        .min(subDays(today, 1), "Date cannot be earlier than today")
+        .min(earliestAvailableDay, "Date cannot be earlier than today")
         .max(
             addMonths(today, 2),
             "Date cannot be later than 2 month from today",
@@ -87,7 +89,7 @@ const ReservationForm = () => {
             name: user ? `${user.name} ${user.surname}` : "",
             phone: user ? user.phone : "",
             email: user ? user.email : "",
-            date: today,
+            date: earliestAvailableDay,
         },
     });
 

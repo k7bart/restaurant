@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
-import { addHours, isToday, set } from "date-fns";
+import { addHours, isSameDay, isToday } from "date-fns";
 
 export const START_HOUR = 10;
-export const CLOSE_HOUR = 20;
+export const CLOSE_HOUR = 22;
 export const INTERVAL = 2;
 
 export const combineDateTime = (date: Date, time: Date): Date =>
@@ -13,23 +13,24 @@ export const combineDateTime = (date: Date, time: Date): Date =>
         .set("millisecond", 0)
         .toDate();
 
-export const filterTime = (time: Date, today: Date, selectedDate: Date) => {
-    const startTime = set(today, {
-        hours: START_HOUR,
-        minutes: 0,
-        seconds: 0,
-        milliseconds: 0,
-    });
-    const endTime = set(today, {
-        hours: CLOSE_HOUR,
-        minutes: 0,
-        seconds: 0,
-        milliseconds: 0,
-    });
+const START_MIN = START_HOUR * 60;
+const END_MIN = CLOSE_HOUR * 60;
 
-    const minTime = isToday(selectedDate)
-        ? addHours(today, INTERVAL)
-        : startTime;
+const toMinutes = (d: Date) => d.getHours() * 60 + d.getMinutes();
 
-    return time >= minTime && time <= endTime;
+export const isTodayBookable = (now: Date) => {
+    const earliest = addHours(now, INTERVAL);
+    return (
+        isSameDay(earliest, now) &&
+        Math.max(START_MIN, toMinutes(earliest)) <= END_MIN
+    );
+};
+
+export const filterTime = (time: Date, now: Date, selectedDate: Date) => {
+    const mins = toMinutes(time);
+    if (!isToday(selectedDate)) return mins >= START_MIN && mins <= END_MIN;
+    const earliest = addHours(now, INTERVAL);
+    return (
+        mins >= Math.max(START_MIN, toMinutes(earliest)) && mins <= END_MIN
+    );
 };

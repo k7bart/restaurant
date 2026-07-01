@@ -1,13 +1,8 @@
-import { addDays, getHours, startOfDay } from "date-fns";
-import { CLOSE_HOUR, INTERVAL } from "./timeUtils";
+import { addDays, startOfDay } from "date-fns";
+import { isTodayBookable } from "./timeUtils";
 
 export const dateFormat = "DD/MM/YYYY";
 export const dateTimeFormat = "DD/MM/YYYY HH:mm";
 
-export const getAvailableDay = () => {
-    const today = new Date();
-
-    return getHours(today) < CLOSE_HOUR - INTERVAL
-        ? today
-        : startOfDay(addDays(today, 1));
-};
+export const getAvailableDay = (now = new Date()) =>
+    isTodayBookable(now) ? startOfDay(now) : startOfDay(addDays(now, 1));
