@@ -8,7 +8,7 @@
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
-    color: #fff;
+    color: white;
     scrollbar-color: $wisteria $background-color;
 }
 
@@ -33,6 +33,19 @@ input,
 textarea {
     border: 1px solid $border-color;
     background-color: transparent;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px $background-color inset;
+    box-shadow: 0 0 0px 1000px $background-color inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill::first-line {
+    -webkit-text-fill-color: $background-color;
 }
 
 body {
@@ -218,14 +231,6 @@ table {
     }
 }
 
-.menu-page {
-    @media (min-width: 578px) {
-        .menu > *:not(:first-child) {
-            padding-top: 32px;
-        }
-    }
-}
-
 @media (max-width: 820px) {
     .events-page {
         .slides-container {
@@ -278,6 +283,10 @@ header > nav {
     .react-datepicker-wrapper {
         display: block;
         width: 100%;
+    }
+
+    input {
+        transition: border-color 0.3s;
     }
 
     &.error {
@@ -338,17 +347,6 @@ div.react-datepicker {
             font-weight: bold;
             font-size: 0.944rem;
         }
-
-        .react-datepicker__day-name,
-        .react-datepicker__day,
-        .react-datepicker__time-name {
-            color: #fff;
-            display: inline-block;
-            width: 1.7rem;
-            line-height: 1.7rem;
-            text-align: center;
-            margin: 0.166rem;
-        }
     }
     .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
         border-top-right-radius: 10px;
@@ -358,6 +356,11 @@ div.react-datepicker {
     .react-datepicker__day,
     .react-datepicker__time-name {
         color: white;
+        display: inline-block;
+        width: 1.7rem;
+        line-height: 1.7rem;
+        text-align: center;
+        margin: 0.166rem;
     }
 
     .react-datepicker__day:hover {
@@ -416,10 +419,7 @@ div.react-datepicker {
     background-color: white;
     border-radius: 35px;
     padding: 8px;
-
-    > :not(:first-child) {
-        margin-left: 8px;
-    }
+    gap: 8px;
 
     a,
     p {
