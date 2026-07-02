@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 import { useMe } from "../../hooks/useMe";
 import { logOut } from "../../store";
+import { authService } from "../../services/auth-service";
 import { IoLogOutOutline } from "react-icons/io5";
 import { profilePageBackgroundUrl } from "../../constants/backgroundUrls";
 
@@ -47,11 +48,12 @@ const items = [
 ];
 
 const ProfilePage = () => {
-    const { name } = useMe();
+    const { firstName } = useMe();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const handleLogOut = () => {
+        authService.logout();
         dispatch(logOut());
         navigate("/");
     };
@@ -60,7 +62,7 @@ const ProfilePage = () => {
         <TwoSectionsPage title="Profile">
             <CoverSection
                 subtitle="Your presence brightens our day"
-                title={"Hello, " + name}
+                title={"Hello, " + firstName}
                 backgroundImage={profilePageBackgroundUrl}
             />
             <ContentSection

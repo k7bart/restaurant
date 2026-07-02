@@ -15,10 +15,10 @@ import Button from "../../../components/buttons/button/Button";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import DateTimeInputs from "../../../components/inputs/date-time-inputs/DateTimeInputs";
 import DeliveryAddressInputs from "../../../components/inputs/address-inputs/DeliveryAddressInputs";
+import FirstNameInput from "../../../components/inputs/FirstNameInput";
 import Form from "../../../components/form/Form";
 import HorizontalDevider from "../../../components/horizontal-divider/HorizontalDevider";
 import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
-import NameInput from "../../../components/inputs/NameInput";
 import OptionsButtons from "../../../components/options-buttons/OptionsButtons";
 import PaymentOptions from "../../../components/payment-options/PaymentOptions";
 import PhoneInput from "../../../components/inputs/PhoneInput";
@@ -38,9 +38,9 @@ interface OrderForm
     extends
         Omit<Order, "id" | "customer" | "orderedItems" | "total">,
         Omit<Address, "id" | "isCurrent"> {
-    name: string;
+    firstName: string;
     phone: string;
-    surname: string;
+    lastName: string;
     callForDetails: boolean;
     orderComment: string;
     date: Date;
@@ -75,7 +75,7 @@ const Checkout = () => {
             user?.addresses?.find((address) => address.isCurrent),
         ),
         date: availableAdvanceOrderDay,
-        name: user?.name || "",
+        firstName: user?.firstName || "",
         phone: user?.phone || "",
     };
 
@@ -86,9 +86,9 @@ const Checkout = () => {
 
     const createPayload = (data: OrderForm): Order => {
         const {
-            name,
+            firstName,
             phone,
-            surname,
+            lastName,
             callForDetails,
             orderComment,
             date,
@@ -106,9 +106,9 @@ const Checkout = () => {
         const commonInfo = {
             id: crypto.randomUUID(),
             customer: {
-                name,
+                firstName,
                 phone,
-                surname: surname ?? undefined,
+                lastName: lastName ?? undefined,
                 id: user?.id ?? crypto.randomUUID(),
             },
             callForDetails,
@@ -122,7 +122,7 @@ const Checkout = () => {
         if (deliveryMethod === "selfPickup") {
             return {
                 ...commonInfo,
-                pickupAddress: pickupAddress ?? undefined,
+                address: pickupAddress,
             };
         }
 
@@ -174,7 +174,7 @@ const Checkout = () => {
                     />
 
                     <div>
-                        <NameInput required />
+                        <FirstNameInput required />
 
                         <PhoneInput required />
                     </div>

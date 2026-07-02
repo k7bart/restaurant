@@ -11,17 +11,19 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import Button from "../../../components/buttons/button/Button";
 import EmailInput from "../../../components/inputs/EmailInput";
-import NameInput from "../../../components/inputs/NameInput";
+import FirstNameInput from "../../../components/inputs/FirstNameInput";
+import Form from "../../../components/form/Form";
+import LastNameInput from "../../../components/inputs/LastNameInput";
 import Notice from "../../../components/notice/Notice";
 import NumberOfAdultsInput from "../../../components/inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../../components/inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../components/inputs/PhoneInput";
 
 import type { Event, Ticket } from "@k7bart/restaurant-shared-types";
-import Form from "../../../components/form/Form";
 
 const reservationSchema = yup.object({
-    name: yup.string().required("Please provide your name"),
+    firstName: yup.string().required("Please provide your name"),
+    lastName: yup.string().optional(),
     numberOfAdults: yup
         .number()
         .transform((value, originalValue) => {
@@ -57,12 +59,11 @@ const EventReservationForm = ({ event }: { event: Event }) => {
     const dispatch = useAppDispatch();
     const [ticket, setTicket] = useState<Ticket | null>(null);
 
-    const userName = user ? `${user.name} ${user.surname ?? ""}`.trim() : "";
-
     const methods = useForm<ReservationFormValues>({
         resolver: yupResolver(reservationSchema),
         defaultValues: {
-            name: userName,
+            firstName: user?.firstName ?? "",
+            lastName: user?.lastName ?? "",
             email: user ? user.email : "",
             phone: user ? user.phone : "",
         },
@@ -132,7 +133,10 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                     </p>
                 )}
 
-                <NameInput required />
+                <div>
+                    <FirstNameInput required />
+                    <LastNameInput />
+                </div>
 
                 <div>
                     <PhoneInput required />
@@ -142,7 +146,6 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {event.ageLimit === 18 && (
                     <div>
                         <NumberOfAdultsInput required />
-
                         <Button size="small" color="wisteria" type="submit">
                             Submit
                         </Button>
@@ -155,7 +158,6 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                             <NumberOfAdultsInput required />
                             <NumberOfChildrenInput />
                         </div>
-
                         <Button size="small" color="wisteria" type="submit">
                             Submit
                         </Button>

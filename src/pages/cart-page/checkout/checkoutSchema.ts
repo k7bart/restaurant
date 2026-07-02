@@ -15,7 +15,7 @@ const today = new Date();
 const earliestAvailableDay = getAvailableDay();
 
 const commonSchema = {
-    name: nameSchema,
+    firstName: nameSchema,
     orderComment: textareaSchema,
     phone: phoneSchema,
 };
@@ -38,7 +38,7 @@ const schemas = {
             .min(earliestAvailableDay, "Date cannot be earlier than today")
             .max(
                 addMonths(today, 1),
-                "Date cannot be later than 1 month from today"
+                "Date cannot be later than 1 month from today",
             ),
         time: timeSchema,
     }),

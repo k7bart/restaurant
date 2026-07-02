@@ -23,8 +23,8 @@ const reservationSchema = yup.object({
 
 const defaultUser: User = {
     id: "300837",
-    name: "Bob",
-    surname: "Bobert",
+    firstName: "Bob",
+    lastName: "Bobert",
     email: "b0bert@gmail.com",
     password: "",
     refferalLink: "",
@@ -70,7 +70,7 @@ const defaultUser: User = {
             },
             reservedBy: {
                 id: "300837",
-                name: "Bob",
+                firstName: "Bob",
                 phone: "+38(064)54-09-154",
             },
         },

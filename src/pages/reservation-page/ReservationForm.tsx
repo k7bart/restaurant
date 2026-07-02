@@ -17,13 +17,13 @@ import Button from "../../components/buttons/button/Button";
 import CustomLink from "../../components/links/custom-link/CustomLink";
 import DateInput from "../../components/inputs/DateInput";
 import EmailInput from "../../components/inputs/EmailInput";
+import FirstNameInput from "../../components/inputs/FirstNameInput";
 import Form from "../../components/form/Form";
-import NameInput from "../../components/inputs/NameInput";
+import LastNameInput from "../../components/inputs/LastNameInput";
 import Notice from "../../components/notice/Notice";
 import NumberOfAdultsInput from "../../components/inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/inputs/PhoneInput";
-import SurnameInput from "../../components/inputs/SurnameInput";
 import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/inputs/TimeInput";
@@ -34,8 +34,8 @@ const today = new Date();
 const earliestAvailableDay = getAvailableDay();
 
 const reservationSchema = yup.object({
-    name: yup.string().required("Please provide your name"),
-    surname: yup.string().optional(),
+    firstName: yup.string().required("Please provide your name"),
+    lastName: yup.string().optional(),
     numberOfAdults: yup
         .number()
         .transform((value, originalValue) => {
@@ -86,7 +86,7 @@ const ReservationForm = () => {
         resolver: yupResolver(reservationSchema),
         mode: "onChange",
         defaultValues: {
-            name: user ? `${user.name} ${user.surname}` : "",
+            firstName: user ? user.firstName : "",
             phone: user ? user.phone : "",
             email: user ? user.email : "",
             date: earliestAvailableDay,
@@ -95,8 +95,8 @@ const ReservationForm = () => {
 
     const onSubmit = (data: ReservationFormValues) => {
         const {
-            name,
-            surname,
+            firstName,
+            lastName,
             phone,
             email,
             numberOfAdults,
@@ -113,9 +113,9 @@ const ReservationForm = () => {
             dateTime,
             status: "new",
             reservedBy: {
-                id: user?.id,
-                name: capitalize(name),
-                surname: surname ? capitalize(surname) : undefined,
+                id: user?.id ?? crypto.randomUUID(),
+                firstName: capitalize(firstName),
+                lastName: lastName ? capitalize(lastName) : undefined,
                 phone,
                 email: email || undefined,
             },
@@ -183,8 +183,8 @@ const ReservationForm = () => {
                 )}
 
                 <div>
-                    <NameInput required />
-                    <SurnameInput />
+                    <FirstNameInput required />
+                    <LastNameInput />
                 </div>
 
                 <div>
