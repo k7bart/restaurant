@@ -93,9 +93,9 @@ const LoginForm = () => {
     return (
         <FormProvider {...methods}>
             <Form onSubmit={onSubmit}>
-                <EmailInput required />
+                <EmailInput required autoComplete="email" />
 
-                <PasswordInput />
+                <PasswordInput autoComplete="current-password" />
 
                 <div className={styles.container}>
                     <LabeledCheckbox

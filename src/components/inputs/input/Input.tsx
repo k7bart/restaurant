@@ -7,6 +7,7 @@ import styles from "./Input.module.scss";
 type InputType = "text" | "email" | "password" | "tel";
 
 export type InputProps = {
+    autoComplete?: string;
     fieldName: string;
     label?: string;
     onBlur?: FocusEventHandler<HTMLInputElement>;
@@ -15,6 +16,7 @@ export type InputProps = {
 };
 
 const Input = ({
+    autoComplete,
     fieldName,
     onBlur,
     label,
@@ -33,6 +35,7 @@ const Input = ({
 
             <input
                 {...register(fieldName)}
+                autoComplete={autoComplete}
                 className={error ? styles.error : undefined}
                 type={type}
                 onBlur={onBlur}

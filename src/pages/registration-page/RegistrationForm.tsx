@@ -70,12 +70,17 @@ const RegistrationForm = () => {
     const { reset } = methods;
 
     const onSubmit = async (data: RegistrationFormValues) => {
+        const { firstName, lastName, phone, email, password, rememberMe } =
+            data;
+
         try {
             const { data: user } = await authService.signup({
-                ...data,
-                firstName: capitalize(data.firstName),
-                lastName: data.lastName && capitalize(data.lastName),
-                phone: formatPhoneForApi(data.phone),
+                firstName: capitalize(firstName),
+                lastName: lastName && capitalize(lastName),
+                phone: formatPhoneForApi(phone),
+                email: email.toLowerCase(),
+                password,
+                rememberMe,
             });
             dispatch(setUser(user));
             reset();
@@ -89,21 +94,22 @@ const RegistrationForm = () => {
         <FormProvider {...methods}>
             <Form onSubmit={onSubmit}>
                 <div>
-                    <FirstNameInput required />
+                    <FirstNameInput required autoComplete="given-name" />
 
-                    <LastNameInput />
+                    <LastNameInput autoComplete="family-name" />
                 </div>
 
                 <div>
-                    <PhoneInput required />
+                    <PhoneInput required autoComplete="tel" />
 
-                    <EmailInput required />
+                    <EmailInput autoComplete="email" />
                 </div>
 
                 <div>
-                    <PasswordInput />
+                    <PasswordInput autoComplete="new-password" />
 
                     <Input
+                        autoComplete="new-password"
                         fieldName="confirmPassword"
                         label="Confirm password"
                         required
