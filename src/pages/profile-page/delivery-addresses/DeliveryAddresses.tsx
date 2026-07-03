@@ -4,6 +4,7 @@ import { useMe } from "../../../hooks/useMe";
 import AddAddressPopup from "./AddAddressPopup";
 import AddressRow from "./AddressRow";
 import Button from "../../../components/buttons/button/Button";
+import NoDataMessage from "../NoDataMessage";
 
 const DeliveryAddresses = () => {
     const { addresses } = useMe();
@@ -11,9 +12,13 @@ const DeliveryAddresses = () => {
 
     return (
         <>
-            {addresses.map((address) => (
-                <AddressRow key={address.id} address={address} />
-            ))}
+            {addresses?.length ? (
+                addresses.map((address) => (
+                    <AddressRow key={address.id} address={address} />
+                ))
+            ) : (
+                <NoDataMessage text="You don't have any delivery addresses yet. You can add one by clicking the button below" />
+            )}
 
             <Button
                 size="small"

@@ -1,7 +1,6 @@
-import "react-datepicker/dist/react-datepicker.css";
 import cn from "classnames";
 import { addMonths } from "date-fns";
-import DatePicker from "react-datepicker";
+import DatePicker from "./reactDatePicker";
 import { Controller, useFormContext } from "react-hook-form";
 import { getAvailableDay } from "../../utils/dateUtils";
 import Text from "../text/Text";

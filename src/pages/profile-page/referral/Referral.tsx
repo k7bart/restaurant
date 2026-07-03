@@ -8,11 +8,11 @@ import Text from "../../../components/text/Text";
 import styles from "./Referral.module.scss";
 
 const Referral = () => {
-    const { refferalLink, referralPromoCode } = useMe();
+    const { referralLink, referralPromoCode } = useMe();
     const [copiedItemId, setCopiedItemId] = useState<string | null>(null);
 
     const copyItems = [
-        { id: "referral", text: refferalLink, size: "large" as const },
+        { id: "referral", text: referralLink, size: "large" as const },
         { id: "promo", text: referralPromoCode, size: "small" as const },
     ];
 

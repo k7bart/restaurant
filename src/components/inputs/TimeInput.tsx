@@ -1,5 +1,5 @@
 import cn from "classnames";
-import DatePicker from "react-datepicker";
+import DatePicker from "./reactDatePicker";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { filterTime } from "../../utils/timeUtils";
 import Text from "../text/Text";

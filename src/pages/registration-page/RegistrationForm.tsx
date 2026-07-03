@@ -27,7 +27,7 @@ const registrationSchema = yup.object({
     email: yup
         .string()
         .email("Please provide a valid email address")
-        .required("Please provide your email"),
+        .optional(),
     phone: phoneSchema,
     password: yup
         .string()
@@ -78,7 +78,7 @@ const RegistrationForm = () => {
                 firstName: capitalize(firstName),
                 lastName: lastName && capitalize(lastName),
                 phone: formatPhoneForApi(phone),
-                email: email.toLowerCase(),
+                email: email && email.toLowerCase(),
                 password,
                 rememberMe,
             });
