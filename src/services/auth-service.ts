@@ -21,7 +21,10 @@ export const authService = {
         );
         return response.data;
     },
-    getMe: () => axios.get<Response<User>>("/auth/me"),
+    getMe: async () => {
+        const response = await axios.get<Response<User>>("/auth/me");
+        return response.data;
+    },
     updateMe: async (payload: Partial<User>) => {
         const response = await axios.patch<Response<User>>("/auth/me", payload);
         return response.data;
