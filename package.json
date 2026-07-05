@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@hookform/resolvers": "^3.3.4",
-        "@k7bart/restaurant-shared-types": "^1.0.7",
+        "@k7bart/restaurant-shared-types": "^1.0.9",
         "@reduxjs/toolkit": "^2.2.3",
         "@testing-library/user-event": "^14.5.2",
         "axios": "^1.12.2",
