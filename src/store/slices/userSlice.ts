@@ -16,29 +16,32 @@ const userSlice = createSlice({
         },
         addAddress(state, action: PayloadAction<Address>) {
             if (!state) return;
+            if (!state.addresses) state.addresses = [];
             state.addresses.push(action.payload);
         },
         addReservation(state, action: PayloadAction<Reservation>) {
             if (!state) return;
+            if (!state.reservations) state.reservations = [];
             state.reservations.push(action.payload);
         },
         addTicket(state, action: PayloadAction<Ticket>) {
             if (!state) return;
+            if (!state.tickets) state.tickets = [];
             state.tickets.push(action.payload);
         },
         logOut() {
             return null;
         },
         removeAddress(state, action: PayloadAction<Address["id"]>) {
-            if (!state) return;
+            if (!state?.addresses) return;
             const index = state.addresses.findIndex(
-                (address) => address.id === action.payload
+                (address) => address.id === action.payload,
             );
             if (index === -1) return;
             state.addresses.splice(index, 1);
         },
         setCurrentAddress(state, action: PayloadAction<Address>) {
-            if (!state) return;
+            if (!state?.addresses) return;
             state.addresses.forEach((address) => {
                 address.isCurrent = address.id === action.payload.id;
             });

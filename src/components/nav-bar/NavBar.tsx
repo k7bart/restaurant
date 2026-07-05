@@ -22,7 +22,7 @@ const NavBar = ({ additionalStyles }: { additionalStyles?: string }) => {
     return (
         <nav className={cn(additionalStyles, "navbar")} data-testid="navbar">
             {user ? (
-                <ProfileLink name={user.name} />
+                <ProfileLink name={user.firstName} />
             ) : (
                 <NavLink to="/login">Login</NavLink>
             )}
