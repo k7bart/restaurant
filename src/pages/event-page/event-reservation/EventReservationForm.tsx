@@ -4,6 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { useAuthRedirect } from "../../../hooks/useAuthRedirect";
 import { addTicket } from "../../../store";
 
 import * as yup from "yup";
@@ -57,6 +58,7 @@ type ReservationFormValues = yup.InferType<typeof reservationSchema>;
 const EventReservationForm = ({ event }: { event: Event }) => {
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+    const { loginTo, loginState } = useAuthRedirect();
     const [ticket, setTicket] = useState<Ticket | null>(null);
 
     const methods = useForm<ReservationFormValues>({
@@ -126,7 +128,11 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {!user && (
                     <p className="large">
                         We kindly invite you to
-                        <NavLink to="/login" className="large wisteria">
+                        <NavLink
+                            to={loginTo}
+                            state={loginState}
+                            className="large wisteria"
+                        >
                             &nbsp;log in&nbsp;
                         </NavLink>
                         for a smoother and quicker experience.

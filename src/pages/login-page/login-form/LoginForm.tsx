@@ -1,9 +1,10 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { setUser } from "../../../store";
 import { authService } from "../../../services/auth-service";
 import { useAppDispatch } from "../../../hooks";
+import { useAuthRedirect } from "../../../hooks/useAuthRedirect";
+import { formatPhoneForApi } from "../../../utils/phoneUtils";
 import { phoneSchema } from "../../../components/inputs/yupInputsSchemas";
 import * as yup from "yup";
 
@@ -18,27 +19,31 @@ import styles from "./LoginForm.module.scss";
 
 import type { LoginCredentials } from "@k7bart/restaurant-shared-types";
 
-const reservationSchema = yup.object({
+const loginSchema = yup.object({
     phone: phoneSchema,
     password: yup.string().required("Please provide your password"),
+    rememberMe: yup.boolean().optional(),
 });
 
 const LoginForm = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+    const { navigateAfterAuth } = useAuthRedirect();
 
     const methods = useForm({
-        resolver: yupResolver(reservationSchema),
+        resolver: yupResolver(loginSchema),
     });
 
     const { reset } = methods;
 
     const onSubmit = async (data: LoginCredentials) => {
         try {
-            const { data: user } = await authService.login(data);
+            const { data: user } = await authService.login({
+                ...data,
+                phone: formatPhoneForApi(data.phone),
+            });
             dispatch(setUser(user));
             reset();
-            navigate("/profile");
+            navigateAfterAuth();
         } catch (error) {
             console.error(error);
         }

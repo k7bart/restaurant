@@ -7,6 +7,7 @@ import { combineDateTime } from "../../utils/timeUtils";
 import { getAvailableDay } from "../../utils/dateUtils";
 import { addMonths } from "date-fns";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { addReservation } from "../../store";
 import { timeSchema } from "../../components/inputs/yupInputsSchemas";
 
@@ -80,13 +81,15 @@ type ReservationFormValues = yup.InferType<typeof reservationSchema>;
 const ReservationForm = () => {
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+    const { loginTo, loginState } = useAuthRedirect();
     const [reserved, setReserved] = useState<Reservation | null>(null);
 
     const methods = useForm({
         resolver: yupResolver(reservationSchema),
         mode: "onChange",
         defaultValues: {
-            firstName: user ? user.firstName : "",
+            firstName: user?.firstName ?? "",
+            lastName: user?.lastName ?? "",
             phone: user ? user.phone : "",
             email: user ? user.email : "",
             date: earliestAvailableDay,
@@ -173,7 +176,8 @@ const ReservationForm = () => {
                         <CustomLink
                             color="wisteria"
                             fontWeight="thin"
-                            to="/login"
+                            to={loginTo}
+                            state={loginState}
                             size="large"
                         >
                             &nbsp;log in&nbsp;
