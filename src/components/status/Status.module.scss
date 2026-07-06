@@ -4,11 +4,11 @@
     width: fit-content;
 
     &.cancelled {
-        color: $red;
+        color: variables.$red;
     }
 
     &.confirmed {
-        color: $green;
+        color: variables.$green;
     }
 
     &.new {

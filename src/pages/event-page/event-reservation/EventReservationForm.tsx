@@ -4,6 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { useAuthRedirect } from "../../../hooks/useAuthRedirect";
 import { addTicket } from "../../../store";
 
 import * as yup from "yup";
@@ -11,17 +12,19 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import Button from "../../../components/buttons/button/Button";
 import EmailInput from "../../../components/inputs/EmailInput";
-import NameInput from "../../../components/inputs/NameInput";
+import FirstNameInput from "../../../components/inputs/FirstNameInput";
+import Form from "../../../components/form/Form";
+import LastNameInput from "../../../components/inputs/LastNameInput";
 import Notice from "../../../components/notice/Notice";
 import NumberOfAdultsInput from "../../../components/inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../../components/inputs/NumberOfChildrenInput";
 import PhoneInput from "../../../components/inputs/PhoneInput";
 
 import type { Event, Ticket } from "@k7bart/restaurant-shared-types";
-import Form from "../../../components/form/Form";
 
 const reservationSchema = yup.object({
-    name: yup.string().required("Please provide your name"),
+    firstName: yup.string().required("Please provide your name"),
+    lastName: yup.string().optional(),
     numberOfAdults: yup
         .number()
         .transform((value, originalValue) => {
@@ -55,14 +58,14 @@ type ReservationFormValues = yup.InferType<typeof reservationSchema>;
 const EventReservationForm = ({ event }: { event: Event }) => {
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+    const { loginTo, loginState } = useAuthRedirect();
     const [ticket, setTicket] = useState<Ticket | null>(null);
-
-    const userName = user ? `${user.name} ${user.surname ?? ""}`.trim() : "";
 
     const methods = useForm<ReservationFormValues>({
         resolver: yupResolver(reservationSchema),
         defaultValues: {
-            name: userName,
+            firstName: user?.firstName ?? "",
+            lastName: user?.lastName ?? "",
             email: user ? user.email : "",
             phone: user ? user.phone : "",
         },
@@ -125,14 +128,21 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {!user && (
                     <p className="large">
                         We kindly invite you to
-                        <NavLink to="/login" className="large wisteria">
+                        <NavLink
+                            to={loginTo}
+                            state={loginState}
+                            className="large wisteria"
+                        >
                             &nbsp;log in&nbsp;
                         </NavLink>
                         for a smoother and quicker experience.
                     </p>
                 )}
 
-                <NameInput required />
+                <div>
+                    <FirstNameInput required />
+                    <LastNameInput />
+                </div>
 
                 <div>
                     <PhoneInput required />
@@ -142,7 +152,6 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {event.ageLimit === 18 && (
                     <div>
                         <NumberOfAdultsInput required />
-
                         <Button size="small" color="wisteria" type="submit">
                             Submit
                         </Button>
@@ -155,7 +164,6 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                             <NumberOfAdultsInput required />
                             <NumberOfChildrenInput />
                         </div>
-
                         <Button size="small" color="wisteria" type="submit">
                             Submit
                         </Button>

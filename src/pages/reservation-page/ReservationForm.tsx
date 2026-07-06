@@ -7,6 +7,7 @@ import { combineDateTime } from "../../utils/timeUtils";
 import { getAvailableDay } from "../../utils/dateUtils";
 import { addMonths } from "date-fns";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { addReservation } from "../../store";
 import { timeSchema } from "../../components/inputs/yupInputsSchemas";
 
@@ -17,13 +18,13 @@ import Button from "../../components/buttons/button/Button";
 import CustomLink from "../../components/links/custom-link/CustomLink";
 import DateInput from "../../components/inputs/DateInput";
 import EmailInput from "../../components/inputs/EmailInput";
+import FirstNameInput from "../../components/inputs/FirstNameInput";
 import Form from "../../components/form/Form";
-import NameInput from "../../components/inputs/NameInput";
+import LastNameInput from "../../components/inputs/LastNameInput";
 import Notice from "../../components/notice/Notice";
 import NumberOfAdultsInput from "../../components/inputs/NumberOfAdultsInput";
 import NumberOfChildrenInput from "../../components/inputs/NumberOfChildrenInput";
 import PhoneInput from "../../components/inputs/PhoneInput";
-import SurnameInput from "../../components/inputs/SurnameInput";
 import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/inputs/TimeInput";
@@ -34,8 +35,8 @@ const today = new Date();
 const earliestAvailableDay = getAvailableDay();
 
 const reservationSchema = yup.object({
-    name: yup.string().required("Please provide your name"),
-    surname: yup.string().optional(),
+    firstName: yup.string().required("Please provide your name"),
+    lastName: yup.string().optional(),
     numberOfAdults: yup
         .number()
         .transform((value, originalValue) => {
@@ -80,13 +81,15 @@ type ReservationFormValues = yup.InferType<typeof reservationSchema>;
 const ReservationForm = () => {
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
+    const { loginTo, loginState } = useAuthRedirect();
     const [reserved, setReserved] = useState<Reservation | null>(null);
 
     const methods = useForm({
         resolver: yupResolver(reservationSchema),
         mode: "onChange",
         defaultValues: {
-            name: user ? `${user.name} ${user.surname}` : "",
+            firstName: user?.firstName ?? "",
+            lastName: user?.lastName ?? "",
             phone: user ? user.phone : "",
             email: user ? user.email : "",
             date: earliestAvailableDay,
@@ -95,8 +98,8 @@ const ReservationForm = () => {
 
     const onSubmit = (data: ReservationFormValues) => {
         const {
-            name,
-            surname,
+            firstName,
+            lastName,
             phone,
             email,
             numberOfAdults,
@@ -113,9 +116,9 @@ const ReservationForm = () => {
             dateTime,
             status: "new",
             reservedBy: {
-                id: user?.id,
-                name: capitalize(name),
-                surname: surname ? capitalize(surname) : undefined,
+                id: user?.id ?? crypto.randomUUID(),
+                firstName: capitalize(firstName),
+                lastName: lastName ? capitalize(lastName) : undefined,
                 phone,
                 email: email || undefined,
             },
@@ -173,7 +176,8 @@ const ReservationForm = () => {
                         <CustomLink
                             color="wisteria"
                             fontWeight="thin"
-                            to="/login"
+                            to={loginTo}
+                            state={loginState}
                             size="large"
                         >
                             &nbsp;log in&nbsp;
@@ -183,8 +187,8 @@ const ReservationForm = () => {
                 )}
 
                 <div>
-                    <NameInput required />
-                    <SurnameInput />
+                    <FirstNameInput required />
+                    <LastNameInput />
                 </div>
 
                 <div>

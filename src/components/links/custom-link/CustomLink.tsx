@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, type To } from "react-router-dom";
 import classNames from "classnames";
 import styles from "./CustomLink.module.scss";
 
@@ -7,7 +7,8 @@ type Props = {
     color?: "grey" | "white" | "wisteria";
     fontWeight?: "thin" | "extraLight";
     target?: string;
-    to: string;
+    to: To;
+    state?: unknown;
     size?: "medium" | "large";
 };
 
@@ -17,6 +18,7 @@ const CustomLink = ({
     fontWeight = "extraLight",
     target = "_self",
     to,
+    state,
     size = "medium",
 }: Props) => {
     return (
@@ -29,6 +31,7 @@ const CustomLink = ({
             )}
             target={target}
             to={to}
+            state={state}
         >
             {children}
         </Link>

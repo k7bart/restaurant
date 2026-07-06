@@ -1,8 +1,6 @@
-import { IoTicket } from "react-icons/io5";
 import { useMe } from "../../../hooks/useMe";
 
-import CustomLink from "../../../components/links/custom-link/CustomLink";
-import Text from "../../../components/text/Text";
+import NoDataMessage from "../NoDataMessage";
 import Ticket from "./ticket/Ticket";
 
 import styles from "./Tickets.module.scss";
@@ -10,17 +8,14 @@ import styles from "./Tickets.module.scss";
 const Tickets = () => {
     const { tickets } = useMe();
 
-    if (!tickets.length)
+    if (!tickets || !tickets?.length) {
         return (
-            <Text size="medium">
-                <IoTicket />
-                &nbsp;You don&apos;t have any tickets yet. We invite you to
-                check out our events&nbsp;
-                <CustomLink color="wisteria" fontWeight="thin" to="/events">
-                    here
-                </CustomLink>
-            </Text>
+            <NoDataMessage
+                text="You don't have any tickets yet. We invite you to check out our events"
+                link="/events"
+            />
         );
+    }
 
     return (
         <div className={styles.tickets}>

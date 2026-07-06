@@ -1,0 +1,4 @@
+interface:
+  display_name: 'PR Title Summary'
+  short_description: 'Draft restaurant PR title and Summary-only body'
+  default_prompt: 'Use $draft-pr-title-summary to draft a GitHub pull request title and Summary-only body for the current branch.'

@@ -2,8 +2,9 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch } from "../../hooks";
 import { useMe } from "../../hooks/useMe";
-import { updateUserData } from "../../store/index";
-import { capitalize } from "../../utils/stringUtils";
+import { setUser } from "../../store/index";
+import { authService } from "../../services/auth-service";
+import { phoneSchema } from "../../components/inputs/yupInputsSchemas";
 
 import * as yup from "yup";
 import dayjs from "dayjs";
@@ -11,59 +12,59 @@ import dayjs from "dayjs";
 import Button from "../../components/buttons/button/Button";
 import DateInput from "../../components/inputs/DateInput";
 import EmailInput from "../../components/inputs/EmailInput";
+import FirstNameInput from "../../components/inputs/FirstNameInput";
 import Form from "../../components/form/Form";
-import NameInput from "../../components/inputs/NameInput";
+import LastNameInput from "../../components/inputs/LastNameInput";
 import PhoneInput from "../../components/inputs/PhoneInput";
-import SurnameInput from "../../components/inputs/SurnameInput";
-
-import type { User } from "@k7bart/restaurant-shared-types";
 
 const schema = yup.object({
-    name: yup.string().required("Please provide your name"),
-    surname: yup.string().optional(),
+    firstName: yup.string().required("Please provide your name"),
+    lastName: yup.string().optional(),
     email: yup
         .string()
         .email("Please provide a valid email address")
-        .required("Please provide your email"),
-    phone: yup.string().required("Please provide your phone number"),
+        .optional(),
+    phone: phoneSchema,
     birthday: yup.date().nullable().optional(),
 });
 
+type FormValues = yup.InferType<typeof schema>;
+
 const PersonalData = () => {
-    const { name, surname, email, phone, birthday } = useMe();
+    const { firstName, lastName, email, phone, birthday } = useMe();
 
     const dispatch = useAppDispatch();
 
-    const methods = useForm({
+    const methods = useForm<FormValues>({
         resolver: yupResolver(schema),
         defaultValues: {
-            name,
-            surname,
+            firstName,
+            lastName,
             email,
             phone,
-            birthday: birthday ? dayjs(birthday).toDate() : null,
+            birthday: birthday ? dayjs(birthday).toDate() : undefined,
         },
     });
 
-    const onSubmit = (data: User) => {
-        const { name, surname } = data;
-
-        const formattedData = {
-            ...data,
-            name: capitalize(name),
-            surname: surname ? capitalize(surname) : undefined,
-        };
-
-        dispatch(updateUserData(formattedData));
+    const onSubmit = async (data: FormValues) => {
+        try {
+            const { data: user } = await authService.updateMe({
+                ...data,
+                birthday: data.birthday ?? undefined,
+            });
+            dispatch(setUser(user));
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
         <FormProvider {...methods}>
             <Form onSubmit={onSubmit}>
                 <div>
-                    <NameInput />
+                    <FirstNameInput />
 
-                    <SurnameInput />
+                    <LastNameInput />
                 </div>
 
                 <div>
