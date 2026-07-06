@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import {
     createAsyncThunk,
     createSlice,
@@ -14,7 +14,7 @@ export const fetchReservations = createAsyncThunk(
     async () => {
         const { data } = await axios.get("/api/reservations");
         return data;
-    }
+    },
 );
 
 export const addReservation = createAsyncThunk(
@@ -22,7 +22,7 @@ export const addReservation = createAsyncThunk(
     async (reservationObj: Reservation) => {
         const { data } = await axios.post("/api/reservations", reservationObj);
         return data;
-    }
+    },
 );
 
 const initialState = {
@@ -139,20 +139,20 @@ const reservationsSlice = createSlice({
                 (state) => {
                     state.status = "loading";
                     state.error = null;
-                }
+                },
             )
             .addMatcher(
                 isFulfilled(fetchReservations, addReservation),
                 (state) => {
                     state.status = "succeeded";
-                }
+                },
             )
             .addMatcher(
                 isRejected(fetchReservations, addReservation),
                 (state, action) => {
                     state.status = "failed";
                     state.error = action.error.message ?? null;
-                }
+                },
             );
     },
 });
