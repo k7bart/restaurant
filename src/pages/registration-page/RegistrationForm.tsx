@@ -119,7 +119,7 @@ const RegistrationForm = () => {
 
                 <LabeledCheckbox fieldName="rememberMe" label="Remember me" />
 
-                <Button size="small" color="wisteria" type="submit">
+                <Button size="small" color="primary" type="submit">
                     Register
                 </Button>
 

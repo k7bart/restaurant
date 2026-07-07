@@ -5,7 +5,7 @@ import styles from "./Button.module.scss";
 
 type Props = {
     size?: "small" | "large" | "full";
-    color?: "wisteria" | "transparent";
+    color?: "primary" | "secondary" | "tertiary";
     isActive?: boolean;
     type?: "button" | "submit" | "reset";
     children: ReactNode;
@@ -15,7 +15,7 @@ type Props = {
 
 const Button = ({
     size = "small",
-    color = "wisteria",
+    color = "primary",
     isActive = true,
     type = "button",
     children,
@@ -29,7 +29,7 @@ const Button = ({
                 styles.button,
                 styles[size],
                 styles[color],
-                !isActive && styles.inactive
+                !isActive && styles.tertiary,
             )}
             onClick={onClick}
             type={type}

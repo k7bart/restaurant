@@ -167,7 +167,7 @@ const ReservationForm = () => {
 
                 <div className="buttons-container">
                     <Button
-                        color="transparent"
+                        color="secondary"
                         onClick={() => setReserved(null)}
                         size="small"
                     >
@@ -175,7 +175,7 @@ const ReservationForm = () => {
                     </Button>
 
                     <Link to="/profile#table-reservations">
-                        <Button size="small" color="wisteria">
+                        <Button size="small" color="primary">
                             Check my reservations
                         </Button>
                     </Link>
@@ -227,7 +227,7 @@ const ReservationForm = () => {
                     label="Additional requirements"
                 />
 
-                <Button size="small" color="wisteria" type="submit">
+                <Button size="small" color="primary" type="submit">
                     Submit
                 </Button>
             </Form>

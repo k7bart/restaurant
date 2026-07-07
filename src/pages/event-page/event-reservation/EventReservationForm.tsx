@@ -106,14 +106,14 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 <div className="buttons-container">
                     <Button
                         size="small"
-                        color="transparent"
+                        color="secondary"
                         onClick={() => setTicket(null)}
                     >
                         Buy one more
                     </Button>
 
                     <Link to="/profile#tickets">
-                        <Button size="small" color="wisteria">
+                        <Button size="small" color="primary">
                             Check your tickets
                         </Button>
                     </Link>
@@ -152,7 +152,7 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {event.ageLimit === 18 && (
                     <div>
                         <NumberOfAdultsInput required />
-                        <Button size="small" color="wisteria" type="submit">
+                        <Button size="small" color="primary" type="submit">
                             Submit
                         </Button>
                     </div>
@@ -164,7 +164,7 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                             <NumberOfAdultsInput required />
                             <NumberOfChildrenInput />
                         </div>
-                        <Button size="small" color="wisteria" type="submit">
+                        <Button size="small" color="primary" type="submit">
                             Submit
                         </Button>
                     </>

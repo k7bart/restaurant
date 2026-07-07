@@ -72,7 +72,7 @@ const LoginForm = () => {
                     </CustomLink>
                 </div>
 
-                <Button size="small" color="wisteria" type="submit">
+                <Button size="small" color="primary" type="submit">
                     Login
                 </Button>
 

@@ -23,17 +23,17 @@
         width: 100%;
     }
 
-    &.wisteria {
+    &.primary {
         background-color: variables.$wisteria;
         border: 1px solid variables.$wisteria;
     }
 
-    &.transparent {
+    &.secondary {
         background-color: variables.$background-color;
         border: 1px solid variables.$wisteria;
     }
 
-    &.inactive {
+    &.tertiary {
         background-color: variables.$background-color;
         color: variables.$text-color-grey;
         border: 1px solid variables.$border-color;

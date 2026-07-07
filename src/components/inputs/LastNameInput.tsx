@@ -1,7 +1,7 @@
 import Input, { InputProps } from "./input/Input";
 
 const LastNameInput = (props: Omit<InputProps, "fieldName">) => (
-    <Input fieldName="lastName" {...props} />
+    <Input fieldName="lastName" label="Last name" {...props} />
 );
 
 export default LastNameInput;

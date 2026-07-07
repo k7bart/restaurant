@@ -16,11 +16,13 @@ const RemoveAddressPopup = ({ onClose, onSubmit, addressStr }: Props) => {
             <Text size="large">{addressStr}</Text>
 
             <div className="container">
-                <Button color="transparent" onClick={onSubmit}>
+                <Button color="secondary" onClick={onSubmit}>
                     Yes
                 </Button>
 
-                <Button onClick={onClose}>No</Button>
+                <Button color="primary" onClick={onClose}>
+                    No
+                </Button>
             </div>
         </Popup>
     );

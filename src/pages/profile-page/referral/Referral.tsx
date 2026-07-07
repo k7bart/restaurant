@@ -29,7 +29,7 @@ const Referral = () => {
                     <Button
                         key={item.id}
                         size={item.size}
-                        color="transparent"
+                        color="secondary"
                         onClick={() => handleCopy(item.text, item.id)}
                     >
                         {copiedItemId === item.id ? "Copied" : item.text}

@@ -11,13 +11,10 @@
 
     > div {
         display: flex;
+        gap: 32px;
 
         > label {
             width: 50%;
-
-            &:not(:last-child) {
-                margin-right: 32px;
-            }
         }
 
         > button[type="submit"] {

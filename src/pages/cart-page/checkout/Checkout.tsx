@@ -15,10 +15,13 @@ import Button from "../../../components/buttons/button/Button";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import DateTimeInputs from "../../../components/inputs/date-time-inputs/DateTimeInputs";
 import DeliveryAddressInputs from "../../../components/inputs/address-inputs/DeliveryAddressInputs";
+import EmailInput from "../../../components/inputs/EmailInput";
 import FirstNameInput from "../../../components/inputs/FirstNameInput";
 import Form from "../../../components/form/Form";
 import HorizontalDevider from "../../../components/horizontal-divider/HorizontalDevider";
+import Input from "../../../components/inputs/input/Input";
 import LabeledCheckbox from "../../../components/labeled-checkbox/LabeledCheckbox";
+import LastNameInput from "../../../components/inputs/LastNameInput";
 import OptionsButtons from "../../../components/options-buttons/OptionsButtons";
 import PaymentOptions from "../../../components/payment-options/PaymentOptions";
 import PhoneInput from "../../../components/inputs/PhoneInput";
@@ -176,7 +179,13 @@ const Checkout = () => {
                     <div>
                         <FirstNameInput required />
 
+                        <LastNameInput />
+                    </div>
+
+                    <div>
                         <PhoneInput required />
+
+                        <EmailInput />
                     </div>
 
                     {deliveryMethod !== "selfPickup" && (
@@ -239,6 +248,16 @@ const Checkout = () => {
                         fieldName="callForDetails"
                         label="Call me for details"
                     />
+
+                    <HorizontalDevider />
+
+                    <div className={styles.promoCode}>
+                        <Button type="button" size="small" color="tertiary">
+                            Apply
+                        </Button>
+
+                        <Input fieldName="promoCode" label="Promo code" />
+                    </div>
 
                     <TotalPrice
                         additionalStyles={styles.totalPrice}

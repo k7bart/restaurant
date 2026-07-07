@@ -22,7 +22,7 @@ const DeliveryAddresses = () => {
 
             <Button
                 size="small"
-                color="wisteria"
+                color="primary"
                 onClick={() => setShowPopup(true)}
             >
                 Add address
