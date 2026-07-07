@@ -15,15 +15,13 @@ import {
 } from "./pages/LazyPages";
 import ErrorPage from "./pages/error-page/ErrorPage";
 import FrontPage from "./pages/front-page/FrontPage";
+import HomeRedirect from "./components/home-redirect/HomeRedirect";
+import LoginRedirect from "./components/login-redirect/LoginRedirect";
 
-const routes = [
+const pageRoutes = [
     {
         path: "/",
         element: <FrontPage />,
-    },
-    {
-        path: "*",
-        element: <ErrorPage />,
     },
     {
         path: "/cart",
@@ -38,10 +36,6 @@ const routes = [
                 element: <CheckoutLazy />,
             },
         ],
-    },
-    {
-        path: "/login",
-        element: <LoginLazyPage />,
     },
     {
         path: "/menu",
@@ -73,13 +67,47 @@ const routes = [
             },
         ],
     },
+];
+
+const catchAllRoute = {
+    path: "*",
+    element: <ErrorPage />,
+};
+
+const authRoutes = [
+    {
+        path: "/login",
+        element: <LoginLazyPage />,
+    },
     {
         path: "/registration",
         element: <RegistrationLazyPage />,
     },
+];
+
+const protectedRouteEntries = [
     {
         path: "/profile",
         element: <ProfileLazyPage />,
     },
 ];
-export default routes;
+
+export const publicRoutes = [
+    ...pageRoutes,
+    ...authRoutes,
+    ...protectedRouteEntries.map(({ path }) => ({
+        path,
+        element: <LoginRedirect />,
+    })),
+    catchAllRoute,
+];
+
+export const protectedRoutes = [
+    ...pageRoutes,
+    ...authRoutes.map(({ path }) => ({
+        path,
+        element: <HomeRedirect />,
+    })),
+    ...protectedRouteEntries,
+    catchAllRoute,
+];
