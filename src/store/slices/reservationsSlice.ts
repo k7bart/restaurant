@@ -7,20 +7,10 @@ import {
     isRejected,
 } from "@reduxjs/toolkit";
 
-import type { Reservation } from "@k7bart/restaurant-shared-types";
-
 export const fetchReservations = createAsyncThunk(
     "reservations/fetchReservations",
     async () => {
         const { data } = await axios.get("/api/reservations");
-        return data;
-    },
-);
-
-export const addReservation = createAsyncThunk(
-    "reservations/addReservation",
-    async (reservationObj: Reservation) => {
-        const { data } = await axios.post("/api/reservations", reservationObj);
         return data;
     },
 );
@@ -131,29 +121,17 @@ const reservationsSlice = createSlice({
             .addCase(fetchReservations.fulfilled, (state, action) => {
                 state.list = action.payload;
             })
-            .addCase(addReservation.fulfilled, (state, action) => {
-                state.list.push(action.payload);
+            .addMatcher(isPending(fetchReservations), (state) => {
+                state.status = "loading";
+                state.error = null;
             })
-            .addMatcher(
-                isPending(fetchReservations, addReservation),
-                (state) => {
-                    state.status = "loading";
-                    state.error = null;
-                },
-            )
-            .addMatcher(
-                isFulfilled(fetchReservations, addReservation),
-                (state) => {
-                    state.status = "succeeded";
-                },
-            )
-            .addMatcher(
-                isRejected(fetchReservations, addReservation),
-                (state, action) => {
-                    state.status = "failed";
-                    state.error = action.error.message ?? null;
-                },
-            );
+            .addMatcher(isFulfilled(fetchReservations), (state) => {
+                state.status = "succeeded";
+            })
+            .addMatcher(isRejected(fetchReservations), (state, action) => {
+                state.status = "failed";
+                state.error = action.error.message ?? null;
+            });
     },
 });
 

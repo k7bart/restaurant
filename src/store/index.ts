@@ -23,6 +23,7 @@ export {
 export {
     setUser,
     addAddress,
+    addReservation,
     addTicket,
     logOut,
     removeAddress,
@@ -30,7 +31,7 @@ export {
     updateUserData,
 } from "./slices/userSlice";
 
-export { addReservation, fetchReservations } from "./slices/reservationsSlice";
+export { fetchReservations } from "./slices/reservationsSlice";
 
 export type AppStore = typeof store;
 export type RootState = ReturnType<AppStore["getState"]>;

@@ -29,7 +29,11 @@ import Text from "../../components/text/Text";
 import Textarea from "../../components/textarea/Textarea";
 import TimeInput from "../../components/inputs/TimeInput";
 
-import type { Reservation } from "@k7bart/restaurant-shared-types";
+import type {
+    Reservation,
+    ReservationRequest,
+} from "@k7bart/restaurant-shared-types";
+import { reservationService } from "../../services/reservation-service";
 
 const today = new Date();
 const earliestAvailableDay = getAvailableDay();
@@ -52,6 +56,7 @@ const reservationSchema = yup.object({
             return originalValue === "" ? 0 : value;
         })
         .min(0, "Children are the joy of life")
+        .max(50, "Maximum 50 children allowed")
         .integer("Oh my! 😨")
         .typeError("Please enter a number"),
     email: yup
@@ -73,7 +78,13 @@ const reservationSchema = yup.object({
             "Date cannot be later than 2 month from today",
         ),
     time: timeSchema,
-    additionalRequirements: yup.string(),
+    additionalRequirements: yup
+        .string()
+        .max(
+            500,
+            "Additional requirements cannot be longer than 500 characters",
+        )
+        .optional(),
 });
 
 type ReservationFormValues = yup.InferType<typeof reservationSchema>;
@@ -96,7 +107,7 @@ const ReservationForm = () => {
         },
     });
 
-    const onSubmit = (data: ReservationFormValues) => {
+    const onSubmit = async (data: ReservationFormValues) => {
         const {
             firstName,
             lastName,
@@ -111,10 +122,8 @@ const ReservationForm = () => {
 
         const dateTime = combineDateTime(date, time);
 
-        const reservation: Reservation = {
-            id: crypto.randomUUID(),
+        const payload: ReservationRequest = {
             dateTime,
-            status: "new",
             reservedBy: {
                 id: user?.id ?? crypto.randomUUID(),
                 firstName: capitalize(firstName),
@@ -126,13 +135,20 @@ const ReservationForm = () => {
                 adults: numberOfAdults,
                 children: numberOfChildren || undefined,
             },
-            additionalRequirements,
+            additionalRequirements: additionalRequirements || undefined,
         };
 
-        dispatch(addReservation(reservation));
+        try {
+            const { data: reservation } =
+                await reservationService.createReservation(payload);
 
-        setReserved(reservation);
-        methods.reset();
+            if (user) dispatch(addReservation(reservation));
+
+            setReserved(reservation);
+            methods.reset();
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     if (reserved)

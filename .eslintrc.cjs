@@ -18,6 +18,7 @@ module.exports = {
     plugins: ["@typescript-eslint", "react-refresh"],
     settings: { react: { version: "18.2" } },
     rules: {
+        "object-shorthand": ["error", "always"],
         "react/prop-types": "off",
         "react/jsx-no-target-blank": "off",
         "react-refresh/only-export-components": [

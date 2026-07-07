@@ -128,14 +128,14 @@ const Checkout = () => {
 
         const address = {
             id: crypto.randomUUID(),
-            addressComment: addressComment,
-            city: city,
-            street: street,
-            house: house,
-            entrance: entrance,
-            floor: floor,
-            apartment: apartment,
-            intercom: intercom,
+            addressComment,
+            city,
+            street,
+            house,
+            entrance,
+            floor,
+            apartment,
+            intercom,
         };
 
         if (deliveryMethod === "advance") {
