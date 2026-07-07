@@ -1,8 +1,7 @@
 import classNames from "classnames";
 import { capitalize } from "../../../../utils/stringUtils";
-import { menu } from "../../../../state";
 import ContentSectionNav from "../../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
-import styles from "../../../../components/links/custom-nav-link/CustomNavLink.module.scss";
+import styles from "../../../../components/links/custom-link/CustomLink.module.scss";
 import type { Category } from "@k7bart/restaurant-shared-types";
 
 type MenuLinkProps = {
@@ -13,9 +12,10 @@ type MenuLinkProps = {
 
 const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
     <a
-        className={classNames(styles.link, styles.grey, {
-            [styles.active]: isActive,
-        })}
+        className={classNames(
+            styles.link,
+            isActive ? styles.wisteria : styles.grey,
+        )}
         onClick={onClick}
     >
         {children}
@@ -23,16 +23,18 @@ const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
 );
 
 type MenuNavigationProps = {
+    categories: Category[];
     activeCategory: Category["name"];
     handleNavigation: (categoryName: Category["name"]) => void;
 };
 
 const MenuNavigation = ({
+    categories,
     activeCategory,
     handleNavigation,
 }: MenuNavigationProps) => (
     <ContentSectionNav justifyContent="contentEvenly">
-        {menu.map((category) => (
+        {categories.map((category) => (
             <MenuLink
                 key={category.name}
                 isActive={activeCategory === category.name}

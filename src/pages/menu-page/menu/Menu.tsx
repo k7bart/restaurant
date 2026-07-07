@@ -1,9 +1,9 @@
-import { useState, useEffect, useTransition, useRef } from "react";
+import { useState, useTransition, useRef } from "react";
 import { FaLeaf } from "react-icons/fa";
 import { menu } from "../../../state";
-import debounce from "../../../utils/debounce";
+import { useActiveCategory } from "../../../hooks/useActiveCategory";
 
-import Category, { CategoryHandle } from "./Category/Category";
+import CategorySection from "./Category/Category";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import Loader from "../../../components/loader/Loader";
 import MenuNavigation from "./menu-navigation/MenuNavigation";
@@ -11,7 +11,7 @@ import Pill from "../../../components/pill/Pill";
 
 import styles from "./Menu.module.scss";
 
-import type { Category as ICategory } from "@k7bart/restaurant-shared-types";
+import type { Category as MenuCategory } from "@k7bart/restaurant-shared-types";
 
 type FilterType = "vegan" | null;
 
@@ -27,9 +27,12 @@ const getVeganOptions = () => {
 const Menu = () => {
     const [isPending, startTransition] = useTransition();
     const [filteredMenu, setFilteredMenu] = useState(menu);
-    const [activeCategory, setActiveCategory] = useState(filteredMenu[0].name);
     const [activeFilter, setActiveFilter] = useState<FilterType>(null);
-    const categoryRefs = useRef<Record<string, CategoryHandle | null>>({});
+    const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
+    const [activeCategory, setActiveCategory] = useActiveCategory(
+        isPending ? [] : filteredMenu,
+        categoryRefs,
+    );
 
     const applyFilter = (filter: FilterType) => {
         setActiveFilter(filter);
@@ -48,40 +51,26 @@ const Menu = () => {
     };
 
     const handleFilter = (filter: FilterType) => {
-        filter === activeFilter ? resetFilter() : applyFilter(filter);
+        if (filter === activeFilter) {
+            resetFilter();
+            return;
+        }
+        applyFilter(filter);
     };
 
-    const handleScroll = () => {
-        const navbar = document.querySelector("nav");
-        const categories = document.querySelectorAll(".category");
-
-        categories.forEach((category) => {
-            const rect = category.getBoundingClientRect();
-            if (
-                rect.bottom > (navbar?.offsetHeight ?? 0) + 20 &&
-                rect.top < (navbar?.offsetHeight ?? 0) + 20
-            ) {
-                setActiveCategory(category.id as ICategory["name"]);
-            }
+    const handleNavigation = (categoryName: MenuCategory["name"]) => {
+        setActiveCategory(categoryName);
+        categoryRefs.current[categoryName]?.scrollIntoView({
+            behavior: "smooth",
         });
     };
-
-    const debouncedHandleScroll = debounce(handleScroll, 100);
-
-    useEffect(() => {
-        window.addEventListener("scroll", debouncedHandleScroll);
-        return () => {
-            window.removeEventListener("scroll", debouncedHandleScroll);
-        };
-    });
 
     return (
         <ContentSection className={styles.section}>
             <MenuNavigation
+                categories={filteredMenu}
                 activeCategory={activeCategory}
-                handleNavigation={(categoryName) =>
-                    categoryRefs.current[categoryName]?.scrollIntoView()
-                }
+                handleNavigation={handleNavigation}
             />
 
             <Pill
@@ -97,7 +86,7 @@ const Menu = () => {
                 <Loader />
             ) : (
                 filteredMenu.map((category) => (
-                    <Category
+                    <CategorySection
                         key={category.name}
                         category={category}
                         ref={(el) => {
