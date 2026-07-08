@@ -1,6 +1,8 @@
 @use "../../styles/variables.scss";
 
 .logo {
+    transition: 0.3s;
+    color: white;
     font-size: 28px;
     font-weight: 350;
     letter-spacing: 1px;

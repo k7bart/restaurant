@@ -8,11 +8,17 @@
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
-    color: white;
     scrollbar-color: variables.$wisteria variables.$background-color;
 }
 
+svg {
+    transition: 0.3s;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
 a {
+    transition: 0.3s;
     text-decoration: none;
     font-weight: 200;
 
@@ -50,6 +56,16 @@ input:-webkit-autofill::first-line {
 
 body {
     background-color: variables.$background-color;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: white;
 }
 
 h3 {
@@ -60,10 +76,6 @@ h3 {
 h4 {
     font-size: 20px;
     font-weight: 200;
-}
-
-svg {
-    transition: 0.3s;
 }
 
 table {
@@ -127,103 +139,6 @@ table {
 }
 
 // pages
-.admin-page {
-    height: 100vh;
-    display: flex;
-
-    aside {
-        height: 100vh;
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-
-        a {
-            max-height: 72px;
-            padding: 8px;
-            display: flex;
-            background-color: white;
-
-            > div {
-                width: 100%;
-                padding: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 30px;
-
-                > span {
-                    color: variables.$background-color;
-                }
-
-                > :not(:first-child) {
-                    margin-left: 8px;
-                }
-
-                > .avatar {
-                    height: 40px;
-                    width: 40px;
-                    padding: 0px;
-                    font-size: 24px;
-                    background-color: variables.$wisteria;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                > svg {
-                    height: 24px;
-                    width: 24px;
-                    fill: variables.$background-color;
-                    stroke: variables.$background-color;
-                }
-
-                &:hover {
-                    background-color: variables.$background-color;
-
-                    > span {
-                        color: white;
-                    }
-
-                    > svg {
-                        fill: white;
-                        stroke: white;
-                    }
-                }
-            }
-
-            &.active {
-                border-radius: 0;
-                background-color: variables.$background-color;
-
-                > div {
-                    > span {
-                        color: variables.$wisteria;
-                    }
-
-                    > svg {
-                        fill: variables.$wisteria;
-                        stroke: variables.$wisteria;
-                    }
-                }
-
-                & + a,
-                + .filler {
-                    border-radius: 0 30px 0 0;
-                }
-            }
-
-            &:not(.active):has(+ .active) {
-                border-radius: 0 0 30px 0;
-            }
-        }
-
-        .filler {
-            flex-grow: 1;
-            background-color: white;
-        }
-    }
-}
 
 .registration-page {
     form {

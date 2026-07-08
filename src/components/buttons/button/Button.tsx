@@ -10,7 +10,7 @@ type Props = {
     type?: "button" | "submit" | "reset";
     children: ReactNode;
     onClick?: () => void;
-    additionalStyles?: string;
+    className?: string;
 };
 
 const Button = ({
@@ -20,12 +20,12 @@ const Button = ({
     type = "button",
     children,
     onClick,
-    additionalStyles,
+    className,
 }: Props) => {
     return (
         <button
             className={cn(
-                additionalStyles,
+                className,
                 styles.button,
                 styles[size],
                 styles[color],

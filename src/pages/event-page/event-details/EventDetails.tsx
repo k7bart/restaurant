@@ -59,7 +59,7 @@ const EventDetails = () => {
             <div className={styles.eventDetails}>
                 <span className={styles.mainInfo}>
                     <Link to={`/events/${pathName}/reservation`}>
-                        <Button>Book a spot</Button>
+                        <Button size="large">Book a spot</Button>
                     </Link>
                     {ageLimit && <h4>{ageLimit}+</h4>}
                     <h4>${price}</h4>
@@ -102,7 +102,7 @@ const EventDetails = () => {
                 {guest && <SpecialGuest guest={guest} />}
 
                 <Link to={`/events/${pathName}/reservation`}>
-                    <Button additionalStyles={styles.button} size="large">
+                    <Button className={styles.button} size="large">
                         Book a spot
                     </Button>
                 </Link>

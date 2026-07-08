@@ -166,18 +166,12 @@ const ReservationForm = () => {
                 </Text>
 
                 <div className="buttons-container">
-                    <Button
-                        color="secondary"
-                        onClick={() => setReserved(null)}
-                        size="small"
-                    >
+                    <Button color="secondary" onClick={() => setReserved(null)}>
                         Make another one
                     </Button>
 
                     <Link to="/profile#table-reservations">
-                        <Button size="small" color="primary">
-                            Check my reservations
-                        </Button>
+                        <Button>Check my reservations</Button>
                     </Link>
                 </div>
             </Notice>
@@ -227,9 +221,7 @@ const ReservationForm = () => {
                     label="Additional requirements"
                 />
 
-                <Button size="small" color="primary" type="submit">
-                    Submit
-                </Button>
+                <Button type="submit">Submit</Button>
             </Form>
         </FormProvider>
     );

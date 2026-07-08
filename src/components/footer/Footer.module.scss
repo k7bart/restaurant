@@ -4,15 +4,23 @@
     width: 100%;
     padding-top: 48px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
-    a {
+    > div {
         display: flex;
-        align-items: center;
-        padding-top: 20px;
+        justify-content: space-between;
+        padding: 20px 0;
 
-        svg {
-            margin-right: 5px;
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
         }
     }
 }

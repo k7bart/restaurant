@@ -1,6 +1,9 @@
 @use "../../../styles/variables.scss";
 
 .button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     height: 60px;
     min-width: max-content;
     padding: 16px;
@@ -25,12 +28,19 @@
 
     &.primary {
         background-color: variables.$wisteria;
+        color: white;
         border: 1px solid variables.$wisteria;
     }
 
     &.secondary {
         background-color: variables.$background-color;
+        color: variables.$wisteria;
         border: 1px solid variables.$wisteria;
+
+        &:hover {
+            color: white;
+            border: 1px solid variables.$text-color-grey;
+        }
     }
 
     &.tertiary {

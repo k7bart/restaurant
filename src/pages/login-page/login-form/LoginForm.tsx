@@ -72,9 +72,7 @@ const LoginForm = () => {
                     </CustomLink>
                 </div>
 
-                <Button size="small" color="primary" type="submit">
-                    Login
-                </Button>
+                <Button type="submit">Login</Button>
 
                 <Text align="center" size="large">
                     Don&apos;t have an account yet?&nbsp;

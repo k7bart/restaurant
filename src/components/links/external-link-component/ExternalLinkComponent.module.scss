@@ -1,1 +1,5 @@
-@use "../custom-link/CustomLink.module.scss";
+@use "../../../styles/link.scss" as link;
+
+.link {
+    @include link.styles;
+}

@@ -252,7 +252,7 @@ const Checkout = () => {
                     <HorizontalDevider />
 
                     <div className={styles.promoCode}>
-                        <Button type="button" size="small" color="tertiary">
+                        <Button type="button" color="tertiary">
                             Apply
                         </Button>
 

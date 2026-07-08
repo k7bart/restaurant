@@ -20,13 +20,7 @@ const DeliveryAddresses = () => {
                 <NoDataMessage text="You don't have any delivery addresses yet. You can add one by clicking the button below" />
             )}
 
-            <Button
-                size="small"
-                color="primary"
-                onClick={() => setShowPopup(true)}
-            >
-                Add address
-            </Button>
+            <Button onClick={() => setShowPopup(true)}>Add address</Button>
 
             {showPopup && (
                 <AddAddressPopup onClose={() => setShowPopup(false)} />

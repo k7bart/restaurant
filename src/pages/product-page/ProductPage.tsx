@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useProductInCart } from "../../hooks/useProductInCart";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { menu } from "../../state";
 
 import Amount from "./amount/Amount";
@@ -91,6 +91,22 @@ const ProductPage = () => {
                             />
                         </div>
                     </div>
+                </div>
+
+                <div className={styles.buttonsContainer}>
+                    <Link to="/menu">
+                        <Button color="tertiary">
+                            <IoIosArrowBack />
+                            Go to menu
+                        </Button>
+                    </Link>
+
+                    <Link to="/cart">
+                        <Button color="tertiary">
+                            Go to cart
+                            <IoIosArrowForward />
+                        </Button>
+                    </Link>
                 </div>
             </ContentSection>
         </TwoSectionsPage>

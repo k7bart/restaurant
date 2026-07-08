@@ -104,18 +104,12 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                     {dayjs(event.date).format("HH:mm")}
                 </p>
                 <div className="buttons-container">
-                    <Button
-                        size="small"
-                        color="secondary"
-                        onClick={() => setTicket(null)}
-                    >
+                    <Button color="secondary" onClick={() => setTicket(null)}>
                         Buy one more
                     </Button>
 
                     <Link to="/profile#tickets">
-                        <Button size="small" color="primary">
-                            Check your tickets
-                        </Button>
+                        <Button>Check your tickets</Button>
                     </Link>
                 </div>
             </Notice>
@@ -152,9 +146,7 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                 {event.ageLimit === 18 && (
                     <div>
                         <NumberOfAdultsInput required />
-                        <Button size="small" color="primary" type="submit">
-                            Submit
-                        </Button>
+                        <Button type="submit">Submit</Button>
                     </div>
                 )}
 
@@ -164,9 +156,7 @@ const EventReservationForm = ({ event }: { event: Event }) => {
                             <NumberOfAdultsInput required />
                             <NumberOfChildrenInput />
                         </div>
-                        <Button size="small" color="primary" type="submit">
-                            Submit
-                        </Button>
+                        <Button type="submit">Submit</Button>
                     </>
                 )}
             </Form>

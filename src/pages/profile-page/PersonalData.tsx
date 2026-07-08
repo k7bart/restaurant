@@ -80,9 +80,7 @@ const PersonalData = () => {
                         minDate={new Date(1900, 0, 1)}
                     />
 
-                    <Button size="small" color="primary" type="submit">
-                        Save changes
-                    </Button>
+                    <Button type="submit">Save changes</Button>
                 </div>
             </Form>
         </FormProvider>

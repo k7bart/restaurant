@@ -78,9 +78,7 @@ const CallMePopup = () => {
 
                     <PhoneInput />
 
-                    <Button size="small" color="primary" type="submit">
-                        Call Me
-                    </Button>
+                    <Button type="submit">Call Me</Button>
                 </Form>
             </FormProvider>
         </Popup>

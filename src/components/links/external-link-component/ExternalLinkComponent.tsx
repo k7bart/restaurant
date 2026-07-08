@@ -3,11 +3,13 @@ import { ReactNode } from "react";
 import styles from "./ExternalLinkComponent.module.scss";
 
 type LinkColor = "grey" | "white" | "wisteria";
-type LinkSize = "thin" | "extraLight" | "medium" | "large";
+type LinkFontWeight = "thin" | "extraLight";
+type LinkSize = "medium" | "large";
 
 type Props = {
     children: ReactNode;
     color?: LinkColor;
+    fontWeight?: LinkFontWeight;
     href: string;
     size?: LinkSize;
     target?: string;
@@ -16,12 +18,18 @@ type Props = {
 const ExternalLinkComponent = ({
     children,
     color = "grey",
+    fontWeight = "extraLight",
     target = "_blank",
     href,
-    size,
+    size = "medium",
 }: Props) => (
     <a
-        className={cn(styles.link, size && styles[size], styles[color])}
+        className={cn(
+            styles.link,
+            styles[size],
+            styles[color],
+            styles[fontWeight],
+        )}
         target={target}
         href={href}
         rel={target === "_blank" ? "noopener noreferrer" : undefined}

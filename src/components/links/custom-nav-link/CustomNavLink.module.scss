@@ -1,5 +1,9 @@
-@use "../custom-link/CustomLink.module.scss";
+@use "../../../styles/link.scss" as link;
 @use "../../../styles/variables.scss";
+
+.link {
+    @include link.styles;
+}
 
 .active {
     color: variables.$wisteria !important;

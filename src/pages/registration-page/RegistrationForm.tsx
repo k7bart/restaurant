@@ -119,9 +119,7 @@ const RegistrationForm = () => {
 
                 <LabeledCheckbox fieldName="rememberMe" label="Remember me" />
 
-                <Button size="small" color="primary" type="submit">
-                    Register
-                </Button>
+                <Button type="submit">Register</Button>
 
                 <Text align="center" size="large">
                     Already registered?&nbsp;
