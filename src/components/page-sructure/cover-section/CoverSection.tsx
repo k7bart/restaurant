@@ -18,7 +18,7 @@ const CoverSection = ({ subtitle, title, backgroundImage }: Props) => (
             subtitle={subtitle}
             title={title}
         />
-        <NavBar />
+        <NavBar additionalStyles={styles.navbar} />
     </Section>
 );
 

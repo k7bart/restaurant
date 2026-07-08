@@ -1,8 +1,12 @@
 @use "../../../../../styles/variables.scss";
 
 .productLink {
-    width: 50%;
-    padding: 8px;
+    width: 100%;
+    padding: 16px 8px;
+
+    @media (min-width: 578px) {
+        width: 50%;
+    }
     display: flex;
     flex-direction: column;
     transition: 0.3s;

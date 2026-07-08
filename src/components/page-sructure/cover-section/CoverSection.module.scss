@@ -1,39 +1,41 @@
 @use "../../../styles/variables.scss";
 
 .cover {
+    flex-direction: column;
+    flex-shrink: 0;
     overflow: hidden;
-
-    @media (max-width: 820px) {
-        height: 20%;
-        padding-top: 60px;
-        position: relative;
-
-        > .logo,
-        > nav {
-            display: none;
-        }
-    }
 
     @media (min-width: 821px) {
         position: sticky;
         top: 0;
         height: 100vh;
+    }
+}
 
-        & > .logo,
-        & > nav {
-            position: absolute;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            z-index: 1;
-        }
+.logo {
+    display: none;
 
-        & > .logo {
-            top: 80px;
-        }
+    @media (min-width: 821px) {
+        display: flex;
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        top: 80px;
+    }
+}
 
-        & > nav {
-            bottom: 80px;
-        }
+.navbar {
+    display: none;
+
+    @media (min-width: 821px) {
+        display: flex;
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        bottom: 80px;
     }
 }

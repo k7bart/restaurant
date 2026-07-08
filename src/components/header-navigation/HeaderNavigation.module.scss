@@ -1,0 +1,25 @@
+@use "../../styles/variables.scss";
+
+.nav {
+    height: 60px;
+    width: 100%;
+    padding: 0 16px;
+    background-color: variables.$background-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    svg {
+        height: 35px;
+        width: 35px;
+
+        @media (min-width: 578px) {
+            height: 38px;
+            width: 38px;
+        }
+    }
+
+    @media (min-width: 821px) {
+        display: none;
+    }
+}
