@@ -4,7 +4,6 @@ import Footer from "../../footer/Footer";
 import Text from "../../text/Text";
 import Section from "../section/Section";
 import styles from "./ContentSection.module.scss";
-import ContentSectionNav from "./content-section-nav/ContentSectionNav";
 
 type Props = {
     children: ReactNode;
@@ -21,8 +20,14 @@ const ContentSection = ({
     className,
     navigation,
 }: Props) => (
-    <Section className={cn(styles.content, className)}>
-        {navigation && <ContentSectionNav>{navigation}</ContentSectionNav>}
+    <Section
+        className={cn(
+            styles.content,
+            navigation && styles.withNavigation,
+            className,
+        )}
+    >
+        {navigation}
         {(title || subtitle) && (
             <header>
                 {title && <h3>{title}</h3>}

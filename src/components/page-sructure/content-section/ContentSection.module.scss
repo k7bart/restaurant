@@ -24,4 +24,25 @@
         flex-direction: column;
         flex-grow: 1;
     }
+
+    &.withNavigation {
+        padding: 0;
+
+        > main {
+            padding-top: 0;
+            gap: 16px;
+        }
+
+        > header,
+        > main,
+        > footer {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @media (min-width: 1200px) {
+                padding-left: 96px;
+                padding-right: 96px;
+            }
+        }
+    }
 }

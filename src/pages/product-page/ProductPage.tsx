@@ -9,6 +9,7 @@ import Button from "../../components/buttons/button/Button";
 import Carrousel from "../../components/carrousel/Carrousel";
 import CartLink from "../../components/nav-bar/CartLink";
 import ContentSection from "../../components/page-sructure/content-section/ContentSection";
+import ContentSectionNav from "../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
 import Cover from "../../components/half-page-cover/Cover";
 import CustomLink from "../../components/links/custom-link/CustomLink";
 import Discount from "./discount/Discount";
@@ -20,13 +21,13 @@ import TwoSectionsPage from "../../components/page-sructure/two-sections-page/Tw
 import styles from "./ProductPage.module.scss";
 
 const Navigation = () => (
-    <>
+    <ContentSectionNav>
         <CustomLink to="/menu">
             <IoIosArrowBack />
             Menu
         </CustomLink>
         <CartLink />
-    </>
+    </ContentSectionNav>
 );
 
 const ProductPage = () => {

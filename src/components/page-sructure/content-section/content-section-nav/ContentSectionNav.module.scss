@@ -2,6 +2,8 @@
 
 .nav {
     height: 60px;
+    min-height: 60px;
+    flex-shrink: 0;
     width: stretch;
     background-color: variables.$background-color;
     display: flex;
@@ -9,13 +11,7 @@
     position: sticky;
     top: 0;
     z-index: 9998;
-
-    @media (min-width: 820px) {
-        width: 50vw;
-        position: sticky;
-        top: 0;
-        right: 0;
-    }
+    padding: 0 16px;
 
     a {
         text-align: center;

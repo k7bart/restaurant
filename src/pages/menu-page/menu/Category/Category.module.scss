@@ -1,17 +1,12 @@
 @use "../../../../styles/variables.scss";
 
 .category {
-    padding: 0 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     @media (min-width: 578px) {
         gap: 32px;
-    }
-
-    @media (min-width: 1200px) {
-        padding: 0 96px;
     }
 
     h3 {

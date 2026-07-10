@@ -1,5 +1,9 @@
 @use "../../../styles/variables.scss";
 
+.nav {
+    justify-content: space-evenly;
+}
+
 .eventDetails {
     > div {
         padding-top: 48px;

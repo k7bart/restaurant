@@ -45,7 +45,7 @@ const EventDetails = () => {
             title="Reserve Your Spot"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
         >
-            <ContentSectionNav justifyContent="contentEvenly">
+            <ContentSectionNav className={styles.nav}>
                 {events.map((eventItem) => (
                     <CustomNavLink
                         to={`/events/${eventItem.pathName}`}

@@ -68,17 +68,18 @@ const ProfilePage = () => {
             <ContentSection
                 title="Personal profile"
                 subtitle="Manage your personal information and preferences here"
+                navigation={
+                    <ContentSectionNav className={styles.nav}>
+                        <button
+                            className={styles.logoutButton}
+                            onClick={handleLogOut}
+                            type="button"
+                        >
+                            Log out <IoLogOutOutline />
+                        </button>
+                    </ContentSectionNav>
+                }
             >
-                <ContentSectionNav justifyContent="contentRight">
-                    <button
-                        className={styles.logoutButton}
-                        onClick={handleLogOut}
-                        type="button"
-                    >
-                        Log out <IoLogOutOutline />
-                    </button>
-                </ContentSectionNav>
-
                 <Accordion items={items} />
             </ContentSection>
         </TwoSectionsPage>

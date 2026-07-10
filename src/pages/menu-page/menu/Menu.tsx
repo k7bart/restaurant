@@ -66,13 +66,15 @@ const Menu = () => {
     };
 
     return (
-        <ContentSection className={styles.section}>
-            <MenuNavigation
-                categories={filteredMenu}
-                activeCategory={activeCategory}
-                handleNavigation={handleNavigation}
-            />
-
+        <ContentSection
+            navigation={
+                <MenuNavigation
+                    categories={filteredMenu}
+                    activeCategory={activeCategory}
+                    handleNavigation={handleNavigation}
+                />
+            }
+        >
             <div className={styles.filters}>
                 <Pill
                     active={activeFilter === "vegan"}

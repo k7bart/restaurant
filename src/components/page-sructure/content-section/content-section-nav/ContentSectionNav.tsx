@@ -4,13 +4,11 @@ import styles from "./ContentSectionNav.module.scss";
 
 type Props = {
     children: ReactNode;
-    justifyContent?: "contentEvenly" | "contentRight";
+    className?: string;
 };
 
-const ContentSectionNav = ({ children, justifyContent }: Props) => (
-    <nav className={cn(styles.nav, justifyContent && styles[justifyContent])}>
-        {children}
-    </nav>
+const ContentSectionNav = ({ children, className }: Props) => (
+    <nav className={cn(styles.nav, className)}>{children}</nav>
 );
 
 export default ContentSectionNav;

@@ -19,7 +19,7 @@ const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
     </a>
 );
 
-type MenuNavigationProps = {
+type Props = {
     categories: Category[];
     activeCategory: Category["name"];
     handleNavigation: (categoryName: Category["name"]) => void;
@@ -29,8 +29,8 @@ const MenuNavigation = ({
     categories,
     activeCategory,
     handleNavigation,
-}: MenuNavigationProps) => (
-    <ContentSectionNav justifyContent="contentEvenly">
+}: Props) => (
+    <ContentSectionNav className={styles.nav}>
         {categories.map((category) => (
             <MenuLink
                 key={category.name}

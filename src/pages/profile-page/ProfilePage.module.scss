@@ -1,5 +1,9 @@
 @use "../../styles/variables.scss";
 
+.nav {
+    justify-content: flex-end;
+}
+
 .logoutButton {
     transition: 0.3s;
     display: flex;
