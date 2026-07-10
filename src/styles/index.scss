@@ -39,6 +39,7 @@ input,
 textarea {
     border: 1px solid variables.$border-color;
     background-color: transparent;
+    color: white;
 }
 
 input:-webkit-autofill,
@@ -139,13 +140,6 @@ table {
 }
 
 // pages
-
-.registration-page {
-    form {
-        padding-bottom: 48px;
-    }
-}
-
 @media (max-width: 820px) {
     .events-page {
         .slides-container {
