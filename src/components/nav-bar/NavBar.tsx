@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../hooks";
 import CartLink from "./CartLink";
 import ProfileLink from "./ProfileLink";
+import styles from "./NavBar.module.scss";
 
 const LINKS = [
     { to: "/menu", text: "Menu" },
@@ -20,7 +21,10 @@ const NavBar = ({ additionalStyles }: { additionalStyles?: string }) => {
     const user = useAppSelector((state) => state.user);
 
     return (
-        <nav className={cn(additionalStyles, "navbar")} data-testid="navbar">
+        <nav
+            className={cn(additionalStyles, styles.navbar)}
+            data-testid="navbar"
+        >
             {user ? (
                 <ProfileLink name={user.firstName} />
             ) : (

@@ -2,8 +2,7 @@
 
 .nav {
     height: 60px;
-    width: 100%;
-    padding: 0 24px;
+    width: stretch;
     background-color: variables.$background-color;
     display: flex;
     align-items: center;
@@ -13,7 +12,7 @@
 
     @media (min-width: 820px) {
         width: 50vw;
-        position: fixed;
+        position: sticky;
         top: 0;
         right: 0;
     }

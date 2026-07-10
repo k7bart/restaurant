@@ -73,14 +73,16 @@ const Menu = () => {
                 handleNavigation={handleNavigation}
             />
 
-            <Pill
-                active={activeFilter === "vegan"}
-                color="green"
-                onClick={() => handleFilter("vegan")}
-            >
-                Vegan
-                <FaLeaf />
-            </Pill>
+            <div className={styles.filters}>
+                <Pill
+                    active={activeFilter === "vegan"}
+                    color="green"
+                    onClick={() => handleFilter("vegan")}
+                >
+                    Vegan
+                    <FaLeaf />
+                </Pill>
+            </div>
 
             {isPending ? (
                 <Loader />

@@ -1,6 +1,14 @@
 .section {
+    padding: 0;
+
     main {
         padding-top: 0;
         gap: 16px;
+    }
+
+    .filters {
+        display: flex;
+        gap: 8px;
+        padding: 0 16px;
     }
 }

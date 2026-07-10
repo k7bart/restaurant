@@ -1,5 +1,5 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
-import "./NumInput.scss";
+import styles from "./NumInput.module.scss";
 
 type Props = {
     amount: number;
@@ -18,12 +18,8 @@ const NumInput = ({ amount, min = 1, onChange }: Props) => {
     };
 
     return (
-        <div className="numInput">
-            <button
-                className="product-count less-product"
-                onClick={handleDecrement}
-                disabled={amount === min}
-            >
+        <div className={styles.numInput}>
+            <button onClick={handleDecrement} disabled={amount === min}>
                 <FaMinus />
             </button>
             <input
@@ -33,10 +29,7 @@ const NumInput = ({ amount, min = 1, onChange }: Props) => {
                 inputMode="numeric"
                 readOnly
             />
-            <button
-                className="product-count more-product"
-                onClick={handleIncrement}
-            >
+            <button onClick={handleIncrement}>
                 <FaPlus />
             </button>
         </div>

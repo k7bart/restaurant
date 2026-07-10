@@ -1,15 +1,10 @@
 @use "../../../../../styles/variables.scss";
 
 .productLink {
-    width: 100%;
-    padding: 16px 8px;
-
-    @media (min-width: 578px) {
-        width: 50%;
-    }
     display: flex;
     flex-direction: column;
     transition: 0.3s;
+    gap: 8px;
 
     &:hover {
         transform: scale(1.05);
@@ -21,10 +16,6 @@
         }
     }
 
-    > :not(:first-child) {
-        padding-top: 8px;
-    }
-
     div.withImage {
         width: 100%;
         position: relative;
@@ -33,10 +24,8 @@
             position: absolute;
             top: 4px;
             left: 4px;
-
-            :not(:first-child) {
-                margin-left: 4px;
-            }
+            display: flex;
+            gap: 4px;
         }
 
         .amount {
@@ -61,6 +50,7 @@
                 height: 100%;
                 width: 100%;
                 background-color: variables.$wisteria;
+                color: white;
             }
         }
     }

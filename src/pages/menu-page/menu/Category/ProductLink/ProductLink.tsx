@@ -33,7 +33,7 @@ const ProductLink = ({ dish }: { dish: Dish }) => {
                         <Badge text={`${capitalize(category)} of the Day`} />
                     )}
 
-                    {discountPercent && <Badge text={`-${discountPercent}$`} />}
+                    {discountPercent && <Badge text={`-${discountPercent}%`} />}
                 </div>
 
                 <Amount dish={dish} />

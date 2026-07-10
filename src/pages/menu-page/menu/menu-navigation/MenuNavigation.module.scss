@@ -1,0 +1,21 @@
+@use "../../../../styles/variables.scss";
+
+.link {
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    color: variables.$text-color-grey;
+    cursor: pointer;
+
+    &:hover:not(.active) {
+        color: variables.$text-color-grey;
+    }
+
+    &.active {
+        color: variables.$wisteria;
+
+        &:hover {
+            color: variables.$wisteria;
+        }
+    }
+}

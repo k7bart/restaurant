@@ -1,0 +1,58 @@
+@use "../../styles/variables.scss";
+
+.navbar {
+    display: flex;
+    max-width: fit-content;
+    background-color: white;
+    border-radius: 35px;
+    padding: 8px;
+    gap: 8px;
+
+    a,
+    p {
+        width: fit-content;
+        font-weight: 300;
+    }
+
+    > a {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        border-radius: 26px;
+        color: variables.$background-color;
+        padding: 16px;
+
+        &.profile {
+            color: variables.$wisteria;
+            display: flex;
+            justify-content: center;
+        }
+
+        > svg {
+            width: 20px;
+            height: 20px;
+            fill: variables.$background-color;
+        }
+
+        &.cart {
+            > svg {
+                margin-right: 8px;
+            }
+        }
+
+        &:hover,
+        &.active {
+            color: white;
+            background-color: variables.$background-color;
+            > .total {
+                color: white;
+            }
+
+            > svg {
+                fill: white;
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { capitalize } from "../../../../utils/stringUtils";
 import ContentSectionNav from "../../../../components/page-sructure/content-section/content-section-nav/ContentSectionNav";
-import styles from "../../../../components/links/custom-link/CustomLink.module.scss";
+import styles from "./MenuNavigation.module.scss";
 import type { Category } from "@k7bart/restaurant-shared-types";
 
 type MenuLinkProps = {
@@ -12,10 +12,7 @@ type MenuLinkProps = {
 
 const MenuLink = ({ children, isActive, onClick }: MenuLinkProps) => (
     <a
-        className={classNames(
-            styles.link,
-            isActive ? styles.wisteria : styles.grey,
-        )}
+        className={classNames(styles.link, isActive && styles.active)}
         onClick={onClick}
     >
         {children}

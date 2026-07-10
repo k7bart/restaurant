@@ -1,8 +1,8 @@
 import { useRef } from "react";
+import { NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useAppSelector } from "../../hooks";
 import { getTotalPrice } from "../../utils/priceUtils";
-import CustomNavLink from "../links/custom-nav-link/CustomNavLink";
 import Tooltip from "../tooltip/Tooltip";
 
 const CartLink = () => {
@@ -24,10 +24,10 @@ const CartLink = () => {
 
     return (
         <>
-            <CustomNavLink ref={cartRef} to="/cart">
+            <NavLink ref={cartRef} to="/cart">
                 <FaShoppingCart />
                 {"$" + total.toFixed(2)}
-            </CustomNavLink>
+            </NavLink>
             <Tooltip targetRef={cartRef} text="View cart" />
         </>
     );
