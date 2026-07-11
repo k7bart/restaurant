@@ -8,7 +8,7 @@ import {
     EventsLazyPage,
     MenuLazyPage,
     LoginLazyPage,
-    ProductLazyPage,
+    DishLazyPage,
     ProfileLazyPage,
     RegistrationLazyPage,
     ReservationLazyPage,
@@ -42,8 +42,8 @@ const pageRoutes = [
         element: <MenuLazyPage />,
     },
     {
-        path: "/menu/:category/:productId",
-        element: <ProductLazyPage />,
+        path: "/menu/:category/:dishId",
+        element: <DishLazyPage />,
     },
     {
         path: "/table-reservation",

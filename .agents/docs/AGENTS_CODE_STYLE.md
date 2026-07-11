@@ -11,6 +11,7 @@ Use this file for `src/*` TypeScript, React, helper, style, and structure change
 
 ## TypeScript Contracts
 
+- Use `import type` for imports used only as types; for mixed imports, mark type-only specifiers with the inline `type` keyword (for example `import { type Foo, bar } from "./module"`).
 - Use `type` for component props, `&` combinations, unions, utility-type aliases, and primitive aliases.
 - Name component props `Props` and define them in the same component file without export.
 - Do not prefix type aliases with `T`.

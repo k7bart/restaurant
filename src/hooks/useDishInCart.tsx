@@ -3,28 +3,32 @@ import { useAppDispatch, useAppSelector } from "../hooks";
 
 import type { Dish } from "@k7bart/restaurant-shared-types";
 
-export function useProductInCart(dish: Dish) {
+export function useDishInCart(dish: Dish | null) {
     const dispatch = useAppDispatch();
 
     const dishInCart = useAppSelector((state) =>
-        state.cart.find((d) => d.id === dish.id),
+        dish ? state.cart.find((d) => d.id === dish.id) : undefined,
     );
 
-    const amount = dishInCart?.amount ?? 0;
+    const amount = dishInCart?.quantity ?? 0;
 
     const handleAmountChange = (newAmount: number) => {
+        if (!dish) {
+            return;
+        }
+
         if (dishInCart) {
             dispatch(
                 updateAmountInCart({
                     id: dish.id,
-                    amount: newAmount,
+                    quantity: newAmount,
                 }),
             );
         } else {
             dispatch(
                 addToCart({
                     ...dish,
-                    amount: newAmount,
+                    quantity: newAmount,
                 }),
             );
         }

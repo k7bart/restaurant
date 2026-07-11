@@ -7,12 +7,10 @@ interface Props {
     onChange: (value: number) => void;
 }
 
-const Amount = ({ amount, onChange }: Props) => {
-    return (
-        <div className={styles.amount}>
-            <NumInput amount={amount} min={0} onChange={onChange} />
-        </div>
-    );
-};
+const Amount = ({ amount, onChange }: Props) => (
+    <div className={styles.amount}>
+        <NumInput amount={amount} min={0} onChange={onChange} />
+    </div>
+);
 
 export default Amount;

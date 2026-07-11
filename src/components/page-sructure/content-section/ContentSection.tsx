@@ -4,6 +4,7 @@ import Footer from "../../footer/Footer";
 import Text from "../../text/Text";
 import Section from "../section/Section";
 import styles from "./ContentSection.module.scss";
+import Loader from "../../loader/Loader";
 
 type Props = {
     children: ReactNode;
@@ -11,6 +12,7 @@ type Props = {
     navigation?: ReactNode;
     title?: string;
     subtitle?: string;
+    isLoading?: boolean;
 };
 
 const ContentSection = ({
@@ -19,6 +21,7 @@ const ContentSection = ({
     subtitle,
     className,
     navigation,
+    isLoading,
 }: Props) => (
     <Section
         className={cn(
@@ -34,7 +37,7 @@ const ContentSection = ({
                 {subtitle && <Text size="large">{subtitle}</Text>}
             </header>
         )}
-        <main>{children}</main>
+        <main>{isLoading ? <Loader /> : children}</main>
         <Footer />
     </Section>
 );

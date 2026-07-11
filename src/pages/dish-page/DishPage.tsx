@@ -1,8 +1,6 @@
-import { useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useProductInCart } from "../../hooks/useProductInCart";
+import { Link, Navigate, useParams } from "react-router-dom";
+import { useDishInCart } from "../../hooks/useDishInCart";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { menu } from "../../state";
 
 import Amount from "./amount/Amount";
 import Button from "../../components/buttons/button/Button";
@@ -20,6 +18,11 @@ import TwoSectionsPage from "../../components/page-sructure/two-sections-page/Tw
 
 import styles from "./ProductPage.module.scss";
 
+import type { Dish } from "@k7bart/restaurant-shared-types";
+import { useEffect, useState } from "react";
+import { dishService } from "../../services/dish-service";
+import ErrorPage from "../error-page/ErrorPage";
+
 const Navigation = () => (
     <ContentSectionNav>
         <CustomLink to="/menu">
@@ -30,17 +33,40 @@ const Navigation = () => (
     </ContentSectionNav>
 );
 
-const ProductPage = () => {
-    const { category, productId } = useParams();
+const DishPage = () => {
+    const { dishId } = useParams();
+    const [dish, setDish] = useState<Dish | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const product = useMemo(() => {
-        const categoryData = menu.find((c) => c.name === category);
-        return categoryData?.dishes.find((d) => d.id === productId);
-    }, [category, productId]);
+    useEffect(() => {
+        if (!dishId) {
+            setIsLoading(false);
+            return;
+        }
 
-    const { amount, handleAmountChange } = useProductInCart(product!);
+        const fetchDish = async () => {
+            try {
+                const { data: dish } = await dishService.getDish(dishId);
+                setDish(dish);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    if (!product) return;
+        fetchDish();
+    }, [dishId]);
+
+    const { amount, handleAmountChange } = useDishInCart(dish);
+
+    if (!dishId) {
+        return <Navigate to="/menu" replace />;
+    }
+
+    if (!dish) {
+        return <ErrorPage />;
+    }
 
     const {
         description,
@@ -50,9 +76,9 @@ const ProductPage = () => {
         nutrients,
         photos,
         price,
-    } = product;
+    } = dish;
 
-    const getSlides = (photos: string[]): JSX.Element[] =>
+    const getSlides = (photos: string[]) =>
         photos.map((photo, i) => (
             <Cover addFilter={false} backgroundImage={photo} key={i} />
         ));
@@ -67,6 +93,7 @@ const ProductPage = () => {
                 title={name}
                 subtitle={description}
                 navigation={<Navigation />}
+                isLoading={isLoading}
             >
                 <div className={styles.content}>
                     <h4>{ingredients?.join(", ")}</h4>
@@ -119,4 +146,4 @@ const ProductPage = () => {
     );
 };
 
-export default ProductPage;
+export default DishPage;
