@@ -1,4 +1,4 @@
-import { RefObject, useLayoutEffect, useRef, useState } from "react";
+import { type RefObject, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Tooltip.module.scss";
 
 type Props = {

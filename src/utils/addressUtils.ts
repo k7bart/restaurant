@@ -1,4 +1,4 @@
-import { Address } from "@k7bart/restaurant-shared-types";
+import { type Address } from "@k7bart/restaurant-shared-types";
 
 const addressToStr = (address: Address) => {
     return `${address.city}, ${address.street} ${address.house}${

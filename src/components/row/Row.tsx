@@ -1,5 +1,5 @@
+import { type MouseEventHandler, type ReactNode } from "react";
 import cn from "classnames";
-import { MouseEventHandler, ReactNode } from "react";
 import styles from "./Row.module.scss";
 
 type Props = {

@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./ExternalLinkComponent.module.scss";
 
 type LinkColor = "grey" | "white" | "wisteria";

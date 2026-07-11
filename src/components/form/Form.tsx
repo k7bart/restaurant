@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { FieldValues, SubmitHandler, useFormContext } from "react-hook-form";
+import { type ReactNode } from "react";
+import { type FieldValues, type SubmitHandler, useFormContext } from "react-hook-form";
 import styles from "./Form.module.scss";
 
 type Props<T extends FieldValues> = {

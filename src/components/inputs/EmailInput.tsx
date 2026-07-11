@@ -1,4 +1,4 @@
-import { FocusEventHandler } from "react";
+import { type FocusEventHandler } from "react";
 import Input from "./input/Input";
 
 type Props = {

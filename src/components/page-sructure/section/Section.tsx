@@ -1,5 +1,5 @@
+import { type ReactNode } from "react";
 import cn from "classnames";
-import { ReactNode } from "react";
 import styles from "./Section.module.scss";
 
 type Props = {

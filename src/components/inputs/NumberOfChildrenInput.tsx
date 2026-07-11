@@ -1,4 +1,4 @@
-import Input, { InputProps } from "./input/Input";
+import Input, { type InputProps } from "./input/Input";
 
 const NumberOfChildrenInput = (
     props: Omit<InputProps, "fieldName" | "label">,

@@ -6,7 +6,7 @@ import Text from "../../../../components/text/Text";
 
 import styles from "./Ticket.module.scss";
 
-import type { Ticket } from "@k7bart/restaurant-shared-types/dist/ticket";
+import type { Ticket } from "@k7bart/restaurant-shared-types";
 
 const Ticket = ({ ticket }: { ticket: Ticket }) => {
     const { id, event, guests } = ticket;

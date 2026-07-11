@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import Arrows from "./arrows/Arrows";
 import Dots from "./dots/Dots";
 import Slide from "./slide/Slide";

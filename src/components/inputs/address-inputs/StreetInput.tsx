@@ -1,4 +1,4 @@
-import Input, { InputProps } from "../input/Input";
+import Input, { type InputProps } from "../input/Input";
 
 const StreetInput = (props: Omit<InputProps, "fieldName">) => (
     <Input fieldName="street" {...props} />

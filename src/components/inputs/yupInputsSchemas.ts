@@ -16,3 +16,8 @@ export const timeSchema = yup
     .date()
     .required("Please select a time")
     .typeError("Please select a time");
+
+export const emailSchema = yup
+    .string()
+    .email("Please provide a valid email address")
+    .optional();

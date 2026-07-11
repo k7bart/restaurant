@@ -10,12 +10,17 @@
     align-items: center;
 
     svg {
+        fill: white;
         height: 35px;
         width: 35px;
 
         @media (min-width: 578px) {
             height: 38px;
             width: 38px;
+        }
+
+        &:hover {
+            fill: variables.$wisteria;
         }
     }
 

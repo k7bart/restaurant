@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import styles from "./Slide.module.scss";
 
 const Slide = ({ slideContent }: { slideContent: ReactNode }) => (

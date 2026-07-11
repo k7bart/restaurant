@@ -1,4 +1,4 @@
-import { FocusEventHandler } from "react";
+import { type FocusEventHandler } from "react";
 import { useFormContext } from "react-hook-form";
 import { capitalize } from "../../../utils/stringUtils";
 import Text from "../../text/Text";

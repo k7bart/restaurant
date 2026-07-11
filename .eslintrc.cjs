@@ -18,6 +18,13 @@ module.exports = {
     plugins: ["@typescript-eslint", "react-refresh"],
     settings: { react: { version: "18.2" } },
     rules: {
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                prefer: "type-imports",
+                fixStyle: "inline-type-imports",
+            },
+        ],
         "object-shorthand": ["error", "always"],
         "react/prop-types": "off",
         "react/jsx-no-target-blank": "off",

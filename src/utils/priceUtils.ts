@@ -9,18 +9,21 @@ export const getPriceWithDiscount = (price: number, discountPercent = 0) =>
 export const getPrice = (price: number, discountPercent = 0) =>
     discountPercent ? getPriceWithDiscount(price, discountPercent) : price;
 
-export const getTotalPrice = (price: number, discountPercent = 0, amount = 1) =>
-    amount > 0 ? getPrice(price, discountPercent) * amount : 0;
+export const getTotalPrice = (
+    price: number,
+    discountPercent = 0,
+    quantity = 1,
+) => (quantity > 0 ? getPrice(price, discountPercent) * quantity : 0);
 
 export const getTotalDiscount = (
     price: number,
     discountPercent = 0,
-    amount = 1
-) => getDiscount(price, discountPercent) * amount;
+    quantity = 1,
+) => getDiscount(price, discountPercent) * quantity;
 
 export const getTotalOrderPrice = (order: CartItem[]) =>
     order.reduce(
-        (total, { price, discountPercent = 0, amount }) =>
-            total + getTotalPrice(price, discountPercent, amount),
-        0
+        (total, { price, discountPercent = 0, quantity }) =>
+            total + getTotalPrice(price, discountPercent, quantity),
+        0,
     );
