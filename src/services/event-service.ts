@@ -1,4 +1,4 @@
-import { Event, Response } from "@k7bart/restaurant-shared-types";
+import { type Event, type Response } from "@k7bart/restaurant-shared-types";
 import axios from "../api/axios";
 
 export const eventService = {

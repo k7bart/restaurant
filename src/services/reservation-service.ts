@@ -1,7 +1,7 @@
 import {
-    Reservation,
-    ReservationRequest,
-    Response,
+    type Reservation,
+    type ReservationRequest,
+    type Response,
 } from "@k7bart/restaurant-shared-types";
 import axios from "../api/axios";
 

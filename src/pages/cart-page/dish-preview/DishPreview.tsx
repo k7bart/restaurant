@@ -12,7 +12,7 @@ import type { CartItem } from "@k7bart/restaurant-shared-types";
 
 const DishPreview = ({ dish }: { dish: CartItem }) => {
     const {
-        amount: initialAmount,
+        quantity: initialQuantity,
         category,
         discountPercent,
         id,
@@ -21,13 +21,13 @@ const DishPreview = ({ dish }: { dish: CartItem }) => {
         price,
     } = dish;
 
-    const [amount, setAmount] = useState(initialAmount);
+    const [quantity, setQuantity] = useState(initialQuantity);
 
     const dispatch = useAppDispatch();
 
     const handleAmountChange = (newAmount: number) => {
-        setAmount(newAmount);
-        dispatch(updateAmountInCart({ id, amount: newAmount }));
+        setQuantity(newAmount);
+        dispatch(updateAmountInCart({ id, quantity: newAmount }));
     };
     const handleProductRemove = () => {
         dispatch(removeFromCart({ id }));
@@ -48,17 +48,19 @@ const DishPreview = ({ dish }: { dish: CartItem }) => {
             <Link to={`/menu/${category}/${id}`} className={styles.title}>
                 <h4>{name}</h4>
             </Link>
-            <NumInput amount={amount ?? 1} onChange={handleAmountChange} />
+            <NumInput amount={quantity ?? 1} onChange={handleAmountChange} />
             <div className={styles.price}>
                 {discountPercent && (
                     <span className={styles.fullPrice}>
                         {"$" +
-                            getTotalPrice(price, undefined, amount).toFixed(2)}
+                            getTotalPrice(price, undefined, quantity).toFixed(
+                                2,
+                            )}
                     </span>
                 )}
                 <h4 className={styles.actualPrice}>
                     {"$" +
-                        getTotalPrice(price, discountPercent, amount).toFixed(
+                        getTotalPrice(price, discountPercent, quantity).toFixed(
                             2,
                         )}
                 </h4>

@@ -22,8 +22,8 @@ const Cart = () => {
     const totalDiscount = cart
         .filter((dish) => dish.discountPercent !== undefined)
         .reduce(
-            (total, { price, discountPercent, amount }) =>
-                total + getTotalDiscount(price, discountPercent ?? 0, amount),
+            (total, { price, discountPercent, quantity }) =>
+                total + getTotalDiscount(price, discountPercent ?? 0, quantity),
             0,
         )
         .toFixed(2);

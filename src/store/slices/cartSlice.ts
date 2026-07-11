@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import type { CartItem } from "@k7bart/restaurant-shared-types";
 
@@ -7,7 +7,7 @@ const cartSlice = createSlice({
     initialState: [] as CartItem[],
     reducers: {
         addToCart(state, action: PayloadAction<CartItem>) {
-            const { id, amount } = action.payload;
+            const { id, quantity } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
 
             if (dishIndex === -1) {
@@ -15,23 +15,23 @@ const cartSlice = createSlice({
                 return;
             }
 
-            state[dishIndex].amount += amount;
+            state[dishIndex].quantity += quantity;
         },
         updateAmountInCart(
             state,
-            action: PayloadAction<Pick<CartItem, "id" | "amount">>,
+            action: PayloadAction<Pick<CartItem, "id" | "quantity">>,
         ) {
-            const { id, amount } = action.payload;
+            const { id, quantity } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
 
             if (dishIndex === -1) return;
 
-            if (amount <= 0) {
+            if (quantity <= 0) {
                 state.splice(dishIndex, 1);
                 return;
             }
 
-            state[dishIndex].amount = amount;
+            state[dishIndex].quantity = quantity;
         },
         removeFromCart(state, action: PayloadAction<Pick<CartItem, "id">>) {
             const dishIndex = state.findIndex(
