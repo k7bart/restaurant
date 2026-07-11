@@ -1,9 +1,9 @@
-import { useState, useTransition, useRef } from "react";
+import { useState, useTransition, useRef, useEffect } from "react";
 import { FaLeaf } from "react-icons/fa";
-import { menu } from "../../../state";
 import { useActiveCategory } from "../../../hooks/useActiveCategory";
+import { menuService } from "../../../services/menu-service";
 
-import CategorySection from "./Category/Category";
+import CategorySection from "./category/Category";
 import ContentSection from "../../../components/page-sructure/content-section/ContentSection";
 import Loader from "../../../components/loader/Loader";
 import MenuNavigation from "./menu-navigation/MenuNavigation";
@@ -15,7 +15,7 @@ import type { Category as MenuCategory } from "@k7bart/restaurant-shared-types";
 
 type FilterType = "vegan" | null;
 
-const getVeganOptions = () => {
+const getVeganOptions = (menu: MenuCategory[]) => {
     return menu
         .map((category) => ({
             ...category,
@@ -25,27 +25,50 @@ const getVeganOptions = () => {
 };
 
 const Menu = () => {
+    const [menu, setMenu] = useState<MenuCategory[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [isPending, startTransition] = useTransition();
-    const [filteredMenu, setFilteredMenu] = useState(menu);
+    const [filteredMenu, setFilteredMenu] = useState<MenuCategory[]>([]);
     const [activeFilter, setActiveFilter] = useState<FilterType>(null);
     const categoryRefs = useRef<Record<string, HTMLDivElement | null>>({});
     const [activeCategory, setActiveCategory] = useActiveCategory(
-        isPending ? [] : filteredMenu,
+        isPending || isLoading ? [] : filteredMenu,
         categoryRefs,
     );
 
-    const applyFilter = (filter: FilterType) => {
-        setActiveFilter(filter);
-        startTransition(() => {
-            const veganMenu = getVeganOptions();
+    useEffect(() => {
+        const fetchMenu = async () => {
+            try {
+                const { data: menu } = await menuService.getMenu();
+                setMenu(menu);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchMenu();
+    }, []);
 
-            setFilteredMenu(veganMenu);
+    useEffect(() => {
+        if (activeFilter === "vegan") {
+            setFilteredMenu(getVeganOptions(menu));
+            return;
+        }
+
+        setFilteredMenu(menu);
+    }, [activeFilter, menu]);
+
+    const applyFilter = (filter: FilterType) => {
+        startTransition(() => {
+            setActiveFilter(filter);
+            setFilteredMenu(getVeganOptions(menu));
         });
     };
 
     const resetFilter = () => {
-        setActiveFilter(null);
         startTransition(() => {
+            setActiveFilter(null);
             setFilteredMenu(menu);
         });
     };
@@ -67,6 +90,7 @@ const Menu = () => {
 
     return (
         <ContentSection
+            isLoading={isLoading}
             navigation={
                 <MenuNavigation
                     categories={filteredMenu}

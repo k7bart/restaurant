@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { capitalize } from "../../../../../utils/stringUtils";
 import Amount from "./Amount";
 import Badge from "../../../../../components/badge/Badge";
-import Photo from "./Photo/Photo";
-import Price from "./Price/Price";
-import Title from "./Title/Title";
+import Photo from "./photo/Photo";
+import Price from "./price/Price";
+import Title from "./title/Title";
 import styles from "./ProductLink.module.scss";
 import Text from "../../../../../components/text/Text";
 

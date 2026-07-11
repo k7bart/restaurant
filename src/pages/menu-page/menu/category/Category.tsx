@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { capitalize } from "../../../../utils/stringUtils";
-import ProductLink from "./ProductLink/ProductLink";
+import ProductLink from "./product-link/ProductLink";
 
 import styles from "./Category.module.scss";
 

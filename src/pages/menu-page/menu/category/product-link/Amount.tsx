@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useProductInCart } from "../../../../../hooks/useProductInCart";
+import { useDishInCart } from "../../../../../hooks/useDishInCart";
 
 import NumInput from "../../../../../components/inputs/num-input/NumInput";
 
@@ -8,7 +8,7 @@ import styles from "./ProductLink.module.scss";
 import type { Dish } from "@k7bart/restaurant-shared-types";
 
 const Amount = ({ dish }: { dish: Dish }) => {
-    const { amount, handleAmountChange } = useProductInCart(dish);
+    const { amount, handleAmountChange } = useDishInCart(dish);
 
     return (
         <div
