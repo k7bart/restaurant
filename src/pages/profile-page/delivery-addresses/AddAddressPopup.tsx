@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addAddress } from "../../../store";
+import { addressService } from "../../../services/address-service";
 import { capitalize } from "../../../utils/stringUtils";
 import addressSchema from "../../../components/inputs/address-inputs/address-yup-utils/addressSchema";
 
@@ -23,17 +24,21 @@ const AddAddressPopup = ({ onClose }: { onClose: () => void }) => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: Address) => {
-        const formattedData = {
-            ...data,
-            id: `${data.street}${data.house}/${
-                data.apartment && data.apartment
-            }`,
-            city: capitalize(data.city),
-            street: capitalize(data.street),
-        };
-        dispatch(addAddress(formattedData));
-        methods.reset();
+    const onSubmit = async (data: Omit<Address, "id">) => {
+        try {
+            const payload = {
+                ...data,
+                city: capitalize(data.city),
+                street: capitalize(data.street),
+                isCurrent: true,
+            };
+            const { data: address } = await addressService.addAddress(payload);
+            dispatch(addAddress(address));
+            methods.reset();
+            onClose();
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (

@@ -1,7 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import type {
     Address,
+    Order,
     Reservation,
     User,
     Ticket,
@@ -18,6 +19,11 @@ const userSlice = createSlice({
             if (!state) return;
             if (!state.addresses) state.addresses = [];
             state.addresses.push(action.payload);
+        },
+        addOrder(state, action: PayloadAction<Order>) {
+            if (!state) return;
+            if (!state.orders) state.orders = [];
+            state.orders.push(action.payload);
         },
         addReservation(state, action: PayloadAction<Reservation>) {
             if (!state) return;
@@ -59,6 +65,7 @@ const userSlice = createSlice({
 export const {
     setUser,
     addAddress,
+    addOrder,
     addReservation,
     addTicket,
     logOut,
