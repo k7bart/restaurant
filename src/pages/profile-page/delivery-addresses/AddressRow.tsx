@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-import { removeAddress, setCurrentAddress } from "../../../store";
+import { setCurrentAddress, updateUserData } from "../../../store";
 import { useAppDispatch } from "../../../hooks";
+import { addressService } from "../../../services/address-service";
 import { addressToStr } from "../../../utils/addressUtils";
 
 import CloseButton from "../../../components/buttons/close-button/CloseButton";
@@ -18,14 +19,26 @@ const AddressRow = ({ address }: { address: Address }) => {
     const { id, isCurrent } = address;
     const addressStr = addressToStr(address);
 
-    const handleRemove = () => {
-        // TODO: add api call
-        dispatch(removeAddress(id));
+    const handleRemove = async () => {
+        try {
+            const { data: addresses } = await addressService.deleteAddress(id);
+            dispatch(updateUserData({ addresses }));
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    const handleSetCurrent = () => {
-        // TODO: add api call
-        dispatch(setCurrentAddress(address));
+    const handleSetCurrent = async () => {
+        if (isCurrent) return;
+
+        try {
+            const { data } = await addressService.updateAddress(id, {
+                isCurrent: true,
+            });
+            dispatch(setCurrentAddress(data));
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (

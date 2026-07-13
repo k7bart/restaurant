@@ -38,14 +38,6 @@ const userSlice = createSlice({
         logOut() {
             return null;
         },
-        removeAddress(state, action: PayloadAction<Address["id"]>) {
-            if (!state?.addresses) return;
-            const index = state.addresses.findIndex(
-                (address) => address.id === action.payload,
-            );
-            if (index === -1) return;
-            state.addresses.splice(index, 1);
-        },
         setCurrentAddress(state, action: PayloadAction<Address>) {
             if (!state?.addresses) return;
             state.addresses.forEach((address) => {
@@ -69,7 +61,6 @@ export const {
     addReservation,
     addTicket,
     logOut,
-    removeAddress,
     setCurrentAddress,
     updateUserData,
 } = userSlice.actions;
