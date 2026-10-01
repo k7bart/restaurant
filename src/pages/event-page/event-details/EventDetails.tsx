@@ -31,7 +31,7 @@ const EventDetails = () => {
         const fetchEvents = async () => {
             try {
                 const response = await eventService.getEvents();
-                setEvents(response.data);
+                if (response.data) setEvents(response.data);
             } catch (error) {
                 console.error("Failed to fetch events:", error);
             }
@@ -90,9 +90,9 @@ const EventDetails = () => {
                     <div>
                         <h3>Menu</h3>
                         {menu.map((item) => (
-                            <Row key={item.id}>
+                            <Row key={item}>
                                 <Text color="white" size="large">
-                                    {item.name}
+                                    {item}
                                 </Text>
                             </Row>
                         ))}

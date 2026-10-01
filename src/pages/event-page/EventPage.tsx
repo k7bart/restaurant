@@ -23,7 +23,7 @@ const EventPage = () => {
 
             try {
                 const res = await eventService.getEventByPathName(eventId);
-                setEventData(res.data);
+                if (res.data) setEventData(res.data);
             } catch (err) {
                 console.error("Failed to fetch event:", err);
                 setError("Failed to load event. Please try again later.");

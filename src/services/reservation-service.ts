@@ -7,10 +7,15 @@ import axios from "../api/axios";
 
 export const reservationService = {
     createReservation: async (reservation: ReservationRequest) => {
-        const response = await axios.post<Response<Reservation>>(
+        const { data: body } = await axios.post<Response<Reservation>>(
             "/reservations",
             reservation,
         );
-        return response.data;
+        if (!body.data) return body;
+
+        return {
+            ...body,
+            data: { ...body.data, id: String(body.data.id) },
+        };
     },
 };

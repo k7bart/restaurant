@@ -20,7 +20,7 @@ export const getTotalDiscount = (
 
 export const getTotalOrderPrice = (order: CartItem[]) =>
     order.reduce(
-        (total, { price, discountPercent = 0, amount }) =>
-            total + getTotalPrice(price, discountPercent, amount),
+        (total, { price, discountPercent = 0, quantity }) =>
+            total + getTotalPrice(price, discountPercent, quantity),
         0
     );

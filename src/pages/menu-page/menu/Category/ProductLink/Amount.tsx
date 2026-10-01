@@ -8,25 +8,25 @@ import styles from "./ProductLink.module.scss";
 import type { Dish } from "@k7bart/restaurant-shared-types";
 
 const Amount = ({ dish }: { dish: Dish }) => {
-    const { amount, handleAmountChange } = useProductInCart(dish);
+    const { quantity, handleQuantityChange } = useProductInCart(dish);
 
     return (
         <div
             className={cn(styles.amount, {
-                [styles.visible]: amount,
+                [styles.visible]: quantity,
             })}
             onClick={(e) => e.preventDefault()}
         >
-            {amount ? (
+            {quantity ? (
                 <div>
                     <NumInput
-                        amount={amount}
+                        amount={quantity}
                         min={0}
-                        onChange={handleAmountChange}
+                        onChange={handleQuantityChange}
                     />
                 </div>
             ) : (
-                <button onClick={() => handleAmountChange(1)}>
+                <button onClick={() => handleQuantityChange(1)}>
                     Add to cart
                 </button>
             )}

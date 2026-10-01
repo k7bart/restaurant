@@ -125,7 +125,6 @@ const ReservationForm = () => {
         const payload: ReservationRequest = {
             dateTime,
             reservedBy: {
-                id: user?.id ?? crypto.randomUUID(),
                 firstName: capitalize(firstName),
                 lastName: lastName ? capitalize(lastName) : undefined,
                 phone,
@@ -141,6 +140,7 @@ const ReservationForm = () => {
         try {
             const { data: reservation } =
                 await reservationService.createReservation(payload);
+            if (!reservation) return;
 
             if (user) dispatch(addReservation(reservation));
 
