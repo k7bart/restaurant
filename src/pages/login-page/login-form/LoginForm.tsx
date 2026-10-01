@@ -41,6 +41,7 @@ const LoginForm = () => {
                 ...data,
                 phone: formatPhoneForApi(data.phone),
             });
+            if (!user) return;
             dispatch(setUser(user));
             reset();
             navigateAfterAuth();

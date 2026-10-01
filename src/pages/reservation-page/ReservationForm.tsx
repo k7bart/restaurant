@@ -140,6 +140,7 @@ const ReservationForm = () => {
         try {
             const { data: reservation } =
                 await reservationService.createReservation(payload);
+            if (!reservation) return;
 
             if (user) dispatch(addReservation(reservation));
 

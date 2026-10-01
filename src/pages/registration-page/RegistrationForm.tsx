@@ -82,6 +82,7 @@ const RegistrationForm = () => {
                 password,
                 rememberMe,
             });
+            if (!user) return;
             dispatch(setUser(user));
             reset();
             navigate("/profile");

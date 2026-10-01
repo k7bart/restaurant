@@ -52,6 +52,7 @@ const PersonalData = () => {
                 ...data,
                 birthday: data.birthday ?? undefined,
             });
+            if (!user) return;
             dispatch(setUser(user));
         } catch (error) {
             console.error(error);

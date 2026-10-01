@@ -18,7 +18,7 @@ const EventsPage = () => {
         const fetchEvents = async () => {
             try {
                 const response = await eventService.getEvents();
-                setEventsData(response.data);
+                if (response.data) setEventsData(response.data);
             } catch (error) {
                 console.error("Failed to fetch events:", error);
             }

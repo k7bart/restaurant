@@ -31,7 +31,7 @@ const EventDetails = () => {
         const fetchEvents = async () => {
             try {
                 const response = await eventService.getEvents();
-                setEvents(response.data);
+                if (response.data) setEvents(response.data);
             } catch (error) {
                 console.error("Failed to fetch events:", error);
             }

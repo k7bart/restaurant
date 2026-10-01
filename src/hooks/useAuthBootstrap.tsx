@@ -10,7 +10,9 @@ export function useAuthBootstrap() {
     useEffect(() => {
         authService
             .getMe()
-            .then(({ data: user }) => dispatch(setUser(user)))
+            .then(({ data: user }) => {
+                if (user) dispatch(setUser(user));
+            })
             .catch(() => {})
             .finally(() => setIsReady(true));
         // eslint-disable-next-line react-hooks/exhaustive-deps
