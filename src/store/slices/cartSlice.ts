@@ -7,7 +7,7 @@ const cartSlice = createSlice({
     initialState: [] as CartItem[],
     reducers: {
         addToCart(state, action: PayloadAction<CartItem>) {
-            const { id, amount } = action.payload;
+            const { id, quantity } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
 
             if (dishIndex === -1) {
@@ -15,23 +15,23 @@ const cartSlice = createSlice({
                 return;
             }
 
-            state[dishIndex].amount += amount;
+            state[dishIndex].quantity += quantity;
         },
-        updateAmountInCart(
+        updateQuantityInCart(
             state,
-            action: PayloadAction<Pick<CartItem, "id" | "amount">>,
+            action: PayloadAction<Pick<CartItem, "id" | "quantity">>,
         ) {
-            const { id, amount } = action.payload;
+            const { id, quantity } = action.payload;
             const dishIndex = state.findIndex((dish) => dish.id === id);
 
             if (dishIndex === -1) return;
 
-            if (amount <= 0) {
+            if (quantity <= 0) {
                 state.splice(dishIndex, 1);
                 return;
             }
 
-            state[dishIndex].amount = amount;
+            state[dishIndex].quantity = quantity;
         },
         removeFromCart(state, action: PayloadAction<Pick<CartItem, "id">>) {
             const dishIndex = state.findIndex(
@@ -48,6 +48,10 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addToCart, updateAmountInCart, removeFromCart, resetCart } =
-    cartSlice.actions;
+export const {
+    addToCart,
+    updateQuantityInCart,
+    removeFromCart,
+    resetCart,
+} = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

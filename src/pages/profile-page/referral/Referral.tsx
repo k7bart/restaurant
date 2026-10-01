@@ -14,7 +14,10 @@ const Referral = () => {
     const copyItems = [
         { id: "referral", text: referralLink, size: "large" as const },
         { id: "promo", text: referralPromoCode, size: "small" as const },
-    ];
+    ].filter(
+        (item): item is { id: string; text: string; size: "large" | "small" } =>
+            Boolean(item.text),
+    );
 
     const handleCopy = (text: string, id: string) => {
         navigator.clipboard.writeText(text);

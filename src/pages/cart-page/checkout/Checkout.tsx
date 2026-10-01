@@ -31,11 +31,12 @@ import TotalPrice from "../../../components/total-price/TotalPrice";
 
 import styles from "./Checkout.module.scss";
 
-import type { Address, Option, Order } from "@k7bart/restaurant-shared-types";
+import type { Address, Option, Order, OrderRequest } from "@k7bart/restaurant-shared-types";
 import type {
     DeliveryMethod,
     PaymentMethod,
 } from "@k7bart/restaurant-shared-types";
+import { getPrice } from "../../../utils/priceUtils";
 
 interface OrderForm
     extends
@@ -87,7 +88,7 @@ const Checkout = () => {
         defaultValues,
     });
 
-    const createPayload = (data: OrderForm): Order => {
+    const createPayload = (data: OrderForm): OrderRequest => {
         const {
             firstName,
             phone,
@@ -106,18 +107,23 @@ const Checkout = () => {
             intercom,
         } = data;
 
-        const commonInfo = {
-            id: crypto.randomUUID(),
+        const commonInfo: OrderRequest = {
             customer: {
                 firstName,
                 phone,
                 lastName: lastName ?? undefined,
                 id: user?.id ?? crypto.randomUUID(),
             },
-            callForDetails,
+            isCallNeeded: callForDetails,
             deliveryMethod,
             orderComment,
-            orderedItems: cart,
+            orderedItems: cart.map(
+                ({ id, quantity, price, discountPercent }) => ({
+                    id,
+                    quantity,
+                    priceAtPurchase: getPrice(price, discountPercent),
+                }),
+            ),
             paymentMethod,
             total: getTotalOrderPrice(cart),
         };

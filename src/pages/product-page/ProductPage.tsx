@@ -38,7 +38,7 @@ const ProductPage = () => {
         return categoryData?.dishes.find((d) => d.id === productId);
     }, [category, productId]);
 
-    const { amount, handleAmountChange } = useProductInCart(product!);
+    const { quantity, handleQuantityChange } = useProductInCart(product!);
 
     if (!product) return;
 
@@ -74,13 +74,13 @@ const ProductPage = () => {
                     {nutrients && <Nutrients nutrients={nutrients} />}
 
                     <div className={styles.container}>
-                        {amount ? (
+                        {quantity ? (
                             <Amount
-                                amount={amount}
-                                onChange={handleAmountChange}
+                                amount={quantity}
+                                onChange={handleQuantityChange}
                             />
                         ) : (
-                            <Button onClick={() => handleAmountChange(1)}>
+                            <Button onClick={() => handleQuantityChange(1)}>
                                 Add to cart
                             </Button>
                         )}
@@ -91,7 +91,7 @@ const ProductPage = () => {
                             )}
 
                             <Price
-                                amount={amount}
+                                amount={quantity}
                                 discountPercent={discountPercent}
                                 price={price}
                             />

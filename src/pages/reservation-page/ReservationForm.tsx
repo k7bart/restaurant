@@ -125,7 +125,6 @@ const ReservationForm = () => {
         const payload: ReservationRequest = {
             dateTime,
             reservedBy: {
-                id: user?.id ?? crypto.randomUUID(),
                 firstName: capitalize(firstName),
                 lastName: lastName ? capitalize(lastName) : undefined,
                 phone,

@@ -15,7 +15,7 @@ export { store };
 
 export {
     addToCart,
-    updateAmountInCart,
+    updateQuantityInCart,
     removeFromCart,
     resetCart,
 } from "./slices/cartSlice";

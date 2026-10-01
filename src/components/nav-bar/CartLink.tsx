@@ -15,7 +15,7 @@ const CartLink = () => {
             getTotalPrice(
                 product.price,
                 product.discountPercent,
-                product.amount,
+                product.quantity,
             ),
         0,
     );

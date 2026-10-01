@@ -90,9 +90,9 @@ const EventDetails = () => {
                     <div>
                         <h3>Menu</h3>
                         {menu.map((item) => (
-                            <Row key={item.id}>
+                            <Row key={item}>
                                 <Text color="white" size="large">
-                                    {item.name}
+                                    {item}
                                 </Text>
                             </Row>
                         ))}
